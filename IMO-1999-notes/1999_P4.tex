@@ -1,0 +1,24 @@
+\textsl{Available online at \url{https://aops.com/community/p131811}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Find all pairs of positive integers $(x,p)$
+such that $p$ is a prime and $x^{p-1}$ is a divisor of $ (p-1)^{x}+1$.
+\end{mdframed}
+If $p = 2$ then $x \in \{1,2\}$,
+and if $p = 3$ then $x \in \{1,3\}$, since this is IMO 1990/3.
+Also, $x = 1$ gives a solution for any prime $p$.
+We show that there are no other solutions.
+
+Assume $x > 1$ and let $q$ be smallest prime divisor of $x$.
+We have $q > 2$ since $(p-1)^x+1$ is odd.
+Then
+\[ (p-1)^x \equiv -1 \pmod q \implies (p-1)^{2x} \equiv 1 \pmod q \]
+so the order of $p-1 \bmod q$ is even and divides $\gcd(q-1,2x) \le 2$.
+This means that
+\[ p-1 \equiv -1 \pmod q \implies p = q. \]
+
+In other words $p \mid x$ and we get $x^{p-1} \mid (p-1)^{x}+1$.
+By exponent lifting lemma, we now have
+\[ 0 < (p-1) \nu_{p}(x) \le 1 + \nu_p(x). \]
+This forces $p=3$,
+which we already addressed.
+\pagebreak

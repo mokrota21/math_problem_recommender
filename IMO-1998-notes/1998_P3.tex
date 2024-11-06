@@ -1,0 +1,37 @@
+\textsl{Available online at \url{https://aops.com/community/p124439}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+For any positive integer $n$,
+let $\tau(n)$ denote the number of its positive divisors (including $1$ and itself).
+Determine all positive integers $m$ for which
+there exists a positive integer $n$ such that
+\[ \frac{\tau(n^{2})}{\tau(n)}=m. \]
+\end{mdframed}
+The answer is odd integers $m$ only.
+If we write $n = p_1^{e_1} \dots p_k^{e_k}$ we get
+\[ \prod \frac{2e_i+1}{e_i+1} = m. \]
+It's clear now that $m$ must be odd,
+since every fraction has odd numerator.
+
+We now endeavor to construct odd numbers.
+The proof is by induction, in which we are curating sets of
+fractions of the form $\frac{2e+1}{e+1}$ that multiply
+to a given target.
+
+The base cases are easy to verify by hand.
+Generally, assume $p = 2^t k - 1$ is odd, where $k$ is odd.
+Then we can write
+\[
+  \frac{2^{2t}k-2^t(k+1)+1}{2^{2t-1}k-2^{t-1}(k+1)+1}
+  \cdot
+  \frac{2^{2t-1}k-2^{t-1}(k+1)+1}{2^{2t-2}k-2^{t-2}(k+1)+1}
+  \cdot \dots \cdot
+  \frac{2^{t+1}k-2(k+1)+1}{2^tk-2^0(k+1)+1}.
+\]
+Note that $2^{2t}k-2^t(k+1)+1 = (2^t k - 1)(2^t - 1)$,
+and $2^t k - k = k(2^t-1)$, so the above fraction simplifies to
+\[ \frac{2^t k - 1}{k} \]
+meaning we just need to multiply by $k$,
+which we can do using induction hypothesis.
+\pagebreak
+
+\section{Solutions to Day 2}

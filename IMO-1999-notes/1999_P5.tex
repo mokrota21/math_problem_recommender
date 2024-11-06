@@ -1,0 +1,85 @@
+\textsl{Available online at \url{https://aops.com/community/p131838}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Two circles $\Omega_{1}$ and $\Omega_{2}$ touch internally the circle
+$\Omega$ in $M$ and $N$ and the center of $\Omega_{2}$ is on $\Omega_{1}$.
+The common chord of the circles $\Omega_{1}$ and $\Omega_{2}$
+intersects $\Omega$ in $A$ and $B$
+Lines $MA$ and $MB$ intersects $\Omega_{1}$ in $C$ and $D$.
+Prove that $\Omega_{2}$ is tangent to $CD$.
+\end{mdframed}
+Let $P$ and $Q$ be the centers of $\Omega_1$ and $\Omega_2$.
+
+Let line $MQ$ meet $\Omega_1$ again at $W$,
+the homothetic image of $Q$ under $\Omega_1 \to \Omega$.
+
+Meanwhile, let $T$ be the intersection of segment $PQ$
+with $\Omega_2$, and let $L$ be its homothetic image on $\Omega$.
+Since $\ol{PTQ} \perp \ol{AB}$, it follows $\ol{LW}$
+is a diameter of $\Omega$.
+Let $O$ be its center.
+
+\begin{center}
+\begin{asy}
+size(10cm);
+pen xfqqff = rgb(0.49803,0.,1.); pen qqffff = rgb(0.,1.,1.); pen cqcqcq = rgb(0.75294,0.75294,0.75294);
+pair O = (0.,0.), M = (-0.54799,0.83648), P = (-0.16957,0.25884), Q = (-0.16861,-0.43170), A = (-0.97449,-0.22439), B = (0.97512,-0.22166), C = (-0.84251,0.10388), D = (0.50379,0.10577), T = (-0.16936,0.10483), L = (-0.00139,0.99999);
+draw(circle(O, 1.), linewidth(0.6));
+draw(circle(P, 0.69055), linewidth(0.6) + xfqqff);
+draw(circle(Q, 0.53653), linewidth(0.6) + xfqqff);
+draw(O--M, linewidth(0.6) + red);
+draw(M--A, linewidth(0.6) + qqffff);
+draw(M--B, linewidth(0.6) + qqffff);
+draw(O--(-0.36380,-0.93147), linewidth(0.6) + red);
+draw(P--Q, linewidth(0.6));
+draw(M--(0.00139,-0.99999), linewidth(0.6) + green);
+draw((0.00139,-0.99999)--L, linewidth(0.6));
+draw(L--(-0.36380,-0.93147), linewidth(0.6) + green);
+draw(M--(-0.36380,-0.93147), linewidth(0.6));
+draw(A--B, linewidth(0.6));
+dot("$O$", O, dir((1.868, -2.897)));
+dot("$N$", (-0.36380,-0.93147), dir((-5.700, -12.058)));
+dot("$M$", M, dir((-8.656, 10.478)));
+dot("$P$", P, dir((-2.789, 6.521)));
+dot("$Q$", Q, dir((3.600, -6.558)));
+dot("$A$", A, dir((-15.478, -5.915)));
+dot("$B$", B, dir((4.982, -4.507)));
+dot("$C$", C, dir((-8.023, -3.199)));
+dot("$D$", D, dir((1.442, 0.454)));
+dot("$T$", T, dir((-7.133, 1.989)));
+dot("$W$", (0.00139,-0.99999), dir((-2.113, -15.052)));
+dot("$L$", L, dir((1.046, 1.812)));
+dot("$E$", midpoint(A--B), dir(-45));
+\end{asy}
+\end{center}
+
+\begin{claim*}
+  $MNTQ$ is cyclic.
+\end{claim*}
+\begin{proof}
+  By Reim: $\dang TQM = \dang LWM = \dang LNM = \dang TNM$.
+\end{proof}
+
+Let $E$ be the midpoint of $\ol{AB}$.
+\begin{claim*}
+  $OEMN$ is cyclic.
+\end{claim*}
+\begin{proof}
+  By radical axis, the lines $MM$, $NN$, $AEB$ meet at a point $R$.
+  Then $OEMN$ is on the circle with diameter $\ol{OR}$.
+\end{proof}
+
+\begin{claim*}
+  $MTE$ are collinear.
+\end{claim*}
+\begin{proof}
+  $\dang NMT = \dang TQN = \dang LON = \dang NOE = \dang NME$.
+\end{proof}
+
+Now consider the homothety mapping $\triangle WAB$
+to $\triangle QCD$.
+It should map $E$ to a point on line $ME$
+which is also on the line through $Q$ perpendicular to $\ol{AB}$;
+that is, to point $T$.
+Hence $TCD$ are collinear,
+and it's immediate that $T$ is the desired tangency point.
+\pagebreak

@@ -1,0 +1,62 @@
+\textsl{Available online at \url{https://aops.com/community/p131833}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+A set $S$ of points from the space will be called
+completely symmetric if it has at least three elements
+and fulfills the condition that for every two distinct points
+$A$ and $B$ from $S$,
+the perpendicular bisector plane of the segment $AB$
+is a plane of symmetry for $S$.
+Prove that if a completely symmetric set is finite,
+then it consists of the vertices of either a regular polygon,
+or a regular tetrahedron or a regular octahedron.
+\end{mdframed}
+Let $G$ be the centroid of $S$.
+
+\begin{claim*}
+  All points of $S$ lie on a sphere $\Gamma$ centered at $G$.
+\end{claim*}
+\begin{proof}
+  Each perpendicular bisector plane passes through $G$.
+  So if $A,B \in S$ it follows $GA = GB$.
+\end{proof}
+
+\begin{claim*}
+  Consider any plane passing through three or more points of $S$.
+  The points of $S$ in the plane form a regular polygon.
+\end{claim*}
+\begin{proof}
+  The cross section is a circle because we are intersecting
+  a plane with sphere $\Gamma$.
+  Now if $A$, $B$, $C$ are three adjacent points on this circle,
+  by taking the perpendicular bisector we have $AB=BC$.
+\end{proof}
+
+If the points of $S$ all lie in a plane, we are done.
+Otherwise, the points of $S$ determine a polyhedron
+$\Pi$ inscribed in $\Gamma$.
+All of the faces of $\Pi$ are evidently regular polygons,
+of the same side length $s$.
+
+\begin{claim*}
+  Every face of $\Pi$ is an equilateral triangle.
+\end{claim*}
+\begin{proof}
+  Suppose on the contrary some face $A_1 A_2 \dots A_n$
+  has $n > 3$.
+  Let $B$ be any vertex adjacent to $A_1$ in $\Pi$
+  other than $A_2$ or $A_n$.
+  Consider the plane determined by $\triangle A_1 A_3 B$.
+  This is supposed to be a regular polygon,
+  but arc $A_1 A_3$ is longer than arc $A_1 B$,
+  and by construction there are no points inside these arcs.
+  This is a contradiction.
+\end{proof}
+
+Hence, $\Pi$ has faces all congruent equilateral triangles.
+This implies it is a regular polyhedron --- either
+a regular tetrahedron, regular octahedron,
+or regular icosahedron.
+We can check the regular icosahedron fails by
+taking two antipodal points as our counterexample.
+This finishes the problem.
+\pagebreak

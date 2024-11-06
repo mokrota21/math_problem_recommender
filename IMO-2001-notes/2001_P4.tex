@@ -1,0 +1,27 @@
+\textsl{Available online at \url{https://aops.com/community/p119174}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $n > 1$ be an odd integer and let $c_1$, $c_2$, \dots, $c_n$ be integers.
+For each permutation $a = (a_1, a_2, \dots, a_n)$
+of $\{1,2,\dots,n\}$, define $S(a) = \sum_{i=1}^n c_i a_i$.
+Prove that there exist two permutations $a \neq b$
+of $\{1,2,\dots,n\}$ such that $n!$ is a divisor of $S(a)-S(b)$.
+\end{mdframed}
+Assume for contradiction that all the $S(a)$ are distinct modulo $n!$.
+Then summing across all permutations gives
+\begin{align*}
+  1 + 2 + \dots + n!
+  &\equiv \sum_a S(a) \\
+  &= \sum_a \sum_{i=1}^n c_i a_i \\
+  &= \sum_{i=1}^n c_i \sum_a a_i \\
+  &= \sum_{i=1}^n c_i \cdot \left( (n-1)! \cdot (1+\dots+n) \right) \\
+  &= (n-1)! \cdot \frac{n(n+1)}{2} \sum_{i=1}^n c_i \\
+  &= n! \cdot \frac{n+1}{2} \sum_{i=1}^n c_i \\
+  &\equiv 0
+\end{align*}
+since $\half(n+1)$ is an integer.
+But on the other hand
+$1 + 2 + \dots + n! = \frac{n!(n!+1)}{2}$
+which is not divisible by $n!$ if $n > 1$,
+as the quotient is the non-integer $\frac{n!+1}{2}$.
+This is a contradiction.
+\pagebreak

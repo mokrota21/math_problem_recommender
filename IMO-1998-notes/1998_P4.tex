@@ -1,0 +1,37 @@
+\textsl{Available online at \url{https://aops.com/community/p124428}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Determine all pairs $(x,y)$ of positive integers
+such that $x^{2}y+x+y$ is divisible by $xy^{2}+y+7$.
+\end{mdframed}
+The answer is $(7k^2,7k)$ for all $k \ge 1$,
+as well as $(11,1)$ and $(49,1)$.
+
+We are given $xy^2+y+7 \mid x^2y+x+y$.
+Multiplying the right-hand side by $y$ gives
+\[ xy^2+y+7 \mid x^2y^2+xy+y^2 \]
+Then subtracting $x$ times the left-hand side gives
+\[ xy^2+y+7 \mid y^2-7x. \]
+We consider cases based on the sign of $y^2=7x$.
+\begin{itemize}
+  \ii If $y^2 > 7x$, then $0 < y^2-7x < xy^2+y+7$,
+  contradiction.
+  \ii If $y^2=7x$, let $y = 7k$, so $x = 7k^2$.
+  Plugging this back in to the original equation reads
+  \[ 343k^4 + 7k + 7 \mid 343k^5 + 7k^2 + 7k \]
+  which is always valid, hence these are all solutions.
+  \ii  If $y^2 < 7x$, then $|y^2-7x| \le 7x$,
+  so $y \in \{1,2\}$.
+
+  When $y=1$ we get
+  \[ x+8 \mid x^2+x+1 \iff x+8 \mid 64-8+1=57.\]
+  This has solutions $x=11$ and $x=49$.
+
+  When $y=2$
+  \begin{align*}
+    4x+9 \mid 2x^2+x+2 \\
+    \implies 4x+9 &\mid 16x^2+8x+16 \\
+    \implies 4x+9 &\mid 81-18+16 = 79
+  \end{align*}
+  which never occurs.
+\end{itemize}
+\pagebreak

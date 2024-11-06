@@ -1,0 +1,71 @@
+
+\textsl{Available online at \url{https://aops.com/community/p119217}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $a > b > c > d > 0$ be integers satisfying
+\[ ac + bd = (b+d+a-c)(b+d-a+c).  \]
+Prove that $ab + cd$ is not prime.
+\end{mdframed}
+The problem condition is equivalent to
+\[ ac + bd = (b+d)^2 - (a-c)^2 \]
+or
+\[ a^2-ac+c^2 = b^2+bd+d^2. \]
+
+Let us construct a quadrilateral $WXYZ$ such that
+$WX = a$, $XY = c$, $YZ = b$, $ZW = d$,
+and \[ WY = \sqrt{a^2-ac+c^2} = \sqrt{b^2+bd+d^2}.\]
+Then by the law of cosines, we obtain $\angle WXY = 60\dg$
+and $\angle WZY = 120\dg$.
+Hence this quadrilateral is cyclic.
+
+\begin{center}
+  \begin{asy}
+    pair X = dir(110);
+    pair W = dir(210);
+    pair Y = dir(330);
+    pair Z = dir(280);
+    draw(unitcircle, blue);
+    draw(W--X--Y--Z--cycle);
+    draw(W--Y, red);
+
+    pair a = midpoint(W--X);
+    pair c = midpoint(X--Y);
+    pair b = midpoint(Y--Z);
+    pair d = midpoint(Z--W);
+
+    dot("$X$", X, dir(X));
+    dot("$W$", W, dir(W));
+    dot("$Y$", Y, dir(Y));
+    dot("$Z$", Z, dir(Z));
+
+    label("$a$", a, dir(a));
+    label("$b$", b, -dir(b));
+    label("$c$", c, dir(c));
+    label("$d$", d, -dir(d));
+    label(minipage("\begin{align*} & \sqrt{a^2-ac+c^2} \\ =& \sqrt{b^2+bd+d^2}\end{align*}"), (W+Y)/2, dir(90), red);
+  \end{asy}
+\end{center}
+
+By the more precise version of Ptolemy's theorem,
+we find that
+\[ WY^2 = \frac{(ab+cd)(ad+bc)}{ac+bd}. \]
+
+Now assume for contradiction that that $ab+cd$ is a prime $p$.
+Recall that we assumed $a > b > c > d$.
+It follows, for example by rearrangement inequality, that
+\[ p = ab+cd > ac+bd > ad+bc. \]
+Let $y = ac+bd$ and $x = ad+bc$ now.
+The point is that \[ p \cdot \frac xy \]
+can never be an integer if $p$ is prime and $x < y < p$.
+But $WY^2 = a^2-ac+c^2$ is clearly an integer, and this is a contradiction.
+
+Hence $ab+cd$ cannot be prime.
+
+\begin{remark*}
+  It may be tempting to try to apply the more typical form of
+  Ptolemy to get $ab+cd = WY \cdot XZ$;
+  the issue with this approach is that $WY$ and $XZ$ are usually not integers.
+\end{remark*}
+\pagebreak
+
+
+\end{document}

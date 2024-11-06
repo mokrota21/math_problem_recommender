@@ -1,0 +1,421 @@
+% © Evan Chen
+% Downloaded from https://web.evanchen.cc/
+
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evan}
+\ihead{\footnotesize\textbf{\thetitle}}
+\ohead{\footnotesize\href{http://web.evanchen.cc}{\ttfamily web.evanchen.cc},
+    updated \today}
+\title{IMO 2001 Solution Notes}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This is a compilation of solutions
+for the 2001 IMO.
+The ideas of the solution are a mix of my own work,
+the solutions provided by the competition organizers,
+and solutions found by the community.
+However, all the writing is maintained by me.
+
+These notes will tend to be a bit more advanced and terse than the ``official''
+solutions from the organizers.
+In particular, if a theorem or technique is not known to beginners
+but is still considered ``standard'', then I often prefer to
+use this theory anyways, rather than try to work around or conceal it.
+For example, in geometry problems I typically use directed angles
+without further comment, rather than awkwardly work around configuration issues.
+Similarly, sentences like ``let $\mathbb{R}$ denote the set of real numbers''
+are typically omitted entirely.
+
+Corrections and comments are welcome!
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\addtocounter{section}{-1}
+\section{Problems}
+\begin{enumerate}[\bfseries 1.]
+\item %% Problem 1
+Let $ABC$ be an acute-angled triangle with $O$ as its circumcenter.
+Let $P$ on line $BC$ be the foot of the altitude from $A$.
+Assume that $\angle BCA \ge \angle ABC + 30\dg$.
+Prove that $\angle CAB + \angle COP < 90\dg$.
+
+\item %% Problem 2
+Let $a$, $b$, $c$ be positive reals. Prove that
+\[ \frac{a}{\sqrt{a^2+8bc}} + \frac{b}{\sqrt{b^2+8ca}} + \frac{c}{\sqrt{c^2+8ab}} \ge 1. \]
+
+\item %% Problem 3
+Twenty-one girls and twenty-one boys took part in a mathematical competition.
+It turned out that each contestant solved at most six problems,
+and for each pair of a girl and a boy,
+there was at least one problem that was solved by both the girl and the boy.
+Show that there is a problem that was solved by at least three girls and at least three boys.
+
+\item %% Problem 4
+Let $n > 1$ be an odd integer and let $c_1$, $c_2$, \dots, $c_n$ be integers.
+For each permutation $a = (a_1, a_2, \dots, a_n)$
+of $\{1,2,\dots,n\}$, define $S(a) = \sum_{i=1}^n c_i a_i$.
+Prove that there exist two permutations $a \neq b$
+of $\{1,2,\dots,n\}$ such that $n!$ is a divisor of $S(a)-S(b)$.
+
+\item %% Problem 5
+Let $ABC$ be a triangle.
+Let $\ol{AP}$ bisect $\angle BAC$ and let $\ol{BQ}$ bisect $\angle ABC$,
+with $P$ on $\ol{BC}$ and $Q$ on $\ol{AC}$.
+If $AB + BP = AQ + QB$ and $\angle BAC = 60\dg$,
+what are the angles of the triangle?
+
+\item %% Problem 6
+Let $a > b > c > d > 0$ be integers satisfying
+\[ ac + bd = (b+d+a-c)(b+d-a+c).  \]
+Prove that $ab + cd$ is not prime.
+
+\end{enumerate}
+\pagebreak
+
+\section{Solutions to Day 1}
+\subsection{IMO 2001/1, proposed by Hojoo Lee (KOR)}
+\textsl{Available online at \url{https://aops.com/community/p119192}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $ABC$ be an acute-angled triangle with $O$ as its circumcenter.
+Let $P$ on line $BC$ be the foot of the altitude from $A$.
+Assume that $\angle BCA \ge \angle ABC + 30\dg$.
+Prove that $\angle CAB + \angle COP < 90\dg$.
+\end{mdframed}
+The conclusion rewrites as
+\begin{align*}
+  \angle COP &< 90\dg - \angle A = \angle OCP \\
+  \iff PC &< PO \\
+  \iff PC^2 &< PO^2 \\
+  \iff PC^2 &< R^2 - PB \cdot PC \\
+  \iff PC \cdot BC &< R^2 \\
+  \iff ab \cos C  &< R^2 \\
+  \iff \sin A \sin B \cos C & < \frac14.
+\end{align*}
+Now
+\[ \cos C \sin B
+  = \half \left( \sin(C+B)-\sin(C-B) \right)
+  \le \half \left( 1 - \half \right) = \frac 14 \]
+which finishes when combined with $\sin A < 1$.
+
+\begin{remark*}
+  If we allow $ABC$ to be right then
+  equality holds when $\angle A = 90\dg$,
+  $\angle C = 60\dg$, $\angle B = 30\dg$.
+  This motivates the choice of estimates
+  after reducing to a trig inequality.
+\end{remark*}
+\pagebreak
+
+\subsection{IMO 2001/2, proposed by Hojoo Lee (KOR)}
+\textsl{Available online at \url{https://aops.com/community/p119168}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $a$, $b$, $c$ be positive reals. Prove that
+\[ \frac{a}{\sqrt{a^2+8bc}} + \frac{b}{\sqrt{b^2+8ca}} + \frac{c}{\sqrt{c^2+8ab}} \ge 1. \]
+\end{mdframed}
+By Holder, we have
+\[
+  \left( \sum_{\text{cyc}} \frac{a}{\sqrt{a^2+8bc}} \right)^2
+  \left( \sum_{\text{cyc}} a(a^2+8bc) \right)
+  \ge (a+b+c)^3.
+\]
+So it suffices to show $(a+b+c)^3 \ge a^3+b^3+c^3+24abc$ which is clear by expanding.
+\pagebreak
+
+\subsection{IMO 2001/3, proposed by Christian Bey (GER)}
+\textsl{Available online at \url{https://aops.com/community/p119191}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Twenty-one girls and twenty-one boys took part in a mathematical competition.
+It turned out that each contestant solved at most six problems,
+and for each pair of a girl and a boy,
+there was at least one problem that was solved by both the girl and the boy.
+Show that there is a problem that was solved by at least three girls and at least three boys.
+\end{mdframed}
+We will show the contrapositive.
+That is, assume that
+\begin{itemize}
+  \ii For each pair of a girl and a boy,
+  there was at least one problem that was
+  solved by both the girl and the boy.
+  \ii Assume every problem is either solved
+  mostly by girls (at most two boys)
+  or mostly by boys (at most two girls).
+\end{itemize}
+Then we will prove that then some contestant
+solved more than six problems.
+
+Create a $21 \times 21$ grid with boys as columns
+and girls as rows, and in each cell
+write the name of a problem solved by the pair.
+Color the cell \textbf{green} if at most two girls solved that problem,
+and color it \textbf{blue} if at most two boys solved that problem.
+(G for girl, B for boy.
+It's possible both colors are used for some cell.)
+
+WLOG, there are more green cells than blue,
+so (by pigeonhole) take a column (boy) with that property.
+That means the boy's column has at least $11$ green squares.
+By hypothesis, those corresponds to at least $6$ different problems
+solved. Now there are two cases:
+\begin{itemize}
+  \ii If there are any blue-only squares,
+  then that square means a seventh distinct problems.
+  \ii If the entire column is green,
+  then among the $21$ green squares
+  there are at least $11$ distinct problems solved
+  in that column.
+\end{itemize}
+
+\begin{remark*}
+The number $21$ cannot be decreased.
+Here is an example of $20$ boys and $20$ girls
+who solve problems named $A$-$J$
+and $0$-$9$, which motivates the solution to begin with.
+\begin{center}
+\scriptsize \ttfamily
+{\color{green}0000000000}{\color{blue}AABBCCDDEE} \\
+{\color{green}0000000000}{\color{blue}AABBCCDDEE} \\
+{\color{green}1111111111}{\color{blue}AABBCCDDEE} \\
+{\color{green}1111111111}{\color{blue}AABBCCDDEE} \\
+{\color{green}2222222222}{\color{blue}AABBCCDDEE} \\
+{\color{green}2222222222}{\color{blue}AABBCCDDEE} \\
+{\color{green}3333333333}{\color{blue}AABBCCDDEE} \\
+{\color{green}3333333333}{\color{blue}AABBCCDDEE} \\
+{\color{green}4444444444}{\color{blue}AABBCCDDEE} \\
+{\color{green}4444444444}{\color{blue}AABBCCDDEE} \\
+{\color{blue}FFGGHHIIJJ}{\color{green}5555555555} \\
+{\color{blue}FFGGHHIIJJ}{\color{green}5555555555} \\
+{\color{blue}FFGGHHIIJJ}{\color{green}6666666666} \\
+{\color{blue}FFGGHHIIJJ}{\color{green}6666666666} \\
+{\color{blue}FFGGHHIIJJ}{\color{green}7777777777} \\
+{\color{blue}FFGGHHIIJJ}{\color{green}7777777777} \\
+{\color{blue}FFGGHHIIJJ}{\color{green}8888888888} \\
+{\color{blue}FFGGHHIIJJ}{\color{green}8888888888} \\
+{\color{blue}FFGGHHIIJJ}{\color{green}9999999999} \\
+{\color{blue}FFGGHHIIJJ}{\color{green}9999999999}
+\end{center}
+\end{remark*}
+
+\begin{remark*}
+  This took me embarrassingly long,
+  but part of the work of the problem seemed to be
+  finding the right ``data structure'' to get a foothold.
+  I think the grid is good because we want to fill each intersection,
+  then we consider for each cell a problem to put.
+
+  I initially wanted to capture the full data by writing
+  in each green cell the row index of the other girl who solved it,
+  and similarly for the blue cells.
+  (That led naturally to the colors, there were two types of cells.)
+  This was actually helpful for finding the equality case above,
+  but once I realized the equality case
+  I also realized that I could discard the extra information
+  and only remember the colors.
+\end{remark*}
+\pagebreak
+
+\section{Solutions to Day 2}
+\subsection{IMO 2001/4, proposed by Bill Sands (CAN)}
+\textsl{Available online at \url{https://aops.com/community/p119174}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $n > 1$ be an odd integer and let $c_1$, $c_2$, \dots, $c_n$ be integers.
+For each permutation $a = (a_1, a_2, \dots, a_n)$
+of $\{1,2,\dots,n\}$, define $S(a) = \sum_{i=1}^n c_i a_i$.
+Prove that there exist two permutations $a \neq b$
+of $\{1,2,\dots,n\}$ such that $n!$ is a divisor of $S(a)-S(b)$.
+\end{mdframed}
+Assume for contradiction that all the $S(a)$ are distinct modulo $n!$.
+Then summing across all permutations gives
+\begin{align*}
+  1 + 2 + \dots + n!
+  &\equiv \sum_a S(a) \\
+  &= \sum_a \sum_{i=1}^n c_i a_i \\
+  &= \sum_{i=1}^n c_i \sum_a a_i \\
+  &= \sum_{i=1}^n c_i \cdot \left( (n-1)! \cdot (1+\dots+n) \right) \\
+  &= (n-1)! \cdot \frac{n(n+1)}{2} \sum_{i=1}^n c_i \\
+  &= n! \cdot \frac{n+1}{2} \sum_{i=1}^n c_i \\
+  &\equiv 0
+\end{align*}
+since $\half(n+1)$ is an integer.
+But on the other hand
+$1 + 2 + \dots + n! = \frac{n!(n!+1)}{2}$
+which is not divisible by $n!$ if $n > 1$,
+as the quotient is the non-integer $\frac{n!+1}{2}$.
+This is a contradiction.
+\pagebreak
+
+\subsection{IMO 2001/5, proposed by Shay Gueron (ISR)}
+\textsl{Available online at \url{https://aops.com/community/p119207}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $ABC$ be a triangle.
+Let $\ol{AP}$ bisect $\angle BAC$ and let $\ol{BQ}$ bisect $\angle ABC$,
+with $P$ on $\ol{BC}$ and $Q$ on $\ol{AC}$.
+If $AB + BP = AQ + QB$ and $\angle BAC = 60\dg$,
+what are the angles of the triangle?
+\end{mdframed}
+The answer is $\angle B = 80\dg$ and $\angle C = 40\dg$.
+Set $x = \angle ABQ = \angle QBC$, so that $\angle QCB = 120\dg - 2x$.
+We observe $\angle AQB = 120\dg - x$ and $\angle APB = 150\dg - 2x$.
+
+\begin{center}
+\begin{asy}
+  pair A = dir(130);
+  pair B = dir(210);
+  pair C = dir(330);
+  pair I = incenter(A, B, C);
+  pair P = extension(A, I, B, C);
+  pair Q = extension(B, I, A, C);
+
+  dot("$A$", A, dir(A));
+  dot("$B$", B, dir(B));
+  dot("$C$", C, dir(C));
+  dot("$P$", P, dir(P));
+  dot("$Q$", Q, dir(Q));
+
+  draw(A--B--C--cycle);
+  draw(A--P);
+  draw(B--Q);
+
+  label("$30^\circ$", A+0.3*dir((pair)incenter(B,A,P)-A));
+  label("$30^\circ$", A+0.3*dir((pair)incenter(P,A,C)-A));
+  label(rotate(-20)*"$120^\circ-2x$", C+0.3*dir((pair)incenter(A,C,B)-C));
+  label("$x$", B+0.2*dir((pair)incenter(C,B,Q)-B));
+  label("$x$", B+0.2*dir((pair)incenter(Q,B,A)-B));
+\end{asy}
+\end{center}
+
+Now by the law of sines, we may compute
+\begin{align*}
+  BP &= AB \cdot \frac{\sin 30\dg}{\sin (150\dg- 2x)}  \\
+  AQ &= AB \cdot \frac{\sin x}{\sin (120\dg- x)}  \\
+  QB &= AB \cdot \frac{\sin 60\dg}{\sin (120\dg- x)}.
+\end{align*}
+So, the relation $AB + BP = AQ + QB$ is exactly
+\[ 1 + \frac{\sin 30\dg}{\sin (150\dg - 2x)}
+= \frac{\sin x + \sin 60\dg}{\sin (120\dg - x)}. \]
+This is now a trig problem, and we simply solve for $x$.
+There are many possible approaches
+and we just present one.
+
+First of all, we can write
+\[ \sin x + \sin 60\dg
+  = 2\sin \left( \half (x+60\dg) \right)
+  \cos \left( \half (x-60\dg) \right). \]
+On the other hand, $\sin (120\dg - x) = \sin(x+60\dg)$ and
+\[ \sin (x+60\dg)
+  = 2 \sin \left( \half (x+60\dg) \right)
+  \cos \left( \half(x+60\dg) \right) \]
+so
+\[ \frac{\sin x + \sin 60\dg}{\sin (120\dg - x)}
+  = \frac{\cos \left( \half x - 30\dg \right)}%
+  {\cos \left( \half x + 30\dg \right)}. \]
+Let $y = \half x$ for brevity now. Then
+\begin{align*}
+  \frac{\cos(y-30\dg)}{\cos(y+30\dg)} - 1
+  &= \frac{\cos(y-30\dg)-\cos(y+30\dg)}{\cos(y+30\dg)} \\
+  &= \frac{2 \sin (30\dg) \sin y}{\cos(y+30\dg)} \\
+  &= \frac{\sin y}{\cos (y+30\dg)}.
+\end{align*}
+Hence the problem is just
+\begin{align*}
+  \frac{\sin 30\dg}{\sin(150\dg - 4y)} &= \frac{\sin y}{\cos(y+30\dg)}. \\
+  \intertext{Equivalently,}
+  \cos(y+30\dg) &= 2\sin y \sin (150\dg -4y) \\
+  &= \cos(5y-150\dg) - \cos(150\dg-3y) \\
+  &= -\cos(5y+30\dg) + \cos(3y+30\dg).
+\end{align*}
+Now we are home free, because $3y+30\dg$
+is the average of $y+30\dg$ and $5y+30\dg$.
+That means we can write
+\[ \frac{\cos(y+30\dg)+\cos(5y+30\dg)}{2} = \cos(3y+30\dg) \cos(2y). \]
+Hence
+\[ \cos(3y+30\dg) \left( 2\cos(2y)-1 \right) = 0. \]
+Recall that
+\[ y = \half x = \frac 14 \angle B
+  < \frac 14 \left( 180\dg - \angle A \right) = 30\dg. \]
+Hence it is not possible that $\cos(2y) = \half$,
+since the smallest positive value of $y$
+that satisfies this is $y=30\dg$.
+So $\cos (3y+30\dg) = 0$.
+
+The only permissible value of $y$ is then $y = 20\dg$,
+giving $\angle B = 80\dg$ and $\angle C = 40\dg$.
+\pagebreak
+
+\subsection{IMO 2001/6, proposed by Aleksander Ivanov (BGR)}
+\textsl{Available online at \url{https://aops.com/community/p119217}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $a > b > c > d > 0$ be integers satisfying
+\[ ac + bd = (b+d+a-c)(b+d-a+c).  \]
+Prove that $ab + cd$ is not prime.
+\end{mdframed}
+The problem condition is equivalent to
+\[ ac + bd = (b+d)^2 - (a-c)^2 \]
+or
+\[ a^2-ac+c^2 = b^2+bd+d^2. \]
+
+Let us construct a quadrilateral $WXYZ$ such that
+$WX = a$, $XY = c$, $YZ = b$, $ZW = d$,
+and \[ WY = \sqrt{a^2-ac+c^2} = \sqrt{b^2+bd+d^2}.\]
+Then by the law of cosines, we obtain $\angle WXY = 60\dg$
+and $\angle WZY = 120\dg$.
+Hence this quadrilateral is cyclic.
+
+\begin{center}
+  \begin{asy}
+    pair X = dir(110);
+    pair W = dir(210);
+    pair Y = dir(330);
+    pair Z = dir(280);
+    draw(unitcircle, blue);
+    draw(W--X--Y--Z--cycle);
+    draw(W--Y, red);
+
+    pair a = midpoint(W--X);
+    pair c = midpoint(X--Y);
+    pair b = midpoint(Y--Z);
+    pair d = midpoint(Z--W);
+
+    dot("$X$", X, dir(X));
+    dot("$W$", W, dir(W));
+    dot("$Y$", Y, dir(Y));
+    dot("$Z$", Z, dir(Z));
+
+    label("$a$", a, dir(a));
+    label("$b$", b, -dir(b));
+    label("$c$", c, dir(c));
+    label("$d$", d, -dir(d));
+    label(minipage("\begin{align*} & \sqrt{a^2-ac+c^2} \\ =& \sqrt{b^2+bd+d^2}\end{align*}"), (W+Y)/2, dir(90), red);
+  \end{asy}
+\end{center}
+
+By the more precise version of Ptolemy's theorem,
+we find that
+\[ WY^2 = \frac{(ab+cd)(ad+bc)}{ac+bd}. \]
+
+Now assume for contradiction that that $ab+cd$ is a prime $p$.
+Recall that we assumed $a > b > c > d$.
+It follows, for example by rearrangement inequality, that
+\[ p = ab+cd > ac+bd > ad+bc. \]
+Let $y = ac+bd$ and $x = ad+bc$ now.
+The point is that \[ p \cdot \frac xy \]
+can never be an integer if $p$ is prime and $x < y < p$.
+But $WY^2 = a^2-ac+c^2$ is clearly an integer, and this is a contradiction.
+
+Hence $ab+cd$ cannot be prime.
+
+\begin{remark*}
+  It may be tempting to try to apply the more typical form of
+  Ptolemy to get $ab+cd = WY \cdot XZ$;
+  the issue with this approach is that $WY$ and $XZ$ are usually not integers.
+\end{remark*}
+\pagebreak
+
+
+\end{document}

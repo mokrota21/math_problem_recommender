@@ -1,0 +1,13 @@
+\textsl{Available online at \url{https://aops.com/community/p119168}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $a$, $b$, $c$ be positive reals. Prove that
+\[ \frac{a}{\sqrt{a^2+8bc}} + \frac{b}{\sqrt{b^2+8ca}} + \frac{c}{\sqrt{c^2+8ab}} \ge 1. \]
+\end{mdframed}
+By Holder, we have
+\[
+  \left( \sum_{\text{cyc}} \frac{a}{\sqrt{a^2+8bc}} \right)^2
+  \left( \sum_{\text{cyc}} a(a^2+8bc) \right)
+  \ge (a+b+c)^3.
+\]
+So it suffices to show $(a+b+c)^3 \ge a^3+b^3+c^3+24abc$ which is clear by expanding.
+\pagebreak

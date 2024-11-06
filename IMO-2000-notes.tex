@@ -1,0 +1,605 @@
+% © Evan Chen
+% Downloaded from https://web.evanchen.cc/
+
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evan}
+\ihead{\footnotesize\textbf{\thetitle}}
+\ohead{\footnotesize\href{http://web.evanchen.cc}{\ttfamily web.evanchen.cc},
+    updated \today}
+\title{IMO 2000 Solution Notes}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This is a compilation of solutions
+for the 2000 IMO.
+The ideas of the solution are a mix of my own work,
+the solutions provided by the competition organizers,
+and solutions found by the community.
+However, all the writing is maintained by me.
+
+These notes will tend to be a bit more advanced and terse than the ``official''
+solutions from the organizers.
+In particular, if a theorem or technique is not known to beginners
+but is still considered ``standard'', then I often prefer to
+use this theory anyways, rather than try to work around or conceal it.
+For example, in geometry problems I typically use directed angles
+without further comment, rather than awkwardly work around configuration issues.
+Similarly, sentences like ``let $\mathbb{R}$ denote the set of real numbers''
+are typically omitted entirely.
+
+Corrections and comments are welcome!
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\addtocounter{section}{-1}
+\section{Problems}
+\begin{enumerate}[\bfseries 1.]
+\item %% Problem 1
+Two circles $G_1$ and $G_2$ intersect at two points $M$ and $N$.
+Let $AB$ be the line tangent to these circles at $A$ and $B$,
+respectively, so that $M$ lies closer to $AB$ than $N$.
+Let $CD$ be the line parallel to $AB$
+and passing through the point $M$,
+with $C$ on $G_1$ and $D$ on $G_2$.
+Lines $AC$ and $BD$ meet at $E$; lines $AN$ and $CD$ meet at $P$;
+lines $BN$ and $CD$ meet at $Q$.
+Show that $EP = EQ$.
+
+\item %% Problem 2
+Let $a$, $b$, $c$ be positive real numbers with $abc = 1$.
+Show that
+\[
+  \left( a - 1 + \frac 1b \right)
+  \left( b - 1 + \frac 1c \right)
+  \left( c - 1 + \frac 1a \right)
+  \le 1.
+\]
+
+\item %% Problem 3
+Let $n \ge 2$ be a positive integer
+and $\lambda$ a positive real number.
+Initially there are $n$ fleas on a horizontal line,
+not all at the same point.
+We define a move as choosing two fleas at some points $A$ and $B$,
+with $A$ to the left of $B$,
+and letting the flea from $A$ jump over the flea from $B$ to the point $C$
+so that $\frac{BC}{AB} = \lambda$.
+
+Determine all values of $ \lambda$ such that,
+for any point $M$ on the line
+and for any initial position of the $n$ fleas,
+there exists a sequence of moves that will take
+them all to the position right of $M$.
+
+\item %% Problem 4
+A magician has one hundred cards numbered $1$ to $100$.
+He puts them into three boxes, a red one, a white one and a blue one,
+so that each box contains at least one card.
+A member of the audience draws two cards from two different boxes
+and announces the sum of numbers on those cards.
+Given this information,
+the magician locates the box from which no card has been drawn.
+
+How many ways are there to put the cards
+in the three boxes so that the trick works?
+
+\item %% Problem 5
+Does there exist a positive integer $n$
+such that $n$ has exactly 2000 distinct prime divisors
+and $n$ divides $2^n + 1$?
+
+\item %% Problem 6
+Let $\ol{AH_1}$, $\ol{BH_2}$, and $\ol{CH_3}$ be the
+altitudes of an acute triangle $ABC$.
+The incircle $\omega$ of triangle $ABC$ touches the sides
+$BC$, $CA$ and $AB$ at $T_1$, $T_2$ and $T_3$, respectively.
+Consider the reflections of the lines $H_1H_2$, $H_2H_3$, and
+$H_3H_1$ with respect to the lines $T_1T_2$, $T_2T_3$, and $T_3T_1$.
+Prove that these images form a triangle whose vertices lie on $\omega$.
+
+\end{enumerate}
+\pagebreak
+
+\section{Solutions to Day 1}
+\subsection{IMO 2000/1, proposed by Sergei Berlov (RUS)}
+\textsl{Available online at \url{https://aops.com/community/p354110}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Two circles $G_1$ and $G_2$ intersect at two points $M$ and $N$.
+Let $AB$ be the line tangent to these circles at $A$ and $B$,
+respectively, so that $M$ lies closer to $AB$ than $N$.
+Let $CD$ be the line parallel to $AB$
+and passing through the point $M$,
+with $C$ on $G_1$ and $D$ on $G_2$.
+Lines $AC$ and $BD$ meet at $E$; lines $AN$ and $CD$ meet at $P$;
+lines $BN$ and $CD$ meet at $Q$.
+Show that $EP = EQ$.
+\end{mdframed}
+First, we have $\dang EAB = \dang ACM = \dang BAM$
+and similarly $\dang EBA = \dang BDM = \dang ABM$.
+Consequently, $\ol{AB}$ bisects $\angle EAM$ and $\angle EBM$,
+and hence $\triangle EAB \cong \triangle MAB$.
+
+\begin{center}
+\begin{asy}
+pair M = dir(120);
+pair U = dir(170);
+pair V = dir(10);
+pair N = 0.3*V+0.7*U;
+
+pair O_1 = circumcenter(M, U, N);
+pair O_2 = circumcenter(M, V, N);
+
+real r1 = abs(U-O_1);
+real r2 = abs(V-O_2);
+pair Se = (r1*O_2-r2*O_1)/(r1-r2);
+path w1 = CP(O_1,N);
+path w2 = CP(O_2,N);
+filldraw(w1, opacity(0.1)+lightcyan, blue);
+filldraw(w2, opacity(0.1)+lightcyan, blue);
+pair A = IP(w1, CP(midpoint(Se--O_1), Se));
+pair B = IP(w2, CP(midpoint(Se--O_2), Se));
+
+draw(A--B, red);
+pair C = -M+2*foot(O_1, M, M+B-A);
+pair D = -M+2*foot(O_2, M, M+B-A);
+draw(C--D, red);
+
+pair E = extension(A, C, B, D);
+pair P = extension(A, N, C, D);
+pair Q = extension(B, N, C, D);
+draw(C--E--D, blue);
+draw(A--N--B, blue);
+draw(P--E--Q, heavygreen);
+
+pair T = extension(M, N, A, B);
+draw(T--N, heavycyan);
+draw(A--M--B, purple);
+draw(E--M, red);
+
+dot("$M$", M, dir(350));
+dot("$N$", N, dir(260));
+dot("$A$", A, dir(A));
+dot("$B$", B, dir(B));
+dot("$C$", C, dir(C));
+dot("$D$", D, dir(D));
+dot("$E$", E, dir(E));
+dot("$P$", P, dir(260));
+dot("$Q$", Q, dir(330));
+dot("$T$", T, dir(160));
+
+/* TSQ Source:
+
+M = dir 120 R350
+U := dir 170
+V := dir 10
+N = 0.3*V+0.7*U R260
+
+O_1 := circumcenter M U N R-90
+O_2 := circumcenter M V N R-90
+
+!real r1 = abs(U-O_1);
+!real r2 = abs(V-O_2);
+Se := (r1*O_2-r2*O_1)/(r1-r2)
+!path w1 = CP(O_1,N);
+!path w2 = CP(O_2,N);
+w1 0.1 lightcyan / blue
+w2 0.1 lightcyan / blue
+A = IP w1 CP midpoint Se--O_1 Se
+B = IP w2 CP midpoint Se--O_2 Se
+
+A--B red
+C = -M+2*foot O_1 M M+B-A
+D = -M+2*foot O_2 M M+B-A
+C--D red
+
+E = extension A C B D
+P = extension A N C D R260
+Q = extension B N C D R330
+C--E--D blue
+A--N--B blue
+P--E--Q heavygreen
+
+T = extension M N A B R160
+T--N heavycyan
+A--M--B purple
+E--M red
+
+*/
+\end{asy}
+\end{center}
+
+Now it is well-known that $\ol{MN}$ bisects $\ol{AB}$
+and since $\ol{AB} \parallel \ol{PQ}$
+we deduce that $M$ is the midpoint of $\ol{PQ}$.
+As $\ol{AB}$ is the perpendicular bisector of $\ol{EM}$,
+it follows that $EP = EQ$ as well.
+\pagebreak
+
+\subsection{IMO 2000/2, proposed by Titu Andreescu (USA)}
+\textsl{Available online at \url{https://aops.com/community/p354109}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $a$, $b$, $c$ be positive real numbers with $abc = 1$.
+Show that
+\[
+  \left( a - 1 + \frac 1b \right)
+  \left( b - 1 + \frac 1c \right)
+  \left( c - 1 + \frac 1a \right)
+  \le 1.
+\]
+\end{mdframed}
+Let $a = x/y$, $b = y/z$, $c = z/x$ for $x,y,z > 0$.
+Then the inequality rewrites as
+\[ (-x+y+z)(x-y+z)(x+y-z) \le xyz \]
+which when expanded is equivalent to Schur's inequality.
+Alternatively, if one wants to avoid appealing to Schur,
+then the following argument works:
+\begin{itemize}
+  \ii At most one term on the left-hand side is negative;
+  if that occurs we are done from $xyz > 0 > (-x+y+z)(x-y+z)(x+y-z)$.
+  \ii If all terms in the left-hand side are nonnegative,
+  let us denote $m = -x+y+z \ge 0$, $n = x-y+z \ge 0$, $p = x+y-z \ge 0$.
+  Then it becomes
+  \[ mnp \le \frac{(m+n)(n+p)(p+m)}{8} \]
+  which follows by AM-GM.
+\end{itemize}
+\pagebreak
+
+\subsection{IMO 2000/3, proposed by Sergei Shikh and Igor Voronovich (BLR)}
+\textsl{Available online at \url{https://aops.com/community/p354112}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $n \ge 2$ be a positive integer
+and $\lambda$ a positive real number.
+Initially there are $n$ fleas on a horizontal line,
+not all at the same point.
+We define a move as choosing two fleas at some points $A$ and $B$,
+with $A$ to the left of $B$,
+and letting the flea from $A$ jump over the flea from $B$ to the point $C$
+so that $\frac{BC}{AB} = \lambda$.
+
+Determine all values of $ \lambda$ such that,
+for any point $M$ on the line
+and for any initial position of the $n$ fleas,
+there exists a sequence of moves that will take
+them all to the position right of $M$.
+\end{mdframed}
+The answer is $\lambda \ge \frac{1}{n-1}$.
+
+We change the problem by replacing the fleas
+with \textbf{bowling balls} $B_1$, $B_2$, \dots, $B_n$ in that order.
+Bowling balls aren't exactly great at jumping,
+so each move can now be described as follows:
+\begin{itemize}
+\ii Select two indices $i < j$.
+Then ball $B_i$ moves to $B_{i+1}$'s location,
+$B_{i+1}$ moves to $B_{i+2}$'s location, and so on;
+until $B_{j-1}$ moves to $B_j$'s location,
+\ii Finally, $B_j$ moves some distance forward;
+the distance is at most $\lambda \cdot |B_j B_i|$
+and $B_j$ may not pass $B_{j+1}$.
+\end{itemize}
+
+\begin{claim*}
+  If $\lambda < \frac{1}{n-1}$
+  the bowling balls have bounded movement.
+\end{claim*}
+\begin{proof}
+  Let $a_i \ge 0$ denote the initial distance
+  between $B_i$ and $B_{i+1}$,
+  and let $\Delta_i$ denote the distance travelled by ball $i$.
+  Of course we have
+  $\Delta_1 \le a_1 + \Delta_2$,
+  $\Delta_2 \le a_2 + \Delta_3$,
+  \dots,
+  $\Delta_{n-1} \le a_{n-1} + \Delta_n$
+  by the relative ordering of the bowling balls.
+  Finally, distance covered by $B_n$ is always
+  $\lambda$ times distance travelled by other bowling balls, so
+  \begin{align*}
+    \Delta_n &\le \lambda \sum_{i=1}^{n-1} \Delta_i
+    \le \lambda \sum_{i=1}^{n-1}
+    \left( \left( a_i + a_{i+1} + \dots + a_{n-1} \right)
+      + \Delta_n \right) \\
+    &= (n-1)\lambda \cdot \Delta_n + \sum_{i=1}^{n-1} i a_i
+  \end{align*}
+  and since $(n-1)\lambda > 1$, this gives an upper bound.
+\end{proof}
+
+\begin{remark*}
+  Equivalently, you can phrase the proof without
+  bowling balls as follows:
+  if $x_1 < \dots < x_n$ are the positions of the fleas,
+  the quantity
+  \[ L = x_n - \lambda(x_1 + \dots + x_{n-1}) \]
+  is a monovariant which never increases;
+  i.e.\ $L$ is bounded above.
+  Since $L > (1-(n-1)\lambda) x_n$, it follows
+  $\lambda < \frac{1}{n-1}$ is enough to stop the fleas.
+\end{remark*}
+
+\begin{claim*}
+When $\lambda \ge \frac{1}{n-1}$,
+it suffices to always jump the leftmost flea
+over the rightmost flea.
+\end{claim*}
+\begin{proof}
+If we let $x_i$ denote the distance travelled by $B_1$
+in the $i$th step,
+then $x_i = a_i$ for $1 \le i \le n-1$
+and $x_i = \lambda(x_{i-1} + x_{i-2} + \dots + x_{i-(n-1)})$.
+
+In particular, if $\lambda \ge \frac{1}{n-1}$
+then each $x_i$ is at least the average of the previous $n-1$ terms.
+So if the $a_i$ are not all zero,
+then $\{x_{n}, \dots, x_{2n-2}\}$ are all positive
+and thereafter $x_i \ge \min \left\{ x_n, \dots, x_{2n-2} \right\} > 0$
+for every $i \ge 2n-1$.
+So the partial sums of $x_i$ are unbounded, as desired.
+\end{proof}
+
+\begin{remark*}
+  Other inductive constructions are possible.
+  Here is the idea of one of them,
+  although the details are more complicated.
+
+  We claim in general that given $n-1$ fleas at $0$
+  and one flea at $1$,
+  we can get all the fleas arbitrarily close to
+  $\frac{1}{1-(n-1)\lambda}$
+  (or as far as we want if $\lambda > \frac{1}{n-1}$.).
+  The proof is induction by $n \ge 2$;
+  for $n=2$ we get a geometric series.
+  For $n \ge 3$, we leave one flea at zero
+  and move the remainder close to $\frac{1}{1-(n-2)\lambda}$,
+  then jump the last flea to
+  $\frac{1+\lambda}{1-(n-2)\lambda}$.
+
+  Now we're in the same situation,
+  except we shifted $\frac{1}{1-(n-2)\lambda}$ right
+  and have then scaled everything by
+  $r = \frac{\lambda}{1-(n-2)\lambda}$.
+  If we repeat this process again and check the geometric series,
+  we see the fleas converge to
+  \[ \frac{1}{1-(n-2)\lambda}
+    \left( 1 + r + r^2 + r^3 + \dots \right)
+    = \frac{1}{1-(n-2)\lambda} \cdot \frac{1}{1-r}
+    = \frac{1}{1-(n-1)\lambda}. \]
+\end{remark*}
+\pagebreak
+
+\section{Solutions to Day 2}
+\subsection{IMO 2000/4, proposed by Sándor Dobos (HUN)}
+\textsl{Available online at \url{https://aops.com/community/p354114}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+A magician has one hundred cards numbered $1$ to $100$.
+He puts them into three boxes, a red one, a white one and a blue one,
+so that each box contains at least one card.
+A member of the audience draws two cards from two different boxes
+and announces the sum of numbers on those cards.
+Given this information,
+the magician locates the box from which no card has been drawn.
+
+How many ways are there to put the cards
+in the three boxes so that the trick works?
+\end{mdframed}
+There are $2 \cdot 3! = 12$ ways, which amount to:
+\begin{itemize}
+  \ii Partitioning the cards modulo $3$, or
+  \ii Placing $1$ alone in a box,
+  $100$ alone in a second box,
+  and all remaining cards in the third box.
+\end{itemize}
+These are easily checked to work so we prove they are the only ones.
+
+\paragraph{First solution.}
+We proceed by induction on $n \ge 3$ with the base case being immediate.
+
+For the inductive step,
+consider a working partition of $\{1, 2, \dots, n\}$.
+Then either $n$ is in its own box; or
+deleting $n$ gives a working partition of $\{1, 2, \dots, n-1\}$.
+Similarly, either $1$ is in its own box; or
+deleting $1$ gives a working partition of $\{2, 3, \dots, n\}$,
+and we can reduce all numbers by $1$ to get
+a working partition of $\{1, 2, \dots, n-1\}$.
+
+Therefore, we only need to consider there cases.
+\begin{itemize}
+  \ii If $1$ and $n$ are both in their own box,
+  this yields one type of solution we already found.
+
+  \ii If $n$ is not in a box by itself,
+  then by induction hypothesis the cards $1$ through $n-1$
+  are either arranged mod $3$,
+  or as $\{1\} \cup \{2,3,\dots,n-2\} \cup \{n-1\}$.
+  \begin{itemize}
+    \ii In the former mod $3$ situation,
+    since $n + (n-3) = (n-1) + (n-2)$,
+    so $n$ must be in the same box as $n-3$.
+    \ii In the latter case and for $n > 4$,
+    since $n + 1 = 2 + (n-1)$,
+    $n$ must be in the same box as $1$.
+    But now $n + 2 = (n-1) + 3$ for $n > 4$, contradiction.
+  \end{itemize}
+
+  \ii The case where $1$ is in a box by itself is analogous.
+\end{itemize}
+This exhausts all cases, completing the proof.
+
+\paragraph{Second solution.}
+Let $A$, $B$, $C$ be the sets of cards in the three boxes.
+Then $A+B$, $B+C$, $C+A$ should be disjoint,
+and contained in $\{3, 4, \dots, 199\}$.
+On the other hand, we have the following famous fact.
+\begin{lemma*}
+  Let $X$ and $Y$ be finite nonempty sets of real numbers.
+  We have $|X+Y| \ge |X|+|Y|-1$,
+  with equality if and only if $X$ and $Y$ are arithmetic
+  progressions with the same common difference,
+  or one of $X$ and $Y$ is a singleton set.
+\end{lemma*}
+Putting these two together gives the estimates
+\[ 197 \ge |A+B| + |B+C| + |C+A|
+  \ge 2\left( |A|+|B|+|C| \right)-3 = 197. \]
+So all the inequalities must be sharp.
+Consequently we conclude that:
+\begin{claim*}
+  Either the sets $A$, $B$, $C$ are disjoint arithmetic progressions
+  with the same common difference
+  $d = \min_{x \neq y \text{ in same set}} |x-y|$,
+  or two of the sets are two singleton.
+  Moreover, $\{3, 4, \dots, 199\}
+    = (A+B) \sqcup (B+C) \sqcup (C+A)$.
+\end{claim*}
+From here it is not hard to deduce the layouts above are the only ones,
+but there are some details.
+First, we make the preliminary observation that
+$3=1+2$, $4=1+3$, $198=98+100$, $199=99+100$
+and these numbers can't be decomposed in other ways;
+thus from the remark about the disjoint union:
+\begin{claim*}
+  [Convenient corollary]
+  The pairs $(1,2)$, $(1,3)$, $(98,100)$, $(99,100)$
+  are all in different sets.
+\end{claim*}
+We now consider the four cases.
+\begin{itemize}
+  \ii If two of the boxes are singletons,
+  it follows from the corollary that we should have $A = \{1\}$,
+  $B = \{100\}$ and $C = \{2, \dots, 99\}$, up to permutation.
+  \ii Otherwise $A$, $B$, $C$ are disjoint arithmetic
+  progressions with the same common difference $d$.
+  As two of $\{1,2,3,4\}$ are in the same box
+  (by pigeonhole), we must have $d \le 3$.
+  \begin{itemize}
+    \ii If $d=3$, then no two elements of different residues
+    modulo $3$ can be in the same box,
+    so we must be in the first construction claimed earlier.
+
+    \ii If $d=2$, then the convenient corollary
+    tells us we may assume WLOG that $1 \in A$ and $2 \in B$,
+    hence $3 \in C$
+    (since $3 \notin A$ by convenient corollary,
+    and $3 \notin B$ because common difference $2$).
+    Thus we must have $A = \{1\}$, $B = \{2, 4, \dots, 100\}$
+    and $C = \{3, 5, \dots 99\}$
+    which does not work since $1+4 = 2+3$.
+    Therefore there are no solutions in this case.
+
+    \ii If $d=1$, then by convenient corollary
+    the numbers $1$ and $2$ are in different sets,
+    as are $99$ and $100$.
+    So we must have $A = \{1\}$, $B = \{2, \dots, 99\}$, $C = \{100\}$
+    which we have already seen is valid.
+  \end{itemize}
+\end{itemize}
+\pagebreak
+
+\subsection{IMO 2000/5, proposed by Valerii Senderov (RUS)}
+\textsl{Available online at \url{https://aops.com/community/p354115}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Does there exist a positive integer $n$
+such that $n$ has exactly 2000 distinct prime divisors
+and $n$ divides $2^n + 1$?
+\end{mdframed}
+Answer: Yes.
+
+We say that $n$ is \emph{Korean} if $n \mid 2^n+1$.
+First, observe that $n=9$ is Korean.
+Now, the problem is solved upon the following claim:
+\begin{claim*}
+  If $n > 3$ is Korean,
+  there exists a prime $p$ not dividing $n$
+  such that $np$ is Korean too.
+\end{claim*}
+\begin{proof}
+  I claim that one can take any primitive prime divisor $p$ of $2^{2n}-1$,
+  which exists by Zsigmondy theorem.
+  Obviously $p \neq 2$.
+  Then:
+  \begin{itemize}
+    \ii Since $p \nmid 2^{\varphi(n)}-1$ it follows then that $p \nmid n$.
+    \ii Moreover, $p \mid 2^n+1$ since $p \nmid 2^n-1$.
+  \end{itemize}
+  Hence $np \mid 2^n+1 \mid 2^{np} + 1$ by Chinese Theorem,
+  since $\gcd(n,p) = 1$.
+  % Thanks Wanlin for catching this
+\end{proof}
+\pagebreak
+
+\subsection{IMO 2000/6, proposed by Lev and Tatiana Emelianovii (RUS)}
+\textsl{Available online at \url{https://aops.com/community/p351094}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $\ol{AH_1}$, $\ol{BH_2}$, and $\ol{CH_3}$ be the
+altitudes of an acute triangle $ABC$.
+The incircle $\omega$ of triangle $ABC$ touches the sides
+$BC$, $CA$ and $AB$ at $T_1$, $T_2$ and $T_3$, respectively.
+Consider the reflections of the lines $H_1H_2$, $H_2H_3$, and
+$H_3H_1$ with respect to the lines $T_1T_2$, $T_2T_3$, and $T_3T_1$.
+Prove that these images form a triangle whose vertices lie on $\omega$.
+\end{mdframed}
+We use complex numbers with $\omega$ the unit circle.
+Let $T_1 = a$, $T_2 = b$, $T_3 = c$.
+The main content of the problem is to show that
+the triangle in question has vertices
+$ab/c$, $bc/a$, $ca/b$
+(which is evident from a good diagram).
+
+Since $A = \frac{2bc}{b+c}$, we have
+\[ H_1 = \half \left( \frac{2bc}{b+c} + a + a - a^2 \cdot
+  \frac{2}{b+c} \right)
+  = \frac{ab+bc+ca-a^2}{b+c}. \]
+The reflection of $H_1$ over $\ol{T_1 T_2}$ is
+\begin{align*}
+  H_1^C &= a + b - ab \ol{H_1}
+    = a + b - b \cdot \frac{ac+ab+a^2-bc}{a(b+c)} \\
+  &= \frac{a(a+b)(b+c) - b(a^2+ab+ac-bc)}{a(b+c)}
+    = \frac{c(a^2+b^2)}{a(b+c)}.
+\end{align*}
+Now, we claim that $H_1^C$ lies on the chord joining
+$\frac{ca}{b}$ and $\frac{cb}{a}$;
+by symmetry so will $H_2^C$
+and this will imply the problem
+(it means that the desired triangle has vertices
+$ab/c$, $bc/a$, $ca/b$).
+A cartoon of this is shown below.
+\begin{center}
+\begin{asy}
+  pair A = dir(110);
+  pair B = dir(210);
+  pair C = dir(330);
+  dot("$\frac{bc}{a}$", A, dir(10), blue);
+  dot("$\frac{ca}{b}$", B, dir(140), blue);
+  dot("$\frac{ab}{c}$", C, dir(50), blue);
+  dot("$H_1^C$", 2*A-B, dir(A-B));
+  dot("$H_2^C$", 2*B-A, dir(B-A));
+  dot("$H_2^A$", 2*B-C, dir(B-C));
+  dot("$H_3^A$", 2*C-B, dir(C-B));
+  dot("$H_3^B$", 2*C-A, dir(C-A));
+  dot("$H_1^B$", 2*A-C, dir(A-C));
+  draw( (2*A-B)--(2*B-A) );
+  draw( (2*B-C)--(2*C-B) );
+  draw( (2*C-A)--(2*A-C) );
+\end{asy}
+\end{center}
+To see this, it suffices to compute
+\begin{align*}
+  H_1^C + \left( \frac{ca}{b} \right)\left( \frac{cb}{a} \right) \ol{H_1^C}
+  &= \frac{c(a^2+b^2)}{a(b+c)}
+    + c^2 \frac{\frac 1c \cdot \frac{a^2+b^2}{a^2b^2}}%
+    {\frac1a\left( \frac{b+c}{bc} \right)} \\
+  &= \frac{c(a^2+b^2)}{a(b+c)}
+    + \frac{c(a^2+b^2)}{abc\inv(b+c)} \\
+  &= \frac{c(a^2+b^2)}{a(b+c)} \left( \frac{b+c}{b} \right) \\
+  &= \frac{c(a^2+b^2)}{ab}= \frac{ca}{b} + \frac{cb}{a}
+\end{align*}
+as desired.
+\pagebreak
+
+
+\end{document}

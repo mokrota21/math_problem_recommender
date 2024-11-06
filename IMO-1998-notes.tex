@@ -1,0 +1,382 @@
+% © Evan Chen
+% Downloaded from https://web.evanchen.cc/
+
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evan}
+\ihead{\footnotesize\textbf{\thetitle}}
+\ohead{\footnotesize\href{http://web.evanchen.cc}{\ttfamily web.evanchen.cc},
+    updated \today}
+\title{IMO 1998 Solution Notes}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This is a compilation of solutions
+for the 1998 IMO.
+The ideas of the solution are a mix of my own work,
+the solutions provided by the competition organizers,
+and solutions found by the community.
+However, all the writing is maintained by me.
+
+These notes will tend to be a bit more advanced and terse than the ``official''
+solutions from the organizers.
+In particular, if a theorem or technique is not known to beginners
+but is still considered ``standard'', then I often prefer to
+use this theory anyways, rather than try to work around or conceal it.
+For example, in geometry problems I typically use directed angles
+without further comment, rather than awkwardly work around configuration issues.
+Similarly, sentences like ``let $\mathbb{R}$ denote the set of real numbers''
+are typically omitted entirely.
+
+Corrections and comments are welcome!
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\addtocounter{section}{-1}
+\section{Problems}
+\begin{enumerate}[\bfseries 1.]
+\item %% Problem 1
+A convex quadrilateral $ABCD$ has perpendicular diagonals.
+The perpendicular bisectors of the sides $AB$ and $CD$ meet
+at a unique point $P$ inside $ABCD$.
+Prove that the quadrilateral $ABCD$ is cyclic
+if and only if triangles $ABP$ and $CDP$ have equal areas.
+
+\item %% Problem 2
+In a competition, there are $a$ contestants
+and $b$ judges, where $b \ge 3$ is an odd integer.
+Each judge rates each contestant as either ``pass'' or ``fail''.
+Suppose $k$ is a number such that for any two judges,
+their ratings coincide for at most $k$ contestants.
+Prove that
+\[ \frac ka \ge \frac{b-1}{2b}. \]
+
+\item %% Problem 3
+For any positive integer $n$,
+let $\tau(n)$ denote the number of its positive divisors (including $1$ and itself).
+Determine all positive integers $m$ for which
+there exists a positive integer $n$ such that
+\[ \frac{\tau(n^{2})}{\tau(n)}=m. \]
+
+\item %% Problem 4
+Determine all pairs $(x,y)$ of positive integers
+such that $x^{2}y+x+y$ is divisible by $xy^{2}+y+7$.
+
+\item %% Problem 5
+Let $I$ be the incenter of triangle $ABC$.
+Let the incircle of $ABC$ touch
+the sides $BC$, $CA$, and $AB$ at $K$, $L$, and $M$, respectively.
+The line through $B$ parallel to $MK$ meets the lines
+$LM$ and $LK$ at $R$ and $S$, respectively.
+Prove that angle $RIS$ is acute.
+
+\item %% Problem 6
+Classify all functions $f \colon \NN \to \NN$
+satisfying the identity
+\[ f(n^2 f(m)) = m f(n)^2. \]
+
+\end{enumerate}
+\pagebreak
+
+\section{Solutions to Day 1}
+\subsection{IMO 1998/1}
+\textsl{Available online at \url{https://aops.com/community/p124387}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+A convex quadrilateral $ABCD$ has perpendicular diagonals.
+The perpendicular bisectors of the sides $AB$ and $CD$ meet
+at a unique point $P$ inside $ABCD$.
+Prove that the quadrilateral $ABCD$ is cyclic
+if and only if triangles $ABP$ and $CDP$ have equal areas.
+\end{mdframed}
+If $ABCD$ is cyclic, then $P$ is the circumcenter,
+and $\angle APB + \angle PCD = 180\dg$.
+The hard part is the converse.
+
+\begin{center}
+\begin{asy}
+import graph; size(10cm);
+pen zzttqq = rgb(0.6,0.2,0.); pen aqaqaq = rgb(0.62745,0.62745,0.62745); pen cqcqcq = rgb(0.75294,0.75294,0.75294);
+draw((2.28154,-9.32038)--(8.62921,-11.79133)--(2.93422,-2.54008)--cycle, linewidth(0.6) + zzttqq);
+draw((2.28154,-9.32038)--(-2.,-4.)--(-4.,-12.)--cycle, linewidth(0.6) + zzttqq);
+
+draw((8.62921,-11.79133)--(-2.,-4.), linewidth(0.6));
+draw((2.93422,-2.54008)--(-4.,-12.), linewidth(0.6));
+draw((8.62921,-11.79133)--(2.93422,-2.54008), linewidth(0.6));
+draw((-2.,-4.)--(-4.,-12.), linewidth(0.6));
+draw((2.28154,-9.32038)--(5.78172,-7.16571), linewidth(0.6) + blue);
+draw((2.28154,-9.32038)--(-3.,-8.), linewidth(0.6) + blue);
+draw((2.28154,-9.32038)--(8.62921,-11.79133), linewidth(0.6) + zzttqq);
+draw((8.62921,-11.79133)--(2.93422,-2.54008), linewidth(0.6) + zzttqq);
+draw((2.93422,-2.54008)--(2.28154,-9.32038), linewidth(0.6) + zzttqq);
+draw((2.28154,-9.32038)--(-2.,-4.), linewidth(0.6) + zzttqq);
+draw((-2.,-4.)--(-4.,-12.), linewidth(0.6) + zzttqq);
+draw((-4.,-12.)--(2.28154,-9.32038), linewidth(0.6) + zzttqq);
+draw((2.93422,-2.54008)--(-0.31533,2.73866), linewidth(0.6));
+draw((-2.,-4.)--(-0.31533,2.73866), linewidth(0.6));
+draw(circle((2.25532,-9.31383), 6.80768), linewidth(0.6) + aqaqaq);
+draw((0.51354,-5.84245)--(-3.,-8.), linewidth(0.6) + blue);
+draw((0.51354,-5.84245)--(5.78172,-7.16571), linewidth(0.6) + blue);
+dot("$D$", (-4.,-12.), dir((-76.113, -27.810)));
+dot("$C$", (-2.,-4.), dir((-75.616, 41.734)));
+dot("$B$", (2.93422,-2.54008), dir((1.940, 37.397)));
+dot("$A$", (8.62921,-11.79133), dir((31.751, -33.422)));
+dot("$P$", (2.28154,-9.32038), dir((-11.247, -66.945)));
+dot("$M$", (5.78172,-7.16571), dir((39.728, 27.050)));
+dot("$N$", (-3.,-8.), dir((-82.402, 23.307)));
+dot("$E$", (0.51354,-5.84245), dir((-30.585, 62.531)));
+dot("$X$", (-0.31533,2.73866), dir((-23.973, 36.915)));
+\end{asy}
+\end{center}
+
+Let $M$ and $N$ be the midpoints of $\ol{AB}$ and $\ol{CD}$.
+\begin{claim*}
+  Unconditionally, we have $\dang NEM = \dang MPN$.
+\end{claim*}
+\begin{proof}
+  Note that $\ol{EN}$ is the median of right triangle $\triangle ECD$, and similarly for $\ol{EM}$.
+  Hence $\dang NED = \dang EDN = \dang BDC$, while $\dang AEM = \dang ACB$.
+  Since $\dang DEA = 90\dg$, by looking at quadrilateral $XDEA$ where $X = \ol{CD} \cap \ol{AB}$,
+  we derive that $\dang NED + \dang AEM + \dang DXA = 90\dg$, so
+  \[ \dang NEM = \dang NED + \dang AEM + 90\dg = -\dang DXA = -\dang NXM = -\dang NPM \]
+  as needed.
+\end{proof}
+
+However, the area condition in the problem tells us
+\[ \frac{EN}{EM} = \frac{CN}{CM} = \frac{PM}{PN}. \]
+Finally, we have $\angle MEN > 90\dg$ from the configuration.
+These properties uniquely determine the point $E$:
+it is the reflection of $P$ across the midpoint of $MN$.
+
+So $EMPN$ is a parallelogram, and thus $\ol{ME} \perp \ol{CD}$.
+This implies $\dang BAE = \dang CEM = \dang EDC$ giving $ABCD$ cyclic.
+\pagebreak
+
+\subsection{IMO 1998/2}
+\textsl{Available online at \url{https://aops.com/community/p124458}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+In a competition, there are $a$ contestants
+and $b$ judges, where $b \ge 3$ is an odd integer.
+Each judge rates each contestant as either ``pass'' or ``fail''.
+Suppose $k$ is a number such that for any two judges,
+their ratings coincide for at most $k$ contestants.
+Prove that
+\[ \frac ka \ge \frac{b-1}{2b}. \]
+\end{mdframed}
+This is a ``routine'' problem with global ideas.
+We count pairs of coinciding ratings,
+i.e.\ the number $N$ of tuples
+\[(\{J_1, J_2\}, C) \]
+of two distinct judges and a contestant
+for which the judges gave the same rating.
+
+On the one hand, if we count by the judges,
+we have \[ N \le \binom b2 k \]
+by he problem condition.
+
+On the other hand, if $b=2m+1$, then
+each contestant $C$
+contributes at least $\binom{m}{2} + \binom{m+1}{2} = m^2$ to $N$,
+and so
+\[ N \ge a \cdot \left( \frac{b-1}{2} \right)^2 \]
+Putting together the two estimates for $N$ yields the conclusion.
+\pagebreak
+
+\subsection{IMO 1998/3}
+\textsl{Available online at \url{https://aops.com/community/p124439}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+For any positive integer $n$,
+let $\tau(n)$ denote the number of its positive divisors (including $1$ and itself).
+Determine all positive integers $m$ for which
+there exists a positive integer $n$ such that
+\[ \frac{\tau(n^{2})}{\tau(n)}=m. \]
+\end{mdframed}
+The answer is odd integers $m$ only.
+If we write $n = p_1^{e_1} \dots p_k^{e_k}$ we get
+\[ \prod \frac{2e_i+1}{e_i+1} = m. \]
+It's clear now that $m$ must be odd,
+since every fraction has odd numerator.
+
+We now endeavor to construct odd numbers.
+The proof is by induction, in which we are curating sets of
+fractions of the form $\frac{2e+1}{e+1}$ that multiply
+to a given target.
+
+The base cases are easy to verify by hand.
+Generally, assume $p = 2^t k - 1$ is odd, where $k$ is odd.
+Then we can write
+\[
+  \frac{2^{2t}k-2^t(k+1)+1}{2^{2t-1}k-2^{t-1}(k+1)+1}
+  \cdot
+  \frac{2^{2t-1}k-2^{t-1}(k+1)+1}{2^{2t-2}k-2^{t-2}(k+1)+1}
+  \cdot \dots \cdot
+  \frac{2^{t+1}k-2(k+1)+1}{2^tk-2^0(k+1)+1}.
+\]
+Note that $2^{2t}k-2^t(k+1)+1 = (2^t k - 1)(2^t - 1)$,
+and $2^t k - k = k(2^t-1)$, so the above fraction simplifies to
+\[ \frac{2^t k - 1}{k} \]
+meaning we just need to multiply by $k$,
+which we can do using induction hypothesis.
+\pagebreak
+
+\section{Solutions to Day 2}
+\subsection{IMO 1998/4}
+\textsl{Available online at \url{https://aops.com/community/p124428}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Determine all pairs $(x,y)$ of positive integers
+such that $x^{2}y+x+y$ is divisible by $xy^{2}+y+7$.
+\end{mdframed}
+The answer is $(7k^2,7k)$ for all $k \ge 1$,
+as well as $(11,1)$ and $(49,1)$.
+
+We are given $xy^2+y+7 \mid x^2y+x+y$.
+Multiplying the right-hand side by $y$ gives
+\[ xy^2+y+7 \mid x^2y^2+xy+y^2 \]
+Then subtracting $x$ times the left-hand side gives
+\[ xy^2+y+7 \mid y^2-7x. \]
+We consider cases based on the sign of $y^2=7x$.
+\begin{itemize}
+  \ii If $y^2 > 7x$, then $0 < y^2-7x < xy^2+y+7$,
+  contradiction.
+  \ii If $y^2=7x$, let $y = 7k$, so $x = 7k^2$.
+  Plugging this back in to the original equation reads
+  \[ 343k^4 + 7k + 7 \mid 343k^5 + 7k^2 + 7k \]
+  which is always valid, hence these are all solutions.
+  \ii  If $y^2 < 7x$, then $|y^2-7x| \le 7x$,
+  so $y \in \{1,2\}$.
+
+  When $y=1$ we get
+  \[ x+8 \mid x^2+x+1 \iff x+8 \mid 64-8+1=57.\]
+  This has solutions $x=11$ and $x=49$.
+
+  When $y=2$
+  \begin{align*}
+    4x+9 \mid 2x^2+x+2 \\
+    \implies 4x+9 &\mid 16x^2+8x+16 \\
+    \implies 4x+9 &\mid 81-18+16 = 79
+  \end{align*}
+  which never occurs.
+\end{itemize}
+\pagebreak
+
+\subsection{IMO 1998/5}
+\textsl{Available online at \url{https://aops.com/community/p121417}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $I$ be the incenter of triangle $ABC$.
+Let the incircle of $ABC$ touch
+the sides $BC$, $CA$, and $AB$ at $K$, $L$, and $M$, respectively.
+The line through $B$ parallel to $MK$ meets the lines
+$LM$ and $LK$ at $R$ and $S$, respectively.
+Prove that angle $RIS$ is acute.
+\end{mdframed}
+Observe that $\triangle MKL$ is acute with circumcenter $I$.
+We now present two proofs.
+
+\paragraph{First simple proof (grobber).}
+The problem is equivalent to showing $BI^2 > BR \cdot BS$.
+But from
+\[ \triangle BRK \sim \triangle MKL \sim \triangle BLS \]
+we conclude
+\[ BR = t \cdot \frac{MK}{ML},
+  \qquad BS = t \cdot \frac{ML}{MK} \]
+where $t = BK  = BL$ is the length
+of the tangent from $B$.
+Hence $BR \cdot BS = t^2$.
+Since $BI > t$ is clear, we are done.
+
+\paragraph{Second projective proof.}
+Let $N$ be the midpoint of $\ol{KL}$,
+and let ray $MN$ meet the incircle again at $P$.
+
+Note that line $\ol{RBS}$ is the polar of $N$.
+By Brokard's theorem, lines $MK$ and $PL$ should thus
+meet the polar of $N$, so we conclude $R = \ol{MK} \cap \ol{PL}$.
+Analogously, $S = \ol{ML} \cap \ol{PK}$.
+
+Again by Brokard's theorem, $\triangle NRS$ is self-polar,
+so $N$ is the orthocenter of $\triangle RIS$.
+Since $N$ lies between $I$ and $B$ we are done.
+\pagebreak
+
+\subsection{IMO 1998/6}
+\textsl{Available online at \url{https://aops.com/community/p124426}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Classify all functions $f \colon \NN \to \NN$
+satisfying the identity
+\[ f(n^2 f(m)) = m f(n)^2. \]
+\end{mdframed}
+Let $\mathcal P$ be the set of primes,
+and let $g \colon \mathcal P \to \mathcal P$ be any involution on them.
+Extend $g$ to a completely multiplicative function on $\NN$.
+Then $f(n) = d g(n)$ is a solution for any $d \in \NN$
+which is fixed by $g$.
+
+It's straightforward to check these all work,
+since $g \colon \NN \to \NN$ is an involution on them.
+So we prove these are the only functions.
+
+Let $d = f(1)$.
+\begin{claim*}
+  We have $df(n) = f(dn)$ and $d \cdot f(ab) = f(a) f(b)$.
+\end{claim*}
+\begin{proof}
+  Let $P(m,n)$ denote the assertion in the problem statement.
+  Off the bat,
+  \begin{itemize}
+    \ii $P(1,1)$ implies $f(d) = d^2$.
+    \ii $P(n,1)$ implies $f(f(n)) = d^2n$.
+    In particular, $f$ is injective.
+    \ii $P(1,n)$ implies $f(dn^2) = f(n)^2$.
+  \end{itemize}
+  Then
+  \begin{align*}
+    f(a)^2 f(b)^2 &= f(da^2) f(b)^2 & \text{by third bullet}\\
+    &= f(b^2 f(f(da^2))) & \text{by problem statement} \\
+    &= f(b^2 \cdot d^2 \cdot da^2) & \text{by second bullet} \\
+    &= f(dab)^2 & \text{by third bullet} \\
+    \implies f(a) f(b) &= f(dab).
+  \end{align*}
+  This implies the first claim by taking $(a,b) = (1,n)$.
+  Then $df(a) = f(da)$, and so we actually have
+  $f(a) f(b) = d f(ab)$.
+\end{proof}
+\begin{claim*}
+  All values of $f$ are divisible by $d$.
+\end{claim*}
+\begin{proof}
+  We have
+  \begin{align*}
+    f(n^2) &= \frac 1d f(n)^2 \\
+    f(n^3) &= \frac{f(n^2) f(n)}{d} = \frac{f(n)^3}{d^2} \\
+    f(n^4) &= \frac{f(n^3) f(n)}{d} = \frac{f(n)^4}{d^3}
+  \end{align*}
+  and so on,
+  which implies the result.
+\end{proof}
+Then, define $g(n) = f(n) / d$.
+We conclude that $g$ is completely multiplicative, with $g(1) = 1$.
+However, $f(f(n)) = d^2n$ also implies $g(g(n)) = n$,
+i.e.\ $g$ is an involution.
+Moreover, since $f(d) = d^2$, $g(d) = d$.
+
+All that remains is to check that $g$ must map primes to primes
+to finish the description in the problem.
+This is immediate; since $g$ is multiplicative and $g(1) = 1$,
+if $g(g(p)) = p$ then $g(p)$ can have at most one prime factor,
+hence $g(p)$ is itself prime.
+
+\begin{remark*}
+  The IMO problem actually asked for the least value of $f(1998)$.
+  But for instruction purposes,
+  it is probably better to just find all $f$.
+  Since $1998 = 2 \cdot 3^3 \cdot 37$,
+  this answer is $2^3 \cdot 3 \cdot 5 = 120$, anyways.
+\end{remark*}
+\pagebreak
+
+
+\end{document}
