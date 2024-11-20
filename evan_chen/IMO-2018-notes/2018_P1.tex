@@ -1,0 +1,205 @@
+\textsl{Available online at \url{https://aops.com/community/p10626500}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $\Gamma$ be the circumcircle of acute triangle $ABC$.
+Points $D$ and $E$ lie on segments $AB$ and $AC$,
+respectively, such that $AD = AE$.
+The perpendicular bisectors of $\ol{BD}$ and $\ol{CE}$
+intersect the minor arcs $AB$ and $AC$ of $\Gamma$
+at points $F$ and $G$, respectively.
+Prove that the lines $DE$ and $FG$ are parallel.
+\end{mdframed}
+We present a synthetic solution from the IMO shortlist
+as well as a complex numbers approach.
+We also outline a trig solution (the one I found at IMO),
+and a fourth solution from Derek Liu.
+
+
+\paragraph{Synthetic solution (from Shortlist).}
+Construct parallelograms $AXFD$ and $AEGY$,
+noting that $X$ and $Y$ lie on $\Gamma$.
+As $\ol{XF} \parallel \ol{AB}$ we can let $M$
+denote the midpoint of minor arcs $\widehat{XF}$ and $\widehat{AB}$
+(which coincide). Define $N$ similarly.
+
+\begin{center}
+\begin{asy}
+pair A = dir(110);
+pair B = dir(210);
+pair C = dir(330);
+pair F = dir(190);
+pair M = dir(160);
+pair N = dir(40);
+pair G = M*N/F;
+pair K = foot(F, A, B);
+pair L = foot(G, A, C);
+pair D = -B+2*K;
+pair E = -C+2*L;
+pair X = M*M/F;
+pair Y = N*N/G;
+filldraw(unitcircle, opacity(0.1)+lightcyan, lightblue);
+draw(D--B--C--E--cycle, lightblue);
+
+draw(X--A, red);
+draw(A--Y, pink);
+draw(F--X, heavygreen);
+draw(Y--G, heavygreen);
+draw(F--G, dotted+blue);
+draw(M--N, dotted+blue);
+filldraw(A--X--F--D--cycle, opacity(0.1)+lightgreen, heavygreen);
+filldraw(A--E--G--Y--cycle, opacity(0.1)+lightgreen, heavygreen);
+draw(B--F, heavygreen);
+draw(C--G, heavygreen);
+
+draw(X--F, heavycyan+1);
+draw(D--A--E, heavycyan+1);
+draw(Y--G, heavycyan+1);
+
+dot("$A$", A, dir(A));
+dot("$B$", B, dir(B));
+dot("$C$", C, dir(C));
+dot("$F$", F, dir(F));
+dot("$M$", M, dir(M));
+dot("$N$", N, dir(N));
+dot("$G$", G, dir(G));
+dot("$D$", D, dir(160));
+dot("$E$", E, dir(80));
+dot("$X$", X, dir(X));
+dot("$Y$", Y, dir(Y));
+
+/* TSQ Source:
+
+A = dir 110
+B = dir 210
+C = dir 330
+F = dir 190
+M = dir 160
+N = dir 40
+G = M*N/F
+K := foot F A B
+L := foot G A C
+D = -B+2*K R160
+E = -C+2*L R80
+X = M*M/F
+Y = N*N/G
+unitcircle 0.1 lightcyan / lightblue
+D--B--C--E--cycle lightblue
+
+X--A red
+A--Y pink
+F--X heavygreen
+Y--G heavygreen
+F--G dotted blue
+M--N dotted blue
+A--X--F--D--cycle 0.1 lightgreen / heavygreen
+A--E--G--Y--cycle 0.1 lightgreen / heavygreen
+B--F heavygreen
+C--G heavygreen
+
+X--F heavycyan+1
+D--A--E heavycyan+1
+Y--G heavycyan+1
+
+*/
+\end{asy}
+\end{center}
+
+Observe that $XF = AD = AE = YG$,
+so arcs $\widehat{XF}$ and $\widehat{YG}$ have equal measure;
+hence arcs $\widehat{MF}$ and $\widehat{NG}$ have equal measure;
+therefore $\ol{MN} \parallel \ol{FG}$.
+
+Since $\ol{MN}$ and $\ol{DE}$ are both perpendicular
+to the $\angle A$ bisector, so we're done.
+
+\paragraph{Complex numbers solution.}
+Let $b$, $c$, $f$, $g$, $a$ be as usual.
+Note that
+\begin{align*}
+  d-a &= \left( 2 \cdot \frac{f+a+b-ab\ol f}{2} -b \right)-a
+    = f - \frac{ab}{f} \\
+  e-a &= g - \frac{ac}{g}
+\end{align*}
+We are given $AD = AE$ from which one deduces
+\begin{align*}
+  \left( \frac{e-a}{d-a} \right)^2 &= \frac cb
+  \implies \frac{(g^2-ac)^2}{(f^2-ab)^2} = \frac{g^2 c}{f^2 b} \\
+  \implies bc(bg^2-cf^2)a^2 &= g^2f^4c - f^2g^4b = f^2g^2(f^2c-g^2b) \\
+  \implies bc \cdot a^2 &= (fg)^2 \implies \left( -\frac{fg}{a} \right)^2 = bc.
+\end{align*}
+Since $\frac{-fg}{a}$ is the point $X$ on the circle
+with $\ol{AX} \perp \ol{FG}$,
+we conclude $\ol{FG}$ is either parallel or perpendicular
+to the $\angle A$-bisector; it must the latter
+since the $\angle A$-bisector separates the two minor arcs.
+
+\paragraph{Trig solution (outline).}
+Let $\ell$ denote the $\angle A$ bisector.
+Fix $D$ and $F$.
+We define the phantom point $G'$ such that $\ol{FG'} \perp \ell$
+and $E'$ on side $\ol{AC}$ such that $GE'=GC$.
+\begin{claim*}
+  [Converse of the IMO problem]
+  We have $AD = AE'$, so that $E = E'$.
+\end{claim*}
+\begin{proof}
+  Since $\ol{FG'} \perp \ell$,
+  one can deduce $\angle FBD = \half C + x$
+  and $\angle GCA = \half B + x$ for some $x$.
+  (One fast way to see this is to note that $\ol{FG} \parallel \ol{MN}$
+  where $M$ and $N$ are in the first solution.)
+  Then $\angle FAB = \half C -x$ and $\angle GAC = \half B - x$.
+
+  Let $R$ be the circumradius.
+  Now, by the law of sines,
+  \[ BF = 2R \sin\left( \half C - x \right). \]
+  From there we get
+  \begin{align*}
+  BD &= 2 \cdot BF \cos\left(\half C + x\right)
+    = 4R \cos\left(\half C+x\right) \sin \left(\half C-x\right) \\
+  DA &= AB - BD = 2R\sin C
+    - 4R\cos\left(\half C+x\right) \sin\left(\half C -x\right) \\
+  &= 2R\left[ \sin C - 2\cos\left( \half C + x \right) \sin \left( \half C -x \right) \right] \\
+  &= 2R\left[ \sin C - \left( \sin C - \sin 2x  \right) \right]
+  = 2R \sin 2x.
+  \end{align*}
+  A similar calculation gives $AE' = 2R \sin 2x$ as needed.
+\end{proof}
+Thus, $\ol{FG'} \parallel \ol{DE}$, so $G = G'$ as well.
+This concludes the proof.
+
+\paragraph{Synthetic solution from Derek Liu.}
+Let lines $FD$ and $GE$ intersect $\Gamma$ again at $J$ and $K$, respectively.
+\begin{center}
+\begin{asy}
+unitsize(0.5cm);
+import graph;
+pair A=(-2.5,6), B=(-5.2,-3.9), C=(5.2,-3.9), D=(-4,0.5), E=(1,1.5), F=(-6.39,-1.21), G=(6.36,1.33), J=(3.19,5.66), K=(-6.27,1.72);
+draw(Circle((0,0),6.5)); draw(A--B--C--A); draw(B--F--J--A--K--G--C); draw(Circle(A,5.7),dashed);
+dot(A); dot(B); dot(C); dot(D); dot(E); dot(F); dot(G); dot(J); dot(K);
+label("$A$",A,N);
+label("$B$",B,SW);
+label("$C$",C,SE);
+label("$D$",D,SSE);
+label("$E$",E,S);
+label("$F$",F,W);
+label("$G$",G,E);
+label("$J$",J,ENE);
+label("$K$",K,WSW);
+\end{asy}
+\end{center}
+Notice that $\triangle BFD\sim\triangle JAD$; as $FB=FD$, it follows that $AJ=AD$.
+Likewise, $\triangle CGE\sim\triangle KAE$ and $GC=GE$, so $AK=AE$.
+Hence,
+\[ AK=AE=AD=AJ, \]
+so $DEJK$ is cyclic with center $A$.
+
+It follows that
+\[ \dang KED=\dang KJD=\dang KJF=\dang KGF, \]
+so we're done.
+\begin{remark*}
+Note that $K$ and $J$ must be distinct for this solution to work.
+Since $G$ and $K$ lie on opposite sides of $AC$, $K$ is on major arc $ABC$.
+As $AK=AD=AE\le \min(AB,AC)$, $K$ lies on minor arc $AB$.
+Similarly, $J$ lies on minor arc $AC$, so $K\neq J.$
+\end{remark*}
+\pagebreak

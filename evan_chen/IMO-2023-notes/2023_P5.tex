@@ -1,0 +1,242 @@
+\textsl{Available online at \url{https://aops.com/community/p28104367}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $n$ be a positive integer.
+A \emph{Japanese triangle} consists of $1 + 2 + \dots + n$ circles arranged in an
+equilateral triangular shape such that for each $1 \le i \le n$,
+the $i$\ts{th} row contains exactly $i$ circles, exactly one of which is colored red.
+A \emph{ninja path} in a Japanese triangle is a sequence of $n$ circles
+obtained by starting in the top row, then repeatedly going from a circle to
+one of the two circles immediately below it and finishing in the bottom row.
+Here is an example of a Japanese triangle with $n = 6$,
+along with a ninja path in that triangle containing two red circles.
+\begin{center}
+  \begin{asy}
+  size(4cm);
+  pair X = dir(240); pair Y = dir(0);
+  path c = scale(0.5)*unitcircle;
+  int[] t = {0,0,2,2,3,0};
+  for (int i=0; i<=5; ++i) {
+    for (int j=0; j<=i; ++j) {
+      filldraw(shift(i*X+j*Y)*c, (t[i]==j) ? lightred : white);
+      draw(shift(i*X+j*Y)*c);
+    }
+  }
+  draw((0,0)--(X+Y)--(2*X+Y)--(3*X+2*Y)--(4*X+2*Y)--(5*X+2*Y),linewidth(1.5));
+  path q = (3,-3sqrt(3))--(-3,-3sqrt(3));
+  draw(q,Arrows(TeXHead, 1));
+  label("$n = 6$", q, S);
+  \end{asy}
+\end{center}
+In terms of $n$, find the greatest $k$ such that in each Japanese triangle
+there is a ninja path containing at least $k$ red circles.
+\end{mdframed}
+The answer is
+\[ k = \left\lfloor \log_2(n) \right\rfloor + 1. \]
+
+\paragraph{Construction.}
+It suffices to find a Japanese triangle for $n = 2^e-1$
+with the property that at most $e$ red circles in any ninja path.
+The construction shown below for $e=4$ obviously generalizes,
+and works because in each of the sets $\{1\}$, $\{2,3\}$, $\{4,5,6,7\}$,
+\dots, $\{2^{e-1},\dots,2^e-1\}$, at most one red circle can be taken.
+(These sets are colored in different shades of red for visual clarity).
+
+\begin{center}
+  \begin{asy}
+  size(8cm);
+  pair X = dir(240); pair Y = dir(0);
+  path c = scale(0.5)*unitcircle;
+
+  fill(shift(0*X+0*Y)*c, heavyred);
+
+  fill(shift(1*X+0*Y)*c, red);
+  fill(shift(2*X+2*Y)*c, red);
+
+  fill(shift(3*X+0*Y)*c, magenta);
+  fill(shift(4*X+2*Y)*c, magenta);
+  fill(shift(5*X+4*Y)*c, magenta);
+  fill(shift(6*X+6*Y)*c, magenta);
+
+  fill(shift(7*X+0*Y)*c,   lightred);
+  fill(shift(8*X+2*Y)*c,   lightred);
+  fill(shift(9*X+4*Y)*c,   lightred);
+  fill(shift(10*X+6*Y)*c,  lightred);
+  fill(shift(11*X+8*Y)*c,  lightred);
+  fill(shift(12*X+10*Y)*c, lightred);
+  fill(shift(13*X+12*Y)*c, lightred);
+  fill(shift(14*X+14*Y)*c, lightred);
+
+  for (int i=0; i<15; ++i) {
+    for (int j=0; j<=i; ++j) {
+      draw(shift(i*X+j*Y)*c);
+    }
+  }
+  \end{asy}
+\end{center}
+
+\paragraph{Bound.}
+Conversely, we show that in any Japanese triangle,
+one can find a ninja path containing at least
+\[ k = \left\lfloor \log_2(n) \right\rfloor + 1. \]
+The following short solution was posted at \url{https://aops.com/community/p28134004},
+apparently first found by the team leader for Iran.
+
+We construct a rooted binary tree $T_1$ on the set of all circles as follows.
+For each row, other than the bottom row:
+\begin{itemize}
+  \ii Connect the red circle to both circles under it;
+  \ii White circles to the left of the red circle in its row are connected to the left;
+  \ii White circles to the right of the red circle in its row are connected to the right.
+\end{itemize}
+The circles in the bottom row are all leaves of this tree.
+For example, the $n=6$ construction in the beginning gives the tree
+shown on the left half of the figure below:
+\begin{center}
+  \begin{asy}
+  size(11cm);
+  pair X = dir(240); pair Y = dir(0);
+  path c = scale(0.3)*unitcircle;
+  int[] t = {0,0,2,2,3,0};
+  for (int i=0; i<5; ++i) {
+    for (int j=0; j<=i; ++j) {
+      if (j <= t[i]) {
+        draw( (i*X+j*Y)--((i+1)*X+j*Y), blue+1.4);
+      }
+      if (j >= t[i]) {
+        draw( (i*X+j*Y)--((i+1)*X+(j+1)*Y), blue+1.4);
+      }
+    }
+  }
+  for (int i=0; i<=5; ++i) {
+    for (int j=0; j<=i; ++j) {
+      filldraw(shift(i*X+j*Y)*c, (t[i]==j) ? lightred : white, black);
+    }
+  }
+  label("$T_1$", 6*X+3*Y, fontsize(14pt));
+
+  transform sh = shift(7,0);
+  draw(sh*((5*X+0*Y)--(0*X+0*Y)--(2*X+2*Y)--(3*X+2*Y)--(4*X+3*Y)), blue+1.4);
+  for (int i=0; i<=5; ++i) {
+    filldraw(sh*shift(i*X+t[i]*Y)*c, lightred, black);
+  }
+  label("$T_2$", sh*(6*X+3*Y), fontsize(14pt));
+  \end{asy}
+\end{center}
+
+Now focus on only the red circles, as shown in the right half of the figure.
+We build a new rooted tree $T_2$ where each red circle is joined to the
+red circle below it if there was a path of (zero or more)
+white circles in $T_1$ between them.
+Then each red circle has at most $2$ direct descendants in $T_2$.
+Hence the depth of the new tree $T_2$ exceeds $\log_2(n)$, which produces the desired path.
+
+\paragraph{Another recursive proof of bound, communicated by Helio Ng.}
+We give another proof that $\lfloor \log_2 n\rfloor + 1$ is always achievable.
+Define $f(i, j)$ to be the maximum number of red circles contained in
+the portion of a ninja path from $(1, 1)$ to $(i, j)$,
+including the endpoints $(1, 1)$ and $(i, j)$.
+(If $(i,j)$ is not a valid circle in the triangle, define $f(i, j)=0$ for convenience.)
+An example is shown below with the values of $f(i,j)$ drawn in the circles.
+
+\begin{center}
+\begin{asy}
+unitsize(7mm);
+
+pair X = dir(240); pair Y = dir(0);
+int[] t = {0,0,2,0,2,4,6};
+for (int i=0; i<=6; ++i) {
+  for (int j=0; j<=i; ++j) {
+    filldraw(shift(i*X+j*Y)*scale(0.5)*unitcircle, (t[i]==j) ? lightred : white, black);
+  }
+}
+label("$1$",0*X+0*Y);
+label("$2$",1*X+0*Y);
+label("$1$",1*X+1*Y);
+label("$2$",2*X+0*Y);
+label("$2$",2*X+1*Y);
+label("$2$",2*X+2*Y);
+label("$3$",3*X+0*Y);
+label("$2$",3*X+1*Y);
+label("$2$",3*X+2*Y);
+label("$2$",3*X+3*Y);
+label("$3$",4*X+0*Y);
+label("$3$",4*X+1*Y);
+label("$3$",4*X+2*Y);
+label("$2$",4*X+3*Y);
+label("$2$",4*X+4*Y);
+label("$3$",5*X+0*Y);
+label("$3$",5*X+1*Y);
+label("$3$",5*X+2*Y);
+label("$3$",5*X+3*Y);
+label("$3$",5*X+4*Y);
+label("$2$",5*X+5*Y);
+label("$3$",6*X+0*Y);
+label("$3$",6*X+1*Y);
+label("$3$",6*X+2*Y);
+label("$3$",6*X+3*Y);
+label("$3$",6*X+4*Y);
+label("$3$",6*X+5*Y);
+label("$3$",6*X+6*Y);
+\end{asy}
+\end{center}
+
+We have that
+\[ f(i, j) = \max \left\{f(i-1,j-1), f(i,j-1)  \right\} +
+    \begin{cases}
+        1 & \text{if $(i,j)$ is red} \\
+        0 & \text{otherwise}
+    \end{cases} \]
+since every ninja path passing through $(i, j)$ also passes through
+either $(i-1,j-1)$ or $(i,j-1)$. Now consider the quantity
+$S_j = f(0, j) + \dots + f(j, j)$. We obtain the following recurrence:
+
+\begin{claim*}
+$S_{j+1} \geq S_j + \left\lceil \frac{S_j}{j} \right\rceil + 1$.
+\end{claim*}
+\begin{proof}
+Consider a maximal element $f(m, j)$ of  $ \{f(0, j), \dots, f(j, j) \}$.
+We perform the following manipulations:
+\begin{align*}
+    S_{j+1}
+    &= \sum_{i=0}^{j+1} \max \left\{f(i-1,j), f(i,j) \right\} + \sum_{i=0}^{j+1}
+    \begin{cases}
+    1 & \text{if $(i,j+1)$ is red} \\
+    0 & \text{otherwise}
+    \end{cases} \\
+    &= \sum_{i=0}^{m} \max \left\{f(i-1,j), f(i,j) \right\} +
+    \sum_{i=m+1}^{j} \max \left\{f(i-1,j), f(i,j) \right\} + 1 \\
+    &\geq \sum_{i=0}^{m} f(i,j) +  \sum_{i=m+1}^{j} f(i-1,j) + 1 \\
+    &= S_j + f(m, j) + 1 \\
+    &\geq S_j + \left\lceil \frac{S_j}{j} \right\rceil + 1
+\end{align*}
+where the last inequality is due to Pigeonhole.
+\end{proof}
+
+This is actually enough to solve the problem.
+Write $n = 2^c + r$, where $0 \leq r \leq 2^c - 1$.
+\begin{claim*}
+$S_n \geq cn + 2r + 1$. In particular, $\left\lceil \frac{S_n}{n} \right\rceil \geq c + 1$.
+\end{claim*}
+
+\begin{proof}
+First note that $S_n \geq cn + 2r + 1$ implies
+$\left\lceil \frac{S_n}{n} \right\rceil \geq c + 1$ because
+\[ \left\lceil \frac{S_n}{n} \right\rceil \geq \left\lceil \frac{cn + 2r + 1}{n} \right\rceil
+= c + \left\lceil \frac{2r + 1}{n} \right\rceil = c + 1.
+\]
+We proceed by induction on $n$.
+The base case $n = 1$ is clearly true as $S_1 = 1$.
+Assuming that the claim holds for some $n=j$, we have
+\begin{align*}
+    S_{j+1} &\geq S_j + \left\lceil \frac{S_j}{j} \right\rceil + 1 \\
+    &\geq cj + 2r + 1 + c + 1 + 1 \\
+    &= c(j+1) + 2(r+1) + 1
+\end{align*}
+so the claim is proved for $n=j+1$ if $j+1$ is not a power of $2$.
+If $j+1 = 2^{c+1}$, then by writing
+$c(j+1) + 2(r+1) + 1 = c(j+1) + (j+1) + 1 = (c+2)(j+1) + 1$, the claim is also proved.
+\end{proof}
+
+Now $\left\lceil \frac{S_n}{n} \right\rceil \geq c + 1$ implies the existence of
+some ninja path containing at least $c+1$ red circles, and we are done.
+\pagebreak

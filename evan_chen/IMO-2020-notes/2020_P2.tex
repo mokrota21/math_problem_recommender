@@ -1,0 +1,70 @@
+\textsl{Available online at \url{https://aops.com/community/p17821569}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+The real numbers $a, b, c, d$
+are such that $a\geq b\geq c\geq d>0$ and $a+b+c+d=1$.
+Prove that
+\[ (a+2b+3c+4d) a^a b^b c^c d^d < 1. \]
+\end{mdframed}
+By weighted AM-GM we have
+\[ a^a b^b c^c d^d \le \sum_{\text{cyc}} \frac{a}{a+b+c+d} \cdot a
+  = a^2+b^2+c^2+d^2. \]
+Consequently, it is enough to prove that
+\[ (a^2+b^2+c^2+d^2)(a+2b+3c+4d) \le 1 = (a+b+c+d)^3. \]
+Expand both sides to get
+\[
+  \begin{array}{cccc}
+    +a^3 &+ b^2a &+ c^2a & +d^2a \\
+    +2a^2b &+ 2b^3 &+ 2bc^2  & +2d^2b \\
+    +3a^2c & + 3b^2c & + 3c^3 & + 3d^2c \\
+    +4a^2d &+ 4b^2d & + 4c^2d & + 4d^3
+  \end{array}
+  <
+  \begin{array}{cccc}
+    +a^3 &+ 3b^2a &+ 3c^2a & +3d^2a \\
+    +3a^2b &+ b^3 &+ 3bc^2  & +3d^2b \\
+    +3a^2c &+ 3b^2c &+ c^3 &+ 3d^2c \\
+    +3a^2d &+ 3b^2d &+ 3c^2d &+ d^3 \\
+    +6abc &+ 6bcd &+ 6cda &+ 6dab
+  \end{array}
+\]
+In other words, we need to prove that
+\[
+  \begin{array}{cccc}
+    & && \\
+    &+ b^3 & & \\
+    & & +2c^3 & \\
+    +a^2d &+ b^2d & + c^2d & + 3d^3 \\
+  \end{array}
+  <
+  \begin{array}{cccc}
+    &+ 2b^2a &+ 2c^2a & +2d^2a \\
+    +a^2b & &+ bc^2  & +d^2b \\
+    &&& \\
+    &&& \\
+    +6abc &+ 6bcd &+ 6cda &+ 6dab
+  \end{array}
+\]
+
+This follows since
+\begin{align*}
+  2b^2a &\ge b^3 + b^2d \\
+  2c^2a &\ge 2c^3 \\
+  2d^2a &\ge 2d^3  \\
+  a^2b &\ge a^2d \\
+  bc^2 &\ge c^2d  \\
+  d^2b &\ge d^3
+\end{align*}
+and $6(abc+bcd+cda+dab) > 0$.
+
+\begin{remark*}
+  Fedor Petrov provides the following motivational comments
+  for why the existence of this solution is not surprising:
+  \begin{quote}
+    Better to think about mathematics.
+    You have to bound from above a product $(a+2b+3c+4d)(a^2+b^2+c^2+d^2)$,
+    the coefficients $1,2,3,4$ are increasing and so play on your side,
+    so plausibly $(a+b+c+d)^3$ should majorize this term-wise,
+    you check it and this appears to be true.
+  \end{quote}
+\end{remark*}
+\pagebreak

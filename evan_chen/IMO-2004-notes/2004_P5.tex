@@ -1,0 +1,57 @@
+\textsl{Available online at \url{https://aops.com/community/p99759}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+In a convex quadrilateral $ABCD$,
+the diagonal $BD$ bisects neither the angle $ABC$ nor the angle $CDA$.
+The point $P$ lies inside $ABCD$ and satisfies
+\[\angle PBC=\angle DBA \quad\text{and}\quad \angle PDC=\angle BDA. \]
+Prove that $ABCD$ is a cyclic quadrilateral
+if and only if $AP=CP$.
+\end{mdframed}
+Apply barycentric coordinates to $\triangle PBD$
+with $P = (1,0,0)$, $B = (0,1,0)$ and $D = (0,0,1)$.
+Define $a = BD$, $b = DP$ and $c = PB$.
+
+Since $A$ and $C$ are isogonal conjugates with respect to $\triangle PBD$,
+we set \[ A = (au : bv : cw) \qquad\text{and}\qquad
+  C = \left( \frac au : \frac bv : \frac cw \right). \]
+For brevity define $M = au + bv + cw$ and $N = avw + bwu + cuv$.
+
+We now compute each condition.
+\begin{claim*}
+  Quadrilateral $ABCD$ is cyclic if and only if $N^2 = u^2 M^2$.
+\end{claim*}
+\begin{proof}
+  W know a circle through $B$ and $D$
+  is a locus of points
+  with \[ \frac{a^2yz+b^2zx+c^2xy}{x(x+y+z)} \]
+  is equal to some constant.
+  Therefore quadrilateral $ABCD$ is cyclic if and only if
+  $\frac{abc \cdot N}{au \cdot M}$
+  is equal to $\frac{abc \cdot uvw \cdot M}{avw \cdot N}$
+  which rearranges to $N^2 = u^2M^2$.
+\end{proof}
+\begin{claim*}
+  We have $PA = PC$ if and only if $N^2 = u^2 M^2$.
+\end{claim*}
+\begin{proof}
+  We have the displacement vector
+  $\overrightarrow{PA}
+  = \tfrac{1}{M} \left( bv+cw , -bv ,-cw \right)$.
+  Therefore,
+  \begin{align*}
+    M^2 \cdot \left\lvert PA \right\rvert^2
+    &= -a^2(bv)(cw) + b^2(cw)(bv+cw) + c^2(bv)(bv+cw) \\
+    &= bc(-a^2vw + (bw+cv)(bv+cw)).
+  \end{align*}
+  In a similar way
+  (by replacing $u$, $v$, $w$ with their inverses)
+  we have
+  \begin{align*}
+    \left( \frac{N}{uvw} \right)^2 \cdot \left\lvert PC \right\rvert^2
+    &= (vw)^{-2} \cdot bc(-a^2vw + (bv+cw)(bw+cv)) \\
+    \iff N^2 \cdot \left\lvert PC \right\rvert^2
+    & = u^2 bc(-a^2vw + (bw+cv)(bv+cw))
+  \end{align*}
+  These are equal if and only if $N^2 = u^2M^2$, as desired.
+\end{proof}
+\pagebreak

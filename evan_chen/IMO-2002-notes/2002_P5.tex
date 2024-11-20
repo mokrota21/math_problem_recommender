@@ -1,0 +1,62 @@
+\textsl{Available online at \url{https://aops.com/community/p118703}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Find all functions $f \colon \RR \to \RR$ such that
+\[ \left(f(x)+f(z)\right)\left(f(y)+f(t)\right)
+  = f(xy-zt)+f(xt+yz) \]
+for all real numbers $x$, $y$, $z$, $t$.
+\end{mdframed}
+The answer is $f(x) \equiv 0$, $f(x) \equiv 1/2$
+and $f(x) \equiv x^2$ which are easily seen to work.
+Let's prove they are the only ones;
+we show two solutions.
+
+\paragraph{First solution (multiplicativity).}
+Let $P(x,y,z,t)$ denote the given statement.
+\begin{itemize}
+  \ii By comparing $P(x,1,0,0)$ and $P(0,0,1,x)$
+  we get $\boxed{f \text{ even}}$.
+  \ii By $P(0,y,0,t)$ we get for nonconstant $f$
+  that $f(0) = 0$.
+  If $f$ is constant we get the solutions earlier,
+  so in the sequel assume $\boxed{f(0) = 0}$.
+  \ii By $P(x,y,0,0)$ we get $\boxed{f(xy) = f(x) f(y)}$.
+  Note in particular that for any real number $x$ we now have
+  \[ f(x) = f(|x|) = f\left( \sqrt{|x|} \right)^2 \ge 0 \]
+  that is, $f \ge 0$.
+\end{itemize}
+
+From $P(x,y,y,x)$ we now have
+\[ f(x^2 + y^2) = \left( f(x) + f(y) \right)^2
+  = f(x^2) + 2f(x)f(y) + f(y^2) \ge f(x^2) \]
+so $f$ is weakly increasing.
+Combined with $f$ multiplicative and nonconstant,
+this implies $f(x) = |x|^r$ for some real number $r$.
+
+Finally, $P(1,1,1,1)$ gives $f(2) = 4f(1)$,
+so $f(x) \equiv x^2$.
+
+\paragraph{Second solution (ELMO).}
+Let $P(x,y,z,t)$ denote the statement.
+Assume $f$ is nonconstant,
+as before we derive that $f$ is even, $f(0) = 0$,
+and $f(x) \ge 0$ for all $x$.
+
+Now comparing $P(x,y,z,t)$ and $P(z,y,x,t)$ we obtain
+\[ f(xy-zt) + f(xt+yz) =
+  \left( f(x)+f(z) \right)
+  \left( f(y)+f(t) \right)
+  = f(xy+zt) + f(xt-yz) \]
+which in particular implies that
+\[ f(a-d) + f(b+c) = f(a+d) + f(b-c)
+\qquad \text{ if } ad=bc \text{ and } a,b,c,d > 0. \]
+Thus the restriction of $f$ to $(0,\infty)$ satisfies
+\textbf{ELMO 2011, problem 4}
+which implies that $f(x) = kx^2+\ell$ for constants $k$ and $\ell$.
+From here we recover the original.
+
+(Minor note: technically ELMO 2011/4 is $f \colon (0,\infty) \to (0,\infty)$
+but we only have $f \ge 0$,
+however the proof for the ELMO problem
+works as long as $f$ is bounded below;
+we could also just apply the ELMO problem to $f+0.01$ instead.)
+\pagebreak

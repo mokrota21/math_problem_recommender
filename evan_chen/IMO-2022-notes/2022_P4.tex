@@ -1,0 +1,129 @@
+\textsl{Available online at \url{https://aops.com/community/p25635154}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $ABCDE$ be a convex pentagon such that $BC=DE$.
+Assume that there is a point $T$ inside $ABCDE$
+with $TB=TD$, $TC=TE$ and $\angle ABT = \angle TEA$.
+Let line $AB$ intersect lines $CD$ and $CT$ at points $P$ and $Q$, respectively.
+Assume that the points $P$, $B$, $A$, $Q$ occur on their line in that order.
+Let line $AE$ intersect $CD$ and $DT$ at points $R$ and $S$, respectively.
+Assume that the points $R$, $E$, $A$, $S$ occur on their line in that order.
+Prove that the points $P$, $S$, $Q$, $R$ lie on a circle.
+\end{mdframed}
+The conditions imply
+\[ \triangle BTC \cong \triangle DTE,
+  \qquad\text{and}\qquad
+  \triangle BTY \overset{-}{\sim} \triangle ETX. \]
+Define $K = \ol{CT} \cap \ol{AE}$, $L = \ol{DT} \cap \ol{AB}$,
+$X = \ol{BT} \cap \ol{AE}$, $Y = \ol{ET} \cap \ol{BY}$.
+
+\begin{center}
+\begin{asy}
+size(12cm);
+pair Y = dir(116.9642725);
+pair X = dir(76.9642725);
+pair B = dir(175.9642725);
+pair E = dir(24.9642725);
+pair A = extension(X, E, B, Y);
+pair T = extension(X, B, E, Y);
+pair D = T+(B-T)*dir(83);
+pair C = T+(E-T)*dir(-83);
+pair Q = extension(C, T, A, B);
+pair S = extension(D, T, A, E);
+pair P = extension(C, D, A, B);
+pair R = extension(C, D, A, E);
+pair L = extension(D, T, A, B);
+pair K = extension(C, T, A, E);
+
+filldraw(B--T--C--cycle, opacity(0.1)+yellow, 0.1+yellow);
+filldraw(D--T--E--cycle, opacity(0.1)+yellow, 0.1+yellow);
+
+filldraw(B--T--Q--cycle, opacity(0.1)+lightred, red);
+filldraw(E--T--S--cycle, opacity(0.1)+lightcyan, blue);
+draw(T--X, blue);
+draw(T--Y, red);
+draw(circumcircle(L, K, Q), grey);
+draw(circumcircle(P, Q, R), dotted);
+draw(T--D, red+dashed);
+draw(T--C, blue+dashed);
+draw(K--L, grey);
+draw(B--P--R--E, grey);
+draw(B--C, dotted);
+draw(D--E, dotted);
+write(angle(D-C));
+
+dot("$Y$", Y, dir(Y));
+dot("$X$", X, dir(60));
+dot("$B$", B, dir(B));
+dot("$E$", E, dir(E));
+dot("$A$", A, dir(A));
+dot("$T$", T, 1.8*dir(280));
+dot("$D$", D, dir(270));
+dot("$C$", C, dir(270));
+dot("$Q$", Q, dir(Q));
+dot("$S$", S, dir(S));
+dot("$P$", P, dir(P));
+dot("$R$", R, dir(R));
+dot("$L$", L, 1.4*dir(200));
+dot("$K$", K, 1.4*dir(355));
+
+/* TSQ Source:
+
+!size(12cm);
+Y = dir 116.9642725
+X = dir 76.9642725 R60
+B = dir 175.9642725
+E = dir 24.9642725
+A = extension X E B Y
+T = extension X B E Y 1.8R280
+D = T+(B-T)*dir(83) R270
+C = T+(E-T)*dir(-83) R270
+Q = extension C T A B
+S = extension D T A E
+P = extension C D A B
+R = extension C D A E
+L = extension D T A B 1.4R200
+K = extension C T A E 1.4R355
+
+B--T--C--cycle 0.1 yellow / 0.1 yellow
+D--T--E--cycle 0.1 yellow / 0.1 yellow
+
+B--T--Q--cycle 0.1 lightred / red
+E--T--S--cycle 0.1 lightcyan / blue
+T--X blue
+T--Y red
+circumcircle L K Q grey
+circumcircle P Q R dotted
+T--D red dashed
+T--C blue dashed
+K--L grey
+B--P--R--E grey
+B--C dotted
+D--E dotted
+!write(angle(D-C));
+
+*/
+\end{asy}
+\end{center}
+
+\begin{claim*}
+  [Main claim]
+  We have
+  \[ \triangle BTQ \overset{-}{\sim} \triangle ETS,
+    \qquad\text{and}\qquad
+    BY:YL:LQ = EX:XK:KS. \]
+  In other words, $TBYLQ \overset{-}{\sim} TEXKS$.
+\end{claim*}
+\begin{proof}
+  We know $\triangle BTY \overset{-}{\sim} \triangle ETX$.
+  Also, $\dang BTL = \dang BTD = \dang CTE = \dang KTE$
+  and $\dang BTQ = \dang BTC = \dang DTE = \dang STE$.
+\end{proof}
+
+It follows from the claim that:
+\begin{itemize}
+  \ii $TL/TQ = TK/TS$, ergo $TL \cdot TS = TK \cdot TQ$,
+  so $KLSQ$ is cyclic; and
+  \ii $TC/TK = TE/TK = TB/TL = TD/TL$, so $\ol{KL} \parallel \ol{PCDR}$.
+\end{itemize}
+With these two bullets, we're done by Reim theorem.
+\pagebreak

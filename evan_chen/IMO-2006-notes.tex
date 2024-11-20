@@ -1,0 +1,424 @@
+% © Evan Chen
+% Downloaded from https://web.evanchen.cc/
+
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evan}
+\ihead{\footnotesize\textbf{\thetitle}}
+\ohead{\footnotesize\href{http://web.evanchen.cc}{\ttfamily web.evanchen.cc},
+    updated \today}
+\title{IMO 2006 Solution Notes}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This is a compilation of solutions
+for the 2006 IMO.
+The ideas of the solution are a mix of my own work,
+the solutions provided by the competition organizers,
+and solutions found by the community.
+However, all the writing is maintained by me.
+
+These notes will tend to be a bit more advanced and terse than the ``official''
+solutions from the organizers.
+In particular, if a theorem or technique is not known to beginners
+but is still considered ``standard'', then I often prefer to
+use this theory anyways, rather than try to work around or conceal it.
+For example, in geometry problems I typically use directed angles
+without further comment, rather than awkwardly work around configuration issues.
+Similarly, sentences like ``let $\mathbb{R}$ denote the set of real numbers''
+are typically omitted entirely.
+
+Corrections and comments are welcome!
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\addtocounter{section}{-1}
+\section{Problems}
+\begin{enumerate}[\bfseries 1.]
+\item %% Problem 1
+Let $ABC$ be a triangle with incenter $I$.
+A point $P$ in the interior of the triangle satisfies
+\[ \angle PBA + \angle PCA = \angle PBC + \angle PCB. \]
+Show that $AP \ge AI$ and that equality holds if and only if $P=I$.
+
+\item %% Problem 2
+Let $P$ be a regular $2006$-gon.
+A diagonal is called \emph{good} if its endpoints
+divide the boundary of $P$ into two parts,
+each composed of an odd number of sides of $P$.
+The sides of $P$ are also called \emph{good}.
+Suppose $P$ has been dissected into triangles by $2003$ diagonals,
+no two of which have a common point in the interior of $P$.
+Find the maximum number of isosceles triangles having two good
+sides that could appear in such a configuration.
+
+\item %% Problem 3
+Determine the least real number $M$ such that the inequality
+\[ \left\lvert ab(a^2-b^2)+bc(b^2-c^2)+ca(c^2-a^2) \right\rvert
+  \leq M\left( a^2+b^2+c^2 \right)^2 \]
+holds for all real numbers $a$, $b$ and $c$.
+
+\item %% Problem 4
+Determine all pairs $(x,y)$ of integers such that
+\[ 1 + 2^x + 2^{2x+1} = y^2. \]
+
+\item %% Problem 5
+Let $P(x)$ be a polynomial of degree $n > 1$
+with integer coefficients and let $k$ be a positive integer.
+Consider the polynomial
+\[ Q(x) = P(P(\dots P(P(x)) \dots )) \] where $P$ occurs $k$ times.
+Prove that there are at most $n$ integers $t$ such that $Q(t) = t$.
+
+\item %% Problem 6
+Assign to each side $b$ of a convex polygon $P$
+the maximum area of a triangle that has $b$ as a side and is contained in $P$.
+Show that the sum of the areas assigned to the sides of $P$ is at least twice the area of $P$.
+
+\end{enumerate}
+\pagebreak
+
+\section{Solutions to Day 1}
+\subsection{IMO 2006/1, proposed by Hojoo Lee (KOR)}
+\textsl{Available online at \url{https://aops.com/community/p571966}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $ABC$ be a triangle with incenter $I$.
+A point $P$ in the interior of the triangle satisfies
+\[ \angle PBA + \angle PCA = \angle PBC + \angle PCB. \]
+Show that $AP \ge AI$ and that equality holds if and only if $P=I$.
+\end{mdframed}
+The condition rewrites as
+\[
+  \angle PBC + \angle PCB
+  = (\angle B - \angle PBC)
+  + (\angle C - \angle PCB)
+  \implies
+  \angle PBC + \angle PCB = \frac{\angle B + \angle C}{2}
+\]
+which means that
+\[ \angle BPC = 180\dg - \frac{\angle B + \angle C}{2}
+  = 90\dg + \frac{\angle A}{2}
+  = \angle BIC.
+\]
+Since $P$ and $I$ are both inside $\triangle ABC$
+that implies $P$ lies on the circumcircle of $\triangle BIC$.
+
+It's well-known (by ``Fact 5'') that the circumcenter
+of $\triangle BIC$ is the arc midpoint $M$ of $\widehat{BC}$.
+Therefore
+\[ AI + IM = AM \le AP + PM \implies AI \le AP \]
+with equality holding iff $A$, $P$, $M$ are collinear, or $P=I$.
+\pagebreak
+
+\subsection{IMO 2006/2, proposed by Dušan Djukić (SRB)}
+\textsl{Available online at \url{https://aops.com/community/p571973}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $P$ be a regular $2006$-gon.
+A diagonal is called \emph{good} if its endpoints
+divide the boundary of $P$ into two parts,
+each composed of an odd number of sides of $P$.
+The sides of $P$ are also called \emph{good}.
+Suppose $P$ has been dissected into triangles by $2003$ diagonals,
+no two of which have a common point in the interior of $P$.
+Find the maximum number of isosceles triangles having two good
+sides that could appear in such a configuration.
+\end{mdframed}
+Call a triangle with the desired property \emph{special}.
+We prove the maximum number of special triangles is $1003$,
+achieved by paring up the sides of the polygon.
+
+We present two solutions for the upper bound.
+Both of them rely first on two geometric notes:
+\begin{itemize}
+  \ii In a special triangle, the good sides are congruent
+  (and not congruent to the third side).
+  \ii No two isosceles triangles share a good side.
+\end{itemize}
+
+\textbf{Solution using bijections}:
+Call a good diagonal \textbf{special} if it's part of a special triangle;
+special diagonals come in pairs.
+Consider the minor arc cut out by a special diagonal $d$,
+which has an odd number of sides.
+Since special diagonals come in pairs,
+one can associate to $d$ a side of the polygon
+not covered by any special diagonals from $d$.
+Hence there are at most $2006$ special diagonals,
+so at most $1003$ special triangles.
+
+\textbf{Solution using graph theory}:
+Consider the tree $T$ formed by the $2004$
+triangles in the dissection, with obvious adjacency.
+Let $F$ be the forest obtained by deleting
+any edge corresponding to a good diagonal.
+Then the resulting graph $F$ has only degrees $1$ and $3$,
+with special triangles only occurring at degree $1$ vertices.
+
+If there are $k$ good diagonals drawn,
+then this forest consists of $k+1$ trees.
+A tree with $n_i$ vertices ($0 \le i \le k$)
+consequently has $\frac{n_i+2}{2}$ leaves.
+However by the earlier remark at least $k$ leaves
+don't give special triangles
+(one on each side of a special diagonal);
+so the number of leaves that do give good triangles is at most
+\[ -k + \sum_i \frac{n_i+2}{2}
+  = -k + \frac{2004 + 2(k+1)}{2} = 1003. \]
+\pagebreak
+
+\subsection{IMO 2006/3, proposed by Finbarr Holland (IRL)}
+\textsl{Available online at \url{https://aops.com/community/p571945}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Determine the least real number $M$ such that the inequality
+\[ \left\lvert ab(a^2-b^2)+bc(b^2-c^2)+ca(c^2-a^2) \right\rvert
+  \leq M\left( a^2+b^2+c^2 \right)^2 \]
+holds for all real numbers $a$, $b$ and $c$.
+\end{mdframed}
+It's the same as
+\[ \left\lvert (a-b)(b-c)(c-a)(a+b+c) \right\rvert
+\le M \left( a^2+b^2+c^2 \right)^2. \]
+Let $x=a-b$, $y=b-c$, $z=c-a$, $s=a+b+c$.
+Then we want to have
+\[
+  \left\lvert xyzs \right\rvert
+  \le \frac{M}{9} (x^2+y^2+z^2+s^2)^2.
+\]
+Here $x+y+z=0$.
+
+Now if $x$ and $y$ have the same sign,
+we can replace them with the average
+(this increases the LHS and decreases RHS).
+So we can have $x=y$, $z=-2x$.
+Now WLOG $x > 0$ to get
+\[ 2x^3 \cdot s \le \frac{M}{9} \left( 6x^2+s^2 \right)^2. \]
+After this routine calculation gives
+$M = \frac{9}{32}\sqrt2$ works and is optimal
+(by $6x^2+s^2 = 2x^2 + 2x^2 + 2x^2 + s^2$ and AM-GM).
+\pagebreak
+
+\section{Solutions to Day 2}
+\subsection{IMO 2006/4, proposed by Zuming Feng (USA)}
+\textsl{Available online at \url{https://aops.com/community/p572815}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Determine all pairs $(x,y)$ of integers such that
+\[ 1 + 2^x + 2^{2x+1} = y^2. \]
+\end{mdframed}
+Answers: $(0, \pm 2)$, $(4, \pm 23)$, which work.
+
+Assume $x \ge 4$.
+\[ 2^x \left( 1 + 2^{x+1} \right)
+  = 2^x + 2^{2x+1} = y^2 - 1 = (y-1)(y+1). \]
+So either:
+\begin{itemize}
+  \ii $y = 2^{x-1} m + 1$ for some odd $m$, so
+  \[ 1 + 2^{x+1} = m\left( 2^{x-2}m+1 \right)
+    \implies 2^x = \frac{4(1-m)}{m^2-8}. \]
+  \ii $y = 2^{x-1} m - 1$ for some odd $m$, so
+  \[ 1 + 2^{x+1} = m\left( 2^{x-2}m-1 \right)
+    \implies 2^x = \frac{4(1+m)}{m^2-8}. \]
+\end{itemize}
+In particular we need $4|1 \pm m| \ge 2^4 |m^2-8|$,
+which is enough to imply $m < 5$.
+From here easily recover $x = 4$, $m = 3$ as the last solution
+(in the second case).
+\pagebreak
+
+\subsection{IMO 2006/5, proposed by Dan Schwarz (ROU)}
+\textsl{Available online at \url{https://aops.com/community/p572821}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $P(x)$ be a polynomial of degree $n > 1$
+with integer coefficients and let $k$ be a positive integer.
+Consider the polynomial
+\[ Q(x) = P(P(\dots P(P(x)) \dots )) \] where $P$ occurs $k$ times.
+Prove that there are at most $n$ integers $t$ such that $Q(t) = t$.
+\end{mdframed}
+First, we prove that:
+\begin{claim*}
+  [Putnam 2000 et al]
+  If a number is periodic under $P$
+  then in fact it's fixed by $P \circ P$.
+\end{claim*}
+\begin{proof}
+  Let $x_1$, $x_2$, \dots, $x_n$ be a minimal orbit.
+  Then
+  \[ x_i - x_{i+1} \mid P(x_i) - P(x_{i+1})
+    = x_{i+1} - x_{i+2} \]
+  and so on cyclically.
+
+  If any of the quantities are zero we are done.
+  Else, we must eventually have $x_i - x_{i+1} = -(x_{i+1} - x_{i+2})$,
+  so $x_i = x_{i+2}$ and we get $2$-periodicity.
+\end{proof}
+
+The tricky part is to study the $2$-orbits.
+Suppose there exists a fixed pair $u \neq v$
+with $P(u) = v$, $P(v) = u$.
+(If no such pair exists, we are already done.)
+Let $(a,b)$ be any other pair with $P(a) = b$, $P(b) = a$,
+possibly even $a = b$, but $\{a,b\} \cap \{u,v\} = \varnothing$.
+Then we should have
+\[ u-a \mid P(u)-P(a) = v-b
+  \mid P(v) - P(b) = u-a \]
+and so $u-a$ and $v-b$ divide each other (and are nonzero).
+Similarly, $u-b$ and $v-a$ divide each other.
+
+Hence $u-a = \pm (v-b)$ and $u-b = \pm (v-a)$.
+We consider all four cases:
+\begin{itemize}
+  \ii If $u-a = v-b$ and $u-b = v-a$
+  then $u-v = b-a = a-b$, contradiction.
+  \ii If $u-a = -(v-b)$ and $u-b = -(v-a)$
+  then $u+v = u-v = a+b$.
+  \ii If $u-a = -(v-b)$ and $u-b = v-a$,
+  we get $a+b = u+v$ from the first one
+  (discarding the second).
+  \ii If $u-a = v-b$ and $u-b = -(v-a)$,
+  we get $a+b = u+v$ from the second one
+  (discarding the first one).
+\end{itemize}
+Thus in all possible situations we have
+\[ a+b = c \coloneqq u+v \]
+a fixed constant.
+
+Therefore, any pair $(a,b)$ with $P(a) = b$
+and $P(b) = a$ actually satisfies $P(a) = c-a$.
+And since $\deg P > 1$,
+this means there are at most $n$ roots to $a+P(a)=c$, as needed.
+\pagebreak
+
+\subsection{IMO 2006/6, proposed by Dušan Djukić (SRB)}
+\textsl{Available online at \url{https://aops.com/community/p572824}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Assign to each side $b$ of a convex polygon $P$
+the maximum area of a triangle that has $b$ as a side and is contained in $P$.
+Show that the sum of the areas assigned to the sides of $P$ is at least twice the area of $P$.
+\end{mdframed}
+We say a polygon in \emph{almost convex}
+if all its angles are at most $180\dg$.
+
+Note that given any convex or almost convex polygon,
+we can take any side $b$ and add another vertex on it, and the sum of the labels doesn't change
+(since the label of a side is the length of the side times the distance of the farthest point).
+
+\begin{lemma*}
+  Let $N$ be an even integer.
+  Then any almost convex $N$-gon with area $S$
+  should have an inscribed triangle with area at least $2S/N$.
+\end{lemma*}
+The main work is the proof of the lemma.
+
+Label the polygon $P_0 P_1 \dots P_{N-1}$.
+Consider the $N/2$ major diagonals of the almost convex $N$-gon,
+$P_0 P_{N/2}$, $P_1 P_{N/2+1}$, et cetera.
+A \emph{butterfly} refers to a self-intersecting quadrilateral
+$P_i P_{i+1} P_{i+1+N/2} P_{i+N/2}$.
+An example of a butterfly is shown below for $N=8$.
+\begin{center}
+\begin{asy}
+pair P_0 = (-1,-3);
+pair P_1 = ( 0,-3);
+pair P_2 = (2.5,-3);
+pair P_3 = (3,0);
+pair P_4 = (1.8,1.2);
+pair P_5 = (1.1,1.9);
+pair P_6 = (0.3,2.7);
+pair P_7 = (-2,0.4);
+filldraw(P_0--P_2--P_3--P_6--P_7--cycle, opacity(0.1)+lightcyan, blue);
+
+filldraw(P_0--P_4--P_5--P_1--cycle, opacity(0.2)+lightred, red);
+draw(P_1--P_5, red);
+draw(P_2--P_6, red);
+draw(P_3--P_7, red);
+
+dot("$P_0$", P_0, dir(P_0));
+dot("$P_1$", P_1, dir(P_1));
+dot("$P_2$", P_2, dir(P_2));
+dot("$P_3$", P_3, dir(P_3));
+dot("$P_4$", P_4, dir(P_4));
+dot("$P_5$", P_5, dir(P_5));
+dot("$P_6$", P_6, dir(P_6));
+dot("$P_7$", P_7, dir(P_7));
+
+/* TSQ Source:
+
+P_0 = (-1,-3)
+P_1 = ( 0,-3)
+P_2 = (2.5,-3)
+P_3 = (3,0)
+P_4 = (1.8,1.2)
+P_5 = (1.1,1.9)
+P_6 = (0.3,2.7)
+P_7 = (-2,0.4)
+P_0--P_2--P_3--P_6--P_7--cycle 0.1 lightcyan / blue
+
+P_0--P_4--P_5--P_1--cycle 0.2 lightred / red
+P_1--P_5 red
+P_2--P_6 red
+P_3--P_7 red
+
+*/
+\end{asy}
+\end{center}
+
+\begin{claim*}
+  Every point $X$ in the polygon is contained in the wingspan of some butterfly.
+\end{claim*}
+\begin{proof}
+  Consider a windmill-like process which
+  \begin{itemize}
+    \ii starts from some oriented red line $P_0 P_{N/2}$, oriented to face $P_0 P_{N/2}$
+    \ii rotates through $P_0 P_{N/2} \cap P_1 P_{N/2+1}$ to get line $P_1 P_{N/2+1}$,
+    \ii rotates through $P_1 P_{N/2+1} \cap P_2 P_{N/2+2}$ to get line $P_2 P_{N/2+2}$,
+    \ii \dots et cetera, until returning to line $P_{N/2} P_0$,
+    but in the reverse orientation.
+  \end{itemize}
+  At the end of the process, every point in the plane has switched sides with our moving line.
+  The moment that $X$ crosses the moving red line, we get it contained in a butterfly, as needed.
+\end{proof}
+
+\begin{claim*}
+  If $ABDC = P_i P_{i+1} P_{i+1+N/2} P_{i+N/2}$ is a butterfly,
+  one of the triangles $ABC$, $BCD$, $CDA$, $DAB$
+  has area at least that of the butterfly.
+\end{claim*}
+\begin{proof}
+  Let the diagonals of the butterfly meet at $O$,
+  and let $a = AO$, $b = BO$, $c = CO$, $d = DO$.
+  If we assume WLOG $d = \min(a,b,c,d)$
+  then it follows $[ABC] = [AOB] + [BOC] \ge [AOB] + [COD]$, as needed.
+\end{proof}
+
+Now, since the $N/2$ butterflies cover an area of $S$,
+it follows that one of the butterflies
+has area at least $S / (N/2) = 2S/N$,
+and so that butterfly gives a triangle with area at least $2S/N$,
+completing the proof of the lemma.
+
+\paragraph{Main proof.}
+Let $a_1$, \dots, $a_n$ be the numbers assigned to the sides.
+Assume for contradiction $a_1 + \dots + a_n < 2S$.
+We pick even integers $m_1$, $m_2$, \dots, $m_n$ such that
+\begin{align*}
+  \frac{a_1}{S} &< \frac{2m_1}{m_1 + \dots + m_n} \\
+  \frac{a_2}{S} &< \frac{2m_2}{m_1 + \dots + m_n} \\
+  &\vdotswithin\le \\
+  \frac{a_n}{S} &< \frac{2m_n}{m_1 + \dots + m_n}.
+\end{align*}
+which is possible by rational approximation,
+since the right-hand sides sum to $2$ and the left-hand sides sum to strictly less than $2$.
+
+Now we break every side of $P$ into $m_i$ equal parts
+to get an almost convex $N$-gon, where $N = m_1 + \dots + m_n$.
+
+The main lemma then gives us a triangle $\Delta$ of the almost convex $N$-gon
+which has area at least $\frac{2S}{N}$.
+If $\Delta$ used the $i$th side then it then follows the label $a_i$ on that side should be
+at least $m_i \cdot \frac{2S}{N}$, contradiction.
+\pagebreak
+
+
+\end{document}

@@ -1,0 +1,93 @@
+\textsl{Available online at \url{https://aops.com/community/p281571}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Six points are chosen on the sides of an equilateral triangle $ABC$:
+$A_1$, $A_2$ on $BC$, $B_1$, $B_2$ on $CA$ and $C_1$, $C_2$ on $AB$,
+such that they are the vertices of a
+convex hexagon $A_1A_2B_1B_2C_1C_2$ with equal side lengths.
+Prove that the lines $A_1B_2$, $B_1C_2$ and $C_1A_2$ are concurrent.
+\end{mdframed}
+The six sides of the hexagon, when oriented, comprise
+six vectors with vanishing sum.
+However note that \[ \overrightarrow{A_1A_2}
++ \overrightarrow{B_1B_2}
++ \overrightarrow{C_1C_2} = 0. \]
+Thus
+\[ \overrightarrow{A_2B_1} + \overrightarrow{B_2C_1} +
+\overrightarrow{C_2A_1} = 0 \]
+and since three unit vectors with vanishing sum
+must be rotations of each other by $120\dg$,
+it follows they must also form an equilateral triangle.
+
+\begin{center}
+\begin{asy}
+pair A_1 = origin;
+pair A_2 = A_1+dir(0);
+pair B_1 = A_2+dir(37);
+pair B_2 = B_1+dir(120);
+pair C_1 = B_2+dir(157);
+pair C_2 = C_1+dir(240);
+
+pair A = extension(B_1, B_2, C_1, C_2);
+pair B = extension(C_1, C_2, A_1, A_2);
+pair C = extension(A_1, A_2, B_1, B_2);
+
+filldraw(A--B--C--cycle, opacity(0.1)+lightcyan, lightblue);
+
+draw(A_1--A_2, red+1, EndArrow(TeXHead), Margins);
+draw(B_1--B_2, red+1, EndArrow(TeXHead), Margins);
+draw(C_1--C_2, red+1, EndArrow(TeXHead), Margins);
+draw(A_2--B_1, blue+1, EndArrow(TeXHead), Margins);
+draw(B_2--C_1, blue+1, EndArrow(TeXHead), Margins);
+draw(C_2--A_1, blue+1, EndArrow(TeXHead), Margins);
+
+filldraw(A_1--B_1--C_1--cycle, opacity(0.1)+lightgreen, heavygreen);
+draw(A_1--B_2, dotted+heavycyan);
+draw(B_1--C_2, dotted+heavycyan);
+draw(C_1--A_2, dotted+heavycyan);
+
+dot("$A_1$", A_1, dir(270));
+dot("$A_2$", A_2, dir(270));
+dot("$B_1$", B_1, dir(30));
+dot("$B_2$", B_2, dir(30));
+dot("$C_1$", C_1, dir(150));
+dot("$C_2$", C_2, dir(150));
+dot("$A$", A, dir(90));
+dot("$B$", B, dir(210));
+dot("$C$", C, dir(330));
+
+/* TSQ Source:
+
+A_1 = origin R270
+A_2 = A_1+dir(0) R270
+B_1 = A_2+dir(37) R30
+B_2 = B_1+dir(120) R30
+C_1 = B_2+dir(157) R150
+C_2 = C_1+dir(240) R150
+
+A = extension B_1 B_2 C_1 C_2 R90
+B = extension C_1 C_2 A_1 A_2 R210
+C = extension A_1 A_2 B_1 B_2 R330
+
+A--B--C--cycle 0.1 lightcyan / lightblue
+
+!draw(A_1--A_2, red+1, EndArrow(TeXHead), Margins);
+!draw(B_1--B_2, red+1, EndArrow(TeXHead), Margins);
+!draw(C_1--C_2, red+1, EndArrow(TeXHead), Margins);
+!draw(A_2--B_1, blue+1, EndArrow(TeXHead), Margins);
+!draw(B_2--C_1, blue+1, EndArrow(TeXHead), Margins);
+!draw(C_2--A_1, blue+1, EndArrow(TeXHead), Margins);
+
+A_1--B_1--C_1--cycle 0.1 lightgreen / heavygreen
+A_1--B_2 dotted heavycyan
+B_1--C_2 dotted heavycyan
+C_1--A_2 dotted heavycyan
+
+*/
+\end{asy}
+\end{center}
+
+Consequently, triangles $A_1A_2B_1$, $B_1B_2C_1$, $C_1C_2A_1$
+are congruent, as $\angle A_2 = \angle B_2 = \angle C_2$.
+So triangle $A_1 B_1 C_1$ is equilateral and the
+diagonals are concurrent at the center.
+\pagebreak

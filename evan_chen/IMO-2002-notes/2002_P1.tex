@@ -1,0 +1,69 @@
+\textsl{Available online at \url{https://aops.com/community/p118710}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $n$ be a positive integer.
+Let $T$ be the set of points $(x,y)$ in the plane
+where $x$ and $y$ are non-negative integers with $x+y<n$.
+Each point of $T$ is coloured red or blue,
+subject to the following condition:
+if a point $(x,y)$ is red,
+then so are all points $(x',y')$ of $T$
+with $x'\leq x$ and $y'\leq y$.
+Let $A$ be the number of ways to choose $n$ blue points
+with distinct $x$-coordinates,
+and let $B$ be the number of ways to choose $n$ blue
+points with distinct $y$-coordinates.
+Prove that $A=B$.
+\end{mdframed}
+Let $a_x$ denote the number of blue points
+with a given $x$-coordinate.
+Define $b_y$ to be the number of blue points
+with a given $y$-coordinate.
+
+We actually claim that
+\begin{claim*}
+The multisets $\mathcal A \coloneqq \{ a_x \mid x \}$
+and $\mathcal B \coloneqq \{ b_y \mid y \}$ are equal.
+\end{claim*}
+\begin{proof}
+By induction on the number of red points.
+If there are no red points at all,
+then $\mathcal A = \mathcal B = \{1, \dots, n\}$.
+\begin{center}
+\begin{asy}
+size(5cm);
+draw( (1,5)--(1,2)--(4,2), lightgreen );
+for (int i=0; i<=6; ++i) {
+for (int j=0; j<=6-i; ++j) {
+dot( (i,j), blue+1.5 );
+}
+}
+dot( (0,0), red+3 );
+dot( (1,0), red+3 );
+dot( (2,0), red+3 );
+dot( (3,0), red+3 );
+dot( (0,1), red+3 );
+dot( (1,1), red+3 );
+dot( (0,2), red+3 );
+dot( (1,2), red+4 );
+dot( (0,3), red+3 );
+dot( (0,4), red+3 );
+draw(circle( (1,2), 0.2 ), red );
+\end{asy}
+\end{center}
+The proof consists of two main steps.
+First, suppose we color a single point $P = (x,y)$
+from blue to red (while preserving the condition).
+Before the coloring, we have $a_x = b_y = n-(x+y)$;
+afterwards $a_x = b_y = n-(x+y)-1$
+and no other numbers change, as desired.
+
+We also must show that this operation
+(repeatedly adding a single point $P$) reaches all
+possible shapes of red points.
+This is well-known as the red points form a Young tableaux;
+for example, one way is to add all the points with $x=0$
+first one by one, then all the points with $x=1$, and so on.
+So the induction implies the result.
+\end{proof}
+Finally, \[ A = \prod_{x=0}^{n-1} a_x = \prod_{y=0}^{n-1} b_y = B. \]
+\pagebreak

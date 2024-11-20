@@ -1,0 +1,20 @@
+\textsl{Available online at \url{https://aops.com/community/p2736375}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $a_2$, $a_3$, \dots, $a_n$ be positive reals with product $1$,
+where $n \ge 3$.
+Show that
+\[ (1+a_2)^2 (1+a_3)^3 \dots (1+a_n)^n > n^n. \]
+\end{mdframed}
+Try the dumbest thing possible: by AM-GM,
+\begin{align*}
+  (1 + a_2)^2 &\ge 2^2 a_2 \\
+  (1 + a_3)^3 = \left( \half + \half + a_3 \right)^3 &\ge \frac{3^3}{2^2} a_3 \\
+  (1 + a_4)^4 = \left( \frac13 + \frac13 + \frac13 + a_4 \right)^4
+    &\ge \frac{4^4}{3^3} a_4 \\
+  &\vdotswithin=
+\end{align*}
+and so on.
+Multiplying these all gives the result.
+The inequality is strict since it's not possible
+that $a_2 = 1$, $a_3 = \half$, et cetera.
+\pagebreak

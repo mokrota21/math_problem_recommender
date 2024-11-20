@@ -1,0 +1,64 @@
+\textsl{Available online at \url{https://aops.com/community/p10626524}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Find all integers $n \geq 3$ for which
+there exist real numbers $a_1, a_2, \dots, a_n$ satisfying
+\[ a_i a_{i+1} +1 = a_{i+2} \]
+for $i=1,2, \dots, n$, where indices are taken modulo $n$.
+\end{mdframed}
+The answer is $3 \mid n$,
+achieved by $(-1,-1,2,-1,-1,2,\dots)$.
+We present two solutions.
+
+\paragraph{First solution by inequalities.}
+We compute $a_i a_{i+1} a_{i+2}$ in two ways:
+\begin{align*}
+  a_i a_{i+1} a_{i+2} &= [a_{i+2}-1]a_{i+2} = a_{i+2}^2 - a_{i+2} \\
+  &= a_i [a_{i+3}-1] = a_i a_{i+3} - a_i.
+\end{align*}
+Cyclically summing $a_{i+2}^2 - a_{i+2} = a_i a_{i+3} - a_i$ then gives
+\[ \sum_i a_{i+2}^2 = \sum_i a_i a_{i+3}
+  \iff \sum_{\text{cyc}} \left( a_i - a_{i+3} \right)^2 = 0.  \]
+This means for inequality reasons the sequence is $3$-periodic.
+Since the sequence is clearly not $1$-periodic,
+as $x^2 + 1 = x$ has no real solutions.
+Thus $3 \mid n$.
+
+\paragraph{Second solution by sign counting.}
+Extend $a_n$ to be a periodic sequence.
+The idea is to look at the signs, and show the sequence
+of the signs must be $--+$ repeated.
+This takes several steps:
+\begin{itemize}
+  \ii The pattern $---$ is impossible. Obvious, since the third term should be $ > 1$.
+  \ii The pattern $++$ is impossible. Then the sequence becomes strictly increasing,
+  hence may not be periodic.
+  \ii Zeros are impossible. If $a_1 = 0$, then $a_2 = 0$, $a_3 > 0$, $a_4 > 0$,
+  which gives the impossible $++$.
+  \ii The pattern $--+-+$ is impossible.
+  Compute the terms:
+  \begin{align*}
+    a_1 &= -x < 0 \\
+    a_2 &= -y < 0 \\
+    a_3 &= 1 + xy > 1 \\
+    a_4 &= 1 - y(1+xy) < 0 \\
+    a_5 &= 1 + (1+xy)(1-y(1+xy)) < 1.
+  \end{align*}
+  But now
+  \[ a_6 - a_5 = (1 + a_5 a_4) - (1 + a_3 a_4)
+    = a_4 (a_5 - a_3) > 0 \]
+  since $a_5 > 1 > a_3$.
+  This means we have the impossible $++$ pattern.
+  \ii The infinite alternating pattern $-+-+-+-+\dots$ is impossible.
+  Note that
+  \[ a_1 a_2 + 1 = a_3 < 0 < a_4 = 1 + a_2 a_3 \implies a_1 < a_3 \]
+  since $a_2 > 0$;
+  extending this we get $a_1 < a_3 < a_5 < \dots$
+  which contradicts the periodicity.
+\end{itemize}
+We finally collate the logic of sign patterns.
+Since the pattern is not alternating, there must be $--$ somewhere.
+Afterwards must be $+$, and then after that must be two minus signs
+(since one minus sign is impossible by impossibility of $--+-+$
+and $---$ is also forbidden);
+thus we get the periodic $--+$ as desired.
+\pagebreak

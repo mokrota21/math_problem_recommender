@@ -1,0 +1,118 @@
+\textsl{Available online at \url{https://aops.com/community/p1936916}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $P$ be a point interior to triangle $ABC$ (with $CA \neq CB$).
+The lines $AP$, $BP$ and $CP$ meet again its circumcircle $\Gamma$
+at $K$, $L$, $M$, respectively.
+The tangent line at $C$ to $\Gamma$ meets the line $AB$ at $S$.
+Show that from $SC = SP$ follows $MK = ML$.
+\end{mdframed}
+We present two solutions using harmonic bundles.
+
+\paragraph{First solution (Evan Chen).}
+Let $N$ be the antipode of $M$, and let $NP$ meet $\Gamma$ again at $D$.
+Focus only on $CDMN$ for now (ignoring the condition).
+Then $C$ and $D$ are feet of altitudes in $\triangle MNP$;
+it is well-known that the circumcircle of $\triangle CDP$
+is orthogonal to $\Gamma$
+(passing through the orthocenter of $\triangle MPN$).
+\begin{center}
+\begin{asy}
+pair N = dir(100);
+pair M = -N;
+pair L = dir(150);
+pair K = N*N/L;
+pair C = dir(122);
+pair D = conj(C);
+pair P = extension(D, N, M, C);
+pair A = -K+2*foot(origin, K, P);
+pair B = -L+2*foot(origin, L, P);
+pair S = circumcenter(C, P, D);
+filldraw(unitcircle, opacity(0.1)+lightgreen, heavygreen);
+draw(C--S--D, heavygreen);
+draw(A--C--B--S, lightblue);
+draw(A--D--B, lightblue);
+filldraw(L--N--K--M--cycle, opacity(0.1)+lightred, lightred);
+draw(M--N, lightred);
+draw(K--L, lightred);
+draw(A--K, dashed+orange);
+draw(B--L, dashed+orange);
+draw(C--M, dashed+orange);
+draw(D--N, dashed+orange);
+draw(S--P, heavygreen);
+draw(arc(S,abs(S-D),-60,60), heavygreen);
+
+dot("$N$", N, dir(N));
+dot("$M$", M, dir(M));
+dot("$L$", L, dir(170));
+dot("$K$", K, dir(K));
+dot("$C$", C, dir(80));
+dot("$D$", D, dir(280));
+dot("$P$", P, dir(P));
+dot("$A$", A, dir(220));
+dot("$B$", B, dir(B));
+dot("$S$", S, dir(S));
+
+/* TSQ Source:
+
+N = dir 100
+M = -N
+L = dir 150 R170
+K = N*N/L
+C = dir 122 R80
+D = conj(C) R280
+P = extension D N M C
+A = -K+2*foot origin K P R220
+B = -L+2*foot origin L P
+S = circumcenter C P D
+unitcircle 0.1 lightgreen / heavygreen
+C--S--D heavygreen
+A--C--B--S lightblue
+A--D--B lightblue
+L--N--K--M--cycle 0.1 lightred / lightred
+M--N lightred
+K--L lightred
+A--K dashed orange
+B--L dashed orange
+C--M dashed orange
+D--N dashed orange
+S--P heavygreen
+!draw(arc(S,abs(S-D),-60,60), heavygreen);
+
+*/
+\end{asy}
+\end{center}
+Now, we are given that point $S$ is such that $\ol{SC}$
+is tangent to $\Gamma$, and $SC = SP$.
+It follows that $S$ is the circumcenter of $\triangle CDP$,
+and hence $\ol{SC}$ and $\ol{SD}$ are tangents to $\Gamma$.
+
+Then $-1 = (AB;CD) \overset{P}{=} (KL;MN)$.
+Since $\ol{MN}$ is a diameter, this implies $MK = ML$.
+
+\begin{remark*}
+  I think it's more natural to come up with
+  this solution in reverse.
+  Namely, suppose we define the points the other way:
+  let $\ol{SD}$ be the other tangent, so $(AB;CD) = -1$.
+  Then project through $P$ to get $(KL;MN) = -1$,
+  where $N$ is the second intersection of $\ol{DP}$.
+  However, if $ML = MK$ then $KMLN$ must be a kite.
+  Thus one can recover the solution in reverse.
+\end{remark*}
+
+\paragraph{Second solution (Sebastian Jeon).}
+We have \[ SP^2 = SC^2 = SA \cdot SB
+  \implies
+  \dang SPA = \dang PBA = \dang LBA = \dang LKA = \dang LKP \]
+(the latter half is Reim's theorem).
+Therefore $\ol{SP}$ and $\ol{LK}$ are \emph{parallel}.
+
+Now, let $\ol{SP}$ meet $\Gamma$ again at $X$ and $Y$,
+and let $Q$ be the antipode of $P$ on $(S)$.
+Then
+\[ SP^2 = SQ^2 = SX \cdot SY
+  \implies (PQ;XY) = -1 \implies \angle QCP = 90\dg \]
+that $\ol{CP}$ bisects $\angle XCY$.
+Since $\ol{XY} \parallel \ol{KL}$,
+it follows $\ol{CP}$ bisects to $\angle LCK$ too.
+\pagebreak

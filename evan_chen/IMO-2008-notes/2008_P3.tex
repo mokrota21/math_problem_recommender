@@ -1,0 +1,37 @@
+\textsl{Available online at \url{https://aops.com/community/p1190546}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Prove that there are infinitely many positive integers $n$
+such that $n^2+1$ has a prime factor greater than $2n + \sqrt{2n}$.
+\end{mdframed}
+The idea is to pick the prime $p$ first!
+
+Select any large prime $p \ge 2013$,
+and let $h = \left\lceil \sqrt p \right\rceil$.
+We will try to find an $n$ such that
+\[ n \le \frac 12 (p-h) \quad \text{and} \quad p \mid n^2+1. \]
+This implies $p \ge 2n+\sqrt{p}$
+which is enough to ensure $p \ge 2n + \sqrt{2n}$.
+
+Assume $p \equiv 1 \pmod 8$ henceforth.
+Then there exists some $\frac 12 p < x < p$
+such that $x^2 \equiv -1 \pmod p$,
+and we set \[ x = \frac{p+1}{2} + t. \]
+\begin{claim*}
+  We have $t \ge \frac{h-1}{2}$ and hence may take $n = p-x$.
+\end{claim*}
+\begin{proof}
+Assume for contradiction this is false; then
+\begin{align*}
+  0 &\equiv  4(x^2+1) \pmod{p} \\
+  &= \left( p+1+2t \right)^2 + 4 \\
+  &\equiv (2t+1)^2 + 4 \pmod{p} \\
+  &< h^2+4
+\end{align*}
+So we have that $(2t+1)^2+4$ is positive and divisible by $p$,
+yet at most $\left\lceil \sqrt{p} \right\rceil^2 + 4 < 2p$.
+So it must be the case that $(2t+1)^2+4 = p$,
+but this has no solutions modulo $8$.
+\end{proof}
+\pagebreak
+
+\section{Solutions to Day 2}

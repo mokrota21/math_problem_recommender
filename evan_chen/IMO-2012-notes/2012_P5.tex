@@ -1,0 +1,56 @@
+\textsl{Available online at \url{https://aops.com/community/p2737425}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $ABC$ be a triangle with $\angle BCA = 90\dg$,
+and let $D$ be the foot of the altitude from $C$.
+Let $X$ be a point in the interior of the segment $CD$.
+Let $K$ be the point on the segment $AX$ such that $BK = BC$.
+Similarly, let $L$ be the point on the segment $BX$ such that $AL = AC$.
+Let $M = \ol{AL} \cap \ol{BK}$.
+Prove that $MK = ML$.
+\end{mdframed}
+Let $\omega_A$ and $\omega_B$ be the circles through $C$
+centered at $A$ and $B$;
+extend rays $AK$ and $BL$ to hit $\omega_B$ and $\omega_A$ again at $K^\ast$, $L^\ast$.
+By radical center $X$,
+we have $KLK^{\ast}L^{\ast}$ is cyclic,
+say with circumcircle $\omega$.
+
+\begin{center}
+  \begin{asy}
+    size(10cm);
+    pair A = Drawing("A", dir(180), dir(225));
+    pair B = Drawing("B", dir(0), dir(-45));
+    pair C = Drawing("C", dir(140), 1.2*dir(110));
+    draw(A--B--C--cycle);
+    pair D = Drawing("D", (C.x,0), dir(-90));
+    pair X = Drawing("X", 0.55*C+0.45*D, dir(-80));
+
+    pair K = Drawing("K", IP(A--X, Drawing(CP(B,C))), dir(-50));
+    pair L = Drawing("L", IP(B--X, Drawing(CP(A,C))), dir(240));
+    pair K1= Drawing("K^\ast", 2*foot(B,A,K)-K, dir(60));
+    pair L1= Drawing("L^\ast", 2*foot(A,B,L)-L, dir(L-B));
+    draw(A--K1);
+    draw(B--L1);
+    draw(circumcircle(K,L,K1), dashed);
+
+    /*
+    pair O = Drawing("O", circumcenter(K,L,K1), dir(90));
+    draw(A--O--B, dotted);
+    draw(O--D, dotted);
+    */
+
+    pair M = Drawing("M", extension(A,L,B,K), dir(270));
+    draw(A--L, dotted);
+    draw(B--K, dotted);
+
+    clip((1.2,-0.4)--(1.2,2.3)--(-2.4,2.3)--(-2.4,-0.4)--cycle);
+  \end{asy}
+\end{center}
+
+By orthogonality of $(A)$ and $(B)$ we find that
+$\ol{AL}$, $\ol{AL^\ast}$,
+$\ol{BK}$, $\ol{BK^\ast}$ are tangents to $\omega$
+(in particular, $KLK^{\ast}L^{\ast}$ is harmonic).
+In particular $\ol{MK}$ and $\ol{ML}$ are tangents to $\omega$,
+so $MK = ML$.
+\pagebreak

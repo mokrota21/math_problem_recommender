@@ -1,0 +1,138 @@
+\textsl{Available online at \url{https://aops.com/community/p5720174}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $ABC$ be an acute triangle with orthocenter $H$,
+and let $W$ be a point on the side $\ol{BC}$, between $B$ and $C$.
+The points $M$ and $N$ are the feet of the altitudes
+drawn from $B$ and $C$, respectively.
+Suppose $\omega_1$ is the circumcircle of triangle $BWN$
+and $X$ is a point such that $\ol{WX}$ is a diameter of $\omega_1$.
+Similarly, $\omega_2$ is the circumcircle of triangle $CWM$
+and $Y$ is a point such that $\ol{WY}$ is a diameter of $\omega_2$.
+Show that the points $X$, $Y$, and $H$ are collinear.
+\end{mdframed}
+We present two solutions, an elementary one
+and then an advanced one by moving points.
+
+\paragraph{First solution, classical.}
+Let $P$ be the second intersection of $\omega_1$ and $\omega_2$;
+this is the Miquel point, so $P$ also lies on the circumcircle of $AMN$,
+which is the circle with diameter $\ol{AH}$.
+
+\begin{center}
+\begin{asy}
+pair A = dir(110);
+pair B = dir(210);
+pair C = dir(330);
+pair M = foot(B, A, C);
+pair N = foot(C, A, B);
+draw(B--M);
+draw(C--N);
+filldraw(A--B--C--cycle, opacity(0.1)+lightcyan, lightblue);
+draw(B--M, lightblue);
+draw(C--N, lightblue);
+pair W = 0.55*C+0.45*B;
+pair H = A+B+C;
+pair P = foot(H, A, W);
+pair X = extension(P, H, B, B+A-H);
+pair Y = extension(P, H, C, C+A-H);
+filldraw(circumcircle(B, N, W), opacity(0.1)+lightgreen, heavygreen);
+filldraw(circumcircle(C, M, W), opacity(0.1)+lightgreen, heavygreen);
+draw(X--W--Y, heavygreen);
+draw(B--X, lightblue);
+draw(C--Y, lightblue);
+
+draw(X--Y, red+dotted);
+draw(A--W, red+dotted);
+draw(circumcircle(A, M, N), red+dashed);
+
+dot("$A$", A, dir(A));
+dot("$B$", B, dir(B));
+dot("$C$", C, dir(C));
+dot("$M$", M, dir(M));
+dot("$N$", N, dir(N));
+dot("$W$", W, dir(W));
+dot("$H$", H, dir(H));
+dot("$P$", P, dir(P));
+dot("$X$", X, dir(X));
+dot("$Y$", Y, dir(Y));
+
+/* TSQ Source:
+
+A = dir 110
+B = dir 210
+C = dir 330
+M = foot B A C
+N = foot C A B
+B--M
+C--N
+A--B--C--cycle 0.1 lightcyan / lightblue
+B--M lightblue
+C--N lightblue
+W = 0.55*C+0.45*B
+H = A+B+C
+P = foot H A W
+X = extension P H B B+A-H
+Y = extension P H C C+A-H
+circumcircle B N W 0.1 lightgreen / heavygreen
+circumcircle C M W 0.1 lightgreen / heavygreen
+X--W--Y heavygreen
+B--X lightblue
+C--Y lightblue
+
+X--Y red dotted
+A--W red dotted
+circumcircle A M N red dashed
+
+*/
+\end{asy}
+\end{center}
+
+We now contend:
+\begin{claim*}
+  Points $P$, $H$, $X$ collinear.
+  (Similarly, points $P$, $H$, $Y$ are collinear.)
+\end{claim*}
+\begin{proof}
+  [Proof using power of a point]
+  By radical axis on $BNMC$, $\omega_1$, $\omega_2$,
+  it follows that $A$, $P$, $W$ are collinear.
+  We know that $\angle APH = 90\dg$, and also
+  $\angle XPW = 90\dg$ by construction.
+  Thus $P$, $H$, $X$ are collinear.
+\end{proof}
+\begin{proof}
+  [Proof using angle chasing]
+  This is essentially Reim's theorem:
+  \[ \dang NPH = \dang NAH = \dang BAH = \dang ABX = \dang NBX = \dang NPX \]
+  as desired.
+  Alternatively, one may prove $A$, $P$, $W$ are collinear by
+  $\dang NPA = \dang NMA = \dang NMC = \dang NBC = \dang NBW = \dang NPW$.
+\end{proof}
+
+\paragraph{Second solution, by moving points.}
+Fix $\triangle ABC$ and vary $W$.
+Let $\infty$ be the point at infinity perpendicular to $\ol{BC}$
+for brevity.
+
+By spiral similarity, the point $X$ moves linearly on $\ol{B\infty}$
+as $W$ varies linearly on $\ol{BC}$.
+Similarly, so does $Y$.
+So in other words, the map \[ X \mapsto W \mapsto Y \]
+is linear.
+However, the map \[ X \mapsto Y' \coloneqq \ol{XH} \cap \ol{C\infty} \]
+is linear too.
+
+To show that these maps are the same,
+it suffices to check it thus at two points.
+\begin{itemize}
+  \ii When $W = B$, the circle $(BNW)$
+  degenerates to the circle through $B$ tangent to $\ol{BC}$,
+  and $X = \ol{CN} \cap \ol{B\infty}$.
+  We have $Y = Y' = C$.
+  \ii When $W = C$, the result is analogous.
+  \ii Although we don't need to do so,
+  it's also easy to check the result if $W$
+  is the foot from $A$
+  since then $XHWB$ and $YHWC$ are rectangles.
+\end{itemize}
+\pagebreak

@@ -1,0 +1,72 @@
+\textsl{Available online at \url{https://aops.com/community/p281572}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $a_1$, $a_2$, \dots\ be a sequence of integers
+with infinitely many positive and negative terms.
+Suppose that for every positive integer $n$
+the numbers $a_1$, $a_2$, \dots, $a_n$
+leave $n$ different remainders upon division by $n$.
+Prove that every integer occurs exactly once in the sequence.
+\end{mdframed}
+Obviously every integer appears at most once
+(otherwise take $n$ much larger).
+So we will prove every integer appears at least once.
+
+\begin{claim*}
+  For any $i < j$ we have $\left\lvert a_i-a_j \right\rvert < j$.
+\end{claim*}
+\begin{proof}
+  Otherwise, let $n = \left\lvert a_i-a_j \right\rvert \neq 0$.
+  Then $i,j \in [1,n]$ and $a_i \equiv a_j \pmod n$,
+  contradiction.
+\end{proof}
+
+\begin{claim*}
+  For any $n$, the set $\{a_1, \dots, a_n\}$
+  is of the form $\{k+1, \dots, k+n\}$ for some integer $k$.
+\end{claim*}
+\begin{proof}
+  By induction, with the base case $n=1$ being vacuous.
+  For the inductive step,
+  suppose $\{a_1, \dots, a_n\} = \{k+1, \dots, k+n\}$ are determined.
+  Then
+  \[ a_{n+1} \equiv k \pmod{n+1}. \]
+  Moreover by the earlier claim we have
+  \[ \left\lvert a_{n+1}-a_1 \right\rvert < n+1. \]
+  From this we deduce $a_{n+1} \in \{k, k+n+1\}$ as desired.
+\end{proof}
+
+This gives us actually a complete description
+of all possible sequences satisfying the hypothesis:
+choose any value of $a_1$ to start.
+Then, for the $n$th term,
+the set $S = \{a_1, \dots, a_{n-1}\}$
+is (in some order) a set of $n-1$ consecutive integers.
+We then let $a_n = \max S + 1$ or $a_n = \min S - 1$.
+A picture of six possible starting terms is shown below.
+
+\begin{center}
+\begin{asy}
+size(6cm);
+defaultpen(fontsize(9pt));
+int[] a = {0, 6, 5, 7, 4, 3, 8};
+for (int i=1; i<=9; ++i) {
+  draw((0,i)--(7.2,i), grey+dotted);
+}
+for (int i=1; i<=7; ++i) {
+  draw((i,0)--(i,9.2), grey+dotted);
+  if (i <= 5) draw((i,a[i])--(i+1,a[i+1]), red+dashed);
+  if (i <= 6) dot("$"+(string) a[i] + "$", (i, a[i]), dir(15), red);
+  if (i <= 6) label("$a_{" + (string) i + "}$", (i, 0), dir(-90));
+}
+draw( (-0.2,0)--(7.2,0), black );
+draw( (0,-0.2)--(0,9.2), black );
+\end{asy}
+\end{center}
+
+
+Finally, we observe that the condition that
+the sequence has infinitely many positive and negative terms
+(which we have not used until now)
+implies it is unbounded above and below.
+Thus it must contain every integer.
+\pagebreak

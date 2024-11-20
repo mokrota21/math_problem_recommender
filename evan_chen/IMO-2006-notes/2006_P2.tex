@@ -1,0 +1,54 @@
+\textsl{Available online at \url{https://aops.com/community/p571973}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $P$ be a regular $2006$-gon.
+A diagonal is called \emph{good} if its endpoints
+divide the boundary of $P$ into two parts,
+each composed of an odd number of sides of $P$.
+The sides of $P$ are also called \emph{good}.
+Suppose $P$ has been dissected into triangles by $2003$ diagonals,
+no two of which have a common point in the interior of $P$.
+Find the maximum number of isosceles triangles having two good
+sides that could appear in such a configuration.
+\end{mdframed}
+Call a triangle with the desired property \emph{special}.
+We prove the maximum number of special triangles is $1003$,
+achieved by paring up the sides of the polygon.
+
+We present two solutions for the upper bound.
+Both of them rely first on two geometric notes:
+\begin{itemize}
+  \ii In a special triangle, the good sides are congruent
+  (and not congruent to the third side).
+  \ii No two isosceles triangles share a good side.
+\end{itemize}
+
+\textbf{Solution using bijections}:
+Call a good diagonal \textbf{special} if it's part of a special triangle;
+special diagonals come in pairs.
+Consider the minor arc cut out by a special diagonal $d$,
+which has an odd number of sides.
+Since special diagonals come in pairs,
+one can associate to $d$ a side of the polygon
+not covered by any special diagonals from $d$.
+Hence there are at most $2006$ special diagonals,
+so at most $1003$ special triangles.
+
+\textbf{Solution using graph theory}:
+Consider the tree $T$ formed by the $2004$
+triangles in the dissection, with obvious adjacency.
+Let $F$ be the forest obtained by deleting
+any edge corresponding to a good diagonal.
+Then the resulting graph $F$ has only degrees $1$ and $3$,
+with special triangles only occurring at degree $1$ vertices.
+
+If there are $k$ good diagonals drawn,
+then this forest consists of $k+1$ trees.
+A tree with $n_i$ vertices ($0 \le i \le k$)
+consequently has $\frac{n_i+2}{2}$ leaves.
+However by the earlier remark at least $k$ leaves
+don't give special triangles
+(one on each side of a special diagonal);
+so the number of leaves that do give good triangles is at most
+\[ -k + \sum_i \frac{n_i+2}{2}
+  = -k + \frac{2004 + 2(k+1)}{2} = 1003. \]
+\pagebreak

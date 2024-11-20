@@ -1,0 +1,786 @@
+% © Evan Chen
+% Downloaded from https://web.evanchen.cc/
+
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evan}
+\ihead{\footnotesize\textbf{\thetitle}}
+\ohead{\footnotesize\href{http://web.evanchen.cc}{\ttfamily web.evanchen.cc},
+    updated \today}
+\title{IMO 2017 Solution Notes}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This is a compilation of solutions
+for the 2017 IMO.
+The ideas of the solution are a mix of my own work,
+the solutions provided by the competition organizers,
+and solutions found by the community.
+However, all the writing is maintained by me.
+
+These notes will tend to be a bit more advanced and terse than the ``official''
+solutions from the organizers.
+In particular, if a theorem or technique is not known to beginners
+but is still considered ``standard'', then I often prefer to
+use this theory anyways, rather than try to work around or conceal it.
+For example, in geometry problems I typically use directed angles
+without further comment, rather than awkwardly work around configuration issues.
+Similarly, sentences like ``let $\mathbb{R}$ denote the set of real numbers''
+are typically omitted entirely.
+
+Corrections and comments are welcome!
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\addtocounter{section}{-1}
+\section{Problems}
+\begin{enumerate}[\bfseries 1.]
+\item %% Problem 1
+For each integer $a_0 > 1$, define the sequence $a_0$, $a_1$, $a_2$,
+\dots, by
+\[
+  a_{n+1} =
+  \begin{cases}
+    \sqrt{a_n} & \text{if $\sqrt{a_n}$ is an integer,} \\
+    a_n + 3 & \text{otherwise}
+  \end{cases}
+\]
+for each $n \ge 0$.
+Determine all values of $a_0$ for which there is a number $A$
+such that $a_n = A$ for infinitely many values of $n$.
+
+\item %% Problem 2
+Solve over $\RR$ the functional equation
+\[ f\left( f(x)f(y) \right) + f(x+y) = f(xy). \]
+
+\item %% Problem 3
+A hunter and an invisible rabbit play a game in the plane.
+The rabbit and hunter start at points $A_0 = B_0$.
+In the $n$th round of the game ($n \ge 1$), three things occur in order:
+\begin{enumerate}[(i)]
+  \ii The rabbit moves invisibly from $A_{n-1}$ to a point $A_n$
+  such that $A_{n-1} A_n = 1$.
+  \ii The hunter has a tracking device (e.g.\ dog)
+  which reports an approximate location $P_n$ of the rabbit,
+  such that $P_n A_n \le 1$.
+  \ii The hunter moves visibly from $B_{n-1}$ to a point $B_n$
+  such that $B_{n-1} B_n = 1$.
+\end{enumerate}
+Let $N = 10^9$. Can the hunter guarantee that $A_N B_N < 100$?
+
+\item %% Problem 4
+Let $R$ and $S$ be different points on a circle $\Omega$
+such that $\ol{RS}$ is not a diameter.
+Let $\ell$ be the tangent line to $\Omega$ at $R$.
+Point $T$ is such that $S$ is the midpoint of $\ol{RT}$.
+Point $J$ is chosen on minor arc $RS$ of $\Omega$ so that
+the circumcircle $\Gamma$ of triangle $JST$ intersects $\ell$
+at two distinct points.
+Let $A$ be the common point of $\Gamma$ and $\ell$ closer to $R$.
+Line $AJ$ meets $\Omega$ again at $K$.
+Prove that line $KT$ is tangent to $\Gamma$.
+
+\item %% Problem 5
+Fix $N \ge 1$. A collection of $N(N+1)$ soccer players of distinct
+heights stand in a row.
+Sir Alex Song wishes to remove $N(N-1)$ players from this row
+to obtain a new row of $2N$ players in which the following $N$
+conditions hold: no one stands between the two tallest players,
+no one stands between the third and fourth tallest players, \dots,
+no one stands between the two shortest players.
+Prove that this is possible.
+
+\item %% Problem 6
+An \emph{irreducible lattice point} is an ordered pair
+of integers $(x,y)$ satisfying $\gcd(x,y) = 1$.
+Prove that if $S$ is a finite set of irreducible lattice points
+then there exists a nonconstant
+\emph{homogeneous} polynomial $f(x,y)$ with integer coefficients
+such that $f(x,y)=1$ for each $(x,y) \in S$.
+
+\end{enumerate}
+\pagebreak
+
+\section{Solutions to Day 1}
+\subsection{IMO 2017/1, proposed by Stephan Wagner (SAF)}
+\textsl{Available online at \url{https://aops.com/community/p8633268}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+For each integer $a_0 > 1$, define the sequence $a_0$, $a_1$, $a_2$,
+\dots, by
+\[
+  a_{n+1} =
+  \begin{cases}
+    \sqrt{a_n} & \text{if $\sqrt{a_n}$ is an integer,} \\
+    a_n + 3 & \text{otherwise}
+  \end{cases}
+\]
+for each $n \ge 0$.
+Determine all values of $a_0$ for which there is a number $A$
+such that $a_n = A$ for infinitely many values of $n$.
+\end{mdframed}
+The answer is $a_0 \equiv 0 \pmod 3$ only.
+
+\paragraph{First solution.}
+We first compute the minimal term of any sequence, periodic or not.
+
+\begin{lemma*}
+  Let $c$ be the smallest term in $a_n$.
+  Then either $c \equiv 2 \pmod 3$ or $c = 3$.
+\end{lemma*}
+\begin{proof}
+  Clearly $c \neq 1, 4$.
+  Assume $c \not\equiv 2 \pmod 3$.
+  As $c$ is not itself a square,
+  the next perfect square after $c$ in the sequence
+  is one of $\left( \left\lfloor \sqrt c \right\rfloor + 1\right)^2$,
+  $\left( \left\lfloor \sqrt c \right\rfloor + 2\right)^2$,
+  or $\left( \left\lfloor \sqrt c \right\rfloor + 3\right)^2$.
+  So by minimality we require
+  \[ c \le \left\lfloor \sqrt c \right\rfloor + 3 \le \sqrt c + 3 \]
+  which requires $c \le 5$.
+  Since $c \neq 1,2,4,5$ we conclude $c = 3$.
+\end{proof}
+
+Now we split the problem into two cases:
+
+\begin{itemize}
+\ii If $a_0 \equiv 0 \pmod 3$, then all terms of the sequence are $0 \pmod 3$.
+The smallest term of the sequence is thus $3$ by the lemma
+and we have \[ 3 \to 6 \to 9 \to 3 \]
+so $A = 3$ works fine.
+
+\ii If $a_0 \not\equiv 0 \pmod 3$,
+then no term of the sequence is $0 \pmod 3$,
+and so in particular $3$ does not appear in the sequence.
+So the smallest term of the sequence is $2 \pmod 3$ by lemma.
+But since no squares are $2 \pmod 3$,
+the sequence $a_k$ grows without bound forever after,
+so no such $A$ can exist.
+\end{itemize}
+
+Hence the answer is $a_0 \equiv 0 \pmod 3$ only.
+
+\paragraph{Second solution.}
+We clean up the argument by proving the following lemma.
+\begin{lemma*}
+  If $a_n$ is constant modulo $3$ and not $2 \pmod 3$,
+  then $a_n$ must eventually cycle in the form
+  $(m, m+3, m+6, \dots, m^2)$,
+  with no squares inside the cycle except $m^2$.
+\end{lemma*}
+\begin{proof}
+  Observe that $a_n$ must eventually hit a square, say $a_k = c^2$;
+  the next term is $a_{k+1} = c$.
+  Then it is forever impossible to exceed $c^2$ again,
+  by what is essentially discrete intermediate value theorem.
+  Indeed, suppose $a_\ell > c^2$ and take $\ell > k$ minimal
+  (in particular $a_{\ell} \neq \sqrt{a_{\ell-1}}$).
+  % We have $a_{\ell-1} \neq a_{\ell}^2$, since otherwise.
+  Thus $a_{\ell-1} \in \{c^2-2, c^2-1, c^2\}$
+  and thus for modulo $3$ reasons we have $a_{\ell-1} = c^2$.
+  But that should imply $a_\ell = c < c^2$, contradiction.
+
+  We therefore conclude $\sup \{a_n, a_{n+1}, \dots \}$ is a
+  decreasing integer sequence in $n$.
+  It must eventually stabilize, say at $m^2$.
+  Now we can't hit a square between $m$ and $m^2$,
+  and so we are done.
+\end{proof}
+
+Now, we contend that all $a_0 \equiv 0 \pmod 3$ work.
+Indeed, for such $a_0$ we have $a_n \equiv 0 \pmod 3$ for all $n$,
+so the lemma implies that the problem statement is valid.
+
+Next, we observe that if $a_i \equiv 2 \pmod 3$,
+then the sequence grows without bound afterwards
+since no squares are $2 \pmod 3$.
+In particular, if $a_0 \equiv 2 \pmod 3$ the answer is no.
+
+Finally, we claim that if $a_0 \equiv 1 \pmod 3$,
+then eventually some term is $2 \pmod 3$.
+Assume for contradiction this is not so;
+then $a_n \equiv 1 \pmod 3$ must hold forever,
+and the lemma applies to give us a cycle of the form
+$(m, m+3, \dots, m^2)$ where $m \equiv 1 \pmod 3$.
+In particular $m \ge 4$ and
+\[ m \le (m-2)^2 < m^2 \]
+but $(m-2)^2 \equiv 1 \pmod 3$ which is a contradiction.
+\pagebreak
+
+\subsection{IMO 2017/2, proposed by Dorlir Ahmeti (ALB)}
+\textsl{Available online at \url{https://aops.com/community/p8633190}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Solve over $\RR$ the functional equation
+\[ f\left( f(x)f(y) \right) + f(x+y) = f(xy). \]
+\end{mdframed}
+The only solutions are $f(x) = 0$, $f(x) = x-1$ and $f(x)=1-x$,
+which clearly work.
+
+Note that
+\begin{itemize}
+  \ii If $f$ is a solution, so is $-f$.
+  \ii Moreover, if $f(0)=0$ then setting $y=0$ gives $f\equiv0$.
+  So henceforth we assume $f(0)>0$.
+\end{itemize}
+
+\begin{claim*}
+  We have $f(z) = 0 \iff z =1$.
+  Also, $f(0)=1$ and $f(1)=0$.
+\end{claim*}
+\begin{proof}
+  For the forwards direction, if $f(z)=0$ and $z \neq 1$
+  one may put $(x,y) = \left( z, z(z-1)\inv \right)$
+  (so that $x+y=xy$) we deduce $f(0) = 0$
+  which is a contradiction.
+
+  For the reverse, $f(f(0)^2)=0$ by setting $x=y=0$,
+  and use the previous part.
+  We also conclude $f(1) = 0$, $f(0) = 1$.
+\end{proof}
+
+\begin{claim*}
+  If $f$ is injective, we are done.
+\end{claim*}
+\begin{proof}
+  Setting $y=0$ in the original equation
+  gives $f(f(x)) = 1-f(x)$.
+  We apply this three times on the expression $f^3(x)$:
+  \[ f(1-f(x)) = f(f(f(x))) = 1 - f(f(x)) = f(x). \]
+  Hence $1-f(x) = x$ or $f(x) = 1-x$.
+\end{proof}
+\begin{remark*}
+  The result $f(f(x)) + f(x) = 1$ also implies that surjectivity
+  would solve the problem.
+\end{remark*}
+
+\begin{claim*}
+  $f$ is injective.
+\end{claim*}
+\begin{proof}
+  Setting $y=1$ in the original equation gives
+  $f(x+1) = f(x)-1$, and by induction
+  \begin{equation}
+    f(x+n) = f(x)-n.
+    \label{eq:linshift}
+  \end{equation}
+  Assume now $f(a) = f(b)$.
+  By using \eqref{eq:linshift} we may shift $a$ and $b$
+  to be large enough that
+  we may find $x$ and $y$ obeying $x+y=a+1$, $xy=b$.
+  Setting these gives
+  \begin{align*}
+    f(f(x)f(y)) &= f(xy) - f(x+y) = f(b) - f(a+1) \\
+    &= f(b) + 1 - f(a) = 1
+  \end{align*}
+  from which we conclude
+  \[ f\left( f(x)f(y) + 1 \right) = 0. \]
+  Hence by the first claim
+  we have $f(x)f(y) + 1 = 1$, so $f(x)f(y) = 0$.
+  Applying the first claim again gives $1 \in \{x,y\}$.
+  But that implies $a=b$.
+\end{proof}
+
+\begin{remark*}
+  Jessica Wan points out that
+  for any $a \neq b$, at least one of $a^2 > 4(b-1)$
+  and $b^2 > 4(a-1)$ is true.
+  So shifting via \eqref{eq:linshift}
+  is actually unnecessary for this proof.
+\end{remark*}
+
+\begin{remark*}
+  One can solve the problem over $\QQ$
+  using only \eqref{eq:linshift} and the easy parts.
+  Indeed, that already implies $f(n) = 1-n$ for all $n$.
+  Now we induct to show $f(p/q) = 1-p/q$ for all $0 < p < q$ (on $q$).
+  By choosing $x = 1+p/q$, $y = 1+q/p$,
+  we cause $xy = x+y$,
+  and hence $0 = f\left( f(1+p/q)f(1+q/p) \right)$
+  or $1 = f(1+p/q)f(1+q/p)$.
+
+  By induction we compute $f(1+q/p)$
+  and this gives $f(p/q+1) = f(p/q)-1$.
+\end{remark*}
+\pagebreak
+
+\subsection{IMO 2017/3, proposed by Gerhard Woeginger (AUT)}
+\textsl{Available online at \url{https://aops.com/community/p8633324}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+A hunter and an invisible rabbit play a game in the plane.
+The rabbit and hunter start at points $A_0 = B_0$.
+In the $n$th round of the game ($n \ge 1$), three things occur in order:
+\begin{enumerate}[(i)]
+  \ii The rabbit moves invisibly from $A_{n-1}$ to a point $A_n$
+  such that $A_{n-1} A_n = 1$.
+  \ii The hunter has a tracking device (e.g.\ dog)
+  which reports an approximate location $P_n$ of the rabbit,
+  such that $P_n A_n \le 1$.
+  \ii The hunter moves visibly from $B_{n-1}$ to a point $B_n$
+  such that $B_{n-1} B_n = 1$.
+\end{enumerate}
+Let $N = 10^9$. Can the hunter guarantee that $A_N B_N < 100$?
+\end{mdframed}
+No, the hunter cannot.
+We will show how to increase the distance in the following way:
+
+\begin{claim*}
+  Suppose the rabbit is at a distance $d \ge 1$ from the hunter
+  at some point in time.
+  Then it can increase its distance to at least
+  $\sqrt{d^2+\half}$ in $4d$ steps
+  regardless of what the hunter already knows about the rabbit.
+\end{claim*}
+\begin{proof}
+  Consider a positive integer $n > d$, to be chosen later.
+  Let the hunter start at $B$ and the rabbit at $A$, as shown.
+  Let $\ell$ denote line $AB$.
+
+  Now, we may assume the rabbit reveals its location $A$,
+  so that all previous information becomes irrelevant.
+
+  The rabbit chooses two points $X$ and $Y$ symmetric about $\ell$
+  such that $XY = 2$ and $AX = AY = n$, as shown.
+  The rabbit can then hop to either $X$ or $Y$,
+  pinging the point $P_n$ on the $\ell$ each time.
+  This takes $n$ hops.
+  \begin{center}
+  \begin{asy}
+    pair A = 2*dir(0);
+    pair B = dir(180);
+    pair H = B+4*A;
+    pair X = (2+63**0.5,1);
+    pair Y = (2+63**0.5,-1);
+
+    draw(B--H, blue);
+    draw(A--X, red, EndArrow(TeXHead), Margins);
+    draw(A--Y, red, EndArrow(TeXHead), Margins);
+    pair M = midpoint(X--Y);
+    draw(H--M, dotted);
+    draw(X--Y, dotted);
+    draw(X--H--Y, dashed+heavygreen);
+
+    dot("$A$", A, dir(270));
+    label("rabbit", A, dir(90));
+    dot("$B$", B, dir(270));
+    label("hunter", B, dir(90));
+    dot("$H$", H, dir(270));
+    dot("$X$", X, dir(X));
+    dot("$Y$", Y, dir(Y));
+    dot("$M$", M, dir(M));
+    label("$n$", A--X, dir(90), red);
+    label("$n$", A--Y, dir(-90), red);
+
+    /* TSQ Source:
+
+    A = 2*dir(0) R270
+    B = dir(180) R270
+    H = B+4*A R270
+    X = (2+63**0.5,1)
+    Y = (2+63**0.5,-1)
+
+    B--H blue
+    X--A--Y red
+    M = midpoint X--Y
+    H--M dotted
+    X--Y dotted
+    X--H--Y dashed heavygreen
+
+    */
+  \end{asy}
+  \end{center}
+
+  Now among all points $H$ the hunter can go to,
+  $\min \max \{HX, HY\}$ is clearly minimized with $H \in \ell$ by symmetry.
+  So the hunter moves to a point $H$ such that $BH = n$ as well.
+  In that case the new distance is $HX = HY$.
+
+  We now compute
+  \begin{align*}
+    HX^2 &= 1 + HM^2 = 1 + \left( \sqrt{AX^2-1}-AH \right)^2 \\
+    &= 1 + \left( \sqrt{n^2-1}-(n-d) \right)^2 \\
+    &\ge 1 + \left( \left( n-\frac1n \right) - (n-d) \right)^2 \\
+    &= 1 + (d-1/n)^2
+  \end{align*}
+  which exceeds $d^2 + \half$ whenever $n \ge 4d$.
+\end{proof}
+
+In particular we can always take $n = 400$ even very crudely;
+applying the lemma $2 \cdot 100^2$ times,
+this gives a bound of $400 \cdot 2 \cdot 100^2 < 10^9$, as desired.
+
+\begin{remark*}
+  The step of revealing the location of the rabbit seems
+  critical because as far as I am aware it is basically
+  impossible to keep track of ping locations in the problem.
+\end{remark*}
+
+\begin{remark*}
+  Reasons to believe the answer is ``no'':
+  the $10^9$ constant,
+  and also that ``follow the last ping'' is losing for the hunter.
+\end{remark*}
+
+\begin{remark*}
+  I think there are roughly two ways you can approach the problem
+  once you recognize the answer.
+
+  \begin{enumerate}[(i)]
+    \ii Try and control the location of the pings
+    \ii Abandon the notion of controlling possible locations,
+    and try to increase the distance by a little bit,
+    say from $d$ to $\sqrt{d^2+\varepsilon}$.
+    This involves revealing the location of the rabbit
+    before each iteration of several jumps.
+  \end{enumerate}
+  I think it's clear that the difficulty of
+  my approach is realizing that (ii) is possible;
+  once you do, the two-point approach is more or less the only one possible.
+
+  My opinion is that (ii) is not that magical;
+  as I said it was the first idea I had.
+  But I am biased, because when I test-solved the problem
+  at the IMO it was called ``C5'' and not ``IMO3'';
+  this effectively told me it was unlikely that the official solution
+  was along the lines of (i),
+  because otherwise it would have been placed much later in the shortlist.
+\end{remark*}
+\pagebreak
+
+\section{Solutions to Day 2}
+\subsection{IMO 2017/4, proposed by Charles Leytem (LUX)}
+\textsl{Available online at \url{https://aops.com/community/p8639236}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $R$ and $S$ be different points on a circle $\Omega$
+such that $\ol{RS}$ is not a diameter.
+Let $\ell$ be the tangent line to $\Omega$ at $R$.
+Point $T$ is such that $S$ is the midpoint of $\ol{RT}$.
+Point $J$ is chosen on minor arc $RS$ of $\Omega$ so that
+the circumcircle $\Gamma$ of triangle $JST$ intersects $\ell$
+at two distinct points.
+Let $A$ be the common point of $\Gamma$ and $\ell$ closer to $R$.
+Line $AJ$ meets $\Omega$ again at $K$.
+Prove that line $KT$ is tangent to $\Gamma$.
+\end{mdframed}
+\paragraph{First solution (elementary).}
+First, note
+\[ \dang RKA = \dang RKJ = \dang RSJ = \dang TSJ = \dang TAJ = \dang TAK \]
+so $\ol{RK} \parallel \ol{AT}$.
+Now,
+\begin{itemize}
+  \ii $\ol{RA}$ is tangent at $R$ iff $\triangle KRS \sim \triangle RTA$ (oppositely),
+  because both equate to $-\dang RKS = \dang SKR = \dang SRA = \dang TRA$.
+  \ii Similarly, $\ol{TK}$ is tangent at $T$
+  iff $\triangle KTS \sim \triangle ART$.
+  \ii The two similarities are equivalent because $RS = ST$
+  the SAS gives $KR \cdot TA = RS \cdot RT = TS \cdot TR$.
+\end{itemize}
+
+\begin{center}
+\begin{asy}
+size(10cm);
+pair T = dir(100);
+pair S = dir(165);
+pair R = 2*S-T;
+pair E = dir(0);
+pair A = IP(unitcircle, R--(R+100*E));
+pair B = OP(unitcircle, R--(R+100*E));
+pair K = extension(T, T+dir(90)*T, R, R+T-A);
+draw(R--B, blue);
+
+filldraw(unitcircle, opacity(0.05)+lightcyan, blue);
+filldraw(circumcircle(R, S, K), opacity(0.05)+paleblue, heavycyan);
+pair J = -A+2*foot(origin, A, K);
+
+
+filldraw(K--R--A--T--cycle, opacity(0.1)+lightred, red);
+draw(A--K, orange);
+draw(R--T, orange);
+
+// invert
+
+pair Js = extension(T, T+A-B, R, J);
+pair Ks = extension(T, T+A-B, R, K);
+draw(K--Ks, heavygreen);
+draw(Ks--Js, heavygreen);
+draw(Js--B, dotted+blue);
+draw(R--Js, dotted+blue);
+
+dot("$T$", T, dir(T));
+dot("$S$", S, dir(355));
+dot("$R$", R, dir(270));
+dot("$A$", A, dir(225));
+dot("$B$", B, dir(315));
+dot("$K$", K, dir(200));
+dot("$J$", J, dir(180));
+dot("$J^\ast$", Js, dir(Js));
+dot("$K^\ast$", Ks, dir(Ks));
+
+/* TSQ Source:
+
+!size(10cm);
+T = dir 100
+S = dir 165 R355
+R = 2*S-T R270
+E := dir 0
+A = IP unitcircle R--(R+100*E) R225
+B = OP unitcircle R--(R+100*E) R315
+K = extension T T+dir(90)*T R R+T-A R200
+T--K blue
+R--B blue
+
+unitcircle 0.05 lightcyan / blue
+circumcircle R S K 0.05 paleblue / heavycyan
+J = -A+2*foot origin A K R180
+
+
+K--R--A--T--cycle 0.1 lightred / red
+A--K orange
+R--T orange
+
+// invert
+
+J* = extension T T+A-B R J
+K* = extension T T+A-B R K
+K--Ks heavygreen
+Ks--Js heavygreen
+Js--B dotted blue
+R--Js dotted blue
+
+*/
+\end{asy}
+\end{center}
+
+\begin{remark*}
+  The problem is actually symmetric with respect to two circles;
+  $\ol{RA}$ is tangent at $R$ if and only if $\ol{TK}$ at $T$.
+\end{remark*}
+
+\paragraph{Second solution (inversion).}
+Consider an inversion at $R$ fixing the circumcircle $\Gamma$ of $TSJA$.
+Then:
+\begin{itemize}
+  \ii $T$ and $S$ swap,
+  \ii $A$ and $B$ swap, where $B$ is the second intersection
+  of $\ell$ with $\Gamma$.
+  \ii Circle $\Omega$ inverts to the line through $T$
+  parallel to $\ol{RAB}$, call it $\ell$.
+  \ii $J^\ast$ is the second intersection of $\ell$ with $\Gamma$.
+  \ii $K^\ast$ is the intersection of $\ell$ with the circumcircle
+  of $RBJ^\ast$; this implies $RK^\ast J^\ast B$ is an isosceles trapezoid.
+  In particular, one reads $\ol{RK^\ast} \parallel \ol{AT}$ from this,
+  hence $RK^\ast TA$ is a parallelogram.
+\end{itemize}
+Thus we wish to show the circumcircle of $RSK^\ast$ is tangent to $\Gamma$.
+But that follows from the final parallelogram observed:
+$S$ is the center of the parallelogram since it is the midpoint of the diagonal.
+
+\begin{remark*}
+  This also implies $RKTB$ is cyclic, from $\ol{K^\ast SA}$ collinear.
+  Moreover, quadrilateral $KK^\ast TS$ is cyclic (by power of a point);
+  this leads to the second official solution to the problem.
+\end{remark*}
+\pagebreak
+
+\subsection{IMO 2017/5, proposed by Grigory Chelnokov (RUS)}
+\textsl{Available online at \url{https://aops.com/community/p8639240}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Fix $N \ge 1$. A collection of $N(N+1)$ soccer players of distinct
+heights stand in a row.
+Sir Alex Song wishes to remove $N(N-1)$ players from this row
+to obtain a new row of $2N$ players in which the following $N$
+conditions hold: no one stands between the two tallest players,
+no one stands between the third and fourth tallest players, \dots,
+no one stands between the two shortest players.
+Prove that this is possible.
+\end{mdframed}
+Some opening remarks:
+\textbf{location and height are symmetric to each other},
+if one thinks about this problem as permutation pattern avoidance.
+So while officially there are multiple solutions,
+they are basically isomorphic to one another,
+and I am not aware of any solution otherwise.
+
+\begin{center}
+\begin{asy}
+size(10cm);
+int[] ys = {7,11,2,5,0,10,9,0,12,1,6,8,4,3};
+real r = 0.2;
+
+fill(box((-1, 8.5),(4,4.5)), opacity(0.3)+lightred);
+fill(box((-1,12.5),(7,8.5)), opacity(0.3)+lightcyan);
+fill(box((-1, 4.5),(14,0.5)), opacity(0.3)+lightgreen);
+fill(box((4, 8.5),(14,4.5)), opacity(0.3)+grey);
+fill(box((7,12.5),(14,8.5)), opacity(0.3)+grey);
+
+draw( (-1,4.5)--(14,4.5) );
+draw( (-1,8.5)--(14,8.5) );
+
+pair P(int x) {
+  return (x,ys[x]);
+}
+
+pair O;
+int y;
+pen c;
+for (int x=0; x<=13; ++x) {
+  y = ys[x];
+  if (y==0) continue;
+  O = (x, y);
+  if ((y==7) || (y==5)) c = red;
+  else if ((y==10) || (y==9)) c = blue;
+  else if ((y==1) || (y==4)) c = heavygreen;
+  else c = grey;
+  filldraw(circle(O, r), c, black+1);
+  label("$"+(string)y+"$", O+(r,0), 0.5*dir(0), c);
+}
+
+pen border = black+2;
+pen dash = dotted+1;
+draw( (4,12.5)--(4,0.5), dash );
+draw( (7,12.5)--(7,0.5), dash );
+
+path bracket(real x0, real x1) {
+  return (x0,0.7)--(x0,0.5)--(x1,0.5)--(x1,0.7);
+}
+draw(bracket(-0.8,3.8), border);
+draw(bracket(4.2,6.8), border);
+draw(bracket(7.2,13.8), border);
+\end{asy}
+\end{center}
+
+Take a partition of $N$ groups in order by height:
+$G_1 = \{1,\dots,N+1\}$, $G_2 = \{N+2, \dots, 2N+2\}$, and so on.
+We will pick two people from each group $G_k$.
+
+Scan from the left until we find two people in the same group $G_k$.
+Delete all people scanned and also everyone in $G_k$.
+All the groups still have at least $N$ people left,
+so we can induct down with the non-deleted people;
+the chosen pair is to the far left anyways.
+
+\begin{remark*}
+  The important bit is to \emph{scan by position}
+  but \emph{group by height},
+  and moreover not change the groups as we scan.
+  Dually, one can have a solution which scans by height
+  but groups by position.
+\end{remark*}
+\pagebreak
+
+\subsection{IMO 2017/6, proposed by John Berman (USA)}
+\textsl{Available online at \url{https://aops.com/community/p8639242}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+An \emph{irreducible lattice point} is an ordered pair
+of integers $(x,y)$ satisfying $\gcd(x,y) = 1$.
+Prove that if $S$ is a finite set of irreducible lattice points
+then there exists a nonconstant
+\emph{homogeneous} polynomial $f(x,y)$ with integer coefficients
+such that $f(x,y)=1$ for each $(x,y) \in S$.
+\end{mdframed}
+We present two solutions.
+
+\paragraph{First solution (Dan Carmon, Israel).}
+We prove the result by induction on $|S|$,
+with the base case being Bezout's Lemma ($n=1$).
+For the inductive step, suppose we want to add a given pair
+$(a_{m+1},b_{m+1})$ to $\left\{ (a_1, \dots, a_m), (b_1, \dots, b_m) \right\}$.
+\begin{claim*}
+  [Standard]
+  By a suitable linear transformation we may assume
+  \[ (a_{m+1},b_{m+1}) = (1,0). \]
+\end{claim*}
+\begin{proof}
+  [Outline of proof]
+  It would be sufficient to show there exists a $2 \times 2$ matrix
+  $T = \left[ \begin{smallmatrix} u & v \\ s & t \end{smallmatrix} \right]$
+  with integer entries such that $\det T = 1$ and
+  $T \cdot \left[ \begin{smallmatrix} a_{m+1} \\ b_{m+1} \end{smallmatrix} \right]
+  = \left[ \begin{smallmatrix} 1 \\ 0 \end{smallmatrix} \right]$.
+  Then we could apply $T$ to all the ordered pairs in $S$ (viewed as column vectors);
+  if $f$ was a polynomial that works on the transformed ordered pairs,
+  then $f(ux+vy, sx+ty)$ works for the original ordered pairs.
+  (Here, the condition that $\det T = 1$ ensures that $T\inv$ has integer entries,
+  and hence that $T$ maps irreducible lattice points to irreducible lattice points.)
+
+  To generate such a matrix $T$, choose
+  $T = \left[ \begin{smallmatrix} u & v  \\ -b_{m+1} & a_{m+1} \end{smallmatrix} \right]$
+  where $u$ and $v$ are chosen via B\'{e}zout lemma so that $ua_{m+1} + vb_{m+1} = 1$.
+  This matrix $T$ is rigged so that $\det T = 1$ and the leftmost column of $T\inv$ is
+  $\left[ \begin{smallmatrix} a_{m+1} \\ b_{m+1} \end{smallmatrix} \right]$.
+\end{proof}
+\begin{remark*}
+  This transformation claim is not necessary to proceed;
+  the solution below can be rewritten to avoid it with only cosmetic edits.
+  However, it makes things a bit easier to read.
+\end{remark*}
+
+Let $g(x,y)$ be a polynomial which works on the latter set.
+We claim we can choose the new polynomial $f$ of the form
+\[ f(x,y) = g(x,y)^{M} - C x^{\deg g \cdot M-m} \prod_{i=1}^m (b_i x - a_i y). \]
+where $C$ and $M$ are integer parameters we may adjust.
+
+Since $f(a_i, b_i) = 1$ by construction we just need
+\[ 1 = f(1,0) = g(1,0)^M - C \prod b_i. \]
+If $\prod b_i = 0$ we are done,
+since $b_i = 0 \implies a_i = \pm 1$ in that case
+and so $g(1, 0) = \pm 1$, thus take $M = 2$.
+So it suffices to prove:
+\begin{claim*}
+  We have $\gcd\left( g(1,0), b_i \right) = 1$ when $b_i \neq 0$.
+\end{claim*}
+\begin{proof}
+  Fix $i$. If $b_i = 0$ then $a_i = \pm 1$ and $g(\pm 1,0) = \pm 1$.
+  Otherwise know
+  \[ 1 = g(a_i, b_i) \equiv g(a_i, 0) \pmod{b_i} \]
+  and since the polynomial is homogeneous with $\gcd(a_i, b_i) = 1$
+  it follows $g(1,0) \not\equiv 0 \pmod{b_i}$ as well.
+\end{proof}
+Then take $M$ a large multiple of $\varphi(\prod |b_i|)$ and we're done.
+
+\paragraph{Second solution (Lagrange).}
+The main claim is that:
+\begin{claim*}
+  For every positive integer $N$,
+  there is a homogeneous polynomial $P(x,y)$ such that
+  $P(x,y) \equiv 1 \pmod N$ whenever $\gcd(x,y) = 1$.
+\end{claim*}
+(This claim is actually implied by the problem.)
+\begin{proof}
+  For $N = p^e$ a prime take $(x^{p-1} + y^{p-1})^{\varphi(N)}$
+  when $p$ is odd, and $(x^2+xy+y^2)^{\varphi(N)}$ for $p=2$.
+
+  Now, if $N$ is a product of primes,
+  we can collate coefficient by coefficient using the
+  Chinese remainder theorem.
+%  Now suppose $N = q_1 q_2 \dots q_k$ where $q_i$ are prime powers.
+%  Look at the polynomial $Q_i$ described above for $i=1, \dots, k$.
+%  Now \[ \frac{N}{q_i} Q_i(x,y) \equiv \frac{N}{q_i} \pmod{N} \]
+%  for all $x$ and $y$;
+%  so we can put together the polynomials $\frac{N}{q_i} Q_i$ by B\'{e}zout lemma.
+\end{proof}
+
+Let $S = \left\{ (a_i, b_i) \mid i=1, \dots, m \right\}$.
+We have the natural homogeneous ``Lagrange polynomials''
+\[ L_k(x,y) \coloneqq \prod_{i \neq k} (b_i x - a_i y) \]
+Now let
+\[ N \coloneqq \prod_k L_k(x_k, y_k) \]
+and take $P$ as in the claim.
+Then we can take a large power of $P$,
+and for each $i$ subtract an appropriate multiple of $L_i(x,y)$; that is, choose
+\[
+  f(x,y)
+  = P(x,y)^{C} - \sum_i L_i(x,y) \cdot Q_i(x,y)
+\]
+where $C$ is large enough that $C \deg P > \max_i \deg L_i$,
+and $Q_i(x,y)$ is any homogeneous polynomial of degree $C \deg P - \deg L_i$
+such that $L_k(x_k, y_k) Q_k(x_k, y_k) = \frac{P(x_k, y_k)^C - 1}{N} \cdot L_k(x_k, y_k)$
+(which is an integer).
+\pagebreak
+
+
+\end{document}

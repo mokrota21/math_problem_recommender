@@ -1,0 +1,487 @@
+% © Evan Chen
+% Downloaded from https://web.evanchen.cc/
+
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evan}
+\ihead{\footnotesize\textbf{\thetitle}}
+\ohead{\footnotesize\href{http://web.evanchen.cc}{\ttfamily web.evanchen.cc},
+    updated \today}
+\title{IMO 2012 Solution Notes}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This is a compilation of solutions
+for the 2012 IMO.
+The ideas of the solution are a mix of my own work,
+the solutions provided by the competition organizers,
+and solutions found by the community.
+However, all the writing is maintained by me.
+
+These notes will tend to be a bit more advanced and terse than the ``official''
+solutions from the organizers.
+In particular, if a theorem or technique is not known to beginners
+but is still considered ``standard'', then I often prefer to
+use this theory anyways, rather than try to work around or conceal it.
+For example, in geometry problems I typically use directed angles
+without further comment, rather than awkwardly work around configuration issues.
+Similarly, sentences like ``let $\mathbb{R}$ denote the set of real numbers''
+are typically omitted entirely.
+
+Corrections and comments are welcome!
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\addtocounter{section}{-1}
+\section{Problems}
+\begin{enumerate}[\bfseries 1.]
+\item %% Problem 1
+Let $ABC$ be a triangle and $J$ the center of the $A$-excircle.
+This excircle is tangent to the side $BC$ at $M$,
+and to the lines $AB$ and $AC$ at $K$ and $L$, respectively.
+The lines $LM$ and $BJ$ meet at $F$, and the lines $KM$ and $CJ$ meet at $G$.
+Let $S$ be the point of intersection of the lines $AF$ and $BC$,
+and let $T$ be the point of intersection of the lines $AG$ and $BC$.
+Prove that $M$ is the midpoint of $\ol{ST}$.
+
+\item %% Problem 2
+Let $a_2$, $a_3$, \dots, $a_n$ be positive reals with product $1$,
+where $n \ge 3$.
+Show that
+\[ (1+a_2)^2 (1+a_3)^3 \dots (1+a_n)^n > n^n. \]
+
+\item %% Problem 3
+The liar's guessing game is a game played between two players $A$ and $B$.
+The rules of the game depend on two fixed positive integers $k$ and $n$
+which are known to both players.
+
+At the start of the game $A$
+chooses integers $x$ and $N$ with $1 \le x \le N$.
+Player $A$ keeps $x$ secret, and truthfully tells $N$ to player $B$.
+Player $B$ now tries to obtain information about $x$
+by asking player $A$ questions as follows:
+each question consists of $B$ specifying an arbitrary set $S$
+of positive integers (possibly one specified in some previous question),
+and asking $A$ whether $x$ belongs to $S$.
+Player $B$ may ask as many questions as he wishes.
+After each question, player $A$ must immediately answer
+it with yes or no, but is allowed to lie as many times as she wants;
+the only restriction is that, among any $k+1$ consecutive answers,
+at least one answer must be truthful.
+
+After $B$ has asked as many questions as he wants,
+he must specify a set $X$ of at most $n$ positive integers.
+If $x$ belongs to $X$, then $B$ wins;
+otherwise, he loses.
+Prove that:
+
+\begin{enumerate}[(a)]
+  \ii If $n \ge 2^k$, then $B$ can guarantee a win.
+  \ii For all sufficiently large $k$,
+  there exists an integer $n \ge (1.99)^k$
+  such that $B$ cannot guarantee a win.
+\end{enumerate}
+
+\item %% Problem 4
+Find all functions $f \colon \ZZ \to \ZZ$ such that,
+for all integers $a$, $b$, $c$ that satisfy $a+b+c=0$,
+the following equality holds:
+\[ f(a)^2+f(b)^2+f(c)^2 = 2f(a)f(b)+2f(b)f(c)+2f(c)f(a). \]
+
+\item %% Problem 5
+Let $ABC$ be a triangle with $\angle BCA = 90\dg$,
+and let $D$ be the foot of the altitude from $C$.
+Let $X$ be a point in the interior of the segment $CD$.
+Let $K$ be the point on the segment $AX$ such that $BK = BC$.
+Similarly, let $L$ be the point on the segment $BX$ such that $AL = AC$.
+Let $M = \ol{AL} \cap \ol{BK}$.
+Prove that $MK = ML$.
+
+\item %% Problem 6
+Find all positive integers $n$
+for which there exist non-negative integers $a_1, a_2, \dots, a_n$
+such that
+\[ \frac{1}{2^{a_1}} + \frac{1}{2^{a_2}} + \dots + \frac{1}{2^{a_n}}
+  = \frac{1}{3^{a_1}} + \frac{2}{3^{a_2}} + \dots + \frac{n}{3^{a_n}}
+  = 1. \]
+
+\end{enumerate}
+\pagebreak
+
+\section{Solutions to Day 1}
+\subsection{IMO 2012/1, proposed by Evangelos Psychas (HEL)}
+\textsl{Available online at \url{https://aops.com/community/p2736397}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $ABC$ be a triangle and $J$ the center of the $A$-excircle.
+This excircle is tangent to the side $BC$ at $M$,
+and to the lines $AB$ and $AC$ at $K$ and $L$, respectively.
+The lines $LM$ and $BJ$ meet at $F$, and the lines $KM$ and $CJ$ meet at $G$.
+Let $S$ be the point of intersection of the lines $AF$ and $BC$,
+and let $T$ be the point of intersection of the lines $AG$ and $BC$.
+Prove that $M$ is the midpoint of $\ol{ST}$.
+\end{mdframed}
+We employ barycentric coordinates with reference $\triangle ABC$.
+As usual $a = BC$, $b = CA$, $c = AB$, $s = \half(a+b+c)$.
+
+It's obvious that $K = ( -(s-c): s : 0)$, $M = ( 0 : s-b : s-c)$.
+Also, $J = (-a : b : c)$.
+We then obtain
+\[ G = \left( -a: b : \frac{-as + (s-c)b}{s-b} \right). \]
+It follows that
+\[ T = \left( 0 : b : \frac{-as + (s-c)}{s-b} \right) = ( 0 : b(s-b) : b(s-c) - as). \]
+Normalizing, we see that $T = \left( 0, -\frac{b}{a}, 1 + \frac{b}{a} \right)$,
+from which we quickly obtain $MT = s$.
+Similarly, $MS = s$, so we're done.
+\pagebreak
+
+\subsection{IMO 2012/2, proposed by Angelo di Pasquale (AUS)}
+\textsl{Available online at \url{https://aops.com/community/p2736375}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $a_2$, $a_3$, \dots, $a_n$ be positive reals with product $1$,
+where $n \ge 3$.
+Show that
+\[ (1+a_2)^2 (1+a_3)^3 \dots (1+a_n)^n > n^n. \]
+\end{mdframed}
+Try the dumbest thing possible: by AM-GM,
+\begin{align*}
+  (1 + a_2)^2 &\ge 2^2 a_2 \\
+  (1 + a_3)^3 = \left( \half + \half + a_3 \right)^3 &\ge \frac{3^3}{2^2} a_3 \\
+  (1 + a_4)^4 = \left( \frac13 + \frac13 + \frac13 + a_4 \right)^4
+    &\ge \frac{4^4}{3^3} a_4 \\
+  &\vdotswithin=
+\end{align*}
+and so on.
+Multiplying these all gives the result.
+The inequality is strict since it's not possible
+that $a_2 = 1$, $a_3 = \half$, et cetera.
+\pagebreak
+
+\subsection{IMO 2012/3, proposed by David Arthur (CAN)}
+\textsl{Available online at \url{https://aops.com/community/p2736406}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+The liar's guessing game is a game played between two players $A$ and $B$.
+The rules of the game depend on two fixed positive integers $k$ and $n$
+which are known to both players.
+
+At the start of the game $A$
+chooses integers $x$ and $N$ with $1 \le x \le N$.
+Player $A$ keeps $x$ secret, and truthfully tells $N$ to player $B$.
+Player $B$ now tries to obtain information about $x$
+by asking player $A$ questions as follows:
+each question consists of $B$ specifying an arbitrary set $S$
+of positive integers (possibly one specified in some previous question),
+and asking $A$ whether $x$ belongs to $S$.
+Player $B$ may ask as many questions as he wishes.
+After each question, player $A$ must immediately answer
+it with yes or no, but is allowed to lie as many times as she wants;
+the only restriction is that, among any $k+1$ consecutive answers,
+at least one answer must be truthful.
+
+After $B$ has asked as many questions as he wants,
+he must specify a set $X$ of at most $n$ positive integers.
+If $x$ belongs to $X$, then $B$ wins;
+otherwise, he loses.
+Prove that:
+
+\begin{enumerate}[(a)]
+  \ii If $n \ge 2^k$, then $B$ can guarantee a win.
+  \ii For all sufficiently large $k$,
+  there exists an integer $n \ge (1.99)^k$
+  such that $B$ cannot guarantee a win.
+\end{enumerate}
+\end{mdframed}
+Call the players Alice and Bob.
+
+\textbf{Part (a)}: We prove the following.
+\begin{claim*}
+If $N \ge 2^k+1$, then in $2k+1$ questions,
+Bob can rule out some number in $\{1, \dots, 2^k+1\}$
+form being equal to $x$.
+\end{claim*}
+\begin{proof}
+  First, Bob asks the question $S_0 = \{ 2^k+1 \}$
+  until Alice answers ``yes''
+  or until Bob has asked $k+1$ questions.
+  If Alice answers ``no'' to all of these then Bob rules out $2^k+1$.
+  So let's assume Alice just said ``yes''.
+
+  Now let $T = \{1, \dots, 2^k\}$.
+  Then, he asks $k$-follow up questions $S_1$, \dots, $S_k$
+  defined as follows:
+  \begin{itemize}
+    \ii $S_1 = \{1, 3, 5, 7, \dots, 2^k-1\}$ consists of all numbers
+    in $T$ whose least significant digit in binary is $1$.
+    \ii $S_2 = \{ 2, 3, 6, 7, \dots, 2^k-2, 2^k-1\}$
+    consists of all numbers in $T$ whose second least
+    significant digit in binary is $1$.
+    \ii More generally $S_i$
+    consists of all numbers in $T$ whose $i$th least
+    significant digit in binary is $1$.
+  \end{itemize}
+  WLOG Alice answers these all as ``yes'' (the other cases are similar).
+  Among the last $k+1$ answers at least one must be truthful,
+  and the number $2^k$ (having zeros in all relevant digits)
+  does not appear in any of $S_0$, \dots, $S_k$ and is ruled out.
+\end{proof}
+Thus in this way Bob can repeatedly find non-possibilities for $x$
+(and then relabel the remaining candidates $1$, \dots, $N-1$)
+until he arrives at a set of at most $2^k$ numbers.
+
+\textbf{Part (b)}:
+It suffices to consider $n = \left\lceil 1.99^k \right\rceil$
+and $N = n+1$ for large $k$.
+At the $t$th step, Bob asks some question $S_t$;
+we phrase each of Alice's answers in the form ``$x \notin B_t$'',
+where $B_t$ is either $S_t$ or its complement.
+(You may think of these as ``bad sets'';
+the idea is to show we can avoid having any number
+appear in $k+1$ consecutive bad sets,
+preventing Bob from ruling out any numbers.)
+
+Main idea: for every number $1 \le x \le N$,
+at time step $t$ we define its \emph{weight}
+to be \[ w(x) = 1.998^e \]
+where $e$ is the largest number
+such that $x \in B_{t-1} \cap B_{t-2} \cap \dots \cap B_{t-e}$.
+
+\begin{claim*}
+  Alice can ensure the total weight never exceeds $1.998^{k+1}$
+  for large $k$.
+\end{claim*}
+
+\begin{proof}
+  Let $W_{t}$ denote the sum of weights after the $t$th question.
+  We have $W_0 = N < 1000n$.
+  We will prove inductively that $W_t < 1000n$ always.
+
+  At time $t$, Bob specifies a question $S_t$.
+  We have Alice choose $B_t$ as whichever of $S_t$ or $\ol{S_t}$
+  has lesser total weight, hence at most $W_t/2$.
+  The weights of for $B_t$ increase by a factor of $1.998$,
+  while the weights for $\ol{B_t}$ all reset to $1$.
+  So the new total weight after time $t$ is
+  \[ W_{t+1} \le 1.998 \cdot \frac{W_t}{2}
+    + \# \ol{B_t} \le 0.999 W_t + n. \]
+  Thus if $W_t < 1000n$ then $W_{t+1} < 1000n$.
+
+  To finish, note that
+  $1000n < 1000 \left( 1.99^k + 1 \right) < 1.998^{k+1}$
+  for $k$ large.
+\end{proof}
+
+In particular, no individual number can have weight $1.998^{k+1}$.
+Thus for every time step $t$ we have
+\[ B_t \cap B_{t+1} \cap \dots \cap B_{t+k} = \varnothing. \]
+Then once Bob stops, if he declares a set of $n$ positive integers,
+and $x$ is an integer Bob did not choose,
+then Alice's question history is consistent with $x$ being Alice's number,
+as among any $k+1$ consecutive answers
+she claimed that $x \in \ol{B_t}$ for some $t$ in that range.
+
+\begin{remark*}
+  [Motivation]
+  In our $B_t$ setup, let's think backwards.
+  The problem is equivalent to avoiding $e = k+1$ at any time step $t$,
+  for any number $x$.
+  That means
+  \begin{itemize}
+    \ii have at most two elements with $e = k$ at time $t-1$,
+    \ii thus have at most four elements with $e = k-1$ at time $t-2$,
+    \ii thus have at most eight elements with $e = k-2$ at time $t-3$,
+    \ii and so on.
+  \end{itemize}
+  We already exploited this in solving part (a).
+  In any case it's now natural to try letting $w(x) = 2^e$,
+  so that all the cases above sum to ``equally bad'' situations:
+  since $8 \cdot 2^{k-2} = 4 \cdot 2^{k-1} = 2 \cdot 2^k$, say.
+
+  However, we then get $W_{t+1} \le \half (2W_t) + n$,
+  which can increase without bound due to contributions
+  from numbers resetting to zero.
+  The way to fix this is to change the weight to $w(x) = 1.998^e$,
+  taking advantage of the little extra space we have
+  due to having $n \ge 1.99^k$ rather than $n \ge 2^k$.
+\end{remark*}
+\pagebreak
+
+\section{Solutions to Day 2}
+\subsection{IMO 2012/4, proposed by Liam Baker (SAF)}
+\textsl{Available online at \url{https://aops.com/community/p2737336}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Find all functions $f \colon \ZZ \to \ZZ$ such that,
+for all integers $a$, $b$, $c$ that satisfy $a+b+c=0$,
+the following equality holds:
+\[ f(a)^2+f(b)^2+f(c)^2 = 2f(a)f(b)+2f(b)f(c)+2f(c)f(a). \]
+\end{mdframed}
+Answer: for arbitrary $k \in \ZZ$, we have
+\begin{enumerate}[(i)]
+  \ii $f(x) = kx^2$,
+  \ii $f(x) = 0$ for even $x$, and $f(x) = k$ for odd $x$, and
+  \ii $f(x) = 0$ for $x \equiv 0 \pmod 4$,
+  $f(x) = k$ for odd $x$, and $f(x) = 4k$ for $x \equiv 2 \pmod 4$.
+\end{enumerate}
+These can be painfully seen to work.
+(It's more natural to think of these as
+$f(x) = x^2$, $f(x) = x^2 \pmod 4$, $f(x) = x^2 \pmod 8$,
+and multiples thereof.)
+
+Set $a=b=c=0$ to get $f(0)=0$.
+Then set $c=0$ to get $f(a) = f(-a)$, so $f$ is even.
+Now \[ f(a)^2 + f(b)^2 + f(a+b)^2
+= 2f(a+b)\left( f(a)+f(b) \right) + 2f(a)f(b) \]
+or
+\[ \left( f(a+b) - \left( f(a)+f(b) \right) \right)^2
+  = 4f(a)f(b). \]
+Hence $f(a)f(b)$ is a perfect square for all $a,b \in \ZZ$.
+So there exists a $\lambda$ such that $f(n) = \lambda g(n)^2$, where $g(n) \ge 0$.
+From here we recover
+\[ \boxed{g(a+b) = \pm g(a) \pm g(b)}. \]
+Also $g(0) = 0$.
+
+Let $k = g(1) \neq 0$.
+We now split into cases on $g(2)$:
+\begin{itemize}
+  \ii $g(2) = 0$. Put $b = 2$ in original to get
+  $g(a+2) = \pm g(a) = +g(a)$.
+  \ii $g(2) = 2k$. Cases on $g(4)$:
+  \begin{itemize}
+    \ii $g(4) = 0$, then we get
+    $(g(n))_{n\ge0} = (0,1,2,1,0,1,2,1,\dots)$.  This works.
+    \ii $g(4) = 4k$. This only happens when
+    $g(1) = k$, $g(2) = 2k$, $g(3) = 3k$, $g(4) = 4k$.
+    Then
+    \begin{itemize}
+      \ii $g(5) = \pm 3k \pm 2k = \pm 4k \pm k$.
+      \ii $g(6) = \pm4k \pm 2k = \pm5k \pm k$.
+      \ii \dots
+    \end{itemize}
+    and so by induction $g(n) = nk$.
+  \end{itemize}
+\end{itemize}
+\pagebreak
+
+\subsection{IMO 2012/5, proposed by Josef Tkadlec (CZE)}
+\textsl{Available online at \url{https://aops.com/community/p2737425}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $ABC$ be a triangle with $\angle BCA = 90\dg$,
+and let $D$ be the foot of the altitude from $C$.
+Let $X$ be a point in the interior of the segment $CD$.
+Let $K$ be the point on the segment $AX$ such that $BK = BC$.
+Similarly, let $L$ be the point on the segment $BX$ such that $AL = AC$.
+Let $M = \ol{AL} \cap \ol{BK}$.
+Prove that $MK = ML$.
+\end{mdframed}
+Let $\omega_A$ and $\omega_B$ be the circles through $C$
+centered at $A$ and $B$;
+extend rays $AK$ and $BL$ to hit $\omega_B$ and $\omega_A$ again at $K^\ast$, $L^\ast$.
+By radical center $X$,
+we have $KLK^{\ast}L^{\ast}$ is cyclic,
+say with circumcircle $\omega$.
+
+\begin{center}
+  \begin{asy}
+    size(10cm);
+    pair A = Drawing("A", dir(180), dir(225));
+    pair B = Drawing("B", dir(0), dir(-45));
+    pair C = Drawing("C", dir(140), 1.2*dir(110));
+    draw(A--B--C--cycle);
+    pair D = Drawing("D", (C.x,0), dir(-90));
+    pair X = Drawing("X", 0.55*C+0.45*D, dir(-80));
+
+    pair K = Drawing("K", IP(A--X, Drawing(CP(B,C))), dir(-50));
+    pair L = Drawing("L", IP(B--X, Drawing(CP(A,C))), dir(240));
+    pair K1= Drawing("K^\ast", 2*foot(B,A,K)-K, dir(60));
+    pair L1= Drawing("L^\ast", 2*foot(A,B,L)-L, dir(L-B));
+    draw(A--K1);
+    draw(B--L1);
+    draw(circumcircle(K,L,K1), dashed);
+
+    /*
+    pair O = Drawing("O", circumcenter(K,L,K1), dir(90));
+    draw(A--O--B, dotted);
+    draw(O--D, dotted);
+    */
+
+    pair M = Drawing("M", extension(A,L,B,K), dir(270));
+    draw(A--L, dotted);
+    draw(B--K, dotted);
+
+    clip((1.2,-0.4)--(1.2,2.3)--(-2.4,2.3)--(-2.4,-0.4)--cycle);
+  \end{asy}
+\end{center}
+
+By orthogonality of $(A)$ and $(B)$ we find that
+$\ol{AL}$, $\ol{AL^\ast}$,
+$\ol{BK}$, $\ol{BK^\ast}$ are tangents to $\omega$
+(in particular, $KLK^{\ast}L^{\ast}$ is harmonic).
+In particular $\ol{MK}$ and $\ol{ML}$ are tangents to $\omega$,
+so $MK = ML$.
+\pagebreak
+
+\subsection{IMO 2012/6, proposed by Dusan Djukic (SRB)}
+\textsl{Available online at \url{https://aops.com/community/p2737435}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Find all positive integers $n$
+for which there exist non-negative integers $a_1, a_2, \dots, a_n$
+such that
+\[ \frac{1}{2^{a_1}} + \frac{1}{2^{a_2}} + \dots + \frac{1}{2^{a_n}}
+  = \frac{1}{3^{a_1}} + \frac{2}{3^{a_2}} + \dots + \frac{n}{3^{a_n}}
+  = 1. \]
+\end{mdframed}
+The answer is $n \equiv 1, 2 \pmod 4$.
+To see these are necessary,
+note that taking the latter equation modulo $2$ gives
+\[ 1 = \frac{1}{3^{a_1}} + \frac{2}{3^{a_2}} + \dots + \frac{n}{3^{a_n}}
+\equiv 1 + 2 + .. + n \pmod 2. \]
+
+Now we prove these are sufficient.
+The following nice construction was posted on AOPS
+by the user \texttt{cfheolpiixn}.
+
+\begin{claim*}
+  If $n = 2k-1$ works then so does $n = 2k$.
+\end{claim*}
+\begin{proof}
+  Replace
+  \[ \frac{k}{3^r} = \frac{k}{3^{r+1}} + \frac{2k}{3^{r+1}}.
+    \qquad(\ast) \qedhere \]
+\end{proof}
+
+\begin{claim*}
+  If $n = 4k+2$ works then so does $n = 4k + 13$.
+\end{claim*}
+\begin{proof}
+  First use the identity
+  \[
+    \frac{k+2}{3^r} = \frac{k+2}{3^{r+2}}
+    + \frac{4k+ 3}{3^{r+3}}
+    + \frac{4k+ 5}{3^{r+3}}
+    + \frac{4k+ 7}{3^{r+3}}
+    + \frac{4k+ 9}{3^{r+3}}
+    + \frac{4k+11}{3^{r+3}}
+    + \frac{4k+13}{3^{r+3}}
+  \]
+  to fill in the odd numbers.
+  The even numbers can then be instantiated with $(\ast)$ too.
+\end{proof}
+
+Thus it suffices to construct base cases
+for $n = 1$, $n = 5$, $n = 9$.
+They are
+\begin{align*}
+  1 &= \frac{1}{3^0} \\
+  &= \frac{1}{3^2} + \frac{2}{3^2} + \frac{3}{3^2}
+    + \frac{4}{3^3} + \frac{5}{3^3} \\
+  &= \frac{1}{3^2} + \frac{2}{3^3} + \frac{3}{3^3}
+  + \frac{4}{3^3} + \frac{5}{3^3} + \frac{6}{3^4}
+  + \frac{7}{3^4} + \frac{8}{3^4} + \frac{9}{3^4}.
+\end{align*}
+\pagebreak
+
+
+\end{document}

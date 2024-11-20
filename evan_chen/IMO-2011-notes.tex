@@ -1,0 +1,535 @@
+% © Evan Chen
+% Downloaded from https://web.evanchen.cc/
+
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evan}
+\ihead{\footnotesize\textbf{\thetitle}}
+\ohead{\footnotesize\href{http://web.evanchen.cc}{\ttfamily web.evanchen.cc},
+    updated \today}
+\title{IMO 2011 Solution Notes}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This is a compilation of solutions
+for the 2011 IMO.
+The ideas of the solution are a mix of my own work,
+the solutions provided by the competition organizers,
+and solutions found by the community.
+However, all the writing is maintained by me.
+
+These notes will tend to be a bit more advanced and terse than the ``official''
+solutions from the organizers.
+In particular, if a theorem or technique is not known to beginners
+but is still considered ``standard'', then I often prefer to
+use this theory anyways, rather than try to work around or conceal it.
+For example, in geometry problems I typically use directed angles
+without further comment, rather than awkwardly work around configuration issues.
+Similarly, sentences like ``let $\mathbb{R}$ denote the set of real numbers''
+are typically omitted entirely.
+
+Corrections and comments are welcome!
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\addtocounter{section}{-1}
+\section{Problems}
+\begin{enumerate}[\bfseries 1.]
+\item %% Problem 1
+Given any set $A = \{a_1, a_2, a_3, a_4\}$ of four distinct
+positive integers, we denote the sum $a_1+a_2+a_3+a_4$ by $s_A$.
+Let $n_A$ denote the number of pairs $(i,j)$ with $1 \le i < j \le 4$
+for which $a_i + a_j$ divides $s_A$.
+Find all sets $A$ of four distinct positive integers which achieve
+the largest possible value of $n_A$.
+
+\item %% Problem 2
+Let $\mathcal{S}$ be a finite set of at least two points in the plane.
+Assume that no three points of $\mathcal S$ are collinear.
+A \emph{windmill} is a process that starts with a
+line $\ell$ going through a single point $P \in \mathcal S$.
+The line rotates clockwise about the \emph{pivot} $P$ until the first time
+that the line meets some other point belonging to $\mathcal S$.
+This point, $Q$, takes over as the new pivot,
+and the line now rotates clockwise about $Q$,
+until it next meets a point of $\mathcal S$.
+This process continues indefinitely.
+
+Show that we can choose a point $P$ in $\mathcal S$ and
+a line $\ell$ going through $P$ such that the resulting windmill
+uses each point of $\mathcal S$ as a pivot infinitely many times.
+
+\item %% Problem 3
+Let $f \colon \RR \to \RR$ be a real-valued function
+defined on the set of real numbers that satisfies
+\[ f(x+y) \leq yf(x) + f(f(x))\]
+for all real numbers $x$ and $y$.
+Prove that $f(x) = 0$ for all $x \leq 0$.
+
+\item %% Problem 4
+Let $n > 0$ be an integer.
+We are given a balance and $n$ weights of weight $2^0$, $2^1$, \dots, $2^{n-1}$.
+We are to place each of the $n$ weights on the balance, one after another,
+in such a way that the right pan is never heavier than the left pan.
+At each step we choose one of the weights
+that has not yet been placed on the balance,
+and place it on either the left pan or the right pan,
+until all of the weights have been placed.
+Determine the number of ways in which this can be done.
+
+\item %% Problem 5
+Let $f \colon \ZZ \to \ZZ_{>0}$ be a function such that
+$f(m-n) \mid f(m) - f(n)$ for $m,n \in \ZZ$.
+Prove that if $m,n \in \ZZ$ satisfy $f(m) \le f(n)$
+then $f(m) \mid f(n)$.
+
+\item %% Problem 6
+Let $ABC$ be an acute triangle with circumcircle $\Gamma$.
+Let $\ell$ be a tangent line to $\Gamma$, and let $\ell_a$, $\ell_b$, $\ell_c$ be the lines obtained
+by reflecting $\ell$ in the lines $BC$, $CA$, and $AB$, respectively.
+Show that the circumcircle of the triangle determined by the lines $\ell_a$, $\ell_b$, and $\ell_c$
+is tangent to the circle $\Gamma$.
+
+\end{enumerate}
+\pagebreak
+
+\section{Solutions to Day 1}
+\subsection{IMO 2011/1, proposed by Fernando Campos (MEX)}
+\textsl{Available online at \url{https://aops.com/community/p2363530}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Given any set $A = \{a_1, a_2, a_3, a_4\}$ of four distinct
+positive integers, we denote the sum $a_1+a_2+a_3+a_4$ by $s_A$.
+Let $n_A$ denote the number of pairs $(i,j)$ with $1 \le i < j \le 4$
+for which $a_i + a_j$ divides $s_A$.
+Find all sets $A$ of four distinct positive integers which achieve
+the largest possible value of $n_A$.
+\end{mdframed}
+There are two curves of solutions,
+namely $\{x,5x,7x,11x\}$ and $\{x,11x,19x,29x\}$, for any positive integer $x$,
+achieving $n_A = 4$ (easy to check).
+We'll show that $n_A \le 4$ and equality holds only in one of the curves.
+
+Let $A = \{a < b < c < d\}$.
+\begin{claim*}
+  We have $n_A \le 4$ with equality iff
+  \[ a+b \mid c+d, \quad a+c \mid b+d, \quad a+d = b+c. \]
+\end{claim*}
+\begin{proof}
+  Note $a+b \mid s_A \iff a+b \mid c+d$ etc.
+  Now $c+d \nmid a+b$ and $b+d \nmid a+c$ for size reasons, so we already have $n_A \le 4$;
+  moreover $a+d \mid b+c$ and $b+c \mid a+d$ if and only if $a+d = b+c$.
+\end{proof}
+
+We now show the equality curve is the one above.
+\[ a+c  \mid b+d \iff a+c \mid -a+2b+c \iff a+c \mid 2(b-a). \]
+Since $a+c > |b-a|$, so we must have $a+c=2(b-a)$.
+So we now have
+\begin{align*}
+  c &= 2b-3a \\
+  d &= b+c-a = 3b+c-4a.
+\end{align*}
+The last condition is
+\[ a+b \mid c+d = 5b-7a \iff a+b \mid 12a. \]
+Now, let $x = \gcd(a,b)$.
+The expressions for $c$ and $d$ above imply that
+$x \mid c,d$ so we may scale down so that $x = 1$.
+Then $\gcd(a+b,a) = \gcd(a,b) = 1$ and so $a+b \mid 12$.
+
+We have $c > b$, so $3a < b$.
+The only pairs $(a,b)$ with $3a < 2b$, $\gcd(a,b) = 1$ and $a+b \mid 12$
+are $(a,b) \in \left\{ (1,5), (1,11) \right\}$ which give the solutions earlier.
+\pagebreak
+
+\subsection{IMO 2011/2, proposed by Geoff Smith (UNK)}
+\textsl{Available online at \url{https://aops.com/community/p2363537}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $\mathcal{S}$ be a finite set of at least two points in the plane.
+Assume that no three points of $\mathcal S$ are collinear.
+A \emph{windmill} is a process that starts with a
+line $\ell$ going through a single point $P \in \mathcal S$.
+The line rotates clockwise about the \emph{pivot} $P$ until the first time
+that the line meets some other point belonging to $\mathcal S$.
+This point, $Q$, takes over as the new pivot,
+and the line now rotates clockwise about $Q$,
+until it next meets a point of $\mathcal S$.
+This process continues indefinitely.
+
+Show that we can choose a point $P$ in $\mathcal S$ and
+a line $\ell$ going through $P$ such that the resulting windmill
+uses each point of $\mathcal S$ as a pivot infinitely many times.
+\end{mdframed}
+Orient $\ell$ in some direction,
+and color the plane such that its left half is red
+and right half is blue.
+The critical observation is that:
+\begin{claim*}
+  The number of points on the red side of $\ell$ does not change,
+  nor does the number of points on the blue side
+  (except at a moment when $\ell$ contains two points).
+\end{claim*}
+
+Thus, if $|\mathcal S| = n+1$,
+it suffices to pick the initial configuration
+so that there are $\left\lfloor n/2 \right\rfloor$
+red and $\left\lceil n/2 \right\rceil$ blue points.
+Then when the line $\ell$ does a full $180\dg$ rotation,
+the red and blue sides ``switch'',
+so the windmill has passed through every point.
+
+(See official shortlist for verbose write-up;
+this is deliberately short to make a point.)
+\pagebreak
+
+\subsection{IMO 2011/3, proposed by Igor Voronovich, BLR}
+\textsl{Available online at \url{https://aops.com/community/p2363539}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $f \colon \RR \to \RR$ be a real-valued function
+defined on the set of real numbers that satisfies
+\[ f(x+y) \leq yf(x) + f(f(x))\]
+for all real numbers $x$ and $y$.
+Prove that $f(x) = 0$ for all $x \leq 0$.
+\end{mdframed}
+We begin by rewriting the given as
+\[ f(z) \le (z-x)f(x) + f(f(x)) \quad
+  \forall x,z \in \RR \qquad (\heartsuit) \]
+(which is better anyways since control over inputs to $f$
+is more valuable).
+We start by eliminating the double $f$:
+let $z = f(w)$ to get
+\[ f(f(w)) \le (f(w)-x)f(x) + f(f(x)) \]
+and then use the \emph{symmetry trick} to write
+\[ f(f(x)) \le (f(x)-w)f(w) + f(f(w)) \]
+so that when we sum we get
+\[ wf(w) + xf(x) \le 2f(x)f(w). \]
+
+%(We remark now that if we set $w = 0$,
+%we find that $xf(x) \le 2f(x)f(0)$ for all $x$;
+%since we know $f(0)$ should be zero, this is pretty good.)
+
+Next we use \emph{cancellation trick}:
+set $w = 2f(x)$ in the above to get
+\[ xf(x) \le 0 \quad \forall x \in \RR. \qquad (\spadesuit) \]
+
+\begin{claim*}
+  For every $p \in \RR$, we have $f(p) \le 0$.
+\end{claim*}
+\begin{proof}
+  Assume $f(p) > 0$ for some $p \in \RR$.
+  Then for any negative number $z$,
+  \[ 0 \overset{(\spadesuit)}{\le} f(z)
+    \overset{(\heartsuit)}{\le} (z-p)f(p) + f(f(p)). \]
+  which is false if we let $z \to -\infty$.
+\end{proof}
+
+Together with $(\spadesuit)$ we derive $f(x) = 0$ for $x < 0$.
+Finally, letting $x$ and $z$ be any negative numbers
+in $(\heartsuit)$, we get $f(0) \ge 0$, so $f(0) = 0$ too.
+\begin{remark*}
+  As another corollary of the claim, $f(f(x)) = 0$ for all $x$.
+\end{remark*}
+\begin{remark*}
+  A nontrivial example of a working $f$
+  is to take
+  \[ f(x) = \begin{cases}
+      -\exp(\exp(\exp(x))) & x > 0 \\
+      0 & x \le 0.
+    \end{cases} \]
+  or some other negative function growing rapidly in absolute value
+  for $x > 0$.
+\end{remark*}
+\pagebreak
+
+\section{Solutions to Day 2}
+\subsection{IMO 2011/4, proposed by Morteza Saghafian (IRN)}
+\textsl{Available online at \url{https://aops.com/community/p2365036}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $n > 0$ be an integer.
+We are given a balance and $n$ weights of weight $2^0$, $2^1$, \dots, $2^{n-1}$.
+We are to place each of the $n$ weights on the balance, one after another,
+in such a way that the right pan is never heavier than the left pan.
+At each step we choose one of the weights
+that has not yet been placed on the balance,
+and place it on either the left pan or the right pan,
+until all of the weights have been placed.
+Determine the number of ways in which this can be done.
+\end{mdframed}
+The answer is $a_n = (2n-1)!!$.
+
+We refer to what we're counting as a \emph{valid $n$-sequence}:
+an order of which weights to place,
+and whether to place them on the left or right pan.
+
+We use induction, with $n=1$ being obvious.
+Now consider the weight $2^0 = 1$.
+\begin{itemize}
+  \ii If we delete it from any valid $n$-sequence,
+  we get a valid $(n-1)$-sequence with all weights doubled.
+  \ii Given a valid $(n-1)$-sequence with all weights doubled,
+  we may insert $2^0 = 1$ it into $2n-1$ ways.
+  Indeed, we may insert it anywhere, and designate it either left or right,
+  except we may not designate right if we choose to insert
+  $2^0 = 1$ at the very beginning.
+\end{itemize}
+Consequently, we have that
+\[ a_n = (2n-1) \cdot a_{n-1}. \]
+Since $a_1 = 1$, the conclusion follows.
+
+\begin{remark*}
+  [Gabriel Levin]
+  An alternate approach can be done by considering the heaviest weight $2^{n-1}$
+  instead of the lightest weight $2^0=1$.
+  This gives a more complicated recursion:
+  \[ a_n = \sum_{k=0}^{n-1} \binom{n-1}{k} 2^{n-k-1} (n-k-1)! a_k \]
+  by summing over the index $k$ corresponding to the number of weights
+  placed before the heaviest weight $2^{n-1}$ is placed.
+
+  This recursion can then be rewritten as
+  \begin{align*}
+    a_n &= \sum_{k=0}^{n-1} \binom{n-1}{k} 2^{n-k-1} (n-k-1)! a_k \\
+    &= (n-1)! \sum_{k=0}^{n-1} \frac{2^{n-k-1}a_k}{k!} \\
+    &= 2(n-1)! \sum_{k=0}^{n-1} \frac{2^{(n-1)-k-1}a_k}{k!} \\
+    &= 2(n-1)(n-2)! (\sum_{k=0}^{(n-1)-1} \frac{2^{(n-1)-k-1}a_k}{k!}) + 2(n-1)!
+  \frac{\frac12 a_{n-1}}{(n-1)!}
+    &= 2(n-1) a_{n-1} + a_{n-1}
+    &= (2n-1)a_{n-1}
+  \end{align*}
+  and since $a_1 = 1$, we have $a_n = (2n-1)!!$ by induction on $n$.
+\end{remark*}
+\pagebreak
+
+\subsection{IMO 2011/5, proposed by Mahyar Sefidgaran (IRN)}
+\textsl{Available online at \url{https://aops.com/community/p2365041}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $f \colon \ZZ \to \ZZ_{>0}$ be a function such that
+$f(m-n) \mid f(m) - f(n)$ for $m,n \in \ZZ$.
+Prove that if $m,n \in \ZZ$ satisfy $f(m) \le f(n)$
+then $f(m) \mid f(n)$.
+\end{mdframed}
+Let $P(m,n)$ denote the given assertion.
+First, we claim $f$ is even.
+This is straight calculation:
+\begin{itemize}
+  \ii $P(x,0) \implies f(x) \mid f(x)-f(0)
+  \implies f(x) \mid M \coloneqq f(0)$.
+  \ii $P(0,x) \implies f(-x) \mid M-f(x) \implies
+  f(-x) \mid f(x)$.
+  Analogously, $f(x) \mid f(-x)$.
+  So $f(x) = f(-x)$ and $f$ is even.
+\end{itemize}
+
+\begin{claim*}
+  Let $x$, $y$, $z$ be integers with $x+y+z=0$.
+  Then among $f(x)$, $f(y)$, $f(z)$,
+  two of them are equal and divide the third.
+\end{claim*}
+\begin{proof}
+  Let $a = f(\pm x)$, $b = f(\pm y)$, $c = f(\pm z)$
+  be positive integers.
+  Note that
+  \begin{align*}
+    a &\mid b-c \\
+    b &\mid c-a \\
+    c &\mid a-b
+  \end{align*}
+  from $P(y,-z)$ and similarly.
+  WLOG $c = \max(a,b,c)$; then $c > |a-b|$
+  so $a=b$.  Thus $a=b \mid c$ from the first two.
+\end{proof}
+This implies the problem,
+by taking $x$ and $y$ in the previous claim
+to be the integers $m$ and $n$.
+
+\begin{remark*}
+  At \url{https://aops.com/community/c6h418981p2381909},
+  Davi Medeiros gives the following characterization
+  of functions $f$ satisfying the hypothesis.
+
+  Pick $f(0)$, $k$ positive integers,
+  a chain $d_1 \mid d_2 \mid \dots \mid d_k$ of divisors of $f(0)$,
+  and positive integers $a_1,a_2,\dots,a_{k-1}$,
+  greater than $1$ (if $k=1$, $a_i$ doesn't exist, for every $i$).
+  We'll define $f$ as follows:
+  \begin{itemize}
+    \ii $f(n)=d_1$, for every integer $n$ that is not divisible by $a_1$;
+    \ii $f(a_1n)=d_2$, for every integer $n$ that is not divisible by $a_2$;
+    \ii $f(a_1a_2n)=d_3$, for every integer $n$ that is not divisible by $a_3$;
+    \ii $f(a_1a_2a_3n)=d_4$, for every integer $n$ that is not divisible by $a_4$;
+    \ii \dots
+    \ii $f(a_1a_2 \dots a_{k-1}n)=d_k$, for every integer $n$;
+  \end{itemize}
+\end{remark*}
+\pagebreak
+
+\subsection{IMO 2011/6, proposed by Japan}
+\textsl{Available online at \url{https://aops.com/community/p2365045}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $ABC$ be an acute triangle with circumcircle $\Gamma$.
+Let $\ell$ be a tangent line to $\Gamma$, and let $\ell_a$, $\ell_b$, $\ell_c$ be the lines obtained
+by reflecting $\ell$ in the lines $BC$, $CA$, and $AB$, respectively.
+Show that the circumcircle of the triangle determined by the lines $\ell_a$, $\ell_b$, and $\ell_c$
+is tangent to the circle $\Gamma$.
+\end{mdframed}
+This is a hard problem with many beautiful solutions.
+The following solution is not very beautiful but not too hard to find during an olympiad,
+as the only major insight it requires is the construction of $A_2$, $B_2$, and $C_2$.
+
+\begin{center}
+  \begin{asy}
+    size(11cm);
+    pair A = dir(110);
+    dot("$A$", A, dir(A));
+    pair B = dir(195);
+    dot("$B$", B, dir(160));
+    pair C = dir(325);
+    dot("$C$", C, 1.4*dir(30));
+    pair P = dir(270);
+    dot("$P$", P, dir(P));
+    draw(unitcircle);
+    draw(A--B--C--cycle);
+
+    pair U = P+(2,0);
+    pair V = 2*P-U;
+
+    pair X_1 = reflect(B,C)*P;
+    pair Y_1 = reflect(C,A)*P;
+    pair Z_1 = reflect(A,B)*P;
+    pair X_2 = extension(B, C, U, V);
+    dot(X_2);
+    pair Y_2 = extension(C, A, U, V);
+    dot(Y_2);
+    pair Z_2 = extension(A, B, U, V);
+    dot(Z_2);
+    draw(B--Z_2, dotted);
+    draw(C--Y_2, dotted);
+    draw(C--X_2, dotted);
+    draw(X_2--Z_2);
+
+    pair A_1 = extension(Y_1, Y_2, Z_1, Z_2);
+    dot("$A_1$", A_1, dir(A_1));
+    pair B_1 = extension(Z_1, Z_2, X_1, X_2);
+    dot("$B_1$", B_1, dir(B_1));
+    pair C_1 = extension(X_1, X_2, Y_1, Y_2);
+    dot("$C_1$", C_1, dir(50));
+
+    draw(A_1--B_1--C_1--cycle, black+1);
+    draw(C_1--X_2, dotted);
+    pair O_1 = circumcenter(A_1, B_1, C_1);
+    draw(arc(O_1, abs(O_1-A_1), -80, 140));
+
+    pair A_2 = A*A/P;
+    dot("$A_2$", A_2, dir(-20));
+    pair B_2 = B*B/P;
+    dot("$B_2$", B_2, dir(130));
+    pair C_2 = C*C/P;
+    dot("$C_2$", C_2, dir(C_2));
+    draw(A_2--B_2--C_2--cycle, black+1);
+
+    pair T = extension(A_1, A_2, B_1, B_2);
+    dot("$T$", T, dir(T));
+    draw(T--A_1, dashed);
+    draw(T--B_1, dashed);
+    draw(T--C_1, dashed);
+
+    /*
+    A = dir 110
+    B = dir 195
+    C = dir 325
+    P = dir 270
+
+    unitcircle
+    A--B--C--cycle blue
+    U := P+(2,0)
+    V := 2*P-U
+    X = reflect(B,C)*P
+    Y = reflect(C,A)*P
+    Z = reflect(A,B)*P
+    Y--Z heavygreen
+
+    X1 := extension B C U V
+    Y1 := extension C A U V
+    Z1 := extension A B U V
+    Line Y1 Z1
+
+    A_1 = extension Y Y1 Z Z1
+    B_1 = extension Z Z1 X X1
+    C_1 = extension X X1 Y Y1
+    A_1--B_1--C_1--cycle red
+    circumcircle A_1 B_1 C_1
+
+    circumcircle B Z X dotted
+    circumcircle C X Y dotted
+    circumcircle A Y Z dotted
+
+    M = extension A_1 A*A/P B_1 B*B/P
+    */
+  \end{asy}
+\end{center}
+
+We apply complex numbers with $\omega$ the unit circle and $p=1$.  Let $A_1 = \ell_B \cap \ell_C$, and let $a_2 = a^2$ (in other words, $A_2$ is the reflection of $P$ across the diameter of $\omega$ through $A$).  Define the points $B_1$, $C_1$, $B_2$, $C_2$ similarly.
+
+We claim that $\ol{A_1A_2}$, $\ol{B_1B_2}$, $\ol{C_1C_2}$ concur at a point on $\Gamma$.
+
+We begin by finding $A_1$. If we reflect the points $1+i$ and $1-i$ over $\ol{AB}$, then we get two points $Z_1$, $Z_2$ with
+\begin{align*}
+  z_1 &= a+b-ab(1-i) = a+b-ab+abi \\
+  z_2 &= a+b-ab(1+i) = a+b-ab-abi. \\
+  \intertext{Therefore,}
+  z_1 - z_2 &= 2abi  \\
+  \ol{z_1}z_2 - \ol{z_2}{z_1}
+    &= -2i \left( a+b+\frac1a+\frac1b-2 \right).
+\end{align*}
+
+Now $\ell_C$ is the line $\ol{Z_1Z_2}$,
+so with the analogous equation $\ell_B$ we obtain:
+\begin{align*}
+  a_1 &= \frac{ -2i\left( a+b+\frac1a+\frac1b-2 \right)\left( 2ac i \right) +
+    2i\left( a+c+\frac1a+\frac1c-2 \right)(2abi) }
+    { \left( -\frac{2}{ab}i \right)
+    \left( 2ac i \right) - \left( -\frac{2}{ac}i \right) \left( 2abi \right)} \\
+  &= \frac{\left[ c-b \right]a^2 + \left[ \frac cb - \frac bc - 2c + 2b \right]a + (c-b)  }{\frac cb - \frac bc} \\
+  &= a + \frac{(c-b)\left[ a^2-2a+1 \right]}{(c-b)(c+b)/bc} \\
+  &= a + \frac{bc}{b+c} (a-1)^2.
+\end{align*}
+Then the second intersection of $\ol{A_1A_2}$ with $\omega$ is given by
+\begin{align*}
+  \frac{a_1-a_2}{1-a_2\ol{a_1}}
+  &= \frac{a+\frac{bc}{b+c}(a-1)^2-a^2}{1-a-a^2 \cdot \frac{(1-1/a)^2}{b+c}} \\
+  &= \frac{a + \frac{bc}{b+c}(1-a)}{1 - \frac{1}{b+c}(1-a)} \\
+  &= \frac{ab+bc+ca - abc}{a+b+c-1}.
+\end{align*}
+Thus, the claim is proved.
+
+Finally, it suffices to show $\ol{A_1B_1} \parallel \ol{A_2B_2}$.
+One can also do this with complex numbers;
+it amounts to showing $a^2-b^2$, $a-b$, $i$
+(corresponding to $\ol{A_2 B_2}$, $\ol{A_1 B_1}$, $\ol{PP}$)
+have their arguments an arithmetic progression, equivalently
+\[ \frac{(a-b)^2}{i(a^2-b^2)} \in \RR
+  \iff
+  \frac{(a-b)^2}{i(a^2-b^2)}
+  = \frac{\left( \frac 1a-\frac1b \right)^2}
+  {\frac1i\left(\frac{1}{a^2}-\frac{1}{b^2}\right)}
+\]
+which is obvious.
+\begin{remark*}
+One can use directed angle chasing for this last part too.
+Let $\ol{BC}$ meet $\ell$ at $K$ and $\ol{B_2C_2}$ meet $\ell$ at $L$.
+Evidently
+\begin{align*}
+  -\dang B_2LP &= \dang LPB_2 + \dang PB_2L \\
+  &= 2 \dang KPB + \dang PB_2C_2 \\
+  &= 2 \dang KPB + 2\dang PBC \\
+  &= -2\dang PKB \\
+  &= \dang PKB_1 \\
+\end{align*}
+as required.
+\end{remark*}
+\pagebreak
+
+
+\end{document}

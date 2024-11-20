@@ -1,0 +1,81 @@
+\textsl{Available online at \url{https://aops.com/community/p17821656}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+There are $4n$ pebbles of weights $1, 2, 3, \dots, 4n$.
+Each pebble is coloured in one of $n$ colours
+and there are four pebbles of each colour.
+Show that we can arrange the pebbles into two piles
+the total weights of both piles are the same,
+and each pile contains two pebbles of each colour.
+\end{mdframed}
+The first key idea is the deep fact that
+\[ 1+4n = 2+(4n-1) = 3+(4n-2) = \dots. \]
+So, place all four pebbles of the same colour in a box (hence $n$ boxes).
+For each  $k=1,2,\dots,2n$
+we tape a piece of string between pebble $k$ and $4n+1-k$.
+To solve the problem, it suffices to paint each string
+either blue or green such that each box has two blue strings
+and two green strings
+(where a string between two pebbles in the same box counts double).
+\begin{center}
+\begin{asy}
+size(12cm);
+// picture box;
+
+pair A = 0.5*dir(135);
+pair C = 0.5*dir(225);
+pair D = 0.5*dir(315);
+pair B = 0.5*dir(45);
+
+path boxoutline = (dir(135)+dir(200)*0.4)--dir(135)--dir(225)
+    --dir(315)--dir(45)--(dir(45)+dir(-20)*0.4);
+
+transform[] t = new transform[5];
+for (int i=0; i<5; ++i) {
+  t[i] = shift(3.4*dir(90+72*i));
+  draw(t[i]*boxoutline, brown+1.5);
+  label("Box " + array("ABCDE")[i], t[i]*dir(-90), brown);
+}
+
+void rope(pair X, pair Y, string s1, string s2, pen p) {
+  draw(X--Y, p);
+  dot(s1, X, dir(-90), p + fontsize(9pt));
+  dot(s2, Y, dir(-90), p + fontsize(9pt));
+}
+rope(t[0]*A, t[0]*B, "1", "20", blue);
+rope(t[0]*C, t[1]*A, "4", "17", deepgreen);
+rope(t[0]*D, t[3]*D, "3", "18", deepgreen);
+rope(t[1]*B, t[4]*A, "8", "13", blue);
+rope(t[1]*D, t[4]*C, "7", "14", deepgreen);
+rope(t[4]*B, t[2]*A, "15", "6", deepgreen);
+rope(t[1]*C, t[2]*B, "11", "10", blue);
+rope(t[4]*D, t[3]*B, "9", "12", blue);
+rope(t[2]*C, t[3]*A, "19", "2", blue);
+rope(t[2]*D, t[3]*C, "5", "16", deepgreen);
+
+/*
+for (int i=0; i<=3; ++i) {
+  dot(box, 0.5*dir(45+90*i));
+}
+*/
+\end{asy}
+\end{center}
+
+We can therefore rephrase the problem as follows,
+if we view boxes as vertices and strings as edges:
+\begin{claim*}
+  Given a $4$-regular multigraph on $n$ vertices
+  (where self-loops are allowed and have degree $2$),
+  one can color the edges blue and green
+  such that each vertex has two blue and two green edges.
+\end{claim*}
+\begin{proof}
+  Each connected component of the graph can be decomposed
+  into an Eulerian circuit, since $4$ is even.
+  A connected component with $k$ vertices has $2k$
+  edges in its Eulerian circuit,
+  so we may color the edges in this circuit alternating green and blue.
+  This may be checked to work.
+\end{proof}
+\pagebreak
+
+\section{Solutions to Day 2}

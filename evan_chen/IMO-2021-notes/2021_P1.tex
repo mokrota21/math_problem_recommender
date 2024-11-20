@@ -1,0 +1,47 @@
+\textsl{Available online at \url{https://aops.com/community/p22698392}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $n \ge 100$ be an integer.
+Ivan writes the numbers $n, n+1, \dots, 2n$ each on different cards.
+He then shuffles these $n+1$ cards, and divides them into two piles.
+Prove that at least one of the piles contains two cards such that
+the sum of their numbers is a perfect square.
+\end{mdframed}
+We will find three cards $a < b < c$ such that
+\begin{align*}
+  b+c &= (2k+1)^2 \\
+  c+a &= (2k)^2 \\
+  a+b &= (2k-1)^2
+\end{align*}
+for some integer $k$.
+Solving for $a$, $b$, $c$ gives
+\begin{align*}
+  a &= \frac{(2k)^2+(2k-1)^2-(2k+1)^2}{2} = 2k^2 - 4k \\
+  b &= \frac{(2k+1)^2+(2k-1)^2-(2k)^2}{2} = 2k^2 + 1 \\
+  c &= \frac{(2k+1)^2+(2k)^2-(2k-1)^2}{2} = 2k^2 + 4k
+\end{align*}
+We need to show that when $n \ge 100$, one can find a suitable $k$.
+
+Let
+\begin{align*}
+  I_k &\coloneqq \left\{ n \in \ZZ \mid n \le a < b < c \le 2n \right\} \\
+  &= \{ n \in \ZZ \mid k^2+2k \le n \le  2k^2-4k \}
+\end{align*}
+be the interval such that when $n \in I_k$,
+the problem dies for that choice of $k$.
+It would be sufficient to show these intervals $I_k$
+cover all the integers $\ge 100$.
+Starting from $I_9 = \left\{ 99 \le n \le 126 \right\}$,
+we have
+\[ k \ge 9 \implies 2k^2 - 4k \ge (k+1)^2 + 2(k+1) \]
+which means the right endpoint of $I_k$
+exceeds the left endpoint of $I_{k+1}$.
+Hence for $n \ge 99$ in fact the problem is true.
+
+\begin{remark*}
+  The problem turns out to be false for $n = 98$, surprisingly.
+  The counterexample is for one pile to be
+  \[ \{98,100,102,\dots,126\}
+    \cup \{129,131,135,\dots,161 \}
+    \cup \{162, 164, \dots, 196\}. \]
+\end{remark*}
+\pagebreak

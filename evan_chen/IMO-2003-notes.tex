@@ -1,0 +1,443 @@
+% © Evan Chen
+% Downloaded from https://web.evanchen.cc/
+
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evan}
+\ihead{\footnotesize\textbf{\thetitle}}
+\ohead{\footnotesize\href{http://web.evanchen.cc}{\ttfamily web.evanchen.cc},
+    updated \today}
+\title{IMO 2003 Solution Notes}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This is a compilation of solutions
+for the 2003 IMO.
+The ideas of the solution are a mix of my own work,
+the solutions provided by the competition organizers,
+and solutions found by the community.
+However, all the writing is maintained by me.
+
+These notes will tend to be a bit more advanced and terse than the ``official''
+solutions from the organizers.
+In particular, if a theorem or technique is not known to beginners
+but is still considered ``standard'', then I often prefer to
+use this theory anyways, rather than try to work around or conceal it.
+For example, in geometry problems I typically use directed angles
+without further comment, rather than awkwardly work around configuration issues.
+Similarly, sentences like ``let $\mathbb{R}$ denote the set of real numbers''
+are typically omitted entirely.
+
+Corrections and comments are welcome!
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\addtocounter{section}{-1}
+\section{Problems}
+\begin{enumerate}[\bfseries 1.]
+\item %% Problem 1
+Let $A$ be a $101$-element subset of $S=\{1,2,\dots,10^6\}$.
+Prove that there exist numbers $t_1$, $t_2, \dots, t_{100}$ in $S$ such that the sets
+\[ A_j=\{x+t_j\mid x\in A\},\qquad j=1,2,\dots,100  \]
+are pairwise disjoint.
+
+\item %% Problem 2
+Determine all pairs of positive integers $(a,b)$ such that
+\[ \frac{a^2}{2ab^2-b^3+1} \]
+is a positive integer.
+
+\item %% Problem 3
+Each pair of opposite sides of convex hexagon has the property that
+the distance between their midpoints is $\frac{\sqrt3}{2}$
+times the sum of their lengths.
+Prove that the hexagon is equiangular.
+
+\item %% Problem 4
+Let $ABCD$ be a cyclic quadrilateral.
+Let $P, Q$ and $R$ be the feet of perpendiculars
+from $D$ to lines $\ol{BC}$, $\ol{CA}$ and $\ol{AB}$, respectively.
+Show that $PQ = QR$ if and only if the
+bisectors of angles $ABC$ and $ADC$ meet on segment $\ol{AC}$.
+
+\item %% Problem 5
+Let $n$ be a positive integer and
+let $x_1 \le x_2 \le \dots \le x_n$ be real numbers.
+Prove that
+\[ \left(\sum_{i=1}^{n}\sum_{j=1}^{n} |x_i - x_j|\right)^2
+  \le \frac{2(n^2-1)}{3}\sum_{i=1}^{n}\sum_{j=1}^{n} (x_i - x_j)^2 \]
+with equality if and only if $x_1$, $x_2$, \dots, $x_n$
+form an arithmetic sequence.
+
+\item %% Problem 6
+Let $p$ be a prime number.
+Prove that there exists a prime number $q$ such that for every integer $n$,
+the number $n^p-p$ is not divisible by $q$.
+
+\end{enumerate}
+\pagebreak
+
+\section{Solutions to Day 1}
+\subsection{IMO 2003/1, proposed by Carlos Gustavo Moreira (BRA)}
+\textsl{Available online at \url{https://aops.com/community/p261}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $A$ be a $101$-element subset of $S=\{1,2,\dots,10^6\}$.
+Prove that there exist numbers $t_1$, $t_2, \dots, t_{100}$ in $S$ such that the sets
+\[ A_j=\{x+t_j\mid x\in A\},\qquad j=1,2,\dots,100  \]
+are pairwise disjoint.
+\end{mdframed}
+A greedy algorithm works: suppose we have picked
+\[ T = \left\{ t_1, \dots, t_n \right\} \]
+as large as possible, meaning it's impossible to add any more elements to $T$.
+That means, for each $t \in \left\{ 1, \dots, 10^6 \right\}$ either $t \in T$ already
+or there exists two distinct elements $a, b \in A$ and $t_i \in T$ such that
+\[ t = t_i + b - a \qquad (\star).  \]
+
+There are at most
+$|T| \cdot |A| \cdot \left( |A|-1 \right) = n \cdot 101 \cdot 100$
+possible values for the right-hand side of $(\star)$.
+So we therefore must have
+\[ 101 \cdot 100 \cdot n + n \ge 10^6 \]
+which implies $n > 99$, as desired.
+
+\begin{remark*}
+  It is possible to improve the bound significantly with a small optimization;
+  rather than adding any $t$, we require that $t_1 < \dots < t_n$
+  and that at each step we add the \emph{least} $t \in S$ which is permitted.
+  In that case, one finds we only need to consider $b > a$ in $(\star)$,
+  and so this will save us a factor of $2+o(1)$
+  as the main term $101 \cdot 100$ becomes $\binom{101}{2}$ instead.
+  This proves it's possible to choose $198$ elements.
+
+  See, e.g., \url{https://aops.com/community/p22959828} for such a write-up.
+\end{remark*}
+\pagebreak
+
+\subsection{IMO 2003/2, proposed by Aleksander Ivanov (BGR)}
+\textsl{Available online at \url{https://aops.com/community/p262}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Determine all pairs of positive integers $(a,b)$ such that
+\[ \frac{a^2}{2ab^2-b^3+1} \]
+is a positive integer.
+\end{mdframed}
+The answer is $(a,b) = (2\ell, 1)$, $(a,b) = (\ell, 2\ell)$
+and $(a,b) = (8\ell^4-\ell, 2\ell)$, for any $\ell$.
+Check these work.
+
+In the sequel, assume $b > 1$,
+and integers $a$, $b$, $k$ obey $k = \frac{a^2}{2ab^2-b^3+1}$.
+Expanding, we have the polynomial
+\[ X^2 - 2kb^2 \cdot X + k(b^3-1) = 0 \]
+has two integer roots, one of which is $X = a$.
+This means solutions to the original problem come in pairs
+(even with $k$ fixed):
+\[ (a,b) \longleftrightarrow
+  \left( 2kb^2 - a, b\right)
+  = \left( \frac{k(b^3-1)}{a}, b\right). \]
+(Here, the first representation ensures
+$2kb^2-a \in \ZZ$,
+while the latter representation and the hypothesis $b > 1$ ensures
+that $\frac{k(b^3-1)}{a} > 0$.)
+
+On the other hand, we claim that:
+\begin{claim*}
+For any solution $(a,b)$,
+either $2a = b$ or $a > b$.
+\end{claim*}
+\begin{proof}
+  Since the denominator is positive, $a \ge b/2$.
+  Now,
+  \[ a^2 \ge 2ab^2 - b^3 + 1 \iff a^2 \ge b^2(2a-b) + 1 \]
+  and so if $2a - b > 0$ then $a^2 > b^2 \implies a > b$.
+\end{proof}
+
+Now assume we have pair $(a_1, b)$ and $(a_2, b)$
+of solutions with $b \neq 2a_1, 2a_2$.
+Then assume $a_1 > a_2 > b$ and
+\begin{align*}
+  a_1 + a_2 &= 2k \cdot b^2 \\
+  a_1a_2 &= k(b^3-1)
+\end{align*}
+That's impossible, since then $a_1 > \frac{a_1+a_2}{2} = k b^2$
+and hence $a_1a_2 > kb^2 \cdot b = kb^3$.
+Thus the only solutions are the ones we claimed at the beginning.
+
+\begin{remark*}
+  Important to notice that the problem is \emph{positive divides},
+  not just divides.
+  There is an implicit inequality built in to the problem
+  statement and it is essentially impossible to solve without.
+  I would be interested in a pair $(a,b)$
+  for which $k < 0$, $k \in \ZZ$ yet $a, b > 0$.
+\end{remark*}
+\pagebreak
+
+\subsection{IMO 2003/3, proposed by Waldemar Pompe (POL)}
+\textsl{Available online at \url{https://aops.com/community/p263}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Each pair of opposite sides of convex hexagon has the property that
+the distance between their midpoints is $\frac{\sqrt3}{2}$
+times the sum of their lengths.
+Prove that the hexagon is equiangular.
+\end{mdframed}
+Unsurprisingly, this is a geometric inequality.
+Denote the hexagon by $ABCDEF$.
+Then we have that
+\[
+  \left\lvert
+  \frac{\vec D + \vec E}{2} - \frac{\vec A + \vec B}{2}
+  \right\rvert
+  = \sqrt3 \cdot \frac{\left\lvert \vec B - \vec A \right\rvert
+    + \left\lvert \vec E - \vec D \right\rvert}{2}
+  \ge \sqrt 3 \cdot
+  \left\lvert \frac{(\vec B - \vec A) - (\vec E - \vec D)}{2}  \right\rvert
+\]
+and cyclic variations.
+Suppose we define the right-hand sides as variables
+\begin{align*}
+  \vec x = (\vec B - \vec A) - (\vec E - \vec D) \\
+  \vec y = (\vec D - \vec C) - (\vec A - \vec F) \\
+  \vec z = (\vec F - \vec E) - (\vec C - \vec B).
+\end{align*}
+Then we now have
+\begin{align*}
+  \left\lvert \vec y - \vec z \right\rvert
+  &\ge \sqrt 3 \left\lvert \vec x  \right\rvert \\
+  \left\lvert \vec z - \vec x \right\rvert
+  &\ge \sqrt 3 \left\lvert \vec y  \right\rvert \\
+  \left\lvert \vec x - \vec y \right\rvert
+  &\ge \sqrt 3 \left\lvert \vec z  \right\rvert.
+\end{align*}
+We square all sides (using
+$\left\lvert \vec v \right\rvert^2 = \vec v \cdot \vec v$)
+and then sum to get
+\[ \sum_{\text{cyc}} (\vec y - \vec z) \cdot (\vec y - \vec z)
+  \ge 3 \sum_{\text{cyc}} \vec x \cdot \vec x \]
+which rearranges to
+\[- \left\lvert \vec x + \vec y + \vec z \right\rvert^2 \ge 0. \]
+This can only happen if $\vec x + \vec y + \vec z =0$,
+and moreover all the inequalities above were actually equalities.
+That means that our triangle inequalities above were actually sharp
+(and already we have $\ol{AB} \parallel \ol{DE}$ and so on).
+
+Working with just $x$ and $y$ now we have
+\begin{align*}
+  3 (\vec x \cdot \vec x) &= (2 \vec y - \vec x) \cdot (2 \vec y - \vec x) \\
+  &= \vec x \cdot \vec x - 4 \vec y \cdot \vec x + 4 \vec y \cdot \vec y \\
+  \implies
+  -\vec x \cdot \vec x + 2 (\vec y \cdot \vec y) &= 2 \vec x \cdot \vec y \\
+  2 (\vec x \cdot \vec x) - \vec y \cdot \vec y &= 2 \vec x \cdot \vec y.
+\end{align*}
+which implies $\vec x \cdot \vec x = \vec y \cdot \vec y$,
+that is, $\vec x$ and $\vec y$ have the same magnitude.
+In this way we find $\vec x$, $\vec y$, $\vec z$ all
+have the same magnitude,
+and since $\vec x + \vec y + \vec z = 0$
+they are related by $120\dg$ rotations, as desired.
+
+\begin{remark*}
+  In fact one can show further that the equiangular hexagons
+  which work are exactly those formed by taking an equilateral triangle
+  and cutting off equally sized corners.
+  This equality case helps motivate the solution.
+\end{remark*}
+\begin{remark*}
+  One can note this ``must'' be an inequality
+  because the space of such hexagons is $2$-dimensional,
+  even though \emph{a priori} the space of hexagons satisfying
+  three given conditions should have dimension $9-3=6$.
+\end{remark*}
+\pagebreak
+
+\section{Solutions to Day 2}
+\subsection{IMO 2003/4, proposed by Matti Lehtinen (FIN)}
+\textsl{Available online at \url{https://aops.com/community/p264}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $ABCD$ be a cyclic quadrilateral.
+Let $P, Q$ and $R$ be the feet of perpendiculars
+from $D$ to lines $\ol{BC}$, $\ol{CA}$ and $\ol{AB}$, respectively.
+Show that $PQ = QR$ if and only if the
+bisectors of angles $ABC$ and $ADC$ meet on segment $\ol{AC}$.
+\end{mdframed}
+Let $\gamma$ denote the circumcircle of $ABCD$.
+The condition on bisectors is equivalent to $(AC;BD)_\gamma = -1$.
+Meanwhile if $\infty$ denotes the point at infinity along Simson line $\ol{PQR}$
+then $PQ = QR$ if and only if $(PR;Q\infty) = -1$.
+
+Let rays $BQ$ and $DQ$ meet the circumcircle again at $F$ and $E$.
+
+\begin{center}
+\begin{asy}
+pair B = dir(150);
+pair A = dir(200);
+pair C = dir(340);
+pair D = IP(2*A*C/(A+C)--B, unitcircle);
+
+draw(A--D--C--B--A--C, lightblue);
+filldraw(unitcircle, opacity(0.1)+lightcyan, blue);
+pair P = foot(D, B, C);
+pair Q = foot(D, A, C);
+pair R = foot(D, A, B);
+draw(P--D--R, blue);
+draw(R--A, lightblue);
+
+draw(P--R, red);
+pair O = origin;
+pair E = -D+2*foot(O, D, Q);
+pair F = -B+2*foot(O, B, Q);
+
+draw(B--E, red);
+draw(B--F, lightblue);
+draw(D--E, lightblue);
+
+dot("$B$", B, dir(B));
+dot("$A$", A, dir(A));
+dot("$C$", C, dir(C));
+dot("$D$", D, dir(D));
+dot("$P$", P, dir(60));
+dot("$Q$", Q, dir(315));
+dot("$R$", R, dir(R));
+dot("$E$", E, dir(E));
+dot("$F$", F, dir(F));
+
+/* TSQ Source:
+
+B = dir 150
+A = dir 200
+C = dir 340
+D = IP 2*A*C/(A+C)--B unitcircle
+
+A--D--C--B--A--C lightblue
+unitcircle 0.1 lightcyan / blue
+P = foot D B C R60
+Q = foot D A C R315
+R = foot D A B
+P--D--R blue
+R--A lightblue
+
+P--R red
+O := origin
+E = -D+2*foot O D Q
+F = -B+2*foot O B Q
+
+B--E red
+B--F lightblue
+D--E lightblue
+
+*/
+\end{asy}
+\end{center}
+
+\begin{lemma*}
+  [EGMO Proposition 4.1]
+  Then $\ol{BE} \parallel \ol{PQR}$.
+\end{lemma*}
+\begin{proof}
+  Since $\dang DPR = \dang DAR = \dang DAB = \dang DEB$.
+\end{proof}
+
+Now we have
+\[ (PR;Q\infty) \overset{B}{=} (CA;FE)_\gamma
+  \overset{Q}{=} (AC;BD)_\gamma \]
+as desired.
+\pagebreak
+
+\subsection{IMO 2003/5, proposed by Finbarr Holland (IRL)}
+\textsl{Available online at \url{https://aops.com/community/p265}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $n$ be a positive integer and
+let $x_1 \le x_2 \le \dots \le x_n$ be real numbers.
+Prove that
+\[ \left(\sum_{i=1}^{n}\sum_{j=1}^{n} |x_i - x_j|\right)^2
+  \le \frac{2(n^2-1)}{3}\sum_{i=1}^{n}\sum_{j=1}^{n} (x_i - x_j)^2 \]
+with equality if and only if $x_1$, $x_2$, \dots, $x_n$
+form an arithmetic sequence.
+\end{mdframed}
+Let $d_1 = x_2 - x_1$, \dots, $d_{n-1} = x_n - x_{n-1}$.
+The inequality in question becomes:
+\[
+  \left( \sum_i i(n-i) d_i \right)^2
+  \le
+  \frac{n^2-1}{3} \cdot
+  \left( \sum_i i(n-i) d_i^2 + 2\sum_{i<j} i(n-j) d_i d_j  \right).
+\]
+Clearing the square on the right-hand side we want to show
+\[
+  \sum_{i<j} \left( 3ij(n-i)(n-j) - (n^2-1)i(n-j) \right) \cdot 2d_i d_j
+  \le \sum_i (n^2-1-3i(n-i)) \cdot i(n-i) d_i^2.
+\]
+We use AM-GM directly on $2d_i d_j \le d_i^2 + d_j^2$:
+this actually solves the problem.
+The annoying part is to check that the coefficients actually match:
+\begin{claim*}
+  [Big bash]
+  For an index $1 \le k \le n-1$, we have
+  \begin{align*}
+    &\sum_{i<k} \left( 3ik(n-i)(n-k) - (n^2-1)i(n-k) \right) \\
+    +& \sum_{j>k} \left( 3kj(n-k)(n-j) - (n^2-1)k(n-j) \right) \\
+    = & (n^2-1-3k(n-k)) \cdot k(n-k).
+  \end{align*}
+\end{claim*}
+\begin{proof}
+  Rewrite as:
+  \begin{align*}
+    3k(n-k) \left( -k(n-k) + \sum_i i(n-i) \right)
+      &= (n^2-1)\left( (n-k)\sum_{i<k} i + k\sum_{j>k} (n-j) \right) \\
+      &+ (n^2-1-3k(n-k)) \cdot k(n-k) \\
+    \iff 3k(n-k) \sum_i i(n-i)
+      &= (n^2-1) \left( (n-k)\sum_{i<k} i + k\sum_{j>k}(n-j) \right) \\
+      &+ (n^2-1)k(n-k) - 3k^2(n-k)^2 \\
+    \iff 3k(n-k) \left( \sum_{i} i(n-i) \right)
+      &= (n^2-1) \left( (n-k)\sum_{i \le k} i + k \sum_{i < n-k} i \right) \\
+    \iff 3k(n-k) \frac{(n-1)n(n+1)}{6}
+      &= (n^2-1) \left( (n-k)\frac{k(k+1)}{2} \right) \\
+      & + (n^2-1) \left( k \frac{(n-k)(n-k-1)}{2} \right) \\
+    \iff 3k(n-k) \frac{(n-1)n(n+1)}{6}
+      &= (n^2-1)k(n-k) \cdot \frac n2
+  \end{align*}
+  which is visibly true.
+\end{proof}
+Equality occurs only if all $d_i$ are equal
+because the coefficient of $d_i d_j$ is nonzero
+for any $i \le n/2$ and $j \ge n/2$.
+\pagebreak
+
+\subsection{IMO 2003/6, proposed by Johan Yebbou (FRA)}
+\textsl{Available online at \url{https://aops.com/community/p266}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $p$ be a prime number.
+Prove that there exists a prime number $q$ such that for every integer $n$,
+the number $n^p-p$ is not divisible by $q$.
+\end{mdframed}
+By orders, we must have $q=pk+1$ for this to be possible
+(since if $q \not \equiv 1 \pmod p$, then $n^p$ can be any residue modulo $q$).
+Since $p \equiv n^p \pmod q \implies p^k \equiv 1 \pmod q$,
+it suffices to prevent the latter situation from happening.
+
+So we need a prime $q \equiv 1 \pmod p$ such that $p^k \not\equiv 1 \pmod q$.
+To do this, we first recall the following lemma.
+\begin{lemma*}
+  Let $\Phi_p(X) = 1 + X + X^2 + \dots + X^{p-1}$.
+  For any integer $a$, if $q$ is a prime divisor of $\Phi_p(a)$ other than $p$,
+  then $a \pmod q$ has order $p$. (In particular, $q \equiv 1 \pmod p$.)
+\end{lemma*}
+\begin{proof}
+  We have $a^p-1 \equiv 0 \pmod q$, so either the order is $1$ or $p$.
+  If it is $1$, then $a \equiv 1 \pmod q$, so $q \mid \Phi_p(1) = p$, hence $q = p$.
+\end{proof}
+
+% Wishfully we hope the order of $p$ is $p$ and $k \nmid p$.
+Now the idea is to extract a prime factor $q$
+from the cyclotomic polynomial
+\[ \Phi_p(p) = \frac{p^p-1}{p-1} \equiv 1+p \pmod{p^2} \]
+such that $q \not\equiv 1 \pmod{p^2}$;
+hence $k \not\equiv 0 \pmod p$,
+and as $p \pmod q$ has order $p$ we have $p^k \not\equiv 1 \pmod q$.
+\pagebreak
+
+
+\end{document}

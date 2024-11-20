@@ -1,0 +1,41 @@
+\textsl{Available online at \url{https://aops.com/community/p6642559}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+A set of positive integers is called \emph{fragrant}
+if it contains at least two elements and each of its elements
+has a prime factor in common with at least one of the other elements.
+Let $P(n)=n^2+n+1$.
+What is the smallest possible positive integer value of $b$ such that
+there exists a non-negative integer $a$ for which the set
+\[ \{P(a+1),P(a+2),\dots,P(a+b)\} \]
+is fragrant?
+\end{mdframed}
+The answer is $b = 6$.
+
+First, we prove $b \ge 6$ must hold.
+It is not hard to prove the following divisibilities by Euclid:
+\begin{align*}
+ \gcd(P(n), P(n+1)) &\mid 1 \\
+ \gcd(P(n), P(n+2)) &\mid 7 \\
+ \gcd(P(n), P(n+3)) &\mid 3 \\
+ \gcd(P(n), P(n+4)) &\mid 19.
+\end{align*}
+Now assume for contradiction $b \le 5$.
+Then any GCD's among $P(a+1)$, \dots, $P(a+b)$ must be among $\{3, 7, 19\}$.
+Consider a multi-graph on $\{a+1, \dots, a+b\}$ where we join two elements with nontrivial GCD
+and label the edge with the corresponding prime.
+Then we readily see there is at most one edge each of $\{3, 7, 19\}$:
+id est at most one edge of gap $2$, $3$, $4$ (and no edges of gap $1$).
+(By the gap of an edge $e = \{u,v\}$ we mean $|u - v|$.)
+But one can see that it's now impossible for every vertex to have nonzero degree, contradiction.
+
+To construct $b = 6$ we use the Chinese remainder theorem: select $a$ with
+\begin{align*}
+ a+1 & \equiv 7 \pmod{19} \\
+ a+5 & \equiv 11 \pmod{19} \\
+ a+2 & \equiv 2 \pmod{7} \\
+ a+4 & \equiv 4 \pmod{7} \\
+ a+3 & \equiv 1 \pmod{3} \\
+ a+6 & \equiv 1 \pmod{3}
+\end{align*}
+which does the trick.
+\pagebreak

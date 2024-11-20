@@ -1,0 +1,229 @@
+
+\textsl{Available online at \url{https://aops.com/community/p10632360}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+A convex quadrilateral $ABCD$ satisfies $AB \cdot CD = BC \cdot DA$.
+Point $X$ lies inside $ABCD$ so that
+\[ \angle XAB=\angle XCD \quad \text{ and } \quad \angle XBC=\angle XDA. \]
+Prove that $\angle BXA + \angle DXC=180\dg$.
+\end{mdframed}
+We present two solutions by inversion.
+The first is the official one.
+The second is a solution via inversion, completed by USA5 Michael Ren.
+
+\paragraph{Official solution by inversion.}
+In what follows a convex quadrilateral is called
+\emph{quasi-harmonic} if $AB \cdot CD = BC \cdot DA$.
+
+\begin{claim*}
+  A quasi-harmonic quadrilateral is determined
+  up to similarity by its angles.
+\end{claim*}
+\begin{proof}
+  Do some inequalities.
+\end{proof}
+\begin{remark*}
+  This could be expected by degrees of freedom;
+  a quadrilateral has four degrees of freedom up to similarity;
+  the pseudo-harmonic condition is one
+  while the measures of angles $\angle A$, $\angle B$, $\angle C$, $\angle D$
+  (summing to $360\dg$) provide three degrees of freedom.
+  (Note that the point $X$ plays no role in this comment.)
+\end{remark*}
+
+Performing an inversion at $X$, one obtains a
+second quasi-harmonic quadrilateral
+$A^\ast B^\ast C^\ast D^\ast$ which has the same angles
+as the original one, $\angle D^\ast = \angle A$,
+$\angle A^\ast = \angle B$, and so on.
+Thus by the claim we obtain similarity
+\[ D^\ast A^\ast B^\ast C^\ast \sim ABCD. \]
+If one then maps $D^\ast A^\ast B^\ast C^\ast$,
+onto $ABCD$, the image of $X^\ast$
+becomes a point isogonally conjugate to $X$.
+In other words, $X$ has an isogonal conjugate in $ABCD$.
+
+It is well-known that this is equivalent to
+$\angle BXA + \angle DXC = 180\dg$,
+for example by inscribing an ellipse with foci $X$ and $X^\ast$.
+
+\paragraph{Second solution: ``rhombus inversion'', by Michael Ren.}
+Since
+\[ \frac{AB}{AD} = \frac{CB}{CD} \]
+and
+\[ \frac{BA}{BC} = \frac{DA}{DC} \]
+it follows that $B$ and $D$ lie on an Apollonian circle $\omega_{AC}$
+through $A$ and $C$,
+while $A$ and $C$ lie on an Apollonian circle $\omega_{BD}$
+through $B$ and $D$.
+We let these two circles intersect at a point $P$ inside $ABCD$.
+
+The main idea is then to
+perform an inversion about $P$ with radius $1$.
+We obtain:
+%\paragraph{Rhombus construction.}
+\begin{lemma*}
+  The image of $ABCD$ is a rhombus.
+\end{lemma*}
+\begin{proof}
+  By the inversion distance formula, we have
+  \[ \frac{1}{A'B'} = \frac{PA}{AB} \cdot PB = \frac{PC}{BC} \cdot PB = \frac{1}{B'C'} \]
+  and so $A'B' = B'C'$.
+  In a similar way, we derive $B'C' = C'D' = D'A'$,
+  so the image is a rhombus as claimed.
+\end{proof}
+
+Let us now translate the angle conditions.
+We were given that $\dang XAB = \dang XCD$, but
+\begin{align*}
+  \dang XAB &= \dang XAP + \dang PAB = \dang PX'A' + \dang A'B'P \\
+  \dang XCD &= \dang XCP + \dang PCD = \dang PX'C' + \dang C'D'P
+  \intertext{so subtracting these gives}
+  \dang A'X'C' &= \dang A'B'P + \dang PD'C' = \dang (A'B', B'P) + \dang (PD', C'D') \\
+  &= \dang (A'B', B'P) + \dang (PD', A'B') = \dang D' P B'. \tag{1}
+\end{align*}
+since $\ol{A'B'} \parallel \ol{C'D'}$.
+Similarly, we obtain
+\[ \dang B'X'D' = \dang A'PC' \tag{2}. \]
+We now translate the desired condition.
+Since
+\begin{align*}
+  \dang AXB &= \dang AXP + \dang PXB = \dang PA'X' + \dang X'B'P \\
+  \dang CXD &= \dang CXP + \dang PXD = \dang PC'X' + \dang X'DP'
+\end{align*}
+we compute
+\begin{align*}
+  \dang AXB + \dang CXD &= (\dang PA'X' + \dang X'B'P) + (\dang PC'X' + \dang X'D'P) \\
+  &= -\left[ \left( \dang A'X'P + \dang X'PA' \right)
+    + \left( \dang PX'B' + \dang B'PX' \right) \right] \\
+  &\quad- \left[ \left( \dang C'X'P + \dang X'PC' \right)
+    + \left( \dang PX'D' + \dang D'PX'  \right) \right] \\
+  &= \left[ \dang PX'A' + \dang BX'P + \dang PX'C' + \dang D'X'P  \right] \\
+  &\quad+ \left[ \dang A'PX' + \dang X'PB' + \dang C'PX' + \dang X'PD' \right] \\
+  &= \dang A'PB' + \dang C'PD' + \dang B'X'C + \dang D'X'A
+\end{align*}
+and we wish to show this is equal to zero, i.e.\
+the desired becomes
+\[ \dang A'PB' + \dang C'PD' + \dang B'X'C + \dang D'X'A = 0. \tag{3} \]
+In other words, the problem is to show (1) and (2) implies (3).
+
+Henceforth drop apostrophes.
+Here is the inverted diagram (with apostrophes dropped).
+\begin{center}
+\begin{asy}
+size(12cm);
+pair A = (0,3);
+pair B = (-8,0);
+pair C = (0,-3);
+pair D = (8,0);
+
+pair X = (-5.6,7.8);
+pair Y = reflect(circumcenter(A,C,X), circumcenter(D,B,X))*X;
+pair Q = IP(circumcircle(A, Y, D), circumcircle(B, Y, C));
+pair P = conj(Q);
+
+filldraw(A--B--C--D--cycle, opacity(0.1)+lightred, red);
+draw(A--C, red);
+draw(B--D, red);
+
+draw(B--X--D, lightgreen);
+draw(A--P--C, lightgreen);
+draw(C--X--A, lightblue);
+draw(B--P--D, lightblue);
+
+draw(circumcircle(A, X, C), heavycyan);
+draw(circumcircle(B, X, D), heavycyan);
+draw(circumcircle(B, Q, C), lightcyan);
+draw(circumcircle(A, Q, D), lightcyan);
+draw(Q--P, red);
+
+dot("$A$", A, dir(A));
+dot("$B$", B, dir(B));
+dot("$C$", C, dir(C));
+dot("$D$", D, dir(D));
+dot("$X$", X, dir(X));
+dot("$Y$", Y, dir(Y));
+dot("$Q$", Q, dir(Q));
+dot("$P$", P, dir(P));
+
+/* TSQ Source:
+
+A = (0,3)
+B = (-8,0)
+C = (0,-3)
+D = (8,0)
+
+X = (-5.6,7.8)
+Y = OP circumcircle A X C circumcircle B X D
+Q = IP circumcircle A Y D circumcircle B Y C
+P = conj(Q)
+
+A--B--C--D--cycle 0.1 lightred / red
+A--C red
+B--D red
+
+B--X--D lightgreen
+A--P--C lightgreen
+C--X--A lightblue
+B--P--D lightblue
+
+circumcircle A X C heavycyan
+circumcircle B X D heavycyan
+circumcircle B Q C lightcyan
+circumcircle A Q D lightcyan
+Q--P red
+
+*/
+\end{asy}
+\end{center}
+
+Let $Q$ denote the reflection of $P$
+and let $Y$ denote the second intersection of $(BQC)$ and $(AQD)$.
+Then
+\begin{align*}
+  -\dang AXC &= -\dang DPB = \dang BQD = \dang BQY + \dang YQD = \dang BCY + \dang YAD \\
+  &= \dang(BC,CY) + \dang(YA,AD) = \dang YCA = -\dang AYC.
+\end{align*}
+% again using $\ol{AB} \parallel \ol{CD}$.
+Hence $XACY$ is concyclic; similarly $XBDY$ is concyclic.
+
+\begin{claim*}
+  $X \neq Y$.
+\end{claim*}
+\begin{proof}
+  To see this: Work pre-inversion assuming $AB < AC$.
+  Then $Q$ was the center of $\omega_{BD}$.
+  If $T$ was the second intersection of $BA$ with $(QBC)$,
+  then $QB = QD = QT = \sqrt{QA \cdot QC}$, by shooting lemma.
+  Since $\angle BAD < 180\dg$,
+  it follows $(QBCY)$ encloses $ABCD$ (pre-inversion).
+  (This part is where the hypothesis that
+  $ABCD$ is convex with $X$ inside is used.)
+\end{proof}
+
+Finally, we do an angle chase to finish:
+\begin{align*}
+  \dang DXA &= \dang DXY + \dang YXA = \dang DBY + \dang YCA \\
+  &= \dang (DB, YB) + \dang (CY, CA) = \dang CYB + 90\dg \\
+  &= \dang CQB + 90\dg = -\dang APB + 90\dg \tag{4}.
+\end{align*}
+Similarly,
+\[ \dang BXC = \dang DPC + 90\dg. \tag{5} \]
+%% \dang AXB = \dang DYC + 90\dg, \quad
+%% \dang CXD = \dang BYC + 90\dg.
+Summing (4) and (5) gives (3).
+% $\dang BXC + \dang DXA = (\dang BPA + 90\dg) + (\dang DPC + 90\dg) = -(\dang APB + \dang CPD)$.
+
+
+\begin{remark*}
+  A difficult part of the problem in many solutions
+  is that the conclusion is false in the directed sense,
+  if the point $X$ is allowed to lie outside the quadrilateral.
+  We are saved in the first solution because the equivalence
+  of the isogonal conjugation requires $X$ inside the quadrilateral.
+  On the other hand, in the second solution,
+  the issue appears in the presence of the second point $Y$.
+\end{remark*}
+\pagebreak
+
+
+\end{document}

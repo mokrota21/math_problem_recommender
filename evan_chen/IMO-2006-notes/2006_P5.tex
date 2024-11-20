@@ -1,0 +1,61 @@
+\textsl{Available online at \url{https://aops.com/community/p572821}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $P(x)$ be a polynomial of degree $n > 1$
+with integer coefficients and let $k$ be a positive integer.
+Consider the polynomial
+\[ Q(x) = P(P(\dots P(P(x)) \dots )) \] where $P$ occurs $k$ times.
+Prove that there are at most $n$ integers $t$ such that $Q(t) = t$.
+\end{mdframed}
+First, we prove that:
+\begin{claim*}
+  [Putnam 2000 et al]
+  If a number is periodic under $P$
+  then in fact it's fixed by $P \circ P$.
+\end{claim*}
+\begin{proof}
+  Let $x_1$, $x_2$, \dots, $x_n$ be a minimal orbit.
+  Then
+  \[ x_i - x_{i+1} \mid P(x_i) - P(x_{i+1})
+    = x_{i+1} - x_{i+2} \]
+  and so on cyclically.
+
+  If any of the quantities are zero we are done.
+  Else, we must eventually have $x_i - x_{i+1} = -(x_{i+1} - x_{i+2})$,
+  so $x_i = x_{i+2}$ and we get $2$-periodicity.
+\end{proof}
+
+The tricky part is to study the $2$-orbits.
+Suppose there exists a fixed pair $u \neq v$
+with $P(u) = v$, $P(v) = u$.
+(If no such pair exists, we are already done.)
+Let $(a,b)$ be any other pair with $P(a) = b$, $P(b) = a$,
+possibly even $a = b$, but $\{a,b\} \cap \{u,v\} = \varnothing$.
+Then we should have
+\[ u-a \mid P(u)-P(a) = v-b
+  \mid P(v) - P(b) = u-a \]
+and so $u-a$ and $v-b$ divide each other (and are nonzero).
+Similarly, $u-b$ and $v-a$ divide each other.
+
+Hence $u-a = \pm (v-b)$ and $u-b = \pm (v-a)$.
+We consider all four cases:
+\begin{itemize}
+  \ii If $u-a = v-b$ and $u-b = v-a$
+  then $u-v = b-a = a-b$, contradiction.
+  \ii If $u-a = -(v-b)$ and $u-b = -(v-a)$
+  then $u+v = u-v = a+b$.
+  \ii If $u-a = -(v-b)$ and $u-b = v-a$,
+  we get $a+b = u+v$ from the first one
+  (discarding the second).
+  \ii If $u-a = v-b$ and $u-b = -(v-a)$,
+  we get $a+b = u+v$ from the second one
+  (discarding the first one).
+\end{itemize}
+Thus in all possible situations we have
+\[ a+b = c \coloneqq u+v \]
+a fixed constant.
+
+Therefore, any pair $(a,b)$ with $P(a) = b$
+and $P(b) = a$ actually satisfies $P(a) = c-a$.
+And since $\deg P > 1$,
+this means there are at most $n$ roots to $a+P(a)=c$, as needed.
+\pagebreak

@@ -1,0 +1,123 @@
+
+\textsl{Available online at \url{https://aops.com/community/p17821732}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Consider an integer $n > 1$, and a set $\mathcal S$ of $n$ points
+in the plane such that the distance between any two different points
+in $\mathcal S$ is at least $1$.
+Prove there is a line $\ell$ separating $\mathcal S$
+such that the distance from any point of $\mathcal S$ to $\ell$
+is at least $\Omega(n^{-1/3})$.
+
+(A line $\ell$ separates a set of points $S$
+if some segment joining two points in $\mathcal S$ crosses $\ell$.)
+\end{mdframed}
+We present the official solution given by the Problem Selection Committee.
+
+Let's suppose that among all projections
+of points in $\mathcal S$ onto some line $m$,
+the maximum possible distance between two consecutive projections is $\delta$.
+We will prove that $\delta \ge \Omega(n^{-1/3})$,
+solving the problem.
+
+We make the following the definitions:
+\begin{itemize}
+  \ii Define $A$ and $B$ as the two points farthest apart in $\mathcal S$.
+  This means that all points lie in the intersections
+  of the circles centered at $A$ and $B$ with radius $R = AB \ge 1$.
+  \ii We pick chord $\ol{XY}$ of $\odot(B)$
+  such that $\ol{XY} \perp \ol{AB}$ and the distance
+  from $A$ to $\ol{XY}$ is exactly $\half$.
+  \ii We denote by $\mathcal T$
+  the smaller region bound by $\odot(B)$ and chord $\ol{XY}$.
+\end{itemize}
+The figure is shown below with $\mathcal T$ drawn in yellow,
+and points of $\mathcal S$ drawn in blue.
+\begin{center}
+\begin{asy}
+size(10cm);
+pair A = (-2,0);
+pair B = (5,0);
+
+pen auxpen = brown+linetype("4 2");
+pair X = (0, 24^0.5);
+pair Y = (0, -24^0.5);
+
+pair[] S = {
+  (-1.3, 2.7),
+  (-0.57, -2.61),
+  (-0.21, 1.07),
+  (0.33,-1.06),
+  (0.83, 3.71),
+  (1.57, -3.18),
+  (2.14, 1.66),
+  (2.72, 3.32),
+  (3.37, -1.17),
+  (3.97, 1.34),
+  (4.37, -2.35),
+};
+
+fill(Y..A..X--cycle, paleyellow);
+for (int i=0; i<S.length; ++i) {
+  draw(S[i]--(S[i].x,0), grey);
+  dot(S[i], blue);
+}
+draw(A--B, blue+1.3);
+draw(arc(B,abs(B-A), 110, 250), auxpen);
+draw(arc(A,abs(B-A), -70, 70), auxpen);
+draw(B--X--Y--cycle, auxpen);
+
+dot("$A$", A, dir(180), blue);
+dot("$B$", B, dir(0), blue);
+dot("$X$", X, dir(90), auxpen);
+dot("$Y$", Y, dir(270), auxpen);
+
+draw( (-1.9,-0.1)--(-1.9,-0.2)--(-0.1,-0.2)--(-0.1, -0.1) );
+label("$\frac12$", (-1, -0.2), dir(-90));
+
+draw( (2.14,-0.1)--(2.14,-0.2)--(2.72,-0.2)--(2.72,-0.1) );
+label("$< \delta$", (2.43, -0.2), dir(-90), fontsize(9pt));
+
+label("$\mathcal T$", (-0.7,3), fontsize(14pt));
+\end{asy}
+\end{center}
+
+\begin{claim*}
+  [Length of $AB$ + Pythagorean theorem]
+  We have $XY < 2\sqrt{n\delta}$.
+\end{claim*}
+\begin{proof}
+  First, note that we have $R = AB < (n-1) \cdot \delta$,
+  since the $n$ projections of points onto $AB$
+  are spaced at most $\delta$ apart.
+  The Pythagorean theorem gives
+  \[ XY = 2\sqrt{R^2 - \left(R-\half\right)^2}
+    = 2\sqrt{R - \frac14} < 2\sqrt{n\delta}. \qedhere \]
+\end{proof}
+\begin{claim*}
+  [$|\mathcal T|$ lower bound + narrowness]
+  We have $XY > \frac{\sqrt3}{2} \left( \half \delta\inv - 1 \right)$.
+\end{claim*}
+\begin{proof}
+  Because $\mathcal T$ is so narrow (has width $\half$ only),
+  the projections of points in $\mathcal T$ onto line $XY$
+  are spaced at least $\frac{\sqrt3}{2}$ apart (more than just $\delta$).
+  This means
+  \[ XY > \frac{\sqrt3}{2}
+    \left( \left\lvert \mathcal T \right\rvert - 1 \right). \]
+  But projections of points in $\mathcal T$
+  onto the segment of length $\half$ are spaced at most $\delta$ apart,
+  so apparently
+  \[ \left\lvert \mathcal T \right\rvert > \half \cdot \delta\inv. \]
+  This implies the result.
+\end{proof}
+Combining these two this implies $\delta \ge \Omega(n^{-1/3})$ as needed.
+
+\begin{remark*}
+  The constant $1/3$ in the problem is actually optimal
+  and cannot be improved;
+  the constructions give an example showing $\Theta(n^{-1/3} \log n)$.
+\end{remark*}
+\pagebreak
+
+
+\end{document}

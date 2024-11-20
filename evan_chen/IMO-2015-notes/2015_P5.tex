@@ -1,0 +1,55 @@
+\textsl{Available online at \url{https://aops.com/community/p5083463}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Solve the functional equation
+\[ f(x+f(x+y)) + f(xy) = x + f(x+y) + yf(x) \]
+for $f \colon \RR \to \RR$.
+\end{mdframed}
+The answers are $f(x) \equiv x$ and $f(x) \equiv 2-x$.
+Obviously, both of them work.
+
+Let $P(x,y)$ be the given assertion.
+We also will let $S = \{t \mid f(t) = t\}$
+be the set of fixed points of $f$.
+\begin{itemize}
+  \ii From $P(0,0)$ we get $f(f(0)) = 0$.
+  \ii From $P(0,f(0))$ we get $2f(0) = f(0)^2$
+  and hence $f(0) \in \{0,2\}$.
+  \ii From $P(x,1)$
+  we find that $x+f(x+1) \in S$ for all $x$.
+\end{itemize}
+
+We now solve the case $f(0) = 2$.
+\begin{claim*}
+  If $f(0) = 2$ then $f(x) \equiv 2-x$.
+\end{claim*}
+\begin{proof}
+  Let $t \in S$ be any fixed point.
+  Then $P(0,t)$ gives $2 = 2t$ or $t = 1$;
+  so $S = \{1\}$.
+  But we also saw $x+f(x+1) \in S$,
+  which implies $f(x) \equiv 2-x$.
+\end{proof}
+
+Henceforth, assume $f(0) = 0$.
+\begin{claim*}
+  If $f(0) = 0$ then $f$ is odd.
+\end{claim*}
+\begin{proof}
+  Note that $P(1,-1) \implies f(1) + f(-1) = 1 - f(1)$
+  and $P(-1,1) \implies f(-1) + f(-1) = -1 + f(1)$,
+  together giving $f(1) = 1$ and $f(-1) = -1$.
+  To prove $f$ odd we now obtain more fixed points:
+  \begin{itemize}
+    \ii From $P(x,0)$ we find that $x+f(x) \in S$ for all $x \in \RR$.
+    \ii From $P(x-1,1)$ we find that $x-1+f(x) \in S$ for all $x \in \RR$.
+    \ii From $P(1, f(x)+x-1)$ we find $x+1+f(x) \in S$ for all $x \in \RR$.
+  \end{itemize}
+  Finally $P(x, -1)$ gives $f$ odd.
+\end{proof}
+To finish from $f$ odd, notice that
+\begin{align*}
+  P(x,-x) &\implies f(x) + f(-x^2) = x - xf(x) \\
+  P(-x,x) &\implies f(-x) + f(-x^2) = -x + xf(-x)
+\end{align*}
+which upon subtracting gives $f(x) \equiv x$.
+\pagebreak

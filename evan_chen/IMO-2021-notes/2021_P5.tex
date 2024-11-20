@@ -1,0 +1,138 @@
+\textsl{Available online at \url{https://aops.com/community/p22697921}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Two squirrels, Bushy and Jumpy, have collected $2021$ walnuts for the winter.
+Jumpy numbers the walnuts from $1$ through $2021$, and digs $2021$ little holes
+in a circular pattern in the ground around their favourite tree.
+The next morning Jumpy notices that Bushy had placed one walnut into each hole,
+but had paid no attention to the numbering.
+Unhappy, Jumpy decides to reorder the walnuts by performing a sequence of 2021 moves.
+In the $k$th move, Jumpy swaps the positions of the two walnuts adjacent to walnut $k$.
+
+Prove that there exists a value of $k$ such that, on the $k$th move,
+Jumpy swaps some walnuts $a$ and $b$ such that $a<k<b$.
+\end{mdframed}
+Assume for contradiction no such $k$ exists.
+We will use a so-called ``threshold trick''.
+
+This process takes exactly $2021$ steps.
+Right after the $k$th move, we consider a situation where
+we color walnut $k$ red as well, so at the $k$th step there are $k$ ones.
+For brevity, a non-red walnut is called black.
+An example is illustrated below with $2021$ replaced by $6$.
+\begin{center}
+\begin{asy}
+  size(14cm);
+  dotfactor *= 1.5;
+  picture base;
+  picture pA, pB, pC, pD, pE, pF, pG;
+  pen old = black;
+  pen used = mediumred;
+  pen active = red;
+
+  draw(pA, unitcircle);
+  label(pA, "Initial", origin);
+  dot(pA, "$1$", dir(  0), dir(  0), old);
+  dot(pA, "$4$", dir( 60), dir( 60), old);
+  dot(pA, "$2$", dir(120), dir(120), old);
+  dot(pA, "$5$", dir(180), dir(180), old);
+  dot(pA, "$3$", dir(240), dir(240), old);
+  dot(pA, "$6$", dir(300), dir(300), old);
+
+  draw(pB, unitcircle);
+  dot(pB, "$\boxed{1}$", dir(  0), dir(  0), active);
+  dot(pB, "$6$", dir( 60), dir( 60), old);
+  dot(pB, "$2$", dir(120), dir(120), old);
+  dot(pB, "$5$", dir(180), dir(180), old);
+  dot(pB, "$3$", dir(240), dir(240), old);
+  dot(pB, "$4$", dir(300), dir(300), old);
+  draw(pB, dir(60)--dir(300), blue+dotted, Arrows(TeXHead), Margins);
+
+  draw(pC, unitcircle);
+  dot(pC, "$1$", dir(  0), dir(  0), used);
+  dot(pC, "$5$", dir( 60), dir( 60), old);
+  dot(pC, "$\boxed{2}$", dir(120), dir(120), active);
+  dot(pC, "$6$", dir(180), dir(180), old);
+  dot(pC, "$3$", dir(240), dir(240), old);
+  dot(pC, "$4$", dir(300), dir(300), old);
+  draw(pC, dir(60)--dir(180), blue+dotted, Arrows(TeXHead), Margins);
+
+  draw(pD, unitcircle);
+  dot(pD, "$1$", dir(  0), dir(  0), used);
+  dot(pD, "$5$", dir( 60), dir( 60), old);
+  dot(pD, "$2$", dir(120), dir(120), used);
+  dot(pD, "$4$", dir(180), dir(180), old);
+  dot(pD, "$\boxed{3}$", dir(240), dir(240), active);
+  dot(pD, "$6$", dir(300), dir(300), old);
+  draw(pD, dir(180)--dir(300), blue+dotted, Arrows(TeXHead), Margins);
+
+  draw(pE, unitcircle);
+  dot(pE, "$1$", dir(  0), dir(  0), used);
+  dot(pE, "$5$", dir( 60), dir( 60), old);
+  dot(pE, "$3$", dir(120), dir(120), used);
+  dot(pE, "$\boxed{4}$", dir(180), dir(180), active);
+  dot(pE, "$2$", dir(240), dir(240), used);
+  dot(pE, "$6$", dir(300), dir(300), old);
+  draw(pE, dir(120)--dir(240), blue+dotted, Arrows(TeXHead), Margins);
+
+  draw(pF, unitcircle);
+  dot(pF, "$1$", dir(  0), dir(  0), used);
+  dot(pF, "$\boxed{5}$", dir( 60), dir( 60), active);
+  dot(pF, "$3$", dir(120), dir(120), used);
+  dot(pF, "$4$", dir(180), dir(180), used);
+  dot(pF, "$2$", dir(240), dir(240), used);
+  dot(pF, "$6$", dir(300), dir(300), old);
+  draw(pF, dir(120)--dir(0), blue+dotted, Arrows(TeXHead), Margins);
+
+  draw(pG, unitcircle);
+  dot(pG, "$1$", dir(  0), dir(  0), used);
+  dot(pG, "$5$", dir( 60), dir( 60), used);
+  dot(pG, "$3$", dir(120), dir(120), used);
+  dot(pG, "$4$", dir(180), dir(180), used);
+  dot(pG, "$2$", dir(240), dir(240), used);
+  dot(pG, "$\boxed{6}$", dir(300), dir(300), active);
+  draw(pG, dir(60)--dir(240), blue+dotted, Arrows(TeXHead), Margins);
+
+  add(shift(-3,3)*pA);
+  add(shift(0,3)*pB);
+  add(shift(3,3)*pC);
+  add(shift(6,3)*pD);
+  add(shift(0,0)*pE);
+  add(shift(3,0)*pF);
+  add(shift(6,0)*pG);
+\end{asy}
+\end{center}
+
+\begin{claim*}
+  At each step, the walnut that becomes red is between two non-red or two red walnuts.
+\end{claim*}
+\begin{proof}
+  By definition.
+\end{proof}
+
+On the other hand, if there are $2021$ walnuts,
+one obtains a parity obstruction to this simplified process:
+\begin{claim*}
+  After the first step, there is always a consecutive block of black walnuts positive even length.
+\end{claim*}
+\begin{proof}
+  After the first step, there is a block of $2020$ black walnuts.
+
+  Thereafter, note that a length $2$ block of black walnuts can never be changed.
+  Meanwhile for even lengths at least $4$, if one places a red walnut inside it,
+  the even length block splits into an odd length block and an even length block.
+\end{proof}
+
+\begin{remark*}
+  The statement is true with $2021$ replaced by any odd number, and false for any even number.
+
+  The motivation comes from the following rephrasing of the problem:
+  \begin{quote}
+    Start with all $0$'s and at each step change a $0$ between
+    two matching numbers from a $0$ to a $1$.
+  \end{quote}
+  Although the coloring (or $0$/$1$) argument may appear to lose information
+  at first, I think it should be \emph{equivalent} to the original process;
+  the ``extra'' information comes down to the choice of
+  which walnut to color red at each step.
+\end{remark*}
+\pagebreak

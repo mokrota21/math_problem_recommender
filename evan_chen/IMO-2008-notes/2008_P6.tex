@@ -1,0 +1,125 @@
+
+\textsl{Available online at \url{https://aops.com/community/p1191671}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $ABCD$ be a convex quadrilateral with $BA \neq BC$.
+Denote the incircles of triangles $ABC$ and $ADC$
+by $\omega_1$ and $\omega_2$ respectively.
+Suppose that there exists a circle $\omega$ tangent
+to ray $BA$ beyond $A$ and to the ray $BC$ beyond $C$,
+which is also tangent to the lines $AD$ and $CD$.
+Prove that the common external tangents to
+$\omega_1$ and $\omega_2$ intersect on $\omega$.
+\end{mdframed}
+By the external version of Pitot theorem, the existence
+of $\omega$ implies that
+\[ BA + AD = CB + CD. \]
+Let $\ol{PQ}$ and $\ol{ST}$ be diameters of $\omega_1$ and $\omega_2$
+with $P, T \in \ol{AC}$.
+Then the length relation on $ABCD$ implies that $P$ and $T$
+are reflections about the midpoint of $\ol{AC}$.
+
+Now orient $AC$ horizontally and let $K$ be the ``uppermost'' point of $\omega$, as shown.
+
+\begin{center}
+\begin{asy}
+size(12cm);
+pair W = dir(48.4);
+pair X = dir(68.4);
+pair Y = dir(138.4);
+pair Z = dir(173.4);
+
+pair A = 2*X*Z/(X+Z);
+pair B = 2*W*Z/(W+Z);
+pair C = 2*W*Y/(W+Y);
+pair D = 2*X*Y/(X+Y);
+
+draw(arc(origin, 1, 40, 180), dashed+orange);
+
+filldraw(incircle(A, B, C), opacity(0.1)+lightred, red);
+filldraw(incircle(A, D, C), opacity(0.1)+lightred, red);
+filldraw(A--B--C--D--cycle, opacity(0.1)+yellow, orange);
+draw(A--C, red);
+
+pair I_B = incenter(A, B, C);
+pair I_D = incenter(A, D, C);
+pair P = foot(I_B, A, C);
+pair Q = 2*I_B-P;
+pair T = foot(I_D, A, C);
+pair S = 2*I_D-T;
+
+draw(A--Z, orange);
+draw(C--W, orange);
+pair E = 2*Y*Z/(Y+Z);
+pair F = 2*X*W/(X+W);
+draw(E--D--F, orange);
+
+pair K = extension(B, Q, D, P);
+draw(B--K--P, dashed+red);
+draw(P--Q, red);
+draw(S--T, red);
+
+dot("$W$", W, dir(W));
+dot("$X$", X, dir(95));
+dot("$Y$", Y, dir(Y));
+dot("$Z$", Z, dir(Z));
+dot("$A$", A, dir(135));
+dot("$B$", B, dir(B));
+dot("$C$", C, dir(45));
+dot("$D$", D, dir(-D));
+dot("$P$", P, dir(270));
+dot("$Q$", Q, 0.8*dir(95));
+dot("$T$", T, dir(45));
+dot("$S$", S, dir(225));
+dot("$K$", K, dir(315));
+
+/* TSQ Source:
+
+!size(12cm);
+W = dir 48.4
+X = dir 68.4 R95
+Y = dir 138.4
+Z = dir 173.4
+
+A = 2*X*Z/(X+Z) R135
+B = 2*W*Z/(W+Z)
+C = 2*W*Y/(W+Y) R45
+D = 2*X*Y/(X+Y) R-D
+
+!draw(arc(origin, 1, 40, 180), dashed+orange);
+
+incircle A B C 0.1 lightred / red
+incircle A D C 0.1 lightred / red
+A--B--C--D--cycle 0.1 yellow / orange
+A--C red
+
+I_B := incenter A B C
+I_D := incenter A D C
+P = foot I_B A C R270
+Q = 2*I_B-P 0.8R95
+T = foot I_D A C R45
+S = 2*I_D-T R225
+
+A--Z orange
+C--W orange
+E := 2*Y*Z/(Y+Z)
+F := 2*X*W/(X+W)
+E--D--F orange
+
+K = extension B Q D P R315
+B--K--P dashed red
+P--Q red
+S--T red
+
+*/
+\end{asy}
+\end{center}
+
+Consequently, a homothety at $B$ maps $Q$, $T$, $K$ to each other
+(since $T$ is the uppermost of the excircle, $Q$ of the incircle).
+Similarly, a homothety at $D$ maps $P$, $S$, $K$ to each other.
+As $\ol{PQ}$ and $\ol{ST}$ are parallel diameters
+it then follows $K$ is the exsimilicenter of $\omega_1$ and $\omega_2$.
+\pagebreak
+
+
+\end{document}

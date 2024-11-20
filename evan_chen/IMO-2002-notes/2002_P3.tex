@@ -1,0 +1,48 @@
+\textsl{Available online at \url{https://aops.com/community/p118695}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Find all pairs of positive integers
+$m, n \ge 3$ for which there exist infinitely many
+positive integers $a$ such that
+\[ \frac{a^m+a-1}{a^n+a^2-1} \]
+is itself an integer.
+\end{mdframed}
+The condition is equivalent to $a^n+a^2-1$
+dividing $a^m+a-1$ as polynomials.
+The big step is the following analytic one.
+
+\begin{claim*}
+  We must have $m \le 2n$.
+\end{claim*}
+\begin{proof}
+  Assume on contrary $m > 2n$
+  and let $0 < r < 1$ be the unique real number
+  with $r^n+r^2 = 1$, hence $r^m+r = 1$.
+  But now
+  \begin{align*}
+    0 &= r^m + r - 1 < r(r^n)^2 + r - 1 = r\left( (1-r^2)^2+1 \right) - 1 \\
+    &= -(1-r)\left( r^4+r^3-r^2-r+1 \right).
+  \end{align*}
+  As $1-r > 0$ and $r^4+r^3-r^2-r+1 > 0$, this is a contradiction
+\end{proof}
+
+Now for the algebraic part.
+Obviously $m > n$.
+\begin{align*}
+  a^n+a^2-1 &\mid a^m+a-1 \\
+  \iff a^n+a^2-1 &\mid (a^m+a-1)(a+1) = a^m(a+1) + (a^2-1)  \\
+  \iff a^n+a^2-1 &\mid a^m(a+1) - a^n \\
+  \iff a^n+a^2-1 &\mid a^{m-n}(a+1) - 1.
+\end{align*}
+The right-hand side has degree $m-n+1 \le n+1$,
+and the leading coefficients are both $+1$.
+So the only possible situations are
+\begin{align*}
+  a^{m-n}(a+1) - 1 &= (a+1)\left( a^n+a^2-1 \right) \\
+  a^{m-n}(a+1) + 1 &=  a^n+a^2-1.
+\end{align*}
+The former fails by just taking $a=-1$;
+the latter implies $(m,n) = (5,3)$.
+As our work was reversible, this also implies $(m,n) = (5,3)$ works, done.
+\pagebreak
+
+\section{Solutions to Day 2}

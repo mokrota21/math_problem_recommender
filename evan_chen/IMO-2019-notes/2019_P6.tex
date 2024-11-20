@@ -1,0 +1,736 @@
+
+\textsl{Available online at \url{https://aops.com/community/p12752769}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $ABC$ be a triangle with incenter $I$ and incircle $\omega$.
+Let $D$, $E$, $F$ denote the tangency points of $\omega$ with $\ol{BC}$, $\ol{CA}$, $\ol{AB}$.
+The line through $D$ perpendicular to $\ol{EF}$ meets $\omega$ again at $R$ (other than $D$),
+and line $AR$ meets $\omega$ again at $P$ (other than $R$).
+Suppose the circumcircles of $\triangle PCE$ and $\triangle PBF$ meet again at $Q$ (other than $P$).
+Prove that lines $DI$ and $PQ$ meet on the external $\angle A$-bisector.
+\end{mdframed}
+We present five solutions.
+
+\paragraph{First solution by complex numbers (Evan Chen, with Yang Liu).}
+We use complex numbers with $D=x$, $E=y$, $F=z$.
+\begin{center}
+\begin{asy}
+pair I = origin;
+pair D = dir(110);
+pair E = dir(210);
+pair F = dir(330);
+draw(D--E--F--cycle, blue);
+filldraw(unitcircle, opacity(0.1)+lightcyan, blue);
+pair A = 2*E*F/(E+F);
+pair B = 2*F*D/(F+D);
+pair C = 2*D*E/(D+E);
+draw(A--B--C--cycle, blue);
+pair R = -E*F/D;
+pair P = -R+2*foot(I, A, R);
+filldraw(circumcircle(P, C, E), opacity(0.1)+lightcyan, deepgreen);
+filldraw(circumcircle(P, B, F), opacity(0.1)+lightcyan, deepgreen);
+pair Q = -P+2*foot(P, circumcenter(C, P, E), circumcenter(B, P, F));
+pair T = extension(P, Q, D, I);
+draw(A--T, deepcyan);
+draw(D--T--P, deepcyan);
+draw(D--R, lightblue);
+draw(A--P, lightblue);
+
+dot("$I$", I, dir(45));
+dot("$D$", D, dir(D));
+dot("$E$", E, dir(E));
+dot("$F$", F, dir(F));
+dot("$A$", A, dir(A));
+dot("$B$", B, dir(B));
+dot("$C$", C, dir(C));
+dot("$R$", R, dir(R));
+dot("$P$", P, dir(200));
+dot("$Q$", Q, dir(70));
+dot("$T$", T, dir(T));
+
+/* TSQ Source:
+
+I = origin R45
+D = dir 110
+E = dir 210
+F = dir 330
+D--E--F--cycle blue
+unitcircle 0.1 lightcyan / blue
+A = 2*E*F/(E+F)
+B = 2*F*D/(F+D)
+C = 2*D*E/(D+E)
+A--B--C--cycle blue
+R = -E*F/D
+P = -R+2*foot I A R R200
+circumcircle P C E 0.1 lightcyan / deepgreen
+circumcircle P B F 0.1 lightcyan / deepgreen
+Q = -P+2*foot P circumcenter C P E circumcenter B P F R70
+T = extension P Q D I
+A--T deepcyan
+D--T--P deepcyan
+D--R lightblue
+A--P lightblue
+
+*/
+\end{asy}
+\end{center}
+
+
+Then $A = \frac{2yz}{y+z}$,
+$R = \frac{-yz}{x}$ and so
+\[ P = \frac{A-R}{1-R\ol{A}}
+  = \frac{\frac{2yz}{y+z} + \frac{yz}{x}}
+  {1 + \frac{yz}{x} \cdot \frac{2}{y+z}}
+  = \frac{yz(2x+y+z)}{2yz+x(y+z)}. \]
+We now compute
+\begin{align*}
+  O_B &= \det \begin{bmatrix}
+    P & P \ol P & 1 \\
+    F & F \ol F & 1 \\
+    B & B \ol B & 1
+  \end{bmatrix}
+  \div \det \begin{bmatrix}
+    P & \ol P & 1 \\
+    F & \ol F & 1 \\
+    B & \ol B & 1
+  \end{bmatrix}
+  = \det \begin{bmatrix}
+    P & 1 & 1 \\
+    z & 1 & 1 \\
+    \frac{2xz}{x+z} & \frac{4xz}{(x+z)^2} & 1
+  \end{bmatrix}
+  \div \det \begin{bmatrix}
+    P & 1/P & 1 \\
+    z & 1/z & 1 \\
+    \frac{2xz}{x+z} & \frac{2}{x+z} & 1
+  \end{bmatrix} \\
+  &= \frac{1}{x+z} \det \begin{bmatrix}
+    P & 0 & 1 \\
+    z & 0 & 1 \\
+    2xz(x+z) & -(x-z)^2 & (x+z)^2
+  \end{bmatrix}
+  \div \det \begin{bmatrix}
+    P & 1/P & 1 \\
+    z & 1/z & 1 \\
+    2xz & 2 & x+z
+  \end{bmatrix} \\
+  &= \frac{(x-z)^2}{x+z} \cdot \frac{P-z}{(x+z)(P/z-z/P)+2z-2x + \frac{2xz}{P}-2P} \\
+  &= \frac{(x-z)^2}{x+z} \cdot \frac{P-z}{
+    (\frac xz-1) P - 2(x-z) + (xz-z^2) \frac 1P  } \\
+  &= \frac{x-z}{x+z} \cdot \frac{P-z}{P/z + z/P - 2}
+  = \frac{x-z}{x+z} \cdot \frac{P-z}{\frac{(P-z)^2}{Pz}}
+  = \frac{x-z}{x+z} \cdot \frac{1}{\frac 1z - \frac 1P} \\
+  &= \frac{x-z}{x+z} \cdot \frac{y(2x+y+z)}{y(2x+y+z) - (2yz+xy+xz)}
+  = \frac{x-z}{x+z} \cdot \frac{yz(2x+y+z)}{xy+y^2-yz-xz} \\
+  &= \frac{x-z}{x+z} \cdot \frac{yz(2x+y+z)}{(y-z)(x+y)}.
+\end{align*}
+Similarly
+\[ O_C = \frac{x-y}{x+y} \cdot \frac{yz(2x+y+z)}{(z-y)(x+z)}. \]
+Therefore, subtraction gives
+\[ O_B-O_C
+  =
+  \frac{yz(2x+y+z)}{(x+y)(x+z)(y-z)}
+  \left[ (x-z) + (x-y) \right]
+  = \frac{yz(2x+y+z)(2x-y-z)}{(x+y)(x+z)(z-y)}.
+\]
+It remains to compute $T$.
+Since $T \in \ol{ID}$ we have $t/x \in \RR$
+so $\ol t = t/x^2$.
+Also,
+\begin{align*}
+  \frac{t - \frac{2yz}{y+z}}{y+z} \in i \RR
+  \implies 0 &= \frac{t-\frac{2yz}{y+z}}{y+z}
+  + \frac{\frac{t}{x^2}-\frac{2}{y+z}}{\frac1y+\frac1z} \\
+  &= \frac{1+\frac{yz}{x^2}}{y+z} t - \frac{2yz}{(y+z)^2} - \frac{2yz}{(y+z)^2} \\
+  \implies t &= \frac{x^2}{x^2+yz} \cdot \frac{4yz}{y+z}
+\end{align*}
+Thus
+\begin{align*}
+  P-T &= \frac{yz(2x+y+z)}{2yz+x(y+z)} - \frac{4x^2yz}{(x^2+yz)(y+z)} \\
+  &= yz \cdot \frac{(2x+y+z)(x^2+yz)(y+z) - 4x^2(2yz+xy+xz)}
+    {(y+z)(x^2+yz)(2yz+xy+xz)} \\
+  &= -yz \cdot \frac{(2x-y-z)(x^2y+x^2z+4xyz+y^2z+yz^2)}
+    {(y+z)(x^2+yz)(2yz+xy+xz)}.
+\end{align*}
+This gives $\ol{PT} \perp \ol{O_B O_C}$ as needed.
+
+\paragraph{Second solution by tethered moving points, with optimization (Evan Chen).}
+Fix $\triangle DEF$ and $\omega$, with $B = \ol{DD} \cap \ol{FF}$
+and $C = \ol{DD} \cap \ol{EE}$.
+We consider a variable point $M$ on $\omega$
+and let $X$, $Y$ be on $\ol{EF}$ with
+$\ol{CY} \cap \parallel \ol{ME}$, $\ol{BX} \cap \parallel \ol{MF}$.
+We define $W = \ol{CY} \cap \ol{BX}$.
+Also, let line $MW$ meet $\omega$ again at $V$.
+
+\begin{center}
+\begin{asy}
+pair D = dir(105);
+pair E = dir(200);
+pair F = dir(340);
+pair M = dir(275);
+pair N = extension(D, M, E, F);
+pair Rp = -D;
+pair B = 2*D*F/(D+F);
+pair C = 2*D*E/(D+E);
+pair X = extension(E, F, B, B+M-F);
+pair Y = extension(E, F, C, C+M-E);
+pair W = extension(B, X, C, Y);
+pair V = extension(N, Rp, M, W);
+
+filldraw(unitcircle, opacity(0.1)+lightred, red);
+draw(D--E--F--cycle, red);
+draw(E--C--D--B--F, orange);
+draw(V--M);
+draw(X--B, deepgreen);
+draw(C--Y, deepgreen);
+draw(E--M--F, heavygreen);
+draw(D--M, lightred);
+draw(V--M, blue);
+filldraw(circumcircle(C, W, V), opacity(0.1)+lightcyan, blue);
+filldraw(circumcircle(B, W, V), opacity(0.1)+lightcyan, blue);
+draw(V--Rp, grey+dotted);
+
+dot("$D$", D, dir(D));
+dot("$E$", E, dir(E));
+dot("$F$", F, dir(F));
+dot("$M$", M, dir(M));
+dot("$N$", N, dir(N));
+dot("$R'$", Rp, dir(Rp));
+dot("$B$", B, dir(B));
+dot("$C$", C, dir(C));
+dot("$X$", X, dir(270));
+dot("$Y$", Y, dir(270));
+dot("$W$", W, dir(W));
+dot("$V$", V, dir(200));
+
+/* TSQ Source:
+
+D = dir 105
+E = dir 200
+F = dir 340
+M = dir 275
+N = extension D M E F
+R' = -D
+B = 2*D*F/(D+F)
+C = 2*D*E/(D+E)
+X = extension E F B B+M-F R270
+Y = extension E F C C+M-E R270
+W = extension B X C Y
+V = extension N Rp M W R200
+
+unitcircle 0.1 lightred / red
+D--E--F--cycle red
+E--C--D--B--F orange
+V--M
+X--B deepgreen
+C--Y deepgreen
+E--M--F heavygreen
+D--M lightred
+V--M blue
+circumcircle C W V 0.1 lightcyan / blue
+circumcircle B W V 0.1 lightcyan / blue
+V--Rp grey dotted
+
+*/
+\end{asy}
+\begin{asy}
+pair D = dir(115);
+pair E = dir(210);
+pair F = dir(330);
+pair N = midpoint(E--F);
+pair M = -D+2*foot(origin, D, N);
+pair Rp = -D;
+pair B = 2*D*F/(D+F);
+pair C = 2*D*E/(D+E);
+pair X = extension(E, F, B, B+M-F);
+pair Y = extension(E, F, C, C+M-E);
+pair Q = extension(B, X, C, Y);
+pair P = extension(N, Rp, M, Q);
+
+pair R = E*F/Rp;
+pair Mp = E*F/M;
+pair A = 2*E*F/(E+F);
+pair Z = extension(P, M, D, Rp);
+
+filldraw(unitcircle, opacity(0.1)+lightred, red);
+draw(D--E--F--cycle, red);
+draw(E--A--F, orange);
+draw(P--M);
+draw(D--M, lightred);
+// E--D--C orange
+draw(P--Rp, deepgreen);
+
+draw(A--Z, lightblue);
+draw(P--Z--D, blue);
+draw(P--A--D, deepcyan);
+
+dot("$D$", D, dir(D));
+dot("$E$", E, dir(E));
+dot("$F$", F, dir(F));
+dot("$N$", N, dir(N));
+dot("$M$", M, dir(M));
+dot("$R'$", Rp, dir(Rp));
+dot("$Q$/$W$", Q, dir(Q));
+dot("$P$/$V$", P, dir(200));
+dot("$R$", R, dir(R));
+dot("$M'$", Mp, dir(Mp));
+dot("$A$", A, dir(A));
+
+/* TSQ Source:
+
+D = dir 115
+E = dir 210
+F = dir 330
+N = midpoint E--F
+M = -D+2*foot origin D N
+R' = -D
+B := 2*D*F/(D+F)
+C := 2*D*E/(D+E)
+X := extension E F B B+M-F R270
+Y := extension E F C C+M-E R270
+Q = extension B X C Y
+P = extension N Rp M Q R200
+
+R = E*F/Rp
+M' = E*F/M
+A = 2*E*F/(E+F)
+Z := extension P M D Rp
+
+unitcircle 0.1 lightred / red
+D--E--F--cycle red
+E--A--F orange
+P--M
+D--M lightred
+// E--D--C orange
+P--Rp deepgreen
+
+A--Z lightblue
+P--Z--D blue
+P--A--D deepcyan
+
+*/
+\end{asy}
+\end{center}
+
+\begin{claim*}
+  [Angle chasing]
+  Pentagons $CVWXE$ and $BVWYF$ are cyclic.
+\end{claim*}
+\begin{proof}
+  By $\dang EVW = \dang EVM = \dang EFM = \dang CEM = \dang ECW$
+  and $\dang EXW = \dang EFM = \dang CEM = \dang ECW$.
+\end{proof}
+
+Let $N = \ol{DM} \cap \ol{EF}$ and $R'$ be the $D$-antipode on $\omega$.
+\begin{claim*}
+  [Black magic]
+  The points $V$, $N$, $R'$ are collinear.
+\end{claim*}
+\begin{proof}
+  We use tethered moving points with $\triangle DEF$ fixed.
+
+  Obviously the map $\omega \mapsto \ol{EF} \mapsto \omega$ by $M \mapsto N \mapsto \ol{R'N} \cap \omega$ is projective.
+  Also, the map $\omega \mapsto \ol{EF} \mapsto \omega$ by $M \mapsto X \mapsto V$ is also projective
+  (the first by projection to the line at infinity at back;
+  the second say by inversion at $E$).
+
+  So it suffices to check for three points.
+  When $M=E$ we get $N=E$ so $\ol{R'N} \cap \omega = E$, while $W=E$ and thus $V=E$.
+  The case $M=F$ is similar.
+  Finally, if $M = R'$, then $W$ is the center of $\omega$ and so $V = \ol{R'N} \cap \ol{EF} = D$.
+\end{proof}
+
+
+We now address the original problem by specializing $M$:
+choose it so that $N$ is the midpoint of $\ol{EF}$.
+Let $M' = \ol{DA} \cap (DEF)$.
+\begin{claim*}
+  After this specialization, $V=P$ and $W=Q$.
+\end{claim*}
+\begin{proof}
+  Thus $\ol{RR'}$ and $\ol{MM'}$ are parallel to $\ol{EF}$.
+  From  $(EF;PR) = -1 = (EF;N\infty) \overset{R'}{=} (EF;NV)$,
+  we derive that $P=V$ and $Q=R$, proving (i).
+\end{proof}
+Finally, the concurrence requested follows by Pascal theorem on $M'MDR'PR$.
+
+\paragraph{Third solution by power of a point linearity (Luke Robitaille).}
+
+Let us define
+\[ f(\bullet) = \opname{Pow}(\bullet, (CPE))
+  - \opname{Pow}(\bullet, (BPF)) \]
+which is a linear function from the plane to $\RR$.
+
+Define $W = \ol{BA} \cap \ol{PE}$, $V = \ol{AC} \cap \ol{PF}$.
+Also, let $W_1 = \ol{ER} \cap \ol{AB}$, $V_1 = \ol{FR} \cap \ol{AC}$.
+Note that
+\[ -1 = (PR;EF) \overset{E}{=} (WA; W_1F) \]
+and similarly $(VA; V_1E) = -1$.
+
+\begin{claim*}
+  We have
+  \begin{align*}
+    f(F) &= \frac{|EF| \cdot (s-c) \sin C/2}{\sin B/2} \\
+    f(E) &= -\frac{|EF| \cdot (s-b) \sin B/2}{\sin C/2}.
+  \end{align*}
+\end{claim*}
+\begin{proof}
+  We have
+  \[ f(W) = WF^2 - WB \cdot WF = WF \cdot BF \]
+  where lengths are directed.
+  Next,
+  \begin{align*}
+    f(F) &= \frac{AF \cdot f(W) + FW \cdot f(A)}{AW} \\
+    &= \frac{AF \cdot WF \cdot BF + FW \cdot
+      \left( AE \cdot AC - AF \cdot AB \right)}{AW} \\
+    &= \frac{WF(AF \cdot BF + AF \cdot AB) + FW \cdot AE \cdot AC}{AW} \\
+    &= \frac{WF \cdot AF^2 - WF \cdot AE \cdot AC}{AW}
+      = \frac{WF}{AW} \cdot (AE^2 - AE \cdot AC) \\
+    &= \frac{WF}{AW} \cdot AE \cdot CE
+      = -\frac{W_1F}{AW_1} \cdot AE \cdot CE.
+  \end{align*}
+  Since $\triangle DEF$ is acute,
+  the point $R$ lies inside $\triangle AEF$.
+  Thus $W_1$ lies inside segment $\ol{AF}$
+  and the ratio $\frac{W_1F}{AW_1}$ is positive.
+  We now determine its value: by the ratio lemma
+  \begin{align*}
+    \frac{|W_1F|}{|AW_1|}
+    &= \frac{|EF| \sin \angle W_1 E F}{|AE| \sin \angle A E W_1} \\
+    &= \frac{|EF| \sin \angle REF}{|AE| \sin \angle AER} \\
+    &= \frac{|EF| \sin \angle RDF}{|AE| \sin \angle EDR} \\
+    &= \frac{|EF| \sin C/2}{|AE| \sin B/2}.
+  \end{align*}
+  Also, we have $AE \cdot CE < 0$ since $E$ lies inside $\ol{AC}$.
+  Hence
+  \[ f(F) = -\frac{|EF| \sin C/2}{|AE| \sin B/2}.
+    \cdot AE \cdot CE
+    = |EF| \cdot \frac{|CE| \sin B/2}{\sin C/2}
+    = |EF| \cdot \frac{(s-c) \sin B/2}{\sin C/2}. \]
+  The calculation for $f(E)$ is similar,
+  (noting the sign flips since $f$ is anti-symmetric
+  in terms of $B$ and $C$).
+\end{proof}
+
+Let $Z \in \ol{DI}$ with $\angle ZAI = 90\dg$ be the point requested in the problem now.
+Our goal is to show $f(Z) = 0$.
+We assume WLOG that $AB < AC$, so $\frac{ZA}{EF} > 0$.
+Then
+\begin{align*}
+  |ZA| &= |AI| \cdot \tan \angle AIZ \\
+  &= |AI| \cdot \tan \angle(\ol{AI}, \ol{DI}) \\
+  &= \frac{s-a}{\cos A/2} \cdot \tan (\ol{BC}, \ol{EF}) \\
+  &= \frac{s-a}{\cos A/2} \tan (B/2-C/2).
+\end{align*}
+
+To this end we compute
+\begin{align*}
+  f(Z) &= f(A) + \left[ f(Z) - f(A) \right]
+    = f(A) + \frac{ZA}{EF} \left[ f(E)-f(F) \right] \\
+  &= f(A) - \frac{ZA}{EF}
+  \left[ \frac{|EF| \cdot (s-b) \sin B/2}{\sin C/2}
+    + \frac{|EF| \cdot (s-c) \sin C/2}{\sin B/2} \right] \\
+  &= f(A) - |ZA| \left[ \frac{(s-b) \sin B/2}{\sin C/2}
+    + \frac{(s-c) \sin C/2}{\sin B/2} \right] \\
+  &= \left[ b(s-a) - c(s-a) \right]
+    - |ZA| \left[ \frac{(s-b) \sin B/2}{\sin C/2}
+    + \frac{(s-c) \sin C/2}{\sin B/2} \right] \\
+  &= (b-c)(s-a) - \frac{s-a}{\cos A/2} \tan (B/2-C/2)
+    \left[ \frac{(s-b) \sin B/2}{\sin C/2}
+    + \frac{(s-c) \sin C/2}{\sin B/2} \right].
+\end{align*}
+Dividing out,
+\begin{align*}
+  \frac{f(Z)}{s-a}
+  &= (b-c) - \frac{1}{\cos A/2} \tan (B/2-C/2)
+    \left[ \frac{r \cos B/2}{\sin C/2}
+      + \frac{r \cos C/2}{\sin B/2} \right] \\
+  &= (b-c) - \frac{r \tan(B/2-C/2)}{\cos A/2}
+    \cdot \frac{\cos B/2 \sin B/2 + \cos C/2 \sin C/2}%
+    {\sin C/2 \sin B/2} \\
+  &= (b-c) - \frac{r \tan(B/2-C/2)}{\cos A/2}
+    \cdot \frac{\sin B + \sin C}%
+    {2\sin C/2 \sin B/2} \\
+  &= (b-c) - \frac{r \tan(B/2-C/2)}{\cos A/2}
+    \cdot \frac{\sin(B/2+C/2)\cos(B/2-C/2)}
+    {\sin C/2 \sin B/2} \\
+  &= (b-c) - r \frac{\sin(B/2-C/2)}{\sin B/2 \sin C/2} \\
+  &= (b-c) - r(\cot C/2 - \cot B/2)
+    = (b-c) - \left( (s-c) - (s-b) \right) = 0.
+\end{align*}
+
+\paragraph{Fourth solution by incircle inversion (USA IMO live stream, led by Andrew Gu).}
+Let $T$ be the intersection of line $DI$ and the external $\angle A$-bisector.
+Also, let $G$ be the antipode of $D$ on $\omega$.
+
+We perform inversion around $\omega$, using $\bullet^\ast$ for the inverse.
+Then $\triangle A^\ast B^\ast C^\ast$ is the medial triangle of $\triangle DEF$,
+and $T^\ast$ is the foot from $A^\ast$ on to $\ol{DI}$.
+If we denote $Q^\ast$ as the second intersection
+of $(PC^\ast E)$ and $(PB^\ast F)$,
+then the goal is to show that $Q^\ast$ lies on $(PIT^\ast)$.
+
+\begin{center}
+\begin{asy}
+pair D = dir(115);
+pair E = dir(210);
+pair F = dir(330);
+pair As = midpoint(E--F);
+pair G = -D;
+pair I = origin;
+pair A = 2*E*F/(E+F);
+
+pair R = -E*F/D;
+pair P = -R+2*foot(I, R, A);
+
+pair T = extension(D, I, A, E-F+A);
+
+pair Bs = midpoint(D--F);
+pair Cs = midpoint(D--E);
+pair M = midpoint(As--D);
+pair Qs = OP(circumcircle(Cs, P, E), circumcircle(Bs, P, F));
+
+filldraw(unitcircle, opacity(0.1)+lightcyan, deepcyan);
+draw(D--E--F--cycle, deepcyan);
+draw(E--A--F, lightblue);
+draw(P--G, deepgreen);
+draw(D--T, lightblue);
+draw(A--T, lightblue);
+draw(A--P, lightblue);
+pair Ts = foot(As, D, T);
+draw(As--Ts, lightred);
+draw(Qs--Bs, lightred+dashed);
+draw(D--As, lightblue);
+
+filldraw(circumcircle(P, Cs, E), opacity(0.05)+yellow, lightred);
+filldraw(circumcircle(P, Bs, F), opacity(0.05)+yellow, lightred);
+
+draw(CP(M, D), lightgreen);
+draw(M--I, deepgreen);
+
+clip(box((-1.8,-2.2), (2,2)));
+filldraw(circumcircle(P, I, Ts), opacity(0.1)+orange, red+dashed);
+
+dot("$D$", D, dir(D));
+dot("$E$", E, dir(E));
+dot("$F$", F, dir(F));
+dot("$A^\ast$", As, dir(225));
+dot("$G$", G, dir(245));
+dot("$I$", I, dir(45));
+dot("$A$", A, dir(A));
+dot("$R$", R, dir(R));
+dot("$P$", P, dir(P));
+dot("$T$", T, dir(T));
+dot("$B^\ast$", Bs, dir(Bs));
+dot("$C^\ast$", Cs, dir(45));
+dot("$M$", M, dir(225));
+dot("$Q^\ast$", Qs, dir(Qs));
+dot("$T^\ast$", Ts, dir(45));
+
+/* TSQ Source:
+
+D = dir 115
+E = dir 210
+F = dir 330
+A* = midpoint E--F R225
+G = -D R245
+I = origin R45
+A = 2*E*F/(E+F)
+
+R = -E*F/D
+P = -R+2*foot I R A
+
+T = extension D I A E-F+A
+
+B* = midpoint D--F
+C* = midpoint D--E R45
+M = midpoint As--D R225
+Q* = OP circumcircle Cs P E circumcircle Bs P F
+
+unitcircle 0.1 lightcyan / deepcyan
+D--E--F--cycle deepcyan
+E--A--F lightblue
+P--G deepgreen
+D--T lightblue
+A--T lightblue
+A--P lightblue
+T* = foot As D T R45
+As--Ts lightred
+Qs--Bs lightred dashed
+D--As lightblue
+
+circumcircle P Cs E 0.05 yellow / lightred
+circumcircle P Bs F 0.05 yellow / lightred
+
+CP M D lightgreen
+M--I deepgreen
+
+!clip(box((-1.8,-2.2), (2,2)));
+circumcircle P I Ts 0.1 orange / red dashed
+
+*/
+\end{asy}
+\end{center}
+
+\begin{claim*}
+  Points $Q^\ast$, $B^\ast$, $C^\ast$ are collinear.
+\end{claim*}
+\begin{proof}
+  $\dang PQ^\ast C^\ast = \dang PEC^\ast = \dang PED = \dang PFD
+  = \dang PFB^\ast = \dang PQ^\ast B^\ast$.
+\end{proof}
+
+\begin{claim*}
+  [cf Brazil 2011/5]
+  Points $P$, $A^\ast$, $G$ are collinear.
+\end{claim*}
+\begin{proof}
+  Project harmonic quadrilateral $PERF$ through $G$,
+  noting $\ol{GR} \parallel \ol{EF}$.
+\end{proof}
+
+Denote by $M$ the center of parallelogram $DC^\ast A^\ast B^\ast$.
+Note that it is the center of the circle with
+diameter $\ol{DA^\ast}$, which passes through $P$ and $T^\ast$.
+Also, $\ol{MI} \parallel \ol{PA^\ast G}$.
+
+\begin{claim*}
+  Points $P$, $M$, $I$, $T^\ast$ are cyclic.
+\end{claim*}
+\begin{proof}
+  $\dang IT^\ast P = \dang D T^\ast P = \dang DA^\ast P
+    = \dang M A^\ast P = \dang A^\ast P M  = \dang IMP$.
+\end{proof}
+
+\begin{claim*}
+  Points $P$, $M$, $I$, $Q^\ast$ are cyclic.
+\end{claim*}
+\begin{proof}
+  $\dang MQ^\ast P = \dang C^\ast Q^\ast P = \dang C^\ast E P
+  = \dang D E P = \dang D G P = \dang GPI = \dang MIP$.
+\end{proof}
+
+\paragraph{Fifth solution by double inversion (Brandon Wang, Luke Robitaille, Michael Ren, Evan Chen).}
+We outline one final approach.
+After inverting about $\omega$ as in the previous approach,
+we then apply another inversion around $P$.
+Dropping the apostrophes/stars/etc now one can check
+that the problem we arrive at becomes the following.
+\begin{proposition*}
+  [Doubly inverted problem]
+  In $\triangle PEF$, the $P$-symmedian meets $\ol{EF}$
+  and $(PEF)$ at $K$, $L$.
+  Let $D \in \ol{EF}$ with $\angle DPK = 90\dg$,
+  and let $T$ be the foot from $K$ to $\ol{DL}$.
+  Denote by $I$ the reflection of $P$ about $\ol{EF}$.
+  Finally, let $PDNE$ and $PDMF$ be cyclic harmonic quadrilaterals.
+  Then lines $EN$, $MF$, $TI$, are concurrent.
+\end{proposition*}
+
+The proof proceeds in three steps.
+Suppose the line through $L$ perpendicular to $\ol{EF}$
+meets $\ol{EF}$ at $W$ and $(PEF)$ at $Z$.
+\begin{center}
+\begin{asy}
+size(10cm);
+pair P = dir(190);
+pair E = dir(220);
+pair F = dir(-40);
+pair T = 2*E*F/(E+F);
+pair K = extension(E, F, P, T);
+pair L = -P+2*foot(origin, P, K);
+pair W = foot(L, E, F);
+pair Z = -L+2*foot(origin, W, L);
+pair D = extension(E, F, P, P+dir(90)*(P-K));
+pair T = foot(K, D, L);
+pair I = -P+2*foot(P, E, F);
+pair H = extension(P, Z, W, I);
+pair N = -E+2*foot(circumcenter(P, D, E), H, E);
+pair M = -F+2*foot(circumcenter(P, D, F), H, F);
+
+filldraw(unitcircle, opacity(0.1)+lightcyan, blue);
+draw(P--E--F--cycle, blue);
+draw(D--E, blue);
+draw(D--P--L--cycle, deepcyan);
+draw(T--K, deepcyan);
+
+draw(E--Z, orange);
+draw(F--Z, orange);
+draw(H--Z, orange);
+draw(L--Z, orange);
+
+filldraw(circumcircle(P, D, E), opacity(0.1)+lightgreen, deepgreen);
+filldraw(circumcircle(P, D, F), opacity(0.1)+lightgreen, deepgreen);
+draw(E--H, grey);
+draw(W--H, grey);
+draw(F--M, grey);
+
+clip(box((-3,-2.3), (1.5,1.5)));
+
+dot("$P$", P, dir(110));
+dot("$E$", E, dir(135));
+dot("$F$", F, dir(350));
+dot("$K$", K, dir(70));
+dot("$L$", L, dir(270));
+dot("$W$", W, dir(45));
+dot("$Z$", Z, dir(Z));
+dot("$D$", D, dir(D));
+dot("$T$", T, dir(270));
+dot("$I$", I, dir(315));
+dot(H);
+dot("$N$", N, dir(100));
+dot("$M$", M, dir(M));
+
+/* TSQ Source:
+
+P = dir 190 R110
+E = dir 220 R135
+F = dir -40 R350
+T := 2*E*F/(E+F)
+K = extension E F P T R70
+L = -P+2*foot origin P K R270
+W = foot L E F R45
+Z = -L+2*foot origin W L
+D = extension E F P P+dir(90)*(P-K)
+T = foot K D L R270
+I = -P+2*foot P E F R315
+H .= extension P Z W I
+N = -E+2*foot circumcenter P D E H E R100
+M = -F+2*foot circumcenter P D F H F
+
+unitcircle 0.1 lightcyan / blue
+P--E--F--cycle blue
+D--E blue
+D--P--L--cycle deepcyan
+T--K deepcyan
+
+E--Z orange
+F--Z orange
+H--Z orange
+L--Z orange
+
+circumcircle P D E 0.1 lightgreen / deepgreen
+circumcircle P D F 0.1 lightgreen / deepgreen
+E--H grey
+W--H grey
+F--M grey
+
+! clip(box((-3,-2.3), (1.5,1.5)));
+
+*/
+\end{asy}
+\end{center}
+
+\begin{enumerate}
+  \ii Since $\dang ZEP = \dang WLP = \dang WDP$,
+  it follows $\ol{ZE}$ is tangent to $(PDNE)$.
+  Similarly, $\ol{ZF}$ is tangent to $(PDMF)$.
+  \ii $\triangle WTP$ is the orthic triangle of $\triangle DKL$,
+  so $\ol{WD}$ bisects $\angle PWT$ and $\ol{WTI}$ collinear.
+  \ii $-1 = E(PN;DZ) = F(PM;DZ) = W(PI;DZ)$, so
+  $\ol{EN}$, $\ol{FM}$, $\ol{WI}$ meet on $\ol{PZ}$.
+\end{enumerate}
+\pagebreak
+
+
+\end{document}

@@ -1,0 +1,25 @@
+\textsl{Available online at \url{https://aops.com/community/p118687}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $n \ge 2$ be a positive integer
+with divisors $1 = d_1 < d_2 < \dots < d_k = n$.
+Prove that $d_1d_2 + d_2d_3 + \dots + d_{k-1} d_k$ is always less than $n^2$,
+and determine when it is a divisor of $n^2$.
+\end{mdframed}
+We always have
+\begin{align*}
+  d_k d_{k-1} + d_{k-1} d_{k-2} + \dots + d_2 d_1
+  &< n \cdot \frac n2 + \frac n2 \cdot \frac n3 + \dots \\
+  &= \left( \frac{1}{1 \cdot 2} + \frac{1}{2 \cdot 3} + \dots \right) n^2 = n^2.
+\end{align*}
+This proves the first part.
+
+For the second, we claim that this only happens
+when $n$ is prime (in which case we get $d_1 d_2 = n$).
+Assume $n$ is not prime (equivalently $k \ge 2$)
+and let $p$ be the smallest prime dividing $n$.
+Then
+\[ d_k d_{k-1} + d_{k-1} d_{k-2} + \dots + d_2 d_1
+  > d_k d_{k-1} = \frac{n^2}{p} \]
+exceeds the largest proper divisor of $n^2$,
+but is less than $n^2$, so does not divide $n^2$.
+\pagebreak

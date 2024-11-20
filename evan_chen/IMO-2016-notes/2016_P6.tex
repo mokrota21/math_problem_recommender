@@ -1,0 +1,78 @@
+
+\textsl{Available online at \url{https://aops.com/community/p6642576}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+There are $n\ge 2$ line segments in the plane such that
+every two segments cross and no three segments meet at a point.
+Geoff has to choose an endpoint of each segment and place a frog
+on it facing the other endpoint. Then he will clap his hands $n-1$ times.
+Every time he claps, each frog will immediately jump forward
+to the next intersection point on its segment.
+Frogs never change the direction of their jumps.
+Geoff wishes to place the frogs in such a way that no two of them
+will ever occupy the same intersection point at the same time.
+
+\begin{enumerate}[(a)]
+  \ii Prove that Geoff can always fulfill his wish if $n$ is odd.
+  \ii Prove that Geoff can never fulfill his wish if $n$ is even.
+\end{enumerate}
+\end{mdframed}
+The following solution was communicated to me by Yang Liu.
+
+Imagine taking a larger circle $\omega$ encasing
+all $\binom{n}{2}$ intersection points.
+Denote by $P_1$, $P_2$, \dots, $P_{2n}$ the order of the points on $\omega$
+in clockwise order; we imagine placing the frogs on $P_i$ instead.
+Observe that, in order for every pair of segments to meet,
+each line segment must be of the form $P_i P_{i+n}$.
+\begin{center}
+\begin{asy}
+  draw(unitcircle);
+  pair P_1 = dir(100);
+  pair P_2 = dir(150);
+  pair P_3 = dir(190);
+  pair P_4 = dir(210);
+  pair P_5 = dir(280);
+  pair P_6 = dir(340);
+  pair P_7 = dir(2);
+  pair P_8 = dir(55);
+  dot("$1$", P_1, dir(P_1));
+  dot("$2$", P_2, dir(P_2));
+  dot("$3$", P_3, dir(P_3));
+  dot("$4$", P_4, dir(P_4));
+  dot("$5$", P_5, dir(P_5));
+  dot("$6$", P_6, dir(P_6));
+  dot("$7$", P_7, dir(P_7));
+  dot("$8$", P_8, dir(P_8));
+  draw(P_1--P_5);
+  draw(P_2--P_6);
+  draw(P_3--P_7);
+  draw(P_4--P_8);
+  dot(extension(P_1, P_5, P_2, P_6), red);
+  dot(extension(P_1, P_5, P_3, P_7), red);
+  dot(extension(P_1, P_5, P_4, P_8), red);
+  dot(extension(P_2, P_6, P_3, P_7), red);
+  dot(extension(P_2, P_6, P_4, P_8), red);
+  dot(extension(P_3, P_7, P_4, P_8), red);
+\end{asy}
+\end{center}
+Then:
+\begin{enumerate}[(a)]
+  \ii Place the frogs on $P_1$, $P_3$, \dots, $P_{2n-1}$.
+  A simple parity arguments shows this works.
+
+  \ii Observe that we cannot place frogs on consecutive $P_i$,
+  so the $n$ frogs must be placed on alternating points.
+  But since we also are supposed to not place frogs on
+  diametrically opposite points,
+  for even $n$ we immediately get a contradiction.
+\end{enumerate}
+
+\begin{remark*}
+Yang says: this is easy to guess if you just do a
+few small cases and notice that the pairs of
+``violating points'' just forms a large cycle around.
+\end{remark*}
+\pagebreak
+
+
+\end{document}
