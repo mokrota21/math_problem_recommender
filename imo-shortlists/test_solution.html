@@ -1,0 +1,20 @@
+<div class="cmty-post-html"><div></div>Let <img src="//latex.artofproblemsolving.com/1/7/4/174fadd07fd54c9afe288e96558c92e0c1da733a.png" class="latex" alt="$n$" style="vertical-align: -1px" width="13" height="10"> be a positive integer. A <i>Japanese triangle</i> consists of <img src="//latex.artofproblemsolving.com/3/1/4/314149be9582842c3e8efe75b62a4f32fc1d3463.png" class="latex" alt="$1 + 2 + \dots + n$" style="vertical-align: -1px" width="116" height="13"> circles arranged in an equilateral triangular shape such that for each <span style="white-space:pre;"><img src="//latex.artofproblemsolving.com/7/7/4/7746ed746b280e2a83d7defebe5cfe5d557fc9c7.png" class="latex" alt="$i = 1$" style="vertical-align: 0px" width="38" height="13">,</span> <span style="white-space:pre;"><img src="//latex.artofproblemsolving.com/4/1/c/41c544263a265ff15498ee45f7392c5f86c6d151.png" class="latex" alt="$2$" style="vertical-align: -1px" width="11" height="14">,</span> <span style="white-space:pre;"><img src="//latex.artofproblemsolving.com/6/4/6/64683f315744c851898c8d65dace1a8aa31b93ab.png" class="latex" alt="$\dots$" width="19" height="2">,</span> <span style="white-space:pre;"><img src="//latex.artofproblemsolving.com/1/7/4/174fadd07fd54c9afe288e96558c92e0c1da733a.png" class="latex" alt="$n$" style="vertical-align: -1px" width="13" height="10">,</span> the <img src="//latex.artofproblemsolving.com/f/f/b/ffbd55597272a9914166c5dd1e71a5d23d842ddd.png" class="latex" alt="$i^{th}$" width="19" height="15"> row contains exactly <img src="//latex.artofproblemsolving.com/3/4/8/34857b3ba74ce5cd8607f3ebd23e9015908ada71.png" class="latex" alt="$i$" style="vertical-align: -1px" width="8" height="14"> circles, exactly one of which is coloured red. A <i>ninja path</i> in a Japanese triangle is a sequence of <img src="//latex.artofproblemsolving.com/1/7/4/174fadd07fd54c9afe288e96558c92e0c1da733a.png" class="latex" alt="$n$" style="vertical-align: -1px" width="13" height="10"> circles obtained by starting in the top row, then repeatedly going from a circle to one of the two circles immediately below it and finishing in the bottom row. Here is an example of a Japanese triangle with <span style="white-space:pre;"><img src="//latex.artofproblemsolving.com/e/3/2/e326b48726d4c73525c3b980409600fd87ea9846.png" class="latex" alt="$n = 6$" style="vertical-align: -1px" width="46" height="14">,</span> along with a ninja path in that triangle containing two red circles.<br>
+<img src="//latex.artofproblemsolving.com/b/c/5/bc5ff60a0e59852e8808344c3eefbc371466b5a9.png" class="asy-image" width="178" height="192" alt="[asy]
+// credit to vEnhance for the diagram (which was better than my original asy):
+size(4cm);
+  pair X = dir(240); pair Y = dir(0);
+  path c = scale(0.5)*unitcircle;
+  int[] t = {0,0,2,2,3,0};
+  for (int i=0; i<=5; ++i) {
+    for (int j=0; j<=i; ++j) {
+      filldraw(shift(i*X+j*Y)*c, (t[i]==j) ? lightred : white);
+      draw(shift(i*X+j*Y)*c);
+    }
+  }
+  draw((0,0)--(X+Y)--(2*X+Y)--(3*X+2*Y)--(4*X+2*Y)--(5*X+2*Y),linewidth(1.5));
+  path q = (3,-3sqrt(3))--(-3,-3sqrt(3));
+  draw(q,Arrows(TeXHead, 1));
+  label(&quot;$n = 6$&quot;, q, S);
+label(&quot;$n = 6$&quot;, q, S);
+[/asy]"><br>
+In terms of <span style="white-space:pre;"><img src="//latex.artofproblemsolving.com/1/7/4/174fadd07fd54c9afe288e96558c92e0c1da733a.png" class="latex" alt="$n$" style="vertical-align: -1px" width="13" height="10">,</span> find the greatest <img src="//latex.artofproblemsolving.com/8/c/3/8c325612684d41304b9751c175df7bcc0f61f64f.png" class="latex" alt="$k$" style="vertical-align: -1px" width="12" height="14"> such that in each Japanese triangle there is a ninja path containing at least <img src="//latex.artofproblemsolving.com/8/c/3/8c325612684d41304b9751c175df7bcc0f61f64f.png" class="latex" alt="$k$" style="vertical-align: -1px" width="12" height="14"> red circles.</div>
