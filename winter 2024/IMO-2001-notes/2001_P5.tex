@@ -1,0 +1,96 @@
+\textsl{Available online at \url{https://aops.com/community/p119207}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $ABC$ be a triangle.
+Let $\ol{AP}$ bisect $\angle BAC$ and let $\ol{BQ}$ bisect $\angle ABC$,
+with $P$ on $\ol{BC}$ and $Q$ on $\ol{AC}$.
+If $AB + BP = AQ + QB$ and $\angle BAC = 60\dg$,
+what are the angles of the triangle?
+\end{mdframed}
+The answer is $\angle B = 80\dg$ and $\angle C = 40\dg$.
+Set $x = \angle ABQ = \angle QBC$, so that $\angle QCB = 120\dg - 2x$.
+We observe $\angle AQB = 120\dg - x$ and $\angle APB = 150\dg - 2x$.
+
+\begin{center}
+\begin{asy}
+  pair A = dir(130);
+  pair B = dir(210);
+  pair C = dir(330);
+  pair I = incenter(A, B, C);
+  pair P = extension(A, I, B, C);
+  pair Q = extension(B, I, A, C);
+
+  dot("$A$", A, dir(A));
+  dot("$B$", B, dir(B));
+  dot("$C$", C, dir(C));
+  dot("$P$", P, dir(P));
+  dot("$Q$", Q, dir(Q));
+
+  draw(A--B--C--cycle);
+  draw(A--P);
+  draw(B--Q);
+
+  label("$30^\circ$", A+0.3*dir((pair)incenter(B,A,P)-A));
+  label("$30^\circ$", A+0.3*dir((pair)incenter(P,A,C)-A));
+  label(rotate(-20)*"$120^\circ-2x$", C+0.3*dir((pair)incenter(A,C,B)-C));
+  label("$x$", B+0.2*dir((pair)incenter(C,B,Q)-B));
+  label("$x$", B+0.2*dir((pair)incenter(Q,B,A)-B));
+\end{asy}
+\end{center}
+
+Now by the law of sines, we may compute
+\begin{align*}
+  BP &= AB \cdot \frac{\sin 30\dg}{\sin (150\dg- 2x)}  \\
+  AQ &= AB \cdot \frac{\sin x}{\sin (120\dg- x)}  \\
+  QB &= AB \cdot \frac{\sin 60\dg}{\sin (120\dg- x)}.
+\end{align*}
+So, the relation $AB + BP = AQ + QB$ is exactly
+\[ 1 + \frac{\sin 30\dg}{\sin (150\dg - 2x)}
+= \frac{\sin x + \sin 60\dg}{\sin (120\dg - x)}. \]
+This is now a trig problem, and we simply solve for $x$.
+There are many possible approaches
+and we just present one.
+
+First of all, we can write
+\[ \sin x + \sin 60\dg
+  = 2\sin \left( \half (x+60\dg) \right)
+  \cos \left( \half (x-60\dg) \right). \]
+On the other hand, $\sin (120\dg - x) = \sin(x+60\dg)$ and
+\[ \sin (x+60\dg)
+  = 2 \sin \left( \half (x+60\dg) \right)
+  \cos \left( \half(x+60\dg) \right) \]
+so
+\[ \frac{\sin x + \sin 60\dg}{\sin (120\dg - x)}
+  = \frac{\cos \left( \half x - 30\dg \right)}%
+  {\cos \left( \half x + 30\dg \right)}. \]
+Let $y = \half x$ for brevity now. Then
+\begin{align*}
+  \frac{\cos(y-30\dg)}{\cos(y+30\dg)} - 1
+  &= \frac{\cos(y-30\dg)-\cos(y+30\dg)}{\cos(y+30\dg)} \\
+  &= \frac{2 \sin (30\dg) \sin y}{\cos(y+30\dg)} \\
+  &= \frac{\sin y}{\cos (y+30\dg)}.
+\end{align*}
+Hence the problem is just
+\begin{align*}
+  \frac{\sin 30\dg}{\sin(150\dg - 4y)} &= \frac{\sin y}{\cos(y+30\dg)}. \\
+  \intertext{Equivalently,}
+  \cos(y+30\dg) &= 2\sin y \sin (150\dg -4y) \\
+  &= \cos(5y-150\dg) - \cos(150\dg-3y) \\
+  &= -\cos(5y+30\dg) + \cos(3y+30\dg).
+\end{align*}
+Now we are home free, because $3y+30\dg$
+is the average of $y+30\dg$ and $5y+30\dg$.
+That means we can write
+\[ \frac{\cos(y+30\dg)+\cos(5y+30\dg)}{2} = \cos(3y+30\dg) \cos(2y). \]
+Hence
+\[ \cos(3y+30\dg) \left( 2\cos(2y)-1 \right) = 0. \]
+Recall that
+\[ y = \half x = \frac 14 \angle B
+  < \frac 14 \left( 180\dg - \angle A \right) = 30\dg. \]
+Hence it is not possible that $\cos(2y) = \half$,
+since the smallest positive value of $y$
+that satisfies this is $y=30\dg$.
+So $\cos (3y+30\dg) = 0$.
+
+The only permissible value of $y$ is then $y = 20\dg$,
+giving $\angle B = 80\dg$ and $\angle C = 40\dg$.
+\pagebreak

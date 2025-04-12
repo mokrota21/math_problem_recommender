@@ -1,0 +1,47 @@
+
+\textsl{Available online at \url{https://aops.com/community/p1562840}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $a_1$, $a_2$, \dots, $a_n$ be distinct positive integers and
+let $M$ be a set of $n-1$ positive integers not containing $s = a_1 + \dots + a_n$.
+A grasshopper is to jump along the real axis, starting at the point $0$ and
+making $n$ jumps to the right with lengths $a_1$, $a_2$, \dots, $a_n$ in some order.
+Prove that the order can be chosen in such a way that
+the grasshopper never lands on any point in $M$.
+\end{mdframed}
+The proof is by induction on $n$.
+Assume $a_1 < \dots < a_n$ and call each element of $M$ a \emph{mine}.
+Let $x = s - a_n$.
+We consider four cases, based on whether $x$ has a mine
+and whether there is a mine past $x$.
+\begin{itemize}
+  \ii If $x$ has no mine, and there is a mine past $x$,
+  then at most $n-2$ mines in $[0, x]$ and so we use induction to reach $x$,
+  then leap from $x$ to $s$ and win.
+
+  \ii If $x$ has no mine but there is also no mine to the right of $x$,
+  then let $m$ be the maximal mine.
+  By induction hypothesis on $M \setminus \{m\}$, there is a path to $x$
+  using $\{a_1, \dots, a_{n-1}\}$ which avoids mines except possibly $m$.
+  If the path hits the mine $m$ on the hop of length $a_k$,
+  we then swap that hop with $a_n$, and finish.
+
+  \ii If $x$ has a mine, but there are no mines to the right of $x$,
+  we can repeat the previous case with $m = x$.
+
+  \ii Now suppose $x$ has a mine, \emph{and} there is a mine past $x$.
+  There should exist an integer $1 \le i \le n-1$
+  such that $s-a_i$ and $y = s-a_i-a_n$ both have no mine.
+  By induction hypothesis, we can then reach $y$ in $n-2$ steps
+  (as there are two mines to the right of $y$); then $y \to s-a_i \to s$ finishes.
+\end{itemize}
+
+\begin{remark*}
+  It seems much of the difficulty of the problem is realizing induction will actually work.
+  Attempts at induction are, indeed, a total minefield (ha!),
+  and given the position P6 of the problem, it is expected that many contestants
+  will abandon induction after some cursory attempts fail.
+\end{remark*}
+\pagebreak
+
+
+\end{document}

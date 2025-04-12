@@ -1,0 +1,374 @@
+{
+   "1": {
+      "name": "Divisibility",
+      "1": {
+         "name": "Divisibility"
+      },
+      "2": {
+         "name": "Prime numbers"
+      },
+      "3": {
+         "name": "The greatest common divisor and the least common multiple"
+      },
+      "4": {
+         "name": "Odd and even"
+      },
+      "5": {
+         "name": "Modular arithmetics"
+      },
+      "6": {
+         "name": "Chinese remainder theorem"
+      },
+      "7": {
+         "name": "Numerical systems",
+         "1": {
+            "name": "Representation of integers in an arbitrary base"
+         },
+         "2": {
+            "name": "Divisibility criteria in the decimal system"
+         }
+      }
+   },
+   "2": {
+      "name": "Powers of Integers",
+      "1": {
+         "name": "Perfect squares"
+      },
+      "2": {
+         "name": "Perfect cubes"
+      },
+      "3": {
+         "name": "$k^{t h}$ powers of integers, $k\\geq4$"
+      }
+   },
+   "3": {
+      "name": "Floor Function and Fractional Part",
+      "1": {
+         "name": "General problems"
+      },
+      "2": {
+         "name": "Floor function and integer points"
+      },
+      "3": {
+         "name": "An useful result"
+      }
+   },
+   "4": {
+      "name": "Digits of Numbers",
+      "1": {
+         "name": "The last digits of a number"
+      },
+      "2": {
+         "name": "The sum of the digits of a number"
+      },
+      "3": {
+         "name": "Other problems involving digits"
+      }
+   },
+   "5": {
+      "name": "Basic Principles in Number Theory",
+      "1": {
+         "name": "Two simple principles",
+         "1": {
+            "name": "Extremal arguments"
+         },
+         "2": {
+            "name": "Pigeonhole principle"
+         }
+      },
+      "2": {
+         "name": "Mathematical induction"
+      },
+      "3": {
+         "name": "Infinite descent"
+      },
+      "4": {
+         "name": "Inclusion-exclusion"
+      }
+   },
+   "6": {
+      "name": "Arithmetic Functions",
+      "1": {
+         "name": "Multiplicative functions"
+      },
+      "2": {
+         "name": "Number of divisors"
+      },
+      "3": {
+         "name": "Sum of divisors"
+      },
+      "4": {
+         "name": "Euler\u2019s totient function"
+      },
+      "5": {
+         "name": "Exponent of a prime and Legendre\u2019s formula"
+      }
+   },
+   "7": {
+      "name": "More on Divisibility",
+      "1": {
+         "name": "Fermat\u2019s Little Theorem"
+      },
+      "2": {
+         "name": "Euler\u2019s Theorem"
+      },
+      "3": {
+         "name": "The order of an element"
+      },
+      "4": {
+         "name": "Wilson\u2019s Theorem"
+      }
+   },
+   "8": {
+      "name": "Diophantine Equations",
+      "1": {
+         "name": "Linear Diophantine equations"
+      },
+      "2": {
+         "name": "Quadratic Diophantine equations",
+         "1": {
+            "name": "Pythagorean equation"
+         },
+         "2": {
+            "name": "Pell\u2019s equation"
+         },
+         "3": {
+            "name": "Other quadratic equations"
+         }
+      },
+      "3": {
+         "name": "Nonstandard Diophantine equations",
+         "1": {
+            "name": "Cubic equations"
+         },
+         "2": {
+            "name": "High-order polynomial equations"
+         },
+         "3": {
+            "name": "Exponential Diophantine equations"
+         }
+      }
+   },
+   "9": {
+      "name": "Some special problems in number theory",
+      "1": {
+         "name": "Quadratic residues. Legendre\u2019s symbol"
+      },
+      "2": {
+         "name": "Special numbers",
+         "1": {
+            "name": "Fermat\u2019s numbers"
+         },
+         "2": {
+            "name": "Mersenne\u2019s numbers"
+         },
+         "3": {
+            "name": "Perfect numbers"
+         }
+      },
+      "3": {
+         "name": "Sequences of integers",
+         "1": {
+            "name": "Fibonacci and Lucas sequences"
+         },
+         "2": {
+            "name": "Problems involving linear recursive relations"
+         },
+         "3": {
+            "name": "Nonstandard sequences of integers"
+         }
+      }
+   },
+   "10": {
+      "name": "Problems Involving Binomial Coefficients",
+      "1": {
+         "name": "Binomial coefficients"
+      },
+      "2": {
+         "name": "Lucas\u2019 and Kummer\u2019s Theorems"
+      }
+   },
+   "12": {
+      "name": "Divisibility",
+      "1": {
+         "name": "Divisibility"
+      },
+      "2": {
+         "name": "Prime numbers"
+      },
+      "3": {
+         "name": "The greatest common divisor and the least common multiple"
+      },
+      "4": {
+         "name": "Odd and even"
+      },
+      "5": {
+         "name": "Modular arithmetics"
+      },
+      "6": {
+         "name": "Chinese remainder theorem"
+      },
+      "7": {
+         "name": "Numerical systems"
+      }
+   },
+   "14": {
+      "name": "Floor Function and Fractional Part",
+      "1": {
+         "name": "General problems"
+      },
+      "2": {
+         "name": "Floor function and integer points"
+      },
+      "3": {
+         "name": "An useful result"
+      }
+   },
+   "15": {
+      "name": "Digits of Numbers",
+      "1": {
+         "name": "The last digits of a number"
+      },
+      "2": {
+         "name": "The sum of the digits of a number"
+      },
+      "3": {
+         "name": "Other problems involving digits"
+      }
+   },
+   "16": {
+      "name": "Basic Principles in Number Theory",
+      "1": {
+         "name": "Two simple principles"
+      },
+      "2": {
+         "name": "Mathematical induction"
+      },
+      "3": {
+         "name": "Infinite descent"
+      },
+      "4": {
+         "name": "Inclusion-exclusion"
+      }
+   },
+   "17": {
+      "name": "Arithmetic Functions",
+      "1": {
+         "name": "Multiplicative functions"
+      },
+      "2": {
+         "name": "Number of divisors"
+      },
+      "3": {
+         "name": "Sum of divisors"
+      },
+      "4": {
+         "name": "Euler\u2019s totient function"
+      },
+      "5": {
+         "name": "Exponent of a prime and Legendre\u2019s formula"
+      }
+   },
+   "18": {
+      "name": "More on Divisibility",
+      "1": {
+         "name": "Fermat\u2019s Little Theorem"
+      },
+      "2": {
+         "name": "Euler\u2019s Theorem"
+      },
+      "3": {
+         "name": "The order of an element"
+      },
+      "4": {
+         "name": "Wilson\u2019s Theorem"
+      }
+   },
+   "19": {
+      "name": "Diophantine Equations",
+      "1": {
+         "name": "Linear Diophantine equations"
+      },
+      "2": {
+         "name": "Quadratic Diophantine equations",
+         "1": {
+            "name": "Pythagorean equations"
+         },
+         "2": {
+            "name": "Pell\u2019s equation"
+         },
+         "3": {
+            "name": "Other quadratic equations"
+         }
+      },
+      "3": {
+         "name": "Nonstandard Diophantine equations",
+         "1": {
+            "name": "Cubic equations"
+         },
+         "2": {
+            "name": "High-order polynomial equations"
+         },
+         "3": {
+            "name": "Exponential Diophantine equations"
+         }
+      }
+   },
+   "20": {
+      "name": "Some special problems in number theory",
+      "1": {
+         "name": "Quadratic residues. Legendre\u2019s symbol"
+      },
+      "2": {
+         "name": "Special numbers",
+         "1": {
+            "name": "Fermat\u2019s numbers"
+         },
+         "2": {
+            "name": "Mersenne\u2019s numbers"
+         },
+         "3": {
+            "name": "Perfect numbers"
+         }
+      },
+      "3": {
+         "name": "Sequences of integers",
+         "1": {
+            "name": "Fibonacci and Lucas sequences"
+         },
+         "2": {
+            "name": "Problems involving linear recursive relations"
+         },
+         "3": {
+            "name": "Nonstandard sequences of integers"
+         }
+      }
+   },
+   "21": {
+      "name": "Problems Involving Binomial Coefficients",
+      "1": {
+         "name": "Binomial coefficients"
+      },
+      "2": {
+         "name": "Lucas\u2019 and Kummer\u2019s Theorems"
+      }
+   },
+   "22": {
+      "name": "Miscellaneous Problems"
+   },
+   "11": {
+      "name": "Miscellaneous Problems"
+   },
+   "13": {
+      "name": "Powers of Integers",
+      "1": {
+         "name": "Perfect squares"
+      },
+      "2": {
+         "name": "Perfect cubes"
+      },
+      "3": {
+         "name": "$k^{t h}$ powers of integers, $k\\geq4$"
+      }
+   }
+}

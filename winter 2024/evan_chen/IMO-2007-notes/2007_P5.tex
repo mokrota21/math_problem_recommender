@@ -1,0 +1,25 @@
+\textsl{Available online at \url{https://aops.com/community/p894656}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $a$ and $b$ be positive integers.
+Show that if $4ab - 1$ divides $(4a^{2} - 1)^{2}$, then $a = b$.
+\end{mdframed}
+As usual,
+\[ 4ab-1 \mid (4a^2-1)^2 \iff 4ab-1 \mid (4ab \cdot a-b)^2
+  \iff 4ab-1 \mid (a-b)^2. \]
+Then we use a typical Vieta jumping argument.
+Define \[ k = \frac{(a-b)^2}{4ab-1}. \]
+Note that $k = 0 \iff a = b$.
+So we will prove that $k > 0$ leads to a contradiction.
+
+Indeed, suppose $(a, b)$ is a minimal solution with $a > b$
+(we have $a \neq b$ since $k \neq 0$).
+By Vieta jumping, $(b, \frac{b^2+k}{a})$ is also such a solution.
+But now
+\begin{align*}
+  \frac{b^2+k}{a} \ge a &\implies k \ge a^2 - b^2 \\
+  &\implies \frac{(a-b)^2}{4ab-1} \ge a^2-b^2 \\
+  &\implies a-b \ge (4ab-1)(a+b)
+\end{align*}
+which is absurd for $a,b \in \ZZ_{>0}$.
+(In the last step we divided by $a-b > 0$.)
+\pagebreak

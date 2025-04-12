@@ -1,0 +1,444 @@
+\textsl{Available online at \url{https://aops.com/community/p31218774}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Turbo the snail is in the top row of a grid with $2024$ rows and $2023$ columns
+and wants to get to the bottom row.
+However, there are $2022$ hidden monsters, one in every row except the first and last,
+with no two monsters in the same column.
+
+Turbo makes a series of attempts to go from the first row to the last row.
+On each attempt, he chooses to start on any cell in the first row,
+then repeatedly moves to an orthogonal neighbor.
+(He is allowed to return to a previously visited cell.)
+If Turbo reaches a cell with a monster,
+his attempt ends and he is transported back to the first row to start a new attempt.
+The monsters do not move between attempts, and Turbo remembers whether or not each cell
+he has visited contains a monster.
+If he reaches any cell in the last row, his attempt ends and Turbo wins.
+
+Find the smallest integer $n$ such that Turbo has a strategy which guarantees
+being able to reach the bottom row in at most $n$ attempts,
+regardless of how the monsters are placed.
+\end{mdframed}
+Surprisingly the answer is $n = 3$ for \emph{any} grid size $s \times (s-1)$ when $s \ge 4$.
+We prove this in that generality.
+
+\paragraph{Proof that at least three attempts are needed.}
+When Turbo first moves into the second row, Turbo could encounter a monster $M_1$ right away.
+Then on the next attempt, Turbo must enter the third row in different column as $M_1$,
+and again could encounter a monster $M_2$ right after doing so.
+This means no strategy can guarantee fewer than three attempts.
+
+\paragraph{Strategy with three attempts.}
+On the first attempt, we have Turbo walk through the entire second row
+until he finds the monster $M_1$ in it.
+Then we get two possible cases.
+
+\subparagraph{Case where $M_1$ is not on the edge.}
+In the first case, if that monster $M_1$ is not on the edge of the row,
+then Turbo can trace two paths below it as shown below.
+At least one of these paths works, hence three attempts is sufficient.
+
+\begin{center}
+\begin{asy}
+usepackage("amssymb");
+unitsize(0.7cm);
+pen gr = grey+linetype("4 2");
+int n = 6;
+for (int i=0; i<=n-1; ++i) {
+  draw((0,i)--(n,i), gr);
+}
+for (int i=0; i<=n; ++i) {
+  draw((i,0)--(i,n-1), gr);
+}
+draw(box((0,-1), (n,0)), black);
+draw(box((0,n-1), (n,n)), black);
+draw(box((0,-1), (n,n)), black);
+label((n/2,n-0.5), "Starting row");
+label((n/2,-0.5), "Goal row");
+
+label((2.5,4.5), "$M_1$", red);
+dotfactor *= 2;
+dot((1.5,4.5), deepgreen);
+dot((3.5,4.5), deepgreen);
+draw((1.5,4.5)--(1.5,3.5)--(2.3,3.5)--(2.3,0.2), deepgreen+1.2, EndArrow(TeXHead));
+draw((3.5,4.5)--(3.5,3.5)--(2.7,3.5)--(2.7,0.2), deepgreen+1.2, EndArrow(TeXHead));
+\end{asy}
+\end{center}
+
+\subparagraph{Case where $M_1$ is on the edge.}
+WLOG, $M_1$ is in the leftmost cell.
+Then Turbo follows the green staircase pattern shown in the left figure below.
+If the staircase is free of monsters, then Turbo wins on the second attempt.
+Otherwise, if a monster $M_2$ is encountered on the staircase,
+Turbo has found a safe path to the left of $M_2$;
+then Turbo can use this to reach the column $M_1$ is in, and escape from there.
+This is shown in purple in the center and right figure
+(there are two slightly different cases depending on whether $M_2$
+was encountered going east or south).
+\begin{center}
+\begin{asy}
+usepackage("amssymb");
+unitsize(0.65cm);
+pen gr = grey+linetype("4 2");
+int n = 6;
+dotfactor *= 2;
+
+picture pic1, pic2, pic3;
+picture[] pics = {pic1, pic2, pic3};
+
+for (int j=0; j<3; ++j) {
+  for (int i=0; i<=n-1; ++i) {
+    draw(pics[j], (0,i)--(n,i), gr);
+  }
+  for (int i=0; i<=n; ++i) {
+    draw(pics[j], (i,0)--(i,n-1), gr);
+  }
+  draw(pics[j], box((0,-1), (n,0)), black);
+  draw(pics[j], box((0,n-1), (n,n)), black);
+  draw(pics[j], box((0,-1), (n,n)), black);
+  label(pics[j], "Starting row", (n/2,n-0.5));
+  label(pics[j], "Goal row", (n/2,-0.5));
+}
+
+label(pic1, "$M_1$", (0.5,4.5), red);
+dot(pic1, (1.5,4.5), deepgreen);
+draw(pic1, (1.5,4.5)--(2.5,4.5)--(2.5,3.5)--(3.5,3.5)--(3.5,2.5)
+  --(4.5,2.5)--(4.5,1.5)--(5.5,1.5)--(5.5,0.2), deepgreen+1.2, EndArrow(TeXHead));
+
+label(pic2, "$M_1$", (0.5,4.5), red);
+label(pic2, "$M_2$", (4.5,2.5), red);
+dot(pic2, (1.5,4.5), deepgreen);
+draw(pic2, (3.5,2.5)--(4.5,2.5)--(4.5,1.5)--(5.5,1.5)--(5.5,0.2), deepgreen+dashed);
+draw(pic2, (1.5,4.5)--(2.5,4.5)--(2.5,3.5)--(3.5,3.5)--(3.5,2.5)--(0.5,2.5)--(0.5,0.2),
+  purple+1.5, EndArrow(TeXHead));
+
+label(pic3, "$M_1$", (0.5,4.5), red);
+label(pic3, "$M_2$", (4.5,1.5), red);
+dot(pic3, (1.5,4.5), deepgreen);
+draw(pic3, (3.5,2.5)--(4.5,2.5)--(4.5,1.5)--(5.5,1.5)--(5.5,0.2), deepgreen+dashed);
+draw(pic3, (1.5,4.5)--(2.5,4.5)--(2.5,3.5)--(3.5,3.5)--(3.5,1.5)--(0.5,1.5)--(0.5,0.2),
+  purple+1.5, EndArrow(TeXHead));
+
+add(pic1);
+add(shift(7,0)*pic2);
+add(shift(14,0)*pic3);
+\end{asy}
+\end{center}
+Thus the problem is solved in three attempts, as promised.
+
+\paragraph{Extended remark: all working strategies look similar to this.}
+As far as we know, all working strategies are variations of the above.
+In fact, we will try to give a description of the space of possible strategies,
+although this needs a bit of notation.
+
+\begin{definition*}
+For simplicity, we use $s$ even only in the figures below.
+We define the \emph{happy triangle} as the following cells:
+\begin{itemize}
+  \item All $s-1$ cells in the first row (which has no monsters).
+  \item The center $s-3$ cells in the second row.
+  \item The center $s-5$ cells in the third row.
+  \item \dots
+  \item The center cell in the $\frac s2$\textsuperscript{th} row.
+\end{itemize}
+\end{definition*}
+For $s=12$, the happy triangle is the region shaded in the thick border below.
+\begin{center}
+\begin{asy}
+usepackage("amssymb");
+unitsize(0.7cm);
+pen gr = grey+linetype("4 2");
+void setup(int n) {
+  for (int i=0; i<=n-1; ++i) {
+    draw((0,i)--(n,i), gr);
+  }
+  for (int i=0; i<=n; ++i) {
+    draw((i,0)--(i,n-1), gr);
+  }
+  draw(box((0,-1), (n,0)), black);
+  draw(box((0,n-1), (n,n)), black);
+  draw(box((0,-1), (n,n)), black);
+  label((n/2,n-0.5), "Starting row");
+  label((n/2,-0.5), "Goal row");
+
+  path p = (0,n);
+  for (int i=0; i<n/2; ++i) {
+    p = p--(i,n-1-i)--(i+1,n-1-i);
+  }
+  for (int i=(n+1)#2; i<n; ++i) {
+    p = p--(i,i)--(i+1,i);
+  }
+  p = p--(n,n)--cycle;
+  filldraw(p, opacity(0.15)+yellow, blue+1.8);
+}
+setup(11);
+\end{asy}
+\end{center}
+\begin{definition*}
+  Given a cell, define a \emph{shoulder} to be the cell directly northwest or northeast of it.
+  Hence there are two shoulders of cells outside the first and last column,
+  and one shoulder otherwise.
+\end{definition*}
+
+Then solutions roughly must distinguish between these two cases:
+\begin{itemize}
+  \item \textbf{Inside happy triangle:}
+    If the first monster $\color{red}M_1$ is found in the \emph{happy triangle},
+    and there is a safe path found by Turbo to the two shoulders
+    (marked $\color{green!60!black}\bigstar$ in the figure),
+    then one can finish in two more moves by considering the two paths from $\color{green!60!black}\bigstar$
+    that cut under the monster $\color{red}M_1$; one of them must work.
+    This slightly generalizes the easier case in the solution above
+    (which focuses only on the case where $\color{red}M_1$ is in the first row).
+    \begin{center}
+      \begin{asy}
+        usepackage("amssymb");
+        unitsize(0.7cm);
+        pen gr = grey+linetype("4 2");
+        void setup(int n) {
+          for (int i=0; i<=n-1; ++i) {
+            draw((0,i)--(n,i), gr);
+          }
+          for (int i=0; i<=n; ++i) {
+            draw((i,0)--(i,n-1), gr);
+          }
+          draw(box((0,-1), (n,0)), black);
+          draw(box((0,n-1), (n,n)), black);
+          draw(box((0,-1), (n,n)), black);
+          label((n/2,n-0.5), "Starting row");
+          label((n/2,-0.5), "Goal row");
+
+          path p = (0,n);
+          for (int i=0; i<n/2; ++i) {
+            p = p--(i,n-1-i)--(i+1,n-1-i);
+          }
+          for (int i=(n+1)#2; i<n; ++i) {
+            p = p--(i,i)--(i+1,i);
+          }
+          p = p--(n,n)--cycle;
+          filldraw(p, opacity(0.15)+yellow, blue+1.8);
+        }
+        setup(7);
+        label((2.5,4.5), "$M_1$", red);
+        label((1.5,5.5), "$\bigstar$", deepgreen);
+        label((3.5,5.5), "$\bigstar$", deepgreen);
+        draw((1.5,5.5)--(1.5,3.5)--(2.3,3.5)--(2.3,0.2), deepgreen+1.2, EndArrow(TeXHead));
+        draw((3.5,5.5)--(3.5,3.5)--(2.7,3.5)--(2.7,0.2), deepgreen+1.2, EndArrow(TeXHead));
+      \end{asy}
+    \end{center}
+
+
+  \item \textbf{Outside happy triangle:}
+    Now suppose the first monster $\color{red}M_1$ is outside the \emph{happy triangle}.
+    Of the two shoulders, take the one closer to the center
+    (if in the center column, either one works; if only one shoulder, use it).
+    If there is a safe path to that shoulder,
+    then one can take a staircase pattern towards the center, as shown in the figure.
+    In that case, the choice of shoulder and position guarantees the staircase
+    reaches the bottom row, so that if no monster is along this path, the algorithm ends.
+    Otherwise, if one encounters a second monster along the staircase,
+    then one can use the third trial to cut under the monster $\color{red}M_1$.
+    \begin{center}
+      \begin{asy}
+        usepackage("amssymb");
+        unitsize(0.7cm);
+        pen gr = grey+linetype("4 2");
+        void setup(int n) {
+          for (int i=0; i<=n-1; ++i) {
+            draw((0,i)--(n,i), gr);
+          }
+          for (int i=0; i<=n; ++i) {
+            draw((i,0)--(i,n-1), gr);
+          }
+          draw(box((0,-1), (n,0)), black);
+          draw(box((0,n-1), (n,n)), black);
+          draw(box((0,-1), (n,n)), black);
+          label((n/2,n-0.5), "Starting row");
+          label((n/2,-0.5), "Goal row");
+
+          path p = (0,n);
+          for (int i=0; i<n/2; ++i) {
+            p = p--(i,n-1-i)--(i+1,n-1-i);
+          }
+          for (int i=(n+1)#2; i<n; ++i) {
+            p = p--(i,i)--(i+1,i);
+          }
+          p = p--(n,n)--cycle;
+          filldraw(p, opacity(0.15)+yellow, blue+1.8);
+        }
+
+        setup(9);
+        label((1.5,3.5), "$M_1$", red);
+        label((2.5,4.5), "$\bigstar$", deepgreen);
+        draw((2.5,4.5)--(2.5,3.5)--(3.5,3.5)--(3.5,2.5)--(4.5,2.5)--(4.5,1.5)--(5.5,1.5)--(5.5,0.2),
+          deepgreen+1.2, EndArrow(TeXHead));
+      \end{asy}
+      \qquad
+      \begin{asy}
+        usepackage("amssymb");
+        unitsize(0.7cm);
+        pen gr = grey+linetype("4 2");
+        void setup(int n) {
+          for (int i=0; i<=n-1; ++i) {
+            draw((0,i)--(n,i), gr);
+          }
+          for (int i=0; i<=n; ++i) {
+            draw((i,0)--(i,n-1), gr);
+          }
+          draw(box((0,-1), (n,0)), black);
+          draw(box((0,n-1), (n,n)), black);
+          draw(box((0,-1), (n,n)), black);
+          label((n/2,n-0.5), "Starting row");
+          label((n/2,-0.5), "Goal row");
+
+          path p = (0,n);
+          for (int i=0; i<n/2; ++i) {
+            p = p--(i,n-1-i)--(i+1,n-1-i);
+          }
+          for (int i=(n+1)#2; i<n; ++i) {
+            p = p--(i,i)--(i+1,i);
+          }
+          p = p--(n,n)--cycle;
+          filldraw(p, opacity(0.15)+yellow, blue+1.8);
+        }
+
+        setup(9);
+        label((1.5,3.5), "$M_1$", red);
+        label((2.5,4.5), "$\bigstar$", deepgreen);
+        draw((2.5,4.5)--(2.5,3.5)--(3.5,3.5)--(3.5,2.5)--(4.5,2.5)--(4.5,1.5)--(5.5,1.5)--(5.5,0.2),
+          deepgreen+dashed, EndArrow(TeXHead));
+        label((5.5,1.5), "$M_2$", red);
+        draw((2.5,4.5)--(2.5,3.5)--(3.5,3.5)--(3.5,2.5)--(4.5,2.5)--(4.5,1.5)--(1.5,1.5)--(1.5,0.2),
+          purple+1.5, EndArrow(TeXHead));
+      \end{asy}
+    \end{center}
+\end{itemize}
+
+We now prove the following proposition:
+in any valid strategy for Turbo,
+in the case where Turbo first encounters a monster upon leaving the happy triangle,
+the second path \emph{must} outline the same staircase shape.
+
+The monsters pre-commit to choosing their pattern to be
+\emph{either} a NW-SE diagonal or NE-SW diagonal, with a single one-column gap;
+see figure below for an example.
+Note that this forces any valid path for Turbo to pass through the particular gap.
+
+\begin{center}
+  \begin{asy}
+    usepackage("amssymb");
+    unitsize(0.7cm);
+    pen gr = grey+linetype("4 2");
+    void setup(int n) {
+      for (int i=0; i<=n-1; ++i) {
+        draw((0,i)--(n,i), gr);
+      }
+      for (int i=0; i<=n; ++i) {
+        draw((i,0)--(i,n-1), gr);
+      }
+      draw(box((0,-1), (n,0)), black);
+      draw(box((0,n-1), (n,n)), black);
+      draw(box((0,-1), (n,n)), black);
+      label((n/2,n-0.5), "Starting row");
+      label((n/2,-0.5), "Goal row");
+
+      path p = (0,n);
+      for (int i=0; i<n/2; ++i) {
+        p = p--(i,n-1-i)--(i+1,n-1-i);
+      }
+      for (int i=(n+1)#2; i<n; ++i) {
+        p = p--(i,i)--(i+1,i);
+      }
+      p = p--(n,n)--cycle;
+      filldraw(p, opacity(0.15)+yellow, blue+1.8);
+    }
+    setup(11);
+
+    for (int i=0; i<7; ++i) {
+      label((i+0.5,9.5-i), "$M$", red);
+    }
+    for (int i=7; i<10; ++i) {
+      label((i+1.5,9.5-i), "$M$", red);
+    }
+  \end{asy}
+\end{center}
+
+We may assume without loss of generality that Turbo first encounters a monster $M_1$
+when Turbo first leaves the happy triangle, and that this forces an NW-SE configuration.
+
+\begin{center}
+  \begin{asy}
+    usepackage("amssymb");
+    unitsize(0.7cm);
+    pen gr = grey+linetype("4 2");
+    void setup(int n) {
+      for (int i=0; i<=n-1; ++i) {
+        draw((0,i)--(n,i), gr);
+      }
+      for (int i=0; i<=n; ++i) {
+        draw((i,0)--(i,n-1), gr);
+      }
+      draw(box((0,-1), (n,0)), black);
+      draw(box((0,n-1), (n,n)), black);
+      draw(box((0,-1), (n,n)), black);
+      label((n/2,n-0.5), "Starting row");
+      label((n/2,-0.5), "Goal row");
+
+      path p = (0,n);
+      for (int i=0; i<n/2; ++i) {
+        p = p--(i,n-1-i)--(i+1,n-1-i);
+      }
+      for (int i=(n+1)#2; i<n; ++i) {
+        p = p--(i,i)--(i+1,i);
+      }
+      p = p--(n,n)--cycle;
+      filldraw(p, opacity(0.15)+yellow, blue+1.8);
+    }
+    setup(13);
+    label((0.5,11.5), "($M$)", red+fontsize(9pt));
+    label((1.5,10.5), "($M$)", red+fontsize(9pt));
+    label((2.5,9.5), "($M$)", red+fontsize(9pt));
+    label((3.5,8.5), "$M_1$", red);
+    label((4.5,7.5), "X", brown);
+    label((11.5,1.5), "$M_2$", red);
+    for (int i=1; i<=6; ++i) {
+      label((11.5-i,1.5+i), "$\clubsuit$", deepgreen);
+    }
+  \end{asy}
+\end{center}
+
+Then the following is true:
+\begin{proposition*}
+  The strategy of Turbo on the second path \emph{must}
+  visit every cell in ``slightly raised diagonal'' marked with
+  $\color{green!60!black}\clubsuit$ in the figure above
+  in order from top to bottom, until it encounters a second Monster $M_2$
+  (or reaches the bottom row and wins anyway).
+  It's both okay and irrelevant if Turbo visits other cells above this diagonal,
+  but the marked cells must be visited from top to bottom in that order.
+\end{proposition*}
+\begin{proof}
+  If Turbo tries to sidestep by visiting the cell southeast of $M_1$
+  (marked {\color{brown}X} in the Figure),
+  then Turbo clearly cannot finish after this (for $s$ large enough).
+  Meanwhile, suppose Turbo tries to ``skip'' one of the $\color{green!60!black}\clubsuit$,
+  say in column $C$, then the gap could equally well be in the column to the left of $C$.
+  This proves the proposition.
+\end{proof}
+
+\begin{remark*}
+  [Memories of safe cells are important, not just monster cells]
+  Here is one additional observation that one can deduce from this.
+  We say a set $\mathcal S$ of revealed monsters is called \emph{obviously winnable} if,
+  based on only the positions of the monsters
+  (and not the moves or algorithm that were used to obtain them),
+  one can identify a guaranteed winning path for Turbo using only $\mathcal S$.
+  For example, two monsters in adjacent columns which are not diagonally
+  adjacent is obviously winnable.
+
+  Then no strategy can guarantee obtaining an obviously winnable set in $2$ moves
+  (or even $k$ moves for any constant $k$, if $s$ is large enough in terms of $k$).
+  So any valid strategy must \emph{also} use the \emph{memory} of identified safe cells
+  that do not follow just from the revealed monster positions.
+\end{remark*}
+\pagebreak

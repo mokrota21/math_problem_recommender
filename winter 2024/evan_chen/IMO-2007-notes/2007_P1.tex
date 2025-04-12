@@ -1,0 +1,62 @@
+\textsl{Available online at \url{https://aops.com/community/p893741}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Real numbers $a_1$, $a_2$, \dots, $a_n$ are fixed.
+For each $1 \le i \le n$ we let
+$d_i = \max\{a_j : 1 \le j \le i\} - \min\{a_j : i \le j \le n\}$
+and let $d = \max \{d_i : 1 \le i \le n\}$.
+
+\begin{enumerate}[(a)]
+  \ii Prove that for any real numbers $x_1 \le \dots \le x_n$ we have
+  \[
+    \max \left\{ \left\lvert x_i - a_i \right\rvert :
+      1 \le i \le n \right\}
+      \ge \half d.
+  \]
+  \ii Moreover, show that there exists some
+  choice of $x_1 \le \dots \le x_n$ which achieves equality.
+\end{enumerate}
+\end{mdframed}
+Note that we can dispense of $d_i$ immediately
+by realizing that the definition of $d$ just says
+\[ d = \max_{1 \le i \le j \le n} \left( a_i - a_j \right). \]
+
+If $a_1 \le \dots \le a_n$ are already nondecreasing
+then $d = 0$ and there is nothing to prove
+(for the equality case, just let $x_i = a_i$),
+so we will no longer consider this case.
+
+Otherwise, consider any indices $i < j$ with $a_i > a_j$.
+We first prove (a) by applying the following claim
+with $p = a_i$ and $q = a_j$:
+\begin{claim*}
+  For any $p \le q$, we have
+  either $|p - a_i| \ge \half(a_i-a_j)$
+  or $|q - a_j| \ge \half(a_i-a_j)$.
+\end{claim*}
+\begin{proof}
+  Assume for contradiction both are false.
+  Then $p > a_i - \half(a_i-a_j)
+  = a_j + \half(a_i-a_j) > q$, contradiction.
+\end{proof}
+
+As for (b), we let $i < j$ be any indices for which
+$a_i - a_j = d > 0$ achieves the maximal difference.
+We then define $x_\bullet$ in three steps:
+\begin{itemize}
+  \ii We set $x_k = \frac{a_i + a_j}{2}$ for $k = i, \dots, j$.
+  \ii We recursively set $x_{k} = \max(x_{k-1}, a_k)$
+  for $k = j+1, j+2, \dots$.
+  \ii We recursively set $x_{k} = \min(x_{k+1}, a_k)$
+  for $k = i-1, i-2, \dots$.
+\end{itemize}
+By definition, these $x_\bullet$ are weakly increasing.
+To prove this satisfies (b) we only need to check that
+\[ \left\lvert x_k - a_k \right\rvert \le \frac{a_i-a_j}{2} \qquad
+  (\star) \]
+for any index $k$ (as equality holds for $k = i$ or $k = j$).
+
+We note $(\star)$ holds for $i < k < j$ by construction.
+For $k > j$, note that $x_k \in \{a_j, a_{j+1}, \dots, a_k\}$
+by construction, so $(\star)$ follows from our choice of $i$ and $j$
+giving the largest possible difference; the case $k < i$ is similar.
+\pagebreak

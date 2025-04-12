@@ -1,0 +1,18 @@
+\textsl{Available online at \url{https://aops.com/community/p282138}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Determine all positive integers relatively
+prime to all the terms of the infinite sequence
+\[ a_n = 2^n+3^n+6^n-1, \quad n \ge 1. \]
+\end{mdframed}
+The answer is $1$ only (which works).
+
+It suffices to show there are no primes.
+For the primes $p=2$ and $p=3$, take $a_2=48$.
+For any prime $p \ge 5$ notice that
+\begin{align*}
+  a_{p-2} &= 2^{p-2} + 3^{p-2} + 6^{p-2} - 1 \\
+  &\equiv \frac 12 + \frac 13 + \frac 16 - 1 \pmod p \\
+  &\equiv 0 \pmod p
+\end{align*}
+so no other larger prime works.
+\pagebreak

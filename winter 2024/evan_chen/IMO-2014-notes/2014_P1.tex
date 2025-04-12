@@ -1,0 +1,15 @@
+\textsl{Available online at \url{https://aops.com/community/p3542095}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $a_0 < a_1 < a_2 < \dotsb$ be an infinite sequence of positive integers.
+Prove that there exists a unique integer $n\geq 1$ such that
+\[ a_n < \frac{a_0+a_1+a_2+\dotsb+a_n}{n} \le a_{n+1}. \]
+\end{mdframed}
+Fedor Petrov presents the following nice solution.
+Let us define the sequence
+\[ b_n = \left( a_n - a_{n-1} \right) + \dots + \left( a_n - a_1 \right). \]
+Since $(a_n)_n$ is increasing, we get $(b_n)_n$ is strictly increasing,
+and moreover $b_1 = 0$.
+The problem requires an $n$ such that
+\[ b_n < a_0 \le b_{n+1} \]
+which obviously exists and is unique.
+\pagebreak

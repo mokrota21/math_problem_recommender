@@ -1,0 +1,72 @@
+\textsl{Available online at \url{https://aops.com/community/p6642565}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+The equation
+\[ (x-1)(x-2)\dots(x-2016)=(x-1)(x-2)\dots (x-2016) \]
+is written on the board, with $2016$ linear factors on each side.
+What is the least possible value of $k$ for which it is possible to
+erase exactly $k$ of these $4032$ linear factors so that at least
+one factor remains on each side and the resulting equation
+has no real solutions?
+\end{mdframed}
+The answer is $2016$.
+Obviously this is necessary in order to delete duplicated factors.
+We now prove it suffices to deleted $2 \pmod 4$ and $3 \pmod 4$
+guys from the left-hand side, and $0 \pmod 4$,
+$1 \pmod 4$ from the right-hand side.
+
+Consider the $1008$ inequalities
+\begin{align*}
+  (x-1)(x-4) &< (x-2)(x-3) \\
+  (x-5)(x-8) &< (x-6)(x-7) \\
+  (x-9)(x-12) &< (x-10)(x-11) \\
+  &\vdots \\
+  (x-2013)(x-2016) &< (x-2014)(x-2015).
+\end{align*}
+Notice that in all these inequalities, at most one of them
+has non-positive numbers in it, and we never have both zero.
+If there is exactly one negative term among the $1008 \cdot 2 = 2016$ sides,
+it is on the left and we can multiply all together.
+Thus the only case that remains is if $x \in (4m-2, 4m-1)$ for some $m$,
+say the $m$th inequality.
+In that case, the two sides of that inequality differ by a factor of at least $9$.
+
+\begin{claim*}
+  We have \[ \prod_{k \ge 0} \frac{(4k+2)(4k+3)}{(4k+1)(4k+4)} < e. \]
+\end{claim*}
+\begin{proof}
+  [Proof of claim using logarithms]
+  It's equivalent to prove
+  \[ \sum_{k \ge 0} \log \left( 1 + \frac{2}{(4k+1)(4k+4)} \right) < 1. \]
+  To this end, we use the deep fact that $\log(1+t) \le t$,
+  and thus it follows from
+  $\sum_{k \ge 0} \frac{1}{(4k+1)(4k+4)} < \half$,
+  which one can obtain for example by noticing
+  it's less than $\frac14\frac{\pi^2}{6}$.
+\end{proof}
+\begin{remark*}
+  [Elementary proof of claim, given by Espen Slettnes]
+  To avoid calculus as above, for each $N \ge 0$, note the partial product is bounded by
+  \begin{align*}
+    \prod_{k=0}^N \frac{(4k+2)(4k+3)}{(4k+1)(4k+4)}
+    &=
+    \frac 21 \cdot \left( \frac 34 \cdot \frac 65 \right)
+      \cdot \left( \frac 78 \cdot \frac{10}{9} \right) \cdot \dots
+      \cdot \frac{4N+3}{4N+4} \\
+    &< 2 \cdot 1 \cdot 1 \cdot \dots \cdot \frac{4N+3}{4N+4}
+    < 2 < e. \qedhere
+  \end{align*}
+\end{remark*}
+
+This solves the problem, because then the factors being multiplied
+on by the positive inequalities before the
+$m$th one are both less than $e$, and $e^2 < 9$.
+In symbols, for $4m-2 < x < 4m-1$ we should have
+\[ \frac{(x-(4m-6))(x-(4m-5))}{(x-(4m-7))(x-(4m-4))}
+  \times \dots \times \frac{(x-2)(x-3)}{(x-1)(x-4)} < e \]
+and
+\[ \frac{(x-(4m+2))(x-(4m+3))}{(x-(4m+1))(x-(4m+4))}
+  \times \dots \times \frac{(x-2014)(x-2015)}{(x-2013)(x-2016)} < e \]
+because the $(k+1)$st term of each left-hand side
+is at most $\frac{(4k+2)(4k+3)}{(4k+1)(4k+4)}$, for $k \ge 0$.
+As $e^2 < 9$, we're okay.
+\pagebreak

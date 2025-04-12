@@ -1,0 +1,34 @@
+\textsl{Available online at \url{https://aops.com/community/p1190551}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $x$, $y$, $z$ be real numbers with $xyz = 1$,
+all different from $1$.
+Prove that
+\[ \frac{x^2}{(x-1)^2} + \frac{y^2}{(y-1)^2}
++ \frac{z^2}{(z-1)^2} \ge 1 \]
+and show that equality holds for infinitely many choices
+of rational numbers $x$, $y$, $z$.
+\end{mdframed}
+Let $x=a/b$, $y=b/c$, $z=c/a$, so we want to show
+\[ \left(\frac{a}{a-b}\right)^2+\left(\frac{b}{b-c}\right)^2
+  +\left(\frac{c}{c-a}\right)^2\ge 1.\]
+A very boring computation shows this is equivalent to
+\[ \frac{(a^2b+b^2c+c^2a-3abc)^2}%
+  {(a-b)^2(b-c)^2(c-a)^2}\ge 0\]
+which proves the inequality
+(and it is unsurprising we are in such a situation,
+given that there is an infinite curve of rationals).
+
+For equality, it suffices to show there are infinitely
+many integer solutions to
+\[ a^2b+b^2c+c^2a=3abc
+  \iff \frac ac + \frac ba + \frac ca = 3
+\]
+or equivalently that
+there are infinitely many rational solutions to
+\[ u + v + \frac{1}{uv} = 3. \]
+For any $0 \neq u \in \QQ$ the real solution for $u$ is
+\[ v = \frac{-u + (u-1)\sqrt{1-4/u} + 3}{2} \]
+and there are certainly infinitely many rational numbers $u$
+for which $1-4/u$ is a rational square
+(say, $u = \frac{-4}{q^2-1}$ for $q \neq \pm 1$ a rational number).
+\pagebreak

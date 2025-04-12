@@ -1,0 +1,72 @@
+
+\textsl{Available online at \url{https://aops.com/community/p356713}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+For each positive integer $n$,
+let $f(n)$ denote the number of ways of representing $n$
+as a sum of powers of 2 with nonnegative integer exponents.
+Representations which differ only in the ordering
+of their summands are considered to be the same.
+For instance, $f(4) = 4$,
+because the number $4$ can be represented in the following four ways:
+$4$; $2+2$; $2+1+1$; $1+1+1+1$.
+
+Prove that for any integer $n \geq 3$
+we have $2^{\frac{n^2}{4}} < f(2^n) < 2^{\frac{n^2}2}$.
+\end{mdframed}
+It's clear that $f$ is non-decreasing.
+By sorting by the number of $1$'s we used,
+we have the equation
+\[ f(N) =
+  f\left( \left\lfloor \frac N2 \right\rfloor \right)
+  +  f\left( \left\lfloor \frac N2 \right\rfloor -1 \right)
+  +  f\left( \left\lfloor \frac N2 \right\rfloor -2 \right)
+  + \dots
+  + f(1) + f(0). \quad (\bigstar)
+\]
+
+\paragraph{Upper bound.}
+We now prove the upper bound by induction.
+Indeed, the base case is trivial and for the inductive step
+we simply use $(\bigstar)$:
+\[ f(2^n) = f(2^{n-1}) + f(2^{n-1}-1) + \dots
+  < 2^{n-1} f(2^{n-1})
+  < 2^{n-1} \cdot 2^{\frac{(n-1)^2}{2}}
+  = 2^{\frac{n^2}{2} - \half}.
+\]
+
+\paragraph{Lower bound.}
+First, we contend that $f$ is convex.
+We'll first prove this in the even case
+to save ourselves some annoyance:
+\begin{claim*}
+  [$f$ is basically convex]
+  If $2 \mid a+b$ then
+  we have $f(2a) + f(2b) \ge 2 f\left( a+b \right)$.
+\end{claim*}
+\begin{proof}
+  Since $f(2k+1) = f(2k)$, we will only prove the first equation.
+  Assume WLOG $a \ge b$ and use
+  $(\bigstar)$ on all three $f$ expressions here;
+  after subtracting repeated terms, the inequality then rewrites as
+  \[ \sum_{(a+b)/2 \le x \le a} f(x)
+    \ge \sum_{b \le x \le (a+b)/2} f(x). \]
+  This is true since there are an equal number of terms on each side
+  and $f$ is nondecreasing.
+\end{proof}
+\begin{claim*}
+  For each $1 \le k < 2^{n-1}$, we have
+  \[ f(2^{n-1} - k) + f(k+1) \ge 2f(2^{n-2}) \]
+\end{claim*}
+\begin{proof}
+  Use the fact that $f(2t+1)=f(2t)$ for all $t$
+  and then apply convexity as above.
+\end{proof}
+Now we can carry out the induction:
+\[ f(2^n) = f(2^{n-1}) + f(2^{n-1}-1) + \dots
+  > 2^{n-1} f(2^{n-2}) + f(0)
+  > 2^{n-1} 2^{\frac{(n-2)^2}{4}} = 2^{\frac{n^2}{4}}.
+\]
+\pagebreak
+
+
+\end{document}

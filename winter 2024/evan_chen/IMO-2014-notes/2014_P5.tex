@@ -1,0 +1,58 @@
+\textsl{Available online at \url{https://aops.com/community/p3543144}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+For every positive integer $n$,
+the Bank of Cape Town issues coins of denomination $\frac 1n$.
+Given a finite collection of such coins (of not necessarily different denominations)
+with total value at most $99 + \frac12$, prove that it is possible to split
+this collection into $100$ or fewer groups, such that each group has total value at most $1$.
+\end{mdframed}
+We'll prove the result
+for at most $k - \frac{k}{2k+1}$ with $k$ groups.
+First, perform the following optimizations.
+\begin{itemize}
+  \ii If any coin of size $\frac{1}{2m}$ appears twice,
+  then replace it with a single coin of size $\frac{1}{m}$.
+  \ii If any coin of size $\frac{1}{2m+1}$ appears $2m+1$ times,
+  group it into a single group and induct downwards.
+\end{itemize}
+Apply this operation repeatedly until it cannot be done anymore.
+
+Now construct boxes $B_0$, $B_1$, \dots, $B_{k-1}$.
+In box $B_0$ put any coins of size $\tfrac 12$ (clearly there is at most one).
+More generally for $m \ge 0$, $B_m$, put coins of size
+$\frac{1}{2m+1}$ and $\frac{1}{2m+2}$
+(there at most $2m$ of the former and at most one of the latter).
+Note that
+\[ \text{total weight in $B_m$} \le 2m \cdot \frac{1}{2m+1} + \frac{1}{2m+2} < 1. \]
+Finally, place the remaining ``light'' coins of size at most $\frac{1}{2k+1}$ in a pile.
+\begin{remark*}
+  One way to explain where this boxing comes from is to imagine
+  what happens after applying the operation repeatedly until it can't be done any more.
+  We expect the most troublesome situation would be if the leftover coins are
+  as large as possible, which looks like
+  \[ \half, \qquad \frac13 \times 2, \qquad \frac14, \qquad \frac15 \times 4,
+    \qquad \frac16, \qquad \frac17 \times 6, \qquad \frac 18, \qquad \dots \]
+  Seeing this the boxing $B_i$ is quite reasonable because it groups these
+  into groups of almost $1$ without too much effort:
+  \begin{align*}
+    B_0 &\longrightarrow \half \\
+    B_1 &\longrightarrow \frac13 \cdot 2 + \frac 14 = \frac{11}{12} \\
+    B_2 &\longrightarrow \frac15 \cdot 4 + \frac 16 = \frac{29}{30} \\
+    B_3 &\longrightarrow \frac17 \cdot 6 + \frac 18 = \frac{55}{56} \\
+    &\vdotswithin\longrightarrow
+  \end{align*}
+\end{remark*}
+
+Then just toss coins from the pile into the boxes arbitrarily,
+other than the proviso that no box should have its weight exceed $1$.
+We claim this uses up all coins in the pile.
+Assume not, and that some coin remains in the pile
+when all the boxes are saturated.
+Then all the boxes must have at least $1 -\frac{1}{2k+1}$,
+meaning the total amount in the boxes is strictly greater than
+\[ k \left( 1 - \frac{1}{2k+1} \right) > k - \tfrac 12 \]
+which is a contradiction.
+\begin{remark*}
+  This gets a stronger bound $k - \frac{k}{2k+1}$ than the requested $k-\tfrac 12$.
+\end{remark*}
+\pagebreak

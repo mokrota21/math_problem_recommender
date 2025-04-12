@@ -1,0 +1,1160 @@
+% © Evan Chen
+% Downloaded from https://web.evanchen.cc/
+
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evan}
+\ihead{\footnotesize\textbf{\thetitle}}
+\ohead{\footnotesize\href{http://web.evanchen.cc}{\ttfamily web.evanchen.cc},
+    updated \today}
+\title{IMO 2024 Solution Notes}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This is a compilation of solutions
+for the 2024 IMO.
+The ideas of the solution are a mix of my own work,
+the solutions provided by the competition organizers,
+and solutions found by the community.
+However, all the writing is maintained by me.
+
+These notes will tend to be a bit more advanced and terse than the ``official''
+solutions from the organizers.
+In particular, if a theorem or technique is not known to beginners
+but is still considered ``standard'', then I often prefer to
+use this theory anyways, rather than try to work around or conceal it.
+For example, in geometry problems I typically use directed angles
+without further comment, rather than awkwardly work around configuration issues.
+Similarly, sentences like ``let $\mathbb{R}$ denote the set of real numbers''
+are typically omitted entirely.
+
+Corrections and comments are welcome!
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\addtocounter{section}{-1}
+\section{Problems}
+\begin{enumerate}[\bfseries 1.]
+\item %% Problem 1
+Find all real numbers $\alpha$ so that, for every positive integer $n$, the integer
+\[ \left\lfloor \alpha \right\rfloor + \left\lfloor 2 \alpha \right\rfloor
+  + \left\lfloor 3 \alpha \right\rfloor + \dots + \left\lfloor n \alpha \right\rfloor \]
+is divisible by $n$.
+
+\item %% Problem 2
+For which pairs of positive integers $(a,b)$ is the sequence
+\[ \gcd(a^n+b, b^n+a) \qquad n = 1, 2, \dotsc \]
+eventually constant?
+
+\item %% Problem 3
+Let $a_1$, $a_2$, $a_3$, \dots\ be an infinite sequence of positive integers,
+and let $N$ be a positive integer.
+Suppose that, for each $n > N$,
+the number $a_n$ is equal to the number of times $a_{n-1}$ appears
+in the list $(a_1, a_2, \dots, a_{n-1})$.
+Prove that at least one of the sequences $a_1$, $a_3$, $a_5$, \dots\
+and $a_2$, $a_4$, $a_6$, \dots\ is eventually periodic.
+
+\item %% Problem 4
+Let triangle $ABC$ with incenter $I$ satisfying $AB < AC < BC$.
+Let $X$ be a point on line $BC$, different from $C$,
+such that the line through $X$ and parallel to $AC$ is tangent to the incircle.
+Similarly, let $Y$ be a point on line $BC$, different from $B$,
+such that the line through $Y$ and parallel to $AB$ is tangent to the incircle.
+Line $AI$ intersects the circumcircle of triangle $ABC$ again at $P$.
+Let $K$ and $L$ be the midpoints of $AC$ and $AB$, respectively.
+Prove that $\angle KIL + \angle YPX = 180^{\circ}$.
+
+\item %% Problem 5
+Turbo the snail is in the top row of a grid with $2024$ rows and $2023$ columns
+and wants to get to the bottom row.
+However, there are $2022$ hidden monsters, one in every row except the first and last,
+with no two monsters in the same column.
+
+Turbo makes a series of attempts to go from the first row to the last row.
+On each attempt, he chooses to start on any cell in the first row,
+then repeatedly moves to an orthogonal neighbor.
+(He is allowed to return to a previously visited cell.)
+If Turbo reaches a cell with a monster,
+his attempt ends and he is transported back to the first row to start a new attempt.
+The monsters do not move between attempts, and Turbo remembers whether or not each cell
+he has visited contains a monster.
+If he reaches any cell in the last row, his attempt ends and Turbo wins.
+
+Find the smallest integer $n$ such that Turbo has a strategy which guarantees
+being able to reach the bottom row in at most $n$ attempts,
+regardless of how the monsters are placed.
+
+\item %% Problem 6
+A function $f \colon \QQ \to \QQ$ is called \emph{aquaesulian}
+if the following property holds: for every $x,y \in \mathbb{Q}$,
+\[ f(x+f(y)) = f(x) + y \quad \text{or} \quad f(f(x)+y) = x + f(y). \]
+Show that there exists an integer $c$ such that for any aquaesulian function $f$
+there are at most $c$ different rational numbers of the
+form $f(r) + f(-r)$ for some rational number $r$,
+and find the smallest possible value of $c$.
+
+\end{enumerate}
+\pagebreak
+
+\section{Solutions to Day 1}
+\subsection{IMO 2024/1, proposed by Santiago Rodriguez (COL)}
+\textsl{Available online at \url{https://aops.com/community/p31205921}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Find all real numbers $\alpha$ so that, for every positive integer $n$, the integer
+\[ \left\lfloor \alpha \right\rfloor + \left\lfloor 2 \alpha \right\rfloor
+  + \left\lfloor 3 \alpha \right\rfloor + \dots + \left\lfloor n \alpha \right\rfloor \]
+is divisible by $n$.
+\end{mdframed}
+The answer is that $\alpha$ must be an even integer.
+Let $S(n, \alpha)$ denote the sum in question.
+
+\paragraph{Analysis for $\alpha$ an integer.}
+If $\alpha$ is an integer, then the sum equals
+\[ S(n, \alpha) = (1+2+\dots+n) \alpha = \frac{n(n+1)}{2} \cdot \alpha \]
+which is obviously a multiple of $n$ if $2 \mid \alpha$;
+meanwhile, if $\alpha$ is an odd integer then $n = 2$ gives a counterexample.
+
+\paragraph{Main case.}
+Suppose $\alpha$ is not an integer; we show the desired condition can never be true.
+Note that replacing $\alpha$ with $\alpha \pm 2$ changes by
+\[ S(n \pm 2, \alpha) - S(n, \alpha) = 2(1+2+\dots+n) = n(n+1) \equiv 0 \pmod n \]
+for every $n$.
+Thus, by shifting appropriately we may assume $-1 < \alpha < 1$ and $\alpha \notin \ZZ$.
+
+\begin{itemize}
+  \ii If $0 < \alpha < 1$,
+  then let $m \ge 2$ be the smallest integer such that $m \alpha \ge 1$.
+  Then
+  \[ S(m, \alpha) = \underbrace{0 + \dots + 0}_{m-1\text{ terms}} + 1 = 1 \]
+  is not a multiple of $m$.
+
+  \ii If $-1 < \alpha < 0$,
+  then let $m \ge 2$ be the smallest integer such that $m \alpha \le -1$.
+  Then
+  \[ S(m, \alpha) = \underbrace{(-1) + \dots + (-1)}_{m-1\text{ terms}} + 0 = -(m-1) \]
+  is not a multiple of $m$.
+\end{itemize}
+\pagebreak
+
+\subsection{IMO 2024/2, proposed by Valentino Iverson (IDN)}
+\textsl{Available online at \url{https://aops.com/community/p31205957}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+For which pairs of positive integers $(a,b)$ is the sequence
+\[ \gcd(a^n+b, b^n+a) \qquad n = 1, 2, \dotsc \]
+eventually constant?
+\end{mdframed}
+The answer is $(a,b)=(1,1)$ only, which obviously works since the sequence is always $2$.
+
+Conversely, assume the sequence
+\[ x_n \coloneqq \gcd(a^n+b, b^n+a) \] is eventually constant.
+The main crux of the other direction is to consider
+\[ M \coloneqq ab+1. \]
+\begin{remark*}
+  [Motivation]
+  The reason to consider the number is the same technique used in IMO 2005/4,
+  namely the idea to consider ``$n = -1$''.
+  The point is that the two rational numbers
+  \[ \frac 1a + b = \frac{ab+1}{b}, \qquad \frac 1b + a = \frac{ab+1}{a} \]
+  have a large common factor: we could write ``$x_{-1} = ab + 1$'', loosely speaking.
+
+  Now, the sequence is really only defined for $n \ge 1$,
+  so one should instead take $n \equiv -1 \pmod{\varphi(M)}$
+  --- and this is exactly what we do.
+\end{remark*}
+Obviously $\gcd(a,M) = \gcd(b,M) = 1$.
+Let $n$ be a sufficiently large multiple of $\varphi(M)$
+so that \[ x_{n-1} = x_n = x_{n+1} = \dotsb. \]
+We consider the first three terms;
+the first one is the ``key'' one that gets the bulk of the work,
+and the rest is bookkeeping and extraction.
+\begin{itemize}
+  \ii Consider $x_{n-1}$.
+  Note that
+  \[ a (a^{n-1} + b) = a^n + ab \equiv 1 + (-1) \equiv 0 \pmod M \]
+  and similarly $b (b^n + a) \equiv 0 \pmod M$.
+  Hence $M \mid x_{n-1}$.
+
+  \ii Consider $x_n$, which is now known to be divisible by $M$. Note that
+  \begin{align*}
+    0 &\equiv a^n + b \equiv 1 + b \pmod M \\
+    0 &\equiv b^n + a \equiv 1 + a \pmod M.
+  \end{align*}
+  So $a \equiv b \equiv -1 \pmod M$.
+
+  \ii Consider $x_{n+1}$, which is now known to be divisible by $M$. Note that
+  \[ 0 \equiv a^{n+1} + b \equiv b^{n+1} + a \equiv a + b \pmod M. \]
+  We knew $a \equiv b \equiv -1 \pmod M$,
+  hence this means $0 \equiv 2 \pmod M$, so $M = 2$.
+\end{itemize}
+From $M = 2$ we then conclude $a = b = 1$, as desired.
+
+\begin{remark*}
+  [No alternate solutions known]
+  At the time nobody seems to know any solution not depending critically
+  on $M = ab+1$ (or prime numbers dividing $M$, etc.).
+  They vary in execution once some term of the form $x_{k\varphi(n)-1}$ is taken,
+  but avoiding the key idea altogether does not currently seem possible.
+
+  A good example to consider for ruling out candidate ideas is $(a,b) = (18,9)$.
+\end{remark*}
+\pagebreak
+
+\subsection{IMO 2024/3, proposed by William Steinberg (AUS)}
+\textsl{Available online at \url{https://aops.com/community/p31206050}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $a_1$, $a_2$, $a_3$, \dots\ be an infinite sequence of positive integers,
+and let $N$ be a positive integer.
+Suppose that, for each $n > N$,
+the number $a_n$ is equal to the number of times $a_{n-1}$ appears
+in the list $(a_1, a_2, \dots, a_{n-1})$.
+Prove that at least one of the sequences $a_1$, $a_3$, $a_5$, \dots\
+and $a_2$, $a_4$, $a_6$, \dots\ is eventually periodic.
+\end{mdframed}
+We present the solution from ``gigamilkmen'tgeg''
+in \url{https://aops.com/community/p31224483},
+with some adaptation from the first shortlist official solution as well.
+Set $M \coloneqq \max(a_1, \dots, a_N)$.
+
+\paragraph{Setup.}
+We will visualize the entire process as follows.
+We draw a stack of towers labeled $1$, $2$, \dots, each initially empty.
+For $i=1,2,\dots$, we imagine the term $a_i$ as adding a block $B_i$ to tower $a_i$.
+
+Then there are $N$ initial blocks placed, colored \emph{red}.
+The rest of the blocks are colored \emph{yellow}:
+if the last block $B_i$ was added to a tower that then reaches height $a_{i+1}$,
+the next block $B_{i+1}$ is added to tower $a_{i+1}$.
+We'll say $B_i$ \emph{contributes} to the tower containing $B_{i+1}$.
+
+In other words, the yellow blocks $B_i$ for $i > N$
+are given coordinates $B_i = (a_i, a_{i+1})$ for $i>N$.
+Note in particular that in towers $M+1$, $M+2$, \dots, the blocks are all yellow.
+
+\begin{center}
+\begin{asy}
+unitsize(0.85cm);
+int[] a = {1,2,2,2,2,2,3,4,1,2,6,1,3,2,7,1,4,2,8,1,5,1,6,2,9,1,7,2,10};
+int N = 8;
+
+filldraw(shift(0,0)*unitsquare, palered, black+1);
+filldraw(shift(1,0)*unitsquare, palered, black+1);
+filldraw(shift(2,0)*unitsquare, palered, black+1);
+filldraw(shift(3,0)*unitsquare, palered, black+1);
+filldraw(shift(1,1)*unitsquare, palered, black+1);
+filldraw(shift(1,2)*unitsquare, palered, black+1);
+filldraw(shift(1,3)*unitsquare, palered, black+1);
+filldraw(shift(1,4)*unitsquare, palered, black+1);
+
+for (int i=N; i<a.length-1; ++i) {
+  filldraw(shift(a[i]-1, a[i+1]-1)*unitsquare, paleyellow, black+1);
+}
+draw((0,0)--(4,0)--(4,1)--(2,1)--(2,5)--(1,5)--(1,1)--(0,1)--cycle, brown+2);
+label("$\boxed{N}$", (a[N-1]-0.5, a[N]-0.5), fontsize(14pt));
+
+void draw_arrow(int k, pen p) {
+  draw((a[k-1]-0.5,a[k]-0.5)--(a[k]-0.5,a[k+1]-0.5),
+    p, EndArrow(TeXHead), Margin(2,2));
+}
+
+draw((4,10)--(4,-0.7), deepgreen);
+label("$M$", (4,-0.7), dir(-90), deepgreen);
+
+for (int j=1; j<=9; ++j) {
+  label("$"+(string)j+"$", (j-0.5,0), dir(-90), blue+fontsize(10pt));
+}
+
+// Figure 1: setup
+for (int i=8; i<=14; ++i) { draw_arrow(i, black+1.0); }
+
+for (int i=N; i<a.length-1; ++i) {
+  label("$"+(string)(i+1)+"$", (a[i]-0.5, a[i+1]-0.5), fontsize(12pt));
+}
+\end{asy}
+\end{center}
+
+We let $h_\ell$ denote the height of the $\ell$\ts{th} tower at a given time $n$.
+(This is an abuse of notation and we should write $h_\ell(n)$ at time $n$,
+but $n$ will always be clear from context.)
+
+\paragraph{Up to alternating up and down.}
+We start with two independent easy observations:
+the set of numbers that occur infinitely often is downwards closed,
+and consecutive terms cannot both be huge.
+
+\begin{center}
+\begin{asy}
+unitsize(0.85cm);
+int[] a = {1,2,2,2,2,2,3,4,1,2,6,1,3,2,7,1,4,2,8,1,5,1,6,2,9,1,7,2,10,1,8,2,11,1,9,2,12};
+int N = 8;
+
+// Red X region
+fill(box((4,4),(11,12)), lightgrey);
+draw((4,4)--(11,12), red+1.4);
+draw((11,4)--(4,12), red+1.4);
+
+filldraw(shift(0,0)*unitsquare, palered, black+1);
+filldraw(shift(1,0)*unitsquare, palered, black+1);
+filldraw(shift(2,0)*unitsquare, palered, black+1);
+filldraw(shift(3,0)*unitsquare, palered, black+1);
+filldraw(shift(1,1)*unitsquare, palered, black+1);
+filldraw(shift(1,2)*unitsquare, palered, black+1);
+filldraw(shift(1,3)*unitsquare, palered, black+1);
+filldraw(shift(1,4)*unitsquare, palered, black+1);
+
+for (int i=N; i<a.length-1; ++i) {
+  filldraw(shift(a[i]-1, a[i+1]-1)*unitsquare, paleyellow, black+1);
+}
+draw((0,0)--(4,0)--(4,1)--(2,1)--(2,5)--(1,5)--(1,1)--(0,1)--cycle, brown+2);
+label("$\boxed{N}$", (a[N-1]-0.5, a[N]-0.5), fontsize(14pt));
+
+void draw_arrow(int k, pen p) {
+  draw((a[k-1]-0.5,a[k]-0.5)--(a[k]-0.5,a[k+1]-0.5),
+    p, EndArrow(TeXHead), Margin(2,2));
+}
+
+draw((2,0)--(2,-0.7), deepgreen);
+draw((4,12)--(4,-0.7), deepgreen);
+label("$L$", (2,-0.7), dir(-90), deepgreen);
+label("$M$", (4,-0.7), dir(-90), deepgreen);
+draw((4,4)--(11,4), deepgreen);
+
+for (int j=1; j<=11; ++j) {
+  label("$"+(string)j+"$", (j-0.5,0), dir(-90), blue+fontsize(10pt));
+}
+
+
+// Figure 2: claim with C
+filldraw(shift(a[18]-1, a[19]-1)*unitsquare, yellow, black+2);
+filldraw(shift(a[19]-1, a[20]-1)*unitsquare, yellow, black+2);
+filldraw(shift(a[30]-1, a[31]-1)*unitsquare, yellow, black+2);
+filldraw(shift(a[31]-1, a[32]-1)*unitsquare, yellow, black+2);
+draw_arrow(19, blue+1.1);
+draw_arrow(31, blue+1.1);
+
+for (int i=N; i<a.length-1; ++i) {
+  label("$"+(string)(i+1)+"$", (a[i]-0.5, a[i+1]-0.5), fontsize(12pt));
+}
+\end{asy}
+\end{center}
+
+\begin{claim*}
+  If the $(k+1)$\ts{st} tower grows arbitrarily high, so does tower $k$.
+  In fact, there exists a constant $C$ such that $h_{k} \ge h_{k+1} - C$ at all times.
+\end{claim*}
+\begin{proof}
+  Suppose $B_n$ is a yellow block in tower $k+1$.
+  Then with at most finitely many exceptions, $B_{n-1}$ is a yellow block at height $k+1$,
+  and the block $B_r$ right below $B_{n-1}$ is also yellow;
+  then $B_{r+1}$ is in tower $k$.
+  Hence, with at most finitely many exceptions, the map
+  \[ B_n \mapsto B_{n-1} \mapsto B_r \mapsto B_{r+1} \]
+  provides an injective map taking each yellow block in tower $k+1$
+  to a yellow block in tower $k$.
+  (The figure above shows $B_{32} \to B_{31} \to B_{19} \to B_{20}$ as an example.)
+\end{proof}
+
+\begin{claim*}
+  If $a_n > M$ then $a_{n+1} \le M$.
+\end{claim*}
+\begin{proof}
+  Assume for contradiction there's a first moment where $a_n > M$ and $a_{n+1} > M$,
+  meaning the block $B_n$ was added to an all-yellow tower past $M$
+  that has height exceeding $M$.
+  (This is the X'ed out region in the figure above.)
+  In $B_n$'s tower, every (yellow) block (including $B_n$)
+  was contributed by a block placed in different towers at height $a_n > M$.
+  So before $B_n$, there were already $a_{n+1} > M$ towers of height more than $M$.
+  This contradicts minimality of $n$.
+\end{proof}
+
+It follows that the set of indices with $a_n \le M$
+has arithmetic density at least half, so certainly
+at least some of the numbers must occur infinitely often.
+Of the numbers in $\{1,2,\dots,M\}$,
+define $L$ such that towers $1$ through $L$ grow unbounded
+but towers $L+1$ through $M$ do not.
+Then we can pick a larger threshold $N' > N$ such that
+\begin{itemize}
+  \ii Towers $1$ through $L$ have height greater than $(M,N)$;
+  \ii Towers $L+1$ through $M$ will receive no further blocks;
+  \ii $a_{N'} \le L$.
+\end{itemize}
+After this threshold, the following statement is true:
+\begin{claim*}
+  [Alternating small and big]
+  The terms $a_{N'}$, $a_{N' + 2}$, $a_{N' + 4}$, \dots\ are all at most $L$ while
+  the terms $a_{N' + 1}$, $a_{N' + 3}$, $a_{N' + 5}$, \dots\ are all greater than $M$.
+\end{claim*}
+
+\paragraph{Automaton for $n \equiv N' \pmod 2$.}
+From now on we always assume $n > N'$.
+When $n \equiv N' \pmod 2$, i.e., when $a_n$ is small, we define the state
+\[ S(n) = (h_1, h_2, \dots, h_L; a_n). \]
+For example, in the figure below, we illustrate how
+\[ S(34) = (9,11;a_{34}=1) \longrightarrow S(36) = (9,12;a_{36}=2) \]
+\begin{center}
+  \begin{asy}
+    unitsize(0.85cm);
+    int[] a = {1,2,2,2,2,2,3,4,1,2,6,1,3,2,7,1,4,2,8,1,5,1,6,2,9,1,7,2,10,1,8,2,11,1,9,2,12};
+    int N = 8;
+
+    filldraw(shift(0,0)*unitsquare, palered, black+1);
+    filldraw(shift(1,0)*unitsquare, palered, black+1);
+    filldraw(shift(2,0)*unitsquare, palered, black+1);
+    filldraw(shift(3,0)*unitsquare, palered, black+1);
+    filldraw(shift(1,1)*unitsquare, palered, black+1);
+    filldraw(shift(1,2)*unitsquare, palered, black+1);
+    filldraw(shift(1,3)*unitsquare, palered, black+1);
+    filldraw(shift(1,4)*unitsquare, palered, black+1);
+
+    for (int i=N; i<a.length-1; ++i) {
+      filldraw(shift(a[i]-1, a[i+1]-1)*unitsquare, paleyellow, black+1);
+    }
+    draw((0,0)--(4,0)--(4,1)--(2,1)--(2,5)--(1,5)--(1,1)--(0,1)--cycle, brown+2);
+    label("$\boxed{N}$", (a[N-1]-0.5, a[N]-0.5), fontsize(14pt));
+
+void draw_arrow(int k, pen p) {
+  draw((a[k-1]-0.5,a[k]-0.5)--(a[k]-0.5,a[k+1]-0.5),
+    p, EndArrow(TeXHead), Margin(2,2));
+}
+
+draw((2,0)--(2,-0.7), deepgreen);
+draw((4,12)--(4,-0.7), deepgreen);
+label("$L$", (2,-0.7), dir(-90), deepgreen);
+label("$M$", (4,-0.7), dir(-90), deepgreen);
+draw((4,4)--(11,4), deepgreen);
+
+for (int j=1; j<=11; ++j) {
+  label("$"+(string)j+"$", (j-0.5,0), dir(-90), blue+fontsize(10pt));
+}
+
+// Figure 3: automaton
+filldraw(shift(a[33]-1, a[34]-1)*unitsquare, yellow, black+2);
+filldraw(shift(a[34]-1, a[35]-1)*unitsquare, yellow, black+2);
+filldraw(shift(a[35]-1, a[36]-1)*unitsquare, yellow, black+2);
+draw_arrow(34, deepgreen+1.1);
+draw_arrow(35, deepgreen+1.1);
+
+for (int i=N; i<a.length-1; ++i) {
+  label("$"+(string)(i+1)+"$", (a[i]-0.5, a[i+1]-0.5), fontsize(12pt));
+}
+\end{asy}
+\end{center}
+
+The final element $a_n$ simply reminds us which tower was most recently incremented.
+At this point we can give a complete description of how to move from $S(n)$ to $S(n+2)$:
+\begin{itemize}
+  \ii The intermediate block $B_{n+1}$ is placed in the tower
+  corresponding to the height $a_{n+1}$ of $B_n$;
+  \ii That tower will have height $a_{n+2}$ equal to the number of towers
+  with height at least $a_{n+1}$; that is, it equals the cardinality of the set
+  \[ \{ i \colon h_i \ge h_{a_n} \} \]
+  \ii We increment $h_{a_{n+2}}$ by $1$ and update $a_n$.
+\end{itemize}
+
+For example, the illustrated $S(34) \to S(36)$
+corresponds to the block $B_{34}$ at height $h_1$ in tower $1$
+giving the block $B_{35}$ at height $2$ in tower $h_1$,
+then block $B_{36}$ at height $h_2 + 1$ being placed in tower $2$.
+
+
+\paragraph{Pigeonhole periodicity argument.}
+Because only the \emph{relative} heights matter in the automata above,
+if we instead define
+\[ T(n) = (h_1-h_2, h_2-h_3, \dots, h_{L-1}-h_L; a_n). \]
+then $T(n+2)$ can be determined from just $T(n)$.
+
+So it would be sufficient to show $T(n)$ only takes on finitely many values
+to show that $T(n)$ (and hence $a_n$) is eventually periodic.
+
+Since we have the bound $h_{k+1} \le h_k + C$,
+we are done upon proving the following lower bound:
+\begin{claim*}
+  For every $1 \le \ell < L$ and $n > N'$,
+  we have $h_\ell \le h_{\ell+1} + C \cdot (L-1)$.
+\end{claim*}
+\begin{proof}
+  Assume for contradiction that there is some moment $n > N'$ such that
+  \[ h_\ell > h_{\ell+1} + C \cdot (L-1) \]
+  and WLOG assume that $h_\ell$ was just updated at the moment $n$.
+  Together with $h_{k+1} \le h_k + C$ for all $k$ and triangle inequality, we conclude
+  \[ \min(h_1, \dots, h_\ell) > q \coloneqq \max(h_{\ell+1}, \dots, h_L). \]
+  We find that the blocks now in fact alternate between being placed
+  among the first $\ell$ towers and in towers with indices greater than $q$ thereafter.
+  Hence the heights $h_{\ell+1}$, \dots, $h_L$ never grow after this moment.
+  This contradicts the definition of $L$.
+\end{proof}
+
+\begin{remark*}
+  In fact, it can be shown that the period is actually exactly $L$,
+  meaning the periodic part will be exactly a permutation of $(1,2,\dots,L)$.
+  For any $L$, it turns out there is indeed a permutation achieving that periodic part.
+\end{remark*}
+\pagebreak
+
+\section{Solutions to Day 2}
+\subsection{IMO 2024/4, proposed by Dominik Burek (POL)}
+\textsl{Available online at \url{https://aops.com/community/p31218657}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let triangle $ABC$ with incenter $I$ satisfying $AB < AC < BC$.
+Let $X$ be a point on line $BC$, different from $C$,
+such that the line through $X$ and parallel to $AC$ is tangent to the incircle.
+Similarly, let $Y$ be a point on line $BC$, different from $B$,
+such that the line through $Y$ and parallel to $AB$ is tangent to the incircle.
+Line $AI$ intersects the circumcircle of triangle $ABC$ again at $P$.
+Let $K$ and $L$ be the midpoints of $AC$ and $AB$, respectively.
+Prove that $\angle KIL + \angle YPX = 180^{\circ}$.
+\end{mdframed}
+Let $T$ be the reflection of $A$ over $I$, the most important point to add
+since it gets rid of $K$ and $L$ as follows.
+\begin{claim*}
+  We have $\angle KIL = \angle BTC$,
+  and lines $TX$ and $TY$ are tangent to the incircle.
+\end{claim*}
+\begin{proof}
+  The first part is true since $\triangle BTC$ is the image of $\triangle KIL$
+  under a homothety of ratio $2$.
+  The second part is true because lines $AB$, $AC$, $TX$, $TY$
+  determine a rhombus with center $I$.
+\end{proof}
+
+We thus delete $K$ and $L$ from the picture altogether; they aren't needed anymore.
+
+\begin{center}
+\begin{asy}
+size(11cm);
+pair A = dir(105);
+pair B = dir(200);
+pair C = dir(340);
+pair P = dir(270);
+filldraw(unitcircle, opacity(0.1)+lightcyan, blue);
+pair I = incenter(A, B, C);
+filldraw(incircle(A, B, C), opacity(0.1)+lightcyan, blue);
+draw(A--B--C--cycle, blue);
+pair E = foot(I, C, A);
+pair F = foot(I, A, B);
+pair T = 2*I-A;
+pair U = 2*I-E;
+pair V = 2*I-F;
+draw(U--T--V, deepgreen);
+draw(B--T--C, red);
+pair K = midpoint(A--B);
+pair L = midpoint(A--C);
+draw(K--I--L, red+dashed);
+pair X = extension(U, T, B, C);
+pair Y = extension(V, T, B, C);
+draw(A--P, grey);
+draw(circumcircle(B, X, P), grey+dashed);
+draw(circumcircle(C, Y, P), grey+dashed);
+
+dot("$A$", A, dir(A));
+dot("$B$", B, dir(160));
+dot("$C$", C, dir(20));
+dot("$P$", P, dir(45));
+dot("$I$", I, dir(250));
+dot("$T$", T, dir(225));
+dot("$K$", K, dir(K));
+dot("$L$", L, dir(L));
+dot("$X$", X, dir(X));
+dot("$Y$", Y, dir(310));
+
+/* -----------------------------------------------------------------+
+|                 TSQX: by CJ Quines and Evan Chen                  |
+| https://github.com/vEnhance/dotfiles/blob/main/py-scripts/tsqx.py |
++-------------------------------------------------------------------+
+!size(11cm);
+A = dir 105
+B 160 = dir 200
+C 20 = dir 340
+P 45 = dir 270
+unitcircle / 0.1 lightcyan / blue
+I 250 = incenter A B C
+incircle A B C / 0.1 lightcyan / blue
+A--B--C--cycle / blue
+E := foot I C A
+F := foot I A B
+T 225 = 2*I-A
+U := 2*I-E
+V := 2*I-F
+U--T--V / deepgreen
+B--T--C / red
+K = midpoint A--B
+L = midpoint A--C
+K--I--L / red dashed
+X = extension U T B C
+Y 310 = extension V T B C
+A--P / grey
+circumcircle B X P / grey dashed
+circumcircle C Y P / grey dashed
+*/
+\end{asy}
+\end{center}
+
+\begin{claim*}
+  We have $BXPT$ and $CYPT$ are cyclic.
+\end{claim*}
+\begin{proof}
+  $\dang TYC = \dang TYB = \dang ABC = \dang APC = \dang TPC$ and similarly.
+  (Some people call this Reim's theorem.)
+\end{proof}
+
+
+To finish, observe that
+\[ \dang CTB = \dang CTP + \dang PTB = \dang CYP + \dang PXB
+  = \dang XYP + \dang XYP = \dang XPY \]
+as desired.
+(The length conditions $AC > AB > BC$ ensure that $B$, $X$, $Y$, $C$ are collinear
+in that order, and that $T$ lies on the opposite side of $\ol{BC}$ as $A$.
+Hence the directed equality $\dang CTB = \dang XPY$
+translates to the undirected $\angle BTC + \angle XPY = 180\dg$.)
+\pagebreak
+
+\subsection{IMO 2024/5, proposed by Chu Cheuk Hei (HKG)}
+\textsl{Available online at \url{https://aops.com/community/p31218774}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Turbo the snail is in the top row of a grid with $2024$ rows and $2023$ columns
+and wants to get to the bottom row.
+However, there are $2022$ hidden monsters, one in every row except the first and last,
+with no two monsters in the same column.
+
+Turbo makes a series of attempts to go from the first row to the last row.
+On each attempt, he chooses to start on any cell in the first row,
+then repeatedly moves to an orthogonal neighbor.
+(He is allowed to return to a previously visited cell.)
+If Turbo reaches a cell with a monster,
+his attempt ends and he is transported back to the first row to start a new attempt.
+The monsters do not move between attempts, and Turbo remembers whether or not each cell
+he has visited contains a monster.
+If he reaches any cell in the last row, his attempt ends and Turbo wins.
+
+Find the smallest integer $n$ such that Turbo has a strategy which guarantees
+being able to reach the bottom row in at most $n$ attempts,
+regardless of how the monsters are placed.
+\end{mdframed}
+Surprisingly the answer is $n = 3$ for \emph{any} grid size $s \times (s-1)$ when $s \ge 4$.
+We prove this in that generality.
+
+\paragraph{Proof that at least three attempts are needed.}
+When Turbo first moves into the second row, Turbo could encounter a monster $M_1$ right away.
+Then on the next attempt, Turbo must enter the third row in different column as $M_1$,
+and again could encounter a monster $M_2$ right after doing so.
+This means no strategy can guarantee fewer than three attempts.
+
+\paragraph{Strategy with three attempts.}
+On the first attempt, we have Turbo walk through the entire second row
+until he finds the monster $M_1$ in it.
+Then we get two possible cases.
+
+\subparagraph{Case where $M_1$ is not on the edge.}
+In the first case, if that monster $M_1$ is not on the edge of the row,
+then Turbo can trace two paths below it as shown below.
+At least one of these paths works, hence three attempts is sufficient.
+
+\begin{center}
+\begin{asy}
+usepackage("amssymb");
+unitsize(0.7cm);
+pen gr = grey+linetype("4 2");
+int n = 6;
+for (int i=0; i<=n-1; ++i) {
+  draw((0,i)--(n,i), gr);
+}
+for (int i=0; i<=n; ++i) {
+  draw((i,0)--(i,n-1), gr);
+}
+draw(box((0,-1), (n,0)), black);
+draw(box((0,n-1), (n,n)), black);
+draw(box((0,-1), (n,n)), black);
+label((n/2,n-0.5), "Starting row");
+label((n/2,-0.5), "Goal row");
+
+label((2.5,4.5), "$M_1$", red);
+dotfactor *= 2;
+dot((1.5,4.5), deepgreen);
+dot((3.5,4.5), deepgreen);
+draw((1.5,4.5)--(1.5,3.5)--(2.3,3.5)--(2.3,0.2), deepgreen+1.2, EndArrow(TeXHead));
+draw((3.5,4.5)--(3.5,3.5)--(2.7,3.5)--(2.7,0.2), deepgreen+1.2, EndArrow(TeXHead));
+\end{asy}
+\end{center}
+
+\subparagraph{Case where $M_1$ is on the edge.}
+WLOG, $M_1$ is in the leftmost cell.
+Then Turbo follows the green staircase pattern shown in the left figure below.
+If the staircase is free of monsters, then Turbo wins on the second attempt.
+Otherwise, if a monster $M_2$ is encountered on the staircase,
+Turbo has found a safe path to the left of $M_2$;
+then Turbo can use this to reach the column $M_1$ is in, and escape from there.
+This is shown in purple in the center and right figure
+(there are two slightly different cases depending on whether $M_2$
+was encountered going east or south).
+\begin{center}
+\begin{asy}
+usepackage("amssymb");
+unitsize(0.65cm);
+pen gr = grey+linetype("4 2");
+int n = 6;
+dotfactor *= 2;
+
+picture pic1, pic2, pic3;
+picture[] pics = {pic1, pic2, pic3};
+
+for (int j=0; j<3; ++j) {
+  for (int i=0; i<=n-1; ++i) {
+    draw(pics[j], (0,i)--(n,i), gr);
+  }
+  for (int i=0; i<=n; ++i) {
+    draw(pics[j], (i,0)--(i,n-1), gr);
+  }
+  draw(pics[j], box((0,-1), (n,0)), black);
+  draw(pics[j], box((0,n-1), (n,n)), black);
+  draw(pics[j], box((0,-1), (n,n)), black);
+  label(pics[j], "Starting row", (n/2,n-0.5));
+  label(pics[j], "Goal row", (n/2,-0.5));
+}
+
+label(pic1, "$M_1$", (0.5,4.5), red);
+dot(pic1, (1.5,4.5), deepgreen);
+draw(pic1, (1.5,4.5)--(2.5,4.5)--(2.5,3.5)--(3.5,3.5)--(3.5,2.5)
+  --(4.5,2.5)--(4.5,1.5)--(5.5,1.5)--(5.5,0.2), deepgreen+1.2, EndArrow(TeXHead));
+
+label(pic2, "$M_1$", (0.5,4.5), red);
+label(pic2, "$M_2$", (4.5,2.5), red);
+dot(pic2, (1.5,4.5), deepgreen);
+draw(pic2, (3.5,2.5)--(4.5,2.5)--(4.5,1.5)--(5.5,1.5)--(5.5,0.2), deepgreen+dashed);
+draw(pic2, (1.5,4.5)--(2.5,4.5)--(2.5,3.5)--(3.5,3.5)--(3.5,2.5)--(0.5,2.5)--(0.5,0.2),
+  purple+1.5, EndArrow(TeXHead));
+
+label(pic3, "$M_1$", (0.5,4.5), red);
+label(pic3, "$M_2$", (4.5,1.5), red);
+dot(pic3, (1.5,4.5), deepgreen);
+draw(pic3, (3.5,2.5)--(4.5,2.5)--(4.5,1.5)--(5.5,1.5)--(5.5,0.2), deepgreen+dashed);
+draw(pic3, (1.5,4.5)--(2.5,4.5)--(2.5,3.5)--(3.5,3.5)--(3.5,1.5)--(0.5,1.5)--(0.5,0.2),
+  purple+1.5, EndArrow(TeXHead));
+
+add(pic1);
+add(shift(7,0)*pic2);
+add(shift(14,0)*pic3);
+\end{asy}
+\end{center}
+Thus the problem is solved in three attempts, as promised.
+
+\paragraph{Extended remark: all working strategies look similar to this.}
+As far as we know, all working strategies are variations of the above.
+In fact, we will try to give a description of the space of possible strategies,
+although this needs a bit of notation.
+
+\begin{definition*}
+For simplicity, we use $s$ even only in the figures below.
+We define the \emph{happy triangle} as the following cells:
+\begin{itemize}
+  \item All $s-1$ cells in the first row (which has no monsters).
+  \item The center $s-3$ cells in the second row.
+  \item The center $s-5$ cells in the third row.
+  \item \dots
+  \item The center cell in the $\frac s2$\textsuperscript{th} row.
+\end{itemize}
+\end{definition*}
+For $s=12$, the happy triangle is the region shaded in the thick border below.
+\begin{center}
+\begin{asy}
+usepackage("amssymb");
+unitsize(0.7cm);
+pen gr = grey+linetype("4 2");
+void setup(int n) {
+  for (int i=0; i<=n-1; ++i) {
+    draw((0,i)--(n,i), gr);
+  }
+  for (int i=0; i<=n; ++i) {
+    draw((i,0)--(i,n-1), gr);
+  }
+  draw(box((0,-1), (n,0)), black);
+  draw(box((0,n-1), (n,n)), black);
+  draw(box((0,-1), (n,n)), black);
+  label((n/2,n-0.5), "Starting row");
+  label((n/2,-0.5), "Goal row");
+
+  path p = (0,n);
+  for (int i=0; i<n/2; ++i) {
+    p = p--(i,n-1-i)--(i+1,n-1-i);
+  }
+  for (int i=(n+1)#2; i<n; ++i) {
+    p = p--(i,i)--(i+1,i);
+  }
+  p = p--(n,n)--cycle;
+  filldraw(p, opacity(0.15)+yellow, blue+1.8);
+}
+setup(11);
+\end{asy}
+\end{center}
+\begin{definition*}
+  Given a cell, define a \emph{shoulder} to be the cell directly northwest or northeast of it.
+  Hence there are two shoulders of cells outside the first and last column,
+  and one shoulder otherwise.
+\end{definition*}
+
+Then solutions roughly must distinguish between these two cases:
+\begin{itemize}
+  \item \textbf{Inside happy triangle:}
+    If the first monster $\color{red}M_1$ is found in the \emph{happy triangle},
+    and there is a safe path found by Turbo to the two shoulders
+    (marked $\color{green!60!black}\bigstar$ in the figure),
+    then one can finish in two more moves by considering the two paths from $\color{green!60!black}\bigstar$
+    that cut under the monster $\color{red}M_1$; one of them must work.
+    This slightly generalizes the easier case in the solution above
+    (which focuses only on the case where $\color{red}M_1$ is in the first row).
+    \begin{center}
+      \begin{asy}
+        usepackage("amssymb");
+        unitsize(0.7cm);
+        pen gr = grey+linetype("4 2");
+        void setup(int n) {
+          for (int i=0; i<=n-1; ++i) {
+            draw((0,i)--(n,i), gr);
+          }
+          for (int i=0; i<=n; ++i) {
+            draw((i,0)--(i,n-1), gr);
+          }
+          draw(box((0,-1), (n,0)), black);
+          draw(box((0,n-1), (n,n)), black);
+          draw(box((0,-1), (n,n)), black);
+          label((n/2,n-0.5), "Starting row");
+          label((n/2,-0.5), "Goal row");
+
+          path p = (0,n);
+          for (int i=0; i<n/2; ++i) {
+            p = p--(i,n-1-i)--(i+1,n-1-i);
+          }
+          for (int i=(n+1)#2; i<n; ++i) {
+            p = p--(i,i)--(i+1,i);
+          }
+          p = p--(n,n)--cycle;
+          filldraw(p, opacity(0.15)+yellow, blue+1.8);
+        }
+        setup(7);
+        label((2.5,4.5), "$M_1$", red);
+        label((1.5,5.5), "$\bigstar$", deepgreen);
+        label((3.5,5.5), "$\bigstar$", deepgreen);
+        draw((1.5,5.5)--(1.5,3.5)--(2.3,3.5)--(2.3,0.2), deepgreen+1.2, EndArrow(TeXHead));
+        draw((3.5,5.5)--(3.5,3.5)--(2.7,3.5)--(2.7,0.2), deepgreen+1.2, EndArrow(TeXHead));
+      \end{asy}
+    \end{center}
+
+
+  \item \textbf{Outside happy triangle:}
+    Now suppose the first monster $\color{red}M_1$ is outside the \emph{happy triangle}.
+    Of the two shoulders, take the one closer to the center
+    (if in the center column, either one works; if only one shoulder, use it).
+    If there is a safe path to that shoulder,
+    then one can take a staircase pattern towards the center, as shown in the figure.
+    In that case, the choice of shoulder and position guarantees the staircase
+    reaches the bottom row, so that if no monster is along this path, the algorithm ends.
+    Otherwise, if one encounters a second monster along the staircase,
+    then one can use the third trial to cut under the monster $\color{red}M_1$.
+    \begin{center}
+      \begin{asy}
+        usepackage("amssymb");
+        unitsize(0.7cm);
+        pen gr = grey+linetype("4 2");
+        void setup(int n) {
+          for (int i=0; i<=n-1; ++i) {
+            draw((0,i)--(n,i), gr);
+          }
+          for (int i=0; i<=n; ++i) {
+            draw((i,0)--(i,n-1), gr);
+          }
+          draw(box((0,-1), (n,0)), black);
+          draw(box((0,n-1), (n,n)), black);
+          draw(box((0,-1), (n,n)), black);
+          label((n/2,n-0.5), "Starting row");
+          label((n/2,-0.5), "Goal row");
+
+          path p = (0,n);
+          for (int i=0; i<n/2; ++i) {
+            p = p--(i,n-1-i)--(i+1,n-1-i);
+          }
+          for (int i=(n+1)#2; i<n; ++i) {
+            p = p--(i,i)--(i+1,i);
+          }
+          p = p--(n,n)--cycle;
+          filldraw(p, opacity(0.15)+yellow, blue+1.8);
+        }
+
+        setup(9);
+        label((1.5,3.5), "$M_1$", red);
+        label((2.5,4.5), "$\bigstar$", deepgreen);
+        draw((2.5,4.5)--(2.5,3.5)--(3.5,3.5)--(3.5,2.5)--(4.5,2.5)--(4.5,1.5)--(5.5,1.5)--(5.5,0.2),
+          deepgreen+1.2, EndArrow(TeXHead));
+      \end{asy}
+      \qquad
+      \begin{asy}
+        usepackage("amssymb");
+        unitsize(0.7cm);
+        pen gr = grey+linetype("4 2");
+        void setup(int n) {
+          for (int i=0; i<=n-1; ++i) {
+            draw((0,i)--(n,i), gr);
+          }
+          for (int i=0; i<=n; ++i) {
+            draw((i,0)--(i,n-1), gr);
+          }
+          draw(box((0,-1), (n,0)), black);
+          draw(box((0,n-1), (n,n)), black);
+          draw(box((0,-1), (n,n)), black);
+          label((n/2,n-0.5), "Starting row");
+          label((n/2,-0.5), "Goal row");
+
+          path p = (0,n);
+          for (int i=0; i<n/2; ++i) {
+            p = p--(i,n-1-i)--(i+1,n-1-i);
+          }
+          for (int i=(n+1)#2; i<n; ++i) {
+            p = p--(i,i)--(i+1,i);
+          }
+          p = p--(n,n)--cycle;
+          filldraw(p, opacity(0.15)+yellow, blue+1.8);
+        }
+
+        setup(9);
+        label((1.5,3.5), "$M_1$", red);
+        label((2.5,4.5), "$\bigstar$", deepgreen);
+        draw((2.5,4.5)--(2.5,3.5)--(3.5,3.5)--(3.5,2.5)--(4.5,2.5)--(4.5,1.5)--(5.5,1.5)--(5.5,0.2),
+          deepgreen+dashed, EndArrow(TeXHead));
+        label((5.5,1.5), "$M_2$", red);
+        draw((2.5,4.5)--(2.5,3.5)--(3.5,3.5)--(3.5,2.5)--(4.5,2.5)--(4.5,1.5)--(1.5,1.5)--(1.5,0.2),
+          purple+1.5, EndArrow(TeXHead));
+      \end{asy}
+    \end{center}
+\end{itemize}
+
+We now prove the following proposition:
+in any valid strategy for Turbo,
+in the case where Turbo first encounters a monster upon leaving the happy triangle,
+the second path \emph{must} outline the same staircase shape.
+
+The monsters pre-commit to choosing their pattern to be
+\emph{either} a NW-SE diagonal or NE-SW diagonal, with a single one-column gap;
+see figure below for an example.
+Note that this forces any valid path for Turbo to pass through the particular gap.
+
+\begin{center}
+  \begin{asy}
+    usepackage("amssymb");
+    unitsize(0.7cm);
+    pen gr = grey+linetype("4 2");
+    void setup(int n) {
+      for (int i=0; i<=n-1; ++i) {
+        draw((0,i)--(n,i), gr);
+      }
+      for (int i=0; i<=n; ++i) {
+        draw((i,0)--(i,n-1), gr);
+      }
+      draw(box((0,-1), (n,0)), black);
+      draw(box((0,n-1), (n,n)), black);
+      draw(box((0,-1), (n,n)), black);
+      label((n/2,n-0.5), "Starting row");
+      label((n/2,-0.5), "Goal row");
+
+      path p = (0,n);
+      for (int i=0; i<n/2; ++i) {
+        p = p--(i,n-1-i)--(i+1,n-1-i);
+      }
+      for (int i=(n+1)#2; i<n; ++i) {
+        p = p--(i,i)--(i+1,i);
+      }
+      p = p--(n,n)--cycle;
+      filldraw(p, opacity(0.15)+yellow, blue+1.8);
+    }
+    setup(11);
+
+    for (int i=0; i<7; ++i) {
+      label((i+0.5,9.5-i), "$M$", red);
+    }
+    for (int i=7; i<10; ++i) {
+      label((i+1.5,9.5-i), "$M$", red);
+    }
+  \end{asy}
+\end{center}
+
+We may assume without loss of generality that Turbo first encounters a monster $M_1$
+when Turbo first leaves the happy triangle, and that this forces an NW-SE configuration.
+
+\begin{center}
+  \begin{asy}
+    usepackage("amssymb");
+    unitsize(0.7cm);
+    pen gr = grey+linetype("4 2");
+    void setup(int n) {
+      for (int i=0; i<=n-1; ++i) {
+        draw((0,i)--(n,i), gr);
+      }
+      for (int i=0; i<=n; ++i) {
+        draw((i,0)--(i,n-1), gr);
+      }
+      draw(box((0,-1), (n,0)), black);
+      draw(box((0,n-1), (n,n)), black);
+      draw(box((0,-1), (n,n)), black);
+      label((n/2,n-0.5), "Starting row");
+      label((n/2,-0.5), "Goal row");
+
+      path p = (0,n);
+      for (int i=0; i<n/2; ++i) {
+        p = p--(i,n-1-i)--(i+1,n-1-i);
+      }
+      for (int i=(n+1)#2; i<n; ++i) {
+        p = p--(i,i)--(i+1,i);
+      }
+      p = p--(n,n)--cycle;
+      filldraw(p, opacity(0.15)+yellow, blue+1.8);
+    }
+    setup(13);
+    label((0.5,11.5), "($M$)", red+fontsize(9pt));
+    label((1.5,10.5), "($M$)", red+fontsize(9pt));
+    label((2.5,9.5), "($M$)", red+fontsize(9pt));
+    label((3.5,8.5), "$M_1$", red);
+    label((4.5,7.5), "X", brown);
+    label((11.5,1.5), "$M_2$", red);
+    for (int i=1; i<=6; ++i) {
+      label((11.5-i,1.5+i), "$\clubsuit$", deepgreen);
+    }
+  \end{asy}
+\end{center}
+
+Then the following is true:
+\begin{proposition*}
+  The strategy of Turbo on the second path \emph{must}
+  visit every cell in ``slightly raised diagonal'' marked with
+  $\color{green!60!black}\clubsuit$ in the figure above
+  in order from top to bottom, until it encounters a second Monster $M_2$
+  (or reaches the bottom row and wins anyway).
+  It's both okay and irrelevant if Turbo visits other cells above this diagonal,
+  but the marked cells must be visited from top to bottom in that order.
+\end{proposition*}
+\begin{proof}
+  If Turbo tries to sidestep by visiting the cell southeast of $M_1$
+  (marked {\color{brown}X} in the Figure),
+  then Turbo clearly cannot finish after this (for $s$ large enough).
+  Meanwhile, suppose Turbo tries to ``skip'' one of the $\color{green!60!black}\clubsuit$,
+  say in column $C$, then the gap could equally well be in the column to the left of $C$.
+  This proves the proposition.
+\end{proof}
+
+\begin{remark*}
+  [Memories of safe cells are important, not just monster cells]
+  Here is one additional observation that one can deduce from this.
+  We say a set $\mathcal S$ of revealed monsters is called \emph{obviously winnable} if,
+  based on only the positions of the monsters
+  (and not the moves or algorithm that were used to obtain them),
+  one can identify a guaranteed winning path for Turbo using only $\mathcal S$.
+  For example, two monsters in adjacent columns which are not diagonally
+  adjacent is obviously winnable.
+
+  Then no strategy can guarantee obtaining an obviously winnable set in $2$ moves
+  (or even $k$ moves for any constant $k$, if $s$ is large enough in terms of $k$).
+  So any valid strategy must \emph{also} use the \emph{memory} of identified safe cells
+  that do not follow just from the revealed monster positions.
+\end{remark*}
+\pagebreak
+
+\subsection{IMO 2024/6, proposed by Japan}
+\textsl{Available online at \url{https://aops.com/community/p31218720}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+A function $f \colon \QQ \to \QQ$ is called \emph{aquaesulian}
+if the following property holds: for every $x,y \in \mathbb{Q}$,
+\[ f(x+f(y)) = f(x) + y \quad \text{or} \quad f(f(x)+y) = x + f(y). \]
+Show that there exists an integer $c$ such that for any aquaesulian function $f$
+there are at most $c$ different rational numbers of the
+form $f(r) + f(-r)$ for some rational number $r$,
+and find the smallest possible value of $c$.
+\end{mdframed}
+We will prove that
+\[ \left\{ f(x) + f(-x) \mid x \in \QQ \right\} \]
+contains at most $2$ elements
+and give an example where there are indeed $2$ elements.
+
+We fix the notation $x \to y$ to mean that $f(x+f(y)) = f(x)+y$.
+So the problem statement means that either $x \to y$ or $y \to x$ for all $x$, $y$.
+In particular, we always have $x \to x$, and hence
+\[ f(x+f(x)) = x+f(x) \]
+for every $x$.
+
+\paragraph{Construction.}
+The function
+\[ f(x) = \left\lfloor 2x \right\rfloor - x \]
+can be seen to satisfy the problem conditions.
+Moreover, $f(0)+f(0) = 0$ but $f(1/3)+f(-1/3) = -1$.
+
+\begin{remark*}
+  Here is how I (Evan) found the construction.
+  Let $h(x) \coloneqq x+f(x)$, and let $S \coloneqq h(\QQ) = \{h(x) \mid x \in \QQ\}$.
+  Hence $f$ is the identity on all of $S$.
+  If we rewrite the problem condition in terms of $h$ instead of $f$,
+  it asserts that at least one of the equations
+  \begin{align*}
+    h(x+h(y)-y) &= h(x)+h(y) \\
+    h(y+h(x)-x) &= h(x)+h(y)
+  \end{align*}
+  is true.
+  In particular, $S$ is closed under addition.
+
+  Now, the two trivial solutions for $h$ are $h(x) = 2x$ and $h(x) = 0$.
+  To get a nontrivial construction, we must also have $S \neq \{0\}$ and $S \neq \QQ$.
+  So a natural guess is to take $S = \ZZ$.
+  And indeed $h(x) = \left\lfloor 2x \right\rfloor$ works fine.
+\end{remark*}
+\begin{remark*}
+  This construction is far from unique. For example,
+  $f(x) = 2\left\lfloor x \right\rfloor - x = \left\lfloor x \right\rfloor - \{x\}$
+  seems to have been more popular to find.
+\end{remark*}
+
+\paragraph{Proof (communicated by Abel George Mathew).}
+We start by proving:
+\begin{claim*}
+  $f$ is injective.
+\end{claim*}
+\begin{proof}
+  Suppose $f(a) = f(b)$. WLOG $a \to b$. Then
+  \[ f(a)+a = f(a+f(a)) = f(a+f(b)) = f(a)+b \implies a=b. \qedhere. \]
+\end{proof}
+
+\begin{claim*}
+  Suppose $s \to r$.
+  Then either $f(r) + f(-r) = 0$ or $f(f(s)) = s+f(r)+f(-r)$.
+\end{claim*}
+\begin{proof}
+  Take the given statement with $x = s+f(r)$ and $y = -r$; then
+  \begin{align*}
+    x + f(y) &= s + f(r) + f(-r) \\
+    y + f(x) &= f(s+f(r)) - r = f(s).
+  \end{align*}
+  Because $f$ is injective, if $x \to y$ then $f(r) + f(-r) = 0$.
+  Meanwhile, if $y \to x$ then indeed $f(f(s)) = s + f(r) + f(-r)$.
+\end{proof}
+
+Finally, suppose $a$ and $b$ are different numbers for which
+$f(a)+f(-a)$ and $f(b)+f(-b)$ are both nonzero.
+Again, WLOG $a \to b$.
+Then
+\[ f(a) + f(-a) \overset{a \to a}{=} f(f(a))-a \overset{a \to b}{=} f(b) + f(-b). \]
+This shows at most two values can occur.
+
+\begin{remark*}
+  The above solution works equally well for $f \colon \RR \to \RR$.
+  But the choice of $\QQ$ permits some additional alternate solutions.
+\end{remark*}
+
+\begin{remark*}
+  After showing $f$ injective,
+  a common lemma proved is that $-f(-f(x)) = x$, i.e.\ $f$ is an involution.
+  This provides some alternative paths for solutions.
+\end{remark*}
+\pagebreak
+
+
+\end{document}

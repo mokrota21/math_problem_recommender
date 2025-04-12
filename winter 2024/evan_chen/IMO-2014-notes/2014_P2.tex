@@ -1,0 +1,90 @@
+\textsl{Available online at \url{https://aops.com/community/p3542094}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $n \ge 2$ be an integer.
+Consider an $n \times n$ chessboard consisting of $n^2$ unit squares.
+A configuration of $n$ rooks on this board is \emph{peaceful}
+if every row and every column contains exactly one rook.
+Find the greatest positive integer $k$ such that,
+for each peaceful configuration of $n$ rooks,
+there is a $k \times k$ square which does not
+contain a rook on any of its $k^2$ unit squares.
+\end{mdframed}
+The answer is $k = \left\lfloor \sqrt{n-1} \right\rfloor$, sir.
+
+First, assume $n > k^2$ for some $k$.
+We will prove we can find an empty $k \times k$ square.
+Indeed, let $R$ be a rook in the uppermost column,
+and draw $k$ squares of size $k \times k$ directly below it, aligned.
+There are at most $k-1$ rooks among these squares, as desired.
+
+\begin{center}
+\begin{asy}
+unitsize(0.75cm);
+usepackage("chessfss");
+
+for (int i=1; i<=4; ++i) {
+  draw( (0,i)--(5,i), grey );
+  draw( (i,0)--(i,5), grey );
+}
+draw(box( (0,0),(5,5) ), black);
+
+filldraw( box((1.1,2.1),(2.9,3.9)), opacity(0.2)+palered, red+1 );
+filldraw( box((1.1,0.1),(2.9,1.9)), opacity(0.2)+lightgreen, blue+1 );
+label("\WhiteRookOnBlack", (1.5,4.5));
+\end{asy}
+\end{center}
+
+Now for the construction for $n=k^2$.
+We draw the example for $k=3$ (with the generalization being obvious);
+
+\begin{center}
+\begin{asy}
+unitsize(0.8cm);
+usepackage("chessfss");
+filldraw(box( (0,0), (3,3) ), opacity(0.2)+palered, black+1);
+filldraw(box( (3,0), (6,3) ), opacity(0.2)+lightgreen, black+1);
+filldraw(box( (6,0), (9,3) ), opacity(0.2)+lightcyan, black+1);
+
+filldraw(box( (0,3), (3,6) ), opacity(0.2)+lightgreen, black+1);
+filldraw(box( (3,3), (6,6) ), opacity(0.2)+lightcyan, black+1);
+filldraw(box( (6,3), (9,6) ), opacity(0.2)+palered, black+1);
+
+filldraw(box( (0,6), (3,9) ), opacity(0.2)+lightcyan, black+1);
+filldraw(box( (3,6), (6,9) ), opacity(0.2)+palered, black+1);
+filldraw(box( (6,6), (9,9) ), opacity(0.2)+lightgreen, black+1);
+
+for (int i=1; i<=8; ++i) {
+  if ( (i-3)*(i-6) != 0) {
+    draw( (0,i)--(9,i), grey );
+    draw( (i,0)--(i,9), grey );
+  }
+}
+
+label("\BlackRookOnWhite", (0.5,0.5));
+label("\BlackRookOnWhite", (3.5,1.5));
+label("\BlackRookOnWhite", (6.5,2.5));
+
+label("\BlackRookOnWhite", (1.5,3.5));
+label("\BlackRookOnWhite", (4.5,4.5));
+label("\BlackRookOnWhite", (7.5,5.5));
+
+label("\BlackRookOnWhite", (2.5,6.5));
+label("\BlackRookOnWhite", (5.5,7.5));
+label("\BlackRookOnWhite", (8.5,8.5));
+\end{asy}
+\end{center}
+
+To show that this works,
+consider for each rook drawing an $k \times k$ square of $X$'s
+whose bottom-right hand corner is the rook (these may go off the board).
+These indicate positions where one cannot
+place the upper-left hand corner of any square.
+It's easy to see that these cover the entire board,
+except parts of the last $k-1$ columns,
+which don't matter anyways.
+
+It remains to check that $n \le k^2$ also all work
+(omitting this step is a common mistake).
+For this, we can delete rows and column to get an $n \times n$ board,
+and then fill in any gaps where we accidentally deleted a rook.
+\pagebreak

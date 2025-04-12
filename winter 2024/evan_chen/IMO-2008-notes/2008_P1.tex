@@ -1,0 +1,113 @@
+\textsl{Available online at \url{https://aops.com/community/p1190553}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $H$ be the orthocenter of an acute-angled triangle $ABC$.
+The circle $\Gamma_{A}$ centered at the midpoint of $\ol{BC}$ and passing
+through $H$ intersects the sideline $BC$ at points  $A_1$ and $A_2$.
+Similarly, define the points $B_1$, $B_2$, $C_1$, and $C_2$.
+Prove that six points $A_1$, $A_2$, $B_1$, $B_2$, $C_1$, $C_2$ are concyclic.
+\end{mdframed}
+We show two solutions.
+
+\paragraph{First solution using power of a point.}
+Let $D$, $E$, $F$ be the centers of $\Gamma_A$, $\Gamma_B$, $\Gamma_C$
+(in other words, the midpoints of the sides).
+
+We first show that $B_1$, $B_2$, $C_1$, $C_2$ are concyclic.
+It suffices to prove that $A$
+lies on the radical axis of the circles $\Gamma_B$ and $\Gamma_C$.
+
+\begin{center}
+\begin{asy}
+pair A = dir(110);
+pair B = dir(210);
+pair C = dir(330);
+draw(A--B--C--cycle);
+
+pair D = midpoint(B--C);
+pair E = midpoint(C--A);
+pair F = midpoint(A--B);
+pair H = orthocenter(A, B, C);
+draw(E--F);
+
+pair X = -H+2*foot(H, E, F);
+path w1 = Drawing(CP(E,H));
+path w2 = Drawing(CP(F,H));
+pair B_1 = IP(w1, A--C);
+pair B_2 = OP(w1, A--C);
+pair C_1 = IP(w2, A--B);
+pair C_2 = OP(w2, A--B);
+
+pair T = foot(A, B, C);
+draw(A--T, dotted);
+
+dot("$A$", A, dir(A));
+dot("$B$", B, dir(B));
+dot("$C$", C, dir(C));
+dot("$D$", D, dir(D));
+dot("$E$", E, dir(E));
+dot("$F$", F, dir(F));
+dot("$H$", H, 1.4*dir(-10));
+dot("$X$", X, 1.4*dir(10));
+dot("$B_1$", B_1, 1.5*dir(90));
+dot("$B_2$", B_2, 1.2*dir(-10));
+dot("$C_1$", C_1, 1.2*dir(120));
+dot("$C_2$", C_2, dir(C_2));
+
+/* TSQ Source:
+
+A = dir 110
+B = dir 210
+C = dir 330
+A--B--C--cycle
+
+D = midpoint B--C
+E = midpoint C--A
+F = midpoint A--B
+H = orthocenter A B C 1.4R-10
+E--F
+
+X = -H+2*foot H E F 1.4R10
+! path w1 = Drawing(CP(E,H));
+! path w2 = Drawing(CP(F,H));
+B_1 = IP w1 A--C 1.5R90
+B_2 = OP w1 A--C 1.2R-10
+C_1 = IP w2 A--B 1.2R120
+C_2 = OP w2 A--B
+
+T := foot A B C
+A--T dotted
+
+*/
+\end{asy}
+\end{center}
+
+Let $X$ be the second intersection of $\Gamma_B$ and $\Gamma_C$.
+Clearly $\ol{XH}$ is perpendicular to the line
+joining the centers of the circles, namely $\ol{EF}$.
+But $\ol{EF} \parallel \ol{BC}$, so $\ol{XH} \perp \ol{BC}$.
+Since $\ol{AH} \perp \ol{BC}$ as well,
+we find that $A$, $X$, $H$ are collinear, as needed.
+
+Thus, $B_1$, $B_2$, $C_1$, $C_2$ are concyclic.
+Similarly, $C_1$, $C_2$, $A_1$, $A_2$ are concyclic,
+as are $A_1$, $A_2$, $B_1$, $B_2$.
+Now if any two of these three circles coincide, we are done;
+else the pairwise radical axii are not concurrent, contradiction.
+(Alternatively, one can argue directly that $O$ is the center of all
+three circles, by taking the perpendicular bisectors.)
+
+\paragraph{Second solution using length chase (Ritwin Narra).}
+We claim the circumcenter $O$ of $\triangle ABC$
+is in fact the center of $(A_1A_2B_1B_2C_1C_2)$.
+
+Define $D$, $E$, $F$ as before.
+Then since $\ol{OD} \perp \ol{A_1A_2}$ and $DA_1 = DA_2$,
+which means $OA_1 = OA_2$. Similarly, we have $OB_1 = OB_2$ and $OC_1 = OC_2$.
+
+Now since $DA_1 = DA_2 = DH$, we have $OA_1^2 = OD^2 + HD^2$.
+We seek to show
+\[ OD^2 + HD^2 = OE^2 + HE^2 = OF^2 + HF^2. \]
+This is clear by Appollonius's Theorem
+since $D$, $E$, and $F$ lie on the nine-point circle,
+which is centered at the midpoint of $\ol{OH}$.
+\pagebreak

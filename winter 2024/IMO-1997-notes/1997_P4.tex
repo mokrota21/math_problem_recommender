@@ -1,0 +1,72 @@
+\textsl{Available online at \url{https://aops.com/community/p611}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+An $n \times n$ matrix whose entries come
+from the set $S = \{1, 2, \dots , 2n - 1\}$
+is called a \emph{silver} matrix if,
+for each $i = 1, 2, \dots , n$,
+the $i$-th row and the $i$-th column together
+contain all elements of $S$. Show that:
+\begin{enumerate}[(a)]
+\ii there is no silver matrix for $n = 1997$;
+\ii silver matrices exist for infinitely many values of $n$.
+\end{enumerate}
+\end{mdframed}
+For (a), define a \emph{cross} to be the union
+of the $i$th row and $i$th column.
+Every cell of the matrix not on the diagonal is
+contained in exactly two crosses,
+while each cell on the diagonal is contained in one cross.
+
+On the other hand, if a silver matrix existed for $n=1997$,
+then each element of $S$ is in all $1997$ crosses,
+so it must appear at least once on the diagonal since $1997$ is odd.
+However, $|S| = 3993$ while there are only $1997$ diagonal cells.
+This is a contradiction.
+
+For (b), we construct a silver matrix $M_e$ for $n = 2^e$ for each $e \ge 1$.
+We write the first three explicitly for concreteness:
+\begin{align*}
+  M_1 &= \begin{bmatrix}
+    1 & 2 \\ 3 & 1
+  \end{bmatrix} \\
+  M_2 &= \begin{bmatrix}
+    {\color{red}1} & {\color{red}2} & 4 & 5 \\
+    {\color{red}3} & {\color{red}1} & 6 & 7 \\
+    7 & 5 & {\color{red}1} & {\color{red}2} \\
+    6 & 4 & {\color{red}3} & {\color{red}1}
+  \end{bmatrix} \\
+  M_3 &= \begin{bmatrix}
+    {\color{red}1} & {\color{red}2} & {\color{red}4} & {\color{red}5} & 8 & 9 & 11 & 12\\
+    {\color{red}3} & {\color{red}1} & {\color{red}6} & {\color{red}7} & 10 & 15 & 13 & 14 \\
+    {\color{red}7} & {\color{red}5} & {\color{red}1} & {\color{red}2} & 14 & 12 & 8 & 9 \\
+    {\color{red}6} & {\color{red}4} & {\color{red}3} & {\color{red}1} & 13 & 11 & 10 & 15 \\
+    15 & 9 & 11 & 12 & {\color{red}1} & {\color{red}2} & {\color{red}4}
+    & {\color{red}5} \\
+    10 & 8 & 13 & 14 & {\color{red}3} & {\color{red}1} & {\color{red}6}
+    & {\color{red}7} \\
+    14 & 12 & 15 & 9 & {\color{red}7} & {\color{red}5} & {\color{red}1}
+    & {\color{red}2} \\
+    13 & 11 & 10 & 8 & {\color{red}6} & {\color{red}4} & {\color{red}3}
+    & {\color{red}1} \\
+  \end{bmatrix}
+\end{align*}
+The construction is described recursively as follows.
+Let
+\[
+  M_e' = \left[
+  \begin{array}{c|c}
+    {\color{red}M_{e-1}} & M_{e-1} + (2^e-1) \\ \hline
+    M_{e-1} + (2^e-1) & {\color{red}M_{e-1}} \\
+  \end{array}
+  \right].
+\]
+Then to get from $M_e'$ to $M_e$,
+replace half of the $2^e$'s with $2^{e+1}-1$:
+in the northeast quadrant, the even-indexed ones,
+and in the southwest quadrant, the odd-indexed ones.
+
+\begin{remark*}
+  In fact, it turns out silver matrices exist for all even dimensions.
+  A claimed proof is outlined at \url{https://aops.com/community/p7375020}.
+\end{remark*}
+\pagebreak

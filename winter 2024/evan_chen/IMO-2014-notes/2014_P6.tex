@@ -1,0 +1,74 @@
+
+\textsl{Available online at \url{https://aops.com/community/p3543151}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+A set of lines in the plane is in \emph{general position}
+if no two are parallel and no three pass through the same point.
+A set of lines in general position cuts the plane into regions,
+some of which have finite area; we call these its \emph{finite regions}.
+Prove that for all sufficiently large $n$,
+in any set of $n$ lines in general position
+it is possible to colour at least $\sqrt{n}$ lines blue
+in such a way that none of its finite regions
+has a completely blue boundary.
+\end{mdframed}
+Suppose we have colored $k$ of the lines blue, and that
+it is not possible to color any additional lines.
+That means any of the $n-k$ non-blue lines
+is the side of some finite region with
+an otherwise entirely blue perimeter.
+For each such line $\ell$, select one such region,
+and take the next counterclockwise vertex;
+this is the intersection of two blue lines $v$.
+We'll say $\ell$ is the \emph{eyelid} of $v$.
+
+\begin{center}
+ \begin{asy}
+  size(2cm);
+  pair A = dir(  0); dot(A);
+  pair B = dir( 72); dot(B);
+  pair C = dir(144); dot(C);
+  pair D = dir(216); dot(D);
+  pair E = dir(288); dot(E);
+  draw(D--E--A--B--C, blue);
+  draw(C--D, red);
+  label("$\ell$", 0.5*C+0.5*D, dir(180));
+  label("$v$", E, dir(E));
+ \end{asy}
+\end{center}
+
+You can prove without too much difficulty that every intersection of two blue lines
+has at most two eyelids.
+Since there are $\binom k2$ such intersections, we see that
+\[ n-k \le 2 \binom k2 = k^2 - k\]
+so $n \le k^2$, as required.
+
+\begin{remark*}
+In fact, $k = \sqrt n$ is ``sharp for greedy algorithms'',
+as illustrated below for $k=3$:
+\begin{center}
+\begin{asy}
+size(2.5cm);
+real R = 7;
+real r = 3;
+real e = 2;
+pair A = R * dir(90);
+pair B = R * dir(210);
+pair C = R * dir(330);
+draw( (A-r*dir(B-A)) -- (B-r*dir(A-B)), blue );
+draw( (B-r*dir(C-B)) -- (C-r*dir(B-C)), blue );
+draw( (C-r*dir(A-C)) -- (A-r*dir(C-A)), blue );
+void yanpi(pair P) {
+dot(P, blue);
+draw( (P+e*dir(P)*dir(70)) -- (P+e*dir(P)*dir(-70)), red);
+draw( (P+e*dir(P)*dir(110)) -- (P+e*dir(P)*dir(-110)), red);
+}
+yanpi(A);
+yanpi(B);
+yanpi(C);
+\end{asy}
+\end{center}
+\end{remark*}
+\pagebreak
+
+
+\end{document}

@@ -1,0 +1,237 @@
+\textsl{Available online at \url{https://aops.com/community/p12744870}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+In triangle $ABC$ point $A_1$ lies on side $BC$
+and point $B_1$ lies on side $AC$.
+Let $P$ and $Q$ be points on segments $AA_1$ and $BB_1$,
+respectively, such that $\ol{PQ} \parallel \ol{AB}$.
+Point $P_1$ is chosen on ray $PB_1$ beyond $B_1$
+such that $\angle PP_1C = \angle BAC$.
+Point $Q_1$ is chosen on ray $QA_1$ beyond $A_1$
+such that $\angle CQ_1Q = \angle CBA$.
+Prove that points $P_1$, $Q_1$, $P$, $Q$ are cyclic.
+\end{mdframed}
+We present two solutions.
+
+\paragraph{First solution by bary (Evan Chen).}
+Let $PB_1$ and $QA_1$ meet line $AB$ at $X$ and $Y$.
+Since $\ol{XY} \parallel \ol{PQ}$ it is equivalent
+to show $P_1XYQ_1$ is cyclic (Reim's theorem).
+
+Note the angle condition implies $P_1CXA$ and $Q_1CYB$ are cyclic.
+
+Letting $T = \ol{PX} \cap \ol{QY}$ (possibly at infinity),
+it suffices to show that the
+radical axis of $\triangle CXA$ and $\triangle CYB$ passes through $T$,
+because that would imply $P_1XYQ_1$ is cyclic
+(by power of a point when $T$ is Euclidean,
+and because it is an isosceles trapezoid if $T$ is at infinity).
+
+\begin{center}
+\begin{asy}
+pair C = dir(110);
+pair A = dir(210);
+pair B = dir(330);
+
+pair A_1 = 0.45*C+0.55*B;
+pair P = 0.53*A+0.47*A_1;
+pair B_1 = midpoint(A--C);
+pair Q = extension(B, B_1, P, P+A-B);
+pair T = extension(A_1, Q, B_1, P);
+pair X = extension(A, B, P, T);
+pair Y = extension(A, B, Q, T);
+
+filldraw(A--B--C--cycle, opacity(0.1)+lightcyan, lightblue);
+filldraw(circumcircle(A, C, X), opacity(0.05)+yellow, lightred);
+filldraw(circumcircle(B, C, Y), opacity(0.05)+yellow, lightred);
+draw(A--A_1, lightblue);
+draw(B--B_1, lightblue);
+draw(P--Q, blue);
+draw(C--T, deepgreen);
+pair P_1 = -X+2*foot(circumcenter(A, X, C), P, X);
+pair Q_1 = -Y+2*foot(circumcenter(B, Y, C), Q, Y);
+draw(P_1--T--Q_1, orange);
+
+dot("$C$", C, dir(C));
+dot("$A$", A, dir(A));
+dot("$B$", B, dir(B));
+dot("$A_1$", A_1, dir(A_1));
+dot("$P$", P, dir(160));
+dot("$B_1$", B_1, dir(B_1));
+dot("$Q$", Q, dir(20));
+dot("$T$", T, dir(T));
+dot("$X$", X, dir(X));
+dot("$Y$", Y, dir(Y));
+dot("$P_1$", P_1, dir(P_1));
+dot("$Q_1$", Q_1, dir(Q_1));
+
+/* TSQ Source:
+
+C = dir 110
+A = dir 210
+B = dir 330
+
+A_1 = 0.45*C+0.55*B
+P = 0.53*A+0.47*A_1 R160
+B_1 = midpoint A--C
+Q = extension B B_1 P P+A-B R20
+T = extension A_1 Q B_1 P
+X = extension A B P T
+Y = extension A B Q T
+
+A--B--C--cycle 0.1 lightcyan / lightblue
+circumcircle A C X 0.05 yellow / lightred
+circumcircle B C Y 0.05 yellow / lightred
+A--A_1 lightblue
+B--B_1 lightblue
+P--Q blue
+C--T deepgreen
+P_1 = -X+2*foot circumcenter A X C P X
+Q_1 = -Y+2*foot circumcenter B Y C Q Y
+P_1--T--Q_1 orange
+
+*/
+\end{asy}
+\end{center}
+
+To this end we use barycentric coordinates on $\triangle ABC$.
+We begin by writing
+\[ P = (u+t : s : r), \quad Q = (t : u+s : r) \]
+from which it follows that
+$A_1 = (0 : s : r)$ and $B_1 = (t : 0 : r)$.
+
+Next, compute $X = \left(
+  \det \left[ \begin{smallmatrix} u+t & r \\ t & r \end{smallmatrix} \right]
+  : \det \left[ \begin{smallmatrix} s & r \\ 0 & r \end{smallmatrix} \right]
+  : 0 \right) = (u : s : 0)$.
+Similarly, $Y = (t : u : 0)$.
+So we have computed all points.
+\begin{claim*}
+  Line $B_1X$ has equation
+  $-rs \cdot x + ru \cdot y + st \cdot z = 0$,
+  while line $C_1 Y$ has equation
+  $ru \cdot x - rt \cdot y + st \cdot z = 0$.
+\end{claim*}
+\begin{proof}
+  Line $B_1X$ is $0 = \det(B_1, X, -)
+  = \det \left[ \begin{smallmatrix}
+    t & 0 & r \\
+    u & s & 0 \\
+    x & y & z
+\end{smallmatrix} \right]$.
+  Line $C_1Y$ is analogous.
+\end{proof}
+
+\begin{claim*}
+  The radical axis $(u+t) y - (u+s) x = 0$.
+\end{claim*}
+\begin{proof}
+Circle $(AXC)$ is given by
+$-a^2yz - b^2zx - c^2xy + (x+y+z) \cdot \frac{c^2 \cdot u}{u+s} y = 0$.
+Similarly, circle $(BYC)$ has equation
+$-a^2yz - b^2zx - c^2xy + (x+y+z) \cdot \frac{c^2 \cdot u}{u+t} x = 0$.
+Subtracting gives the radical axis.
+\end{proof}
+
+Finally, to see these three lines are concurrent, we now compute
+\begin{align*}
+  \det \begin{bmatrix}
+    -rs & ru & st \\
+    ru & -rt & st \\
+    -(u+s) & u+t & 0
+  \end{bmatrix}
+  &= rst \left[ [u(u+t)-t(u+s)] + [s(u+t)-u(u+s)] \right] \\
+  &= rst \left[ (u^2-st) + (st-u^2) \right] = 0.
+\end{align*}
+This completes the proof.
+
+\paragraph{Second official solution by tricky angle chasing.}
+Let lines $AA_1$ and $BB_1$ meet at the circumcircle of $\triangle ABC$
+again at points $A_2$ and $B_2$.
+By Reim's theorem, $PQA_2B_2$ are cyclic.
+\begin{center}
+\begin{asy}
+pair C = dir(110);
+pair A = dir(210);
+pair B = dir(330);
+
+pair A_1 = 0.45*C+0.55*B;
+pair P = 0.53*A+0.47*A_1;
+pair B_1 = midpoint(A--C);
+pair Q = extension(B, B_1, P, P+A-B);
+pair T = extension(A_1, Q, B_1, P);
+pair X = extension(A, B, P, T);
+pair Y = extension(A, B, Q, T);
+
+filldraw(A--B--C--cycle, opacity(0.1)+lightcyan, lightblue);
+pair P_1 = -X+2*foot(circumcenter(A, X, C), P, X);
+pair Q_1 = -Y+2*foot(circumcenter(B, Y, C), Q, Y);
+pair A_2 = -A+2*foot(origin, A, P);
+pair B_2 = -B+2*foot(origin, B, Q);
+filldraw(unitcircle, opacity(0.1)+lightcyan, lightblue);
+
+draw(A--A_2, lightblue);
+draw(B--B_2, lightblue);
+
+filldraw(circumcircle(C, B_1, B_2), opacity(0.05)+orange, red);
+filldraw(circumcircle(C, A_1, A_2), opacity(0.05)+orange, red);
+draw(P_1--P--Q--Q_1, blue);
+filldraw(circumcircle(P, Q, Q_1), opacity(0.1)+yellow, deepgreen+dashed);
+
+dot("$C$", C, dir(C));
+dot("$A$", A, dir(A));
+dot("$B$", B, dir(B));
+dot("$A_1$", A_1, dir(A_1));
+dot("$P$", P, dir(270));
+dot("$B_1$", B_1, dir(B_1));
+dot("$Q$", Q, dir(270));
+dot("$P_1$", P_1, dir(P_1));
+dot("$Q_1$", Q_1, dir(Q_1));
+dot("$A_2$", A_2, dir(A_2));
+dot("$B_2$", B_2, dir(B_2));
+
+/* TSQ Source:
+
+C = dir 110
+A = dir 210
+B = dir 330
+
+A_1 = 0.45*C+0.55*B
+P = 0.53*A+0.47*A_1 R270
+B_1 = midpoint A--C
+Q = extension B B_1 P P+A-B R270
+T := extension A_1 Q B_1 P
+X := extension A B P T
+Y := extension A B Q T
+
+A--B--C--cycle 0.1 lightcyan / lightblue
+P_1 = -X+2*foot circumcenter A X C P X
+Q_1 = -Y+2*foot circumcenter B Y C Q Y
+A_2 = -A+2*foot origin A P
+B_2 = -B+2*foot origin B Q
+unitcircle 0.1 lightcyan / lightblue
+
+A--A_2 lightblue
+B--B_2 lightblue
+
+circumcircle C B_1 B_2 0.05 orange / red
+circumcircle C A_1 A_2 0.05 orange / red
+P_1--P--Q--Q_1 blue
+circumcircle P Q Q_1 0.1 yellow / deepgreen dashed
+
+*/
+\end{asy}
+\end{center}
+
+\begin{claim*}
+  The points $P$, $Q$, $A_2$, $Q_1$ are cyclic.
+  Similarly the points $P$, $Q$, $B_2$, $P_1$ are cyclic.
+\end{claim*}
+\begin{proof}
+  Note that $CA_1A_2Q_1$ is cyclic since
+  $\dang CQ_1A_1 = \dang CQ_1Q = \dang CBA = \dang CA_2A = \dang CA_2A_1$.
+  Then $\dang QQ_1A_2 = \dang A_1Q_1A_2 = \dang A_1 C A_2
+  = \dang B C A_2 = \dang B A A_2 = \dang Q P A_2$.
+\end{proof}
+
+This claim obviously solves the problem.
+\pagebreak

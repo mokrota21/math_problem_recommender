@@ -1,0 +1,570 @@
+% © Evan Chen
+% Downloaded from https://web.evanchen.cc/
+
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evan}
+\ihead{\footnotesize\textbf{\thetitle}}
+\ohead{\footnotesize\href{http://web.evanchen.cc}{\ttfamily web.evanchen.cc},
+    updated \today}
+\title{IMO 2010 Solution Notes}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This is a compilation of solutions
+for the 2010 IMO.
+The ideas of the solution are a mix of my own work,
+the solutions provided by the competition organizers,
+and solutions found by the community.
+However, all the writing is maintained by me.
+
+These notes will tend to be a bit more advanced and terse than the ``official''
+solutions from the organizers.
+In particular, if a theorem or technique is not known to beginners
+but is still considered ``standard'', then I often prefer to
+use this theory anyways, rather than try to work around or conceal it.
+For example, in geometry problems I typically use directed angles
+without further comment, rather than awkwardly work around configuration issues.
+Similarly, sentences like ``let $\mathbb{R}$ denote the set of real numbers''
+are typically omitted entirely.
+
+Corrections and comments are welcome!
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\addtocounter{section}{-1}
+\section{Problems}
+\begin{enumerate}[\bfseries 1.]
+\item %% Problem 1
+Find all functions $f \colon \RR \to \RR$ such that for all $x,y \in \RR$,
+\[ f(\left\lfloor x\right\rfloor y) = f(x)\left\lfloor f(y)\right\rfloor. \]
+
+\item %% Problem 2
+Let $I$ be the incenter of a triangle $ABC$ and let $\Gamma$ be its circumcircle.
+Let line $AI$ intersect $\Gamma$ again at $D$.
+Let $E$ be a point on arc $\widehat{BDC}$ and $F$ a point on side $BC$ such that
+\[ \angle BAF = \angle CAE < \tfrac12 \angle BAC. \]
+Finally, let $G$ be the midpoint of $\ol{IF}$.
+Prove that $\ol{DG}$ and $\ol{EI}$ intersect on $\Gamma$.
+
+\item %% Problem 3
+Find all functions $g \colon \ZZ_{>0} \to \ZZ_{>0}$ such that
+\[ \left( g(m)+n \right)\left( g(n)+m \right) \]
+is always a perfect square.
+
+\item %% Problem 4
+Let $P$ be a point interior to triangle $ABC$ (with $CA \neq CB$).
+The lines $AP$, $BP$ and $CP$ meet again its circumcircle $\Gamma$
+at $K$, $L$, $M$, respectively.
+The tangent line at $C$ to $\Gamma$ meets the line $AB$ at $S$.
+Show that from $SC = SP$ follows $MK = ML$.
+
+\item %% Problem 5
+Each of the six boxes $B_1$, $B_2$, $B_3$, $B_4$, $B_5$, $B_6$
+initially contains one coin.
+The following two types of operations are allowed:
+\begin{enumerate}
+  \ii Choose a non-empty box $B_j$, $1\leq j \leq 5$,
+  remove one coin from $B_j$ and add two coins to $B_{j+1}$;
+  \ii Choose a non-empty box $B_k$, $1\leq k \leq 4$,
+  remove one coin from $B_k$ and swap the contents
+  (possibly empty) of the boxes $B_{k+1}$ and $B_{k+2}$.
+\end{enumerate}
+Determine if there exists a finite sequence of operations of the allowed types,
+such that the five boxes $B_1$, $B_2$, $B_3$, $B_4$, $B_5$ become empty,
+while box $B_6$ contains exactly $2010^{2010^{2010}}$ coins.
+
+\item %% Problem 6
+Let $a_1, a_2, a_3, \dots$ be a sequence of positive real numbers, and $s$ be a positive integer, such that
+\[
+  a_n =
+  \max \{ a_k + a_{n-k} \mid 1 \leq k \leq n-1 \}
+  \text{ for all $n > s$}.
+\]
+Prove there exist positive integers $\ell \leq s$ and $N$, such that
+\[
+  a_n =
+  a_{\ell} + a_{n - \ell} \text{ for all $n \ge N$}.
+\]
+
+\end{enumerate}
+\pagebreak
+
+\section{Solutions to Day 1}
+\subsection{IMO 2010/1, proposed by Pierre Bornsztein (FRA)}
+\textsl{Available online at \url{https://aops.com/community/p1935849}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Find all functions $f \colon \RR \to \RR$ such that for all $x,y \in \RR$,
+\[ f(\left\lfloor x\right\rfloor y) = f(x)\left\lfloor f(y)\right\rfloor. \]
+\end{mdframed}
+The only solutions are $f(x) \equiv c$,
+where $c = 0$ or $1 \le c < 2$.
+It's easy to see these work.
+
+Plug in $x=0$ to get $f(0) = f(0) \left\lfloor f(y) \right\rfloor$,
+so either
+\[ 1 \le f(y) < 2 \quad \forall y
+  \qquad\text{or}\qquad f(0) = 0 \]
+
+In the first situation,
+plug in $y=0$ to get $f(x) \left\lfloor f(0) \right\rfloor = f(0)$,
+thus $f$ is constant.
+Thus assume henceforth $f(0) = 0$.
+
+Now set $x=y=1$ to get
+\[ f(1) = f(1) \left\lfloor f(1) \right\rfloor \]
+so either $f(1) = 0$ or $1 \le f(1) < 2$.
+We split into cases:
+\begin{itemize}
+  \ii If $f(1) = 0$, pick $x=1$ to get $f(y) \equiv 0$.
+  \ii If $1 \le f(1) < 2$,
+  then $y=1$ gives
+  \[ f(\left\lfloor x \right\rfloor) = f(x) \]
+  from $y=1$, in particular $f(x) = 0$ for $0 \le x < 1$.
+  Choose $(x,y) = \left( 2, \half \right)$ to get
+  $f(1) = f(2) \left\lfloor f\left( \half \right) \right\rfloor = 0$.
+\end{itemize}
+\pagebreak
+
+\subsection{IMO 2010/2, proposed by Tai Wai Ming and Wang Chongli (HKG)}
+\textsl{Available online at \url{https://aops.com/community/p1935927}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $I$ be the incenter of a triangle $ABC$ and let $\Gamma$ be its circumcircle.
+Let line $AI$ intersect $\Gamma$ again at $D$.
+Let $E$ be a point on arc $\widehat{BDC}$ and $F$ a point on side $BC$ such that
+\[ \angle BAF = \angle CAE < \tfrac12 \angle BAC. \]
+Finally, let $G$ be the midpoint of $\ol{IF}$.
+Prove that $\ol{DG}$ and $\ol{EI}$ intersect on $\Gamma$.
+\end{mdframed}
+Let $\ol{EI}$ meet $\Gamma$ again at $K$.
+Then it suffices to show that $\ol{KD}$ bisects $\ol{IF}$.
+Let $\ol{AF}$ meet $\Gamma$ again at $H$, so $\ol{HE} \parallel \ol{BC}$.
+By Pascal theorem on \[ AHEKDD \]
+we then obtain that $P = \ol{AH} \cap \ol{KD}$ lies on a line through $I$
+parallel to $\ol{BC}$.
+
+Let $I_A$ be the $A$-excenter,
+and set $Q = \ol{I_AF} \cap \ol{IP}$, and $T = \ol{AIDI_A} \cap \ol{BFC}$.
+Then
+\[ -1 = (AI;TI_A) \overset{F} = (IQ;\infty P) \]
+where $\infty$ is the point at infinity along $\ol{IPQ}$.
+Thus $P$ is the midpoint of $\ol{IQ}$.
+Since $D$ is the midpoint of $\ol{II_A}$ by ``Fact 5'',
+it follows that $\ol{DP}$ bisects $\ol{IF}$.
+
+\begin{center}
+\begin{asy}
+size(9cm);
+
+pair A = dir(110);
+pair B = dir(210);
+pair C = dir(330);
+pair D = dir(-90);
+pair I = incenter(A, B, C);
+pair I_A = 2*D-I;
+
+pair E = dir(310);
+pair K = -E+2*foot(origin, E, I);
+pair H = B*C/E;
+pair F = extension(B, C, A, H);
+pair G = extension(D, K, I, F);
+pair P = extension(A, F, D, G);
+pair Q = extension(I, P, I_A, F);
+
+draw(A--B--C--cycle, lightblue);
+filldraw(unitcircle, opacity(0.1)+lightcyan, lightblue);
+
+draw(A--I_A, lightblue);
+draw(A--H--E--K--D--cycle, orange);
+draw((D+0.3)--(D-0.3), orange);
+draw(I--Q--I_A, red);
+draw(I--F, blue);
+pair T = extension(B, C, A, D);
+
+dot("$A$", A, dir(A));
+dot("$B$", B, dir(B));
+dot("$C$", C, dir(C));
+dot("$D$", D, dir(220));
+dot("$I$", I, dir(10));
+dot("$I_A$", I_A, dir(I_A));
+dot("$E$", E, dir(E));
+dot("$K$", K, dir(K));
+dot("$H$", H, dir(H));
+dot("$F$", F, dir(F));
+dot("$G$", G, dir(350));
+dot("$P$", P, dir(45));
+dot("$Q$", Q, dir(Q));
+dot("$T$", T, dir(T));
+
+/* TSQ Source:
+
+!size(9cm);
+
+A = dir 110
+B = dir 210
+C = dir 330
+D = dir -90 R220
+I = incenter A B C R10
+I_A = 2*D-I
+
+E = dir 310
+K = -E+2*foot origin E I
+H = B*C/E
+F = extension B C A H
+G = extension D K I F R350
+P = extension A F D G R45
+Q = extension I P I_A F
+
+A--B--C--cycle lightblue
+unitcircle 0.1 lightcyan / lightblue
+
+A--I_A lightblue
+A--H--E--K--D--cycle orange
+(D+0.3)--(D-0.3) orange
+I--Q--I_A red
+I--F blue
+T = extension B C A D
+
+*/
+\end{asy}
+\end{center}
+\pagebreak
+
+\subsection{IMO 2010/3, proposed by Gabriel Carroll (USA)}
+\textsl{Available online at \url{https://aops.com/community/p1935854}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Find all functions $g \colon \ZZ_{>0} \to \ZZ_{>0}$ such that
+\[ \left( g(m)+n \right)\left( g(n)+m \right) \]
+is always a perfect square.
+\end{mdframed}
+For $c \ge 0$, the function $g(n) = n+c$ works;
+we prove this is the only possibility.
+
+First, the main point of the problem is that
+\begin{claim*}
+  We have
+  $g(n) \equiv g(n') \pmod p \implies n \equiv n' \pmod p$.
+\end{claim*}
+\begin{proof}
+  Pick a large integer $M$ such that
+  \[ \nu_p(M+g(n)), \quad \nu_p(M+g(n')) \quad
+    \text{are both odd}. \]
+  (It's not hard to see this is always possible.)
+  Now, since each of
+  \begin{align*}
+    \left( M + g(n) \right)&\left( n + g(M)  \right) \\
+    \left( M + g(n') \right)&\left( n' + g(M)  \right)
+  \end{align*}
+  is a square, we get $g(n) \equiv g(n') \equiv -M \pmod p$.
+\end{proof}
+
+This claim implies that
+\begin{itemize}
+  \ii The numbers $g(n)$ and $g(n+1)$ differ by $\pm 1$ for any $n$, and
+  \ii The function $g$ is injective.
+\end{itemize}
+It follows $g$ is a linear function with slope $\pm 1$, hence done.
+\pagebreak
+
+\section{Solutions to Day 2}
+\subsection{IMO 2010/4, proposed by Marcin Kuczma (POL)}
+\textsl{Available online at \url{https://aops.com/community/p1936916}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $P$ be a point interior to triangle $ABC$ (with $CA \neq CB$).
+The lines $AP$, $BP$ and $CP$ meet again its circumcircle $\Gamma$
+at $K$, $L$, $M$, respectively.
+The tangent line at $C$ to $\Gamma$ meets the line $AB$ at $S$.
+Show that from $SC = SP$ follows $MK = ML$.
+\end{mdframed}
+We present two solutions using harmonic bundles.
+
+\paragraph{First solution (Evan Chen).}
+Let $N$ be the antipode of $M$, and let $NP$ meet $\Gamma$ again at $D$.
+Focus only on $CDMN$ for now (ignoring the condition).
+Then $C$ and $D$ are feet of altitudes in $\triangle MNP$;
+it is well-known that the circumcircle of $\triangle CDP$
+is orthogonal to $\Gamma$
+(passing through the orthocenter of $\triangle MPN$).
+\begin{center}
+\begin{asy}
+pair N = dir(100);
+pair M = -N;
+pair L = dir(150);
+pair K = N*N/L;
+pair C = dir(122);
+pair D = conj(C);
+pair P = extension(D, N, M, C);
+pair A = -K+2*foot(origin, K, P);
+pair B = -L+2*foot(origin, L, P);
+pair S = circumcenter(C, P, D);
+filldraw(unitcircle, opacity(0.1)+lightgreen, heavygreen);
+draw(C--S--D, heavygreen);
+draw(A--C--B--S, lightblue);
+draw(A--D--B, lightblue);
+filldraw(L--N--K--M--cycle, opacity(0.1)+lightred, lightred);
+draw(M--N, lightred);
+draw(K--L, lightred);
+draw(A--K, dashed+orange);
+draw(B--L, dashed+orange);
+draw(C--M, dashed+orange);
+draw(D--N, dashed+orange);
+draw(S--P, heavygreen);
+draw(arc(S,abs(S-D),-60,60), heavygreen);
+
+dot("$N$", N, dir(N));
+dot("$M$", M, dir(M));
+dot("$L$", L, dir(170));
+dot("$K$", K, dir(K));
+dot("$C$", C, dir(80));
+dot("$D$", D, dir(280));
+dot("$P$", P, dir(P));
+dot("$A$", A, dir(220));
+dot("$B$", B, dir(B));
+dot("$S$", S, dir(S));
+
+/* TSQ Source:
+
+N = dir 100
+M = -N
+L = dir 150 R170
+K = N*N/L
+C = dir 122 R80
+D = conj(C) R280
+P = extension D N M C
+A = -K+2*foot origin K P R220
+B = -L+2*foot origin L P
+S = circumcenter C P D
+unitcircle 0.1 lightgreen / heavygreen
+C--S--D heavygreen
+A--C--B--S lightblue
+A--D--B lightblue
+L--N--K--M--cycle 0.1 lightred / lightred
+M--N lightred
+K--L lightred
+A--K dashed orange
+B--L dashed orange
+C--M dashed orange
+D--N dashed orange
+S--P heavygreen
+!draw(arc(S,abs(S-D),-60,60), heavygreen);
+
+*/
+\end{asy}
+\end{center}
+Now, we are given that point $S$ is such that $\ol{SC}$
+is tangent to $\Gamma$, and $SC = SP$.
+It follows that $S$ is the circumcenter of $\triangle CDP$,
+and hence $\ol{SC}$ and $\ol{SD}$ are tangents to $\Gamma$.
+
+Then $-1 = (AB;CD) \overset{P}{=} (KL;MN)$.
+Since $\ol{MN}$ is a diameter, this implies $MK = ML$.
+
+\begin{remark*}
+  I think it's more natural to come up with
+  this solution in reverse.
+  Namely, suppose we define the points the other way:
+  let $\ol{SD}$ be the other tangent, so $(AB;CD) = -1$.
+  Then project through $P$ to get $(KL;MN) = -1$,
+  where $N$ is the second intersection of $\ol{DP}$.
+  However, if $ML = MK$ then $KMLN$ must be a kite.
+  Thus one can recover the solution in reverse.
+\end{remark*}
+
+\paragraph{Second solution (Sebastian Jeon).}
+We have \[ SP^2 = SC^2 = SA \cdot SB
+  \implies
+  \dang SPA = \dang PBA = \dang LBA = \dang LKA = \dang LKP \]
+(the latter half is Reim's theorem).
+Therefore $\ol{SP}$ and $\ol{LK}$ are \emph{parallel}.
+
+Now, let $\ol{SP}$ meet $\Gamma$ again at $X$ and $Y$,
+and let $Q$ be the antipode of $P$ on $(S)$.
+Then
+\[ SP^2 = SQ^2 = SX \cdot SY
+  \implies (PQ;XY) = -1 \implies \angle QCP = 90\dg \]
+that $\ol{CP}$ bisects $\angle XCY$.
+Since $\ol{XY} \parallel \ol{KL}$,
+it follows $\ol{CP}$ bisects to $\angle LCK$ too.
+\pagebreak
+
+\subsection{IMO 2010/5, proposed by Netherlands}
+\textsl{Available online at \url{https://aops.com/community/p1936917}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Each of the six boxes $B_1$, $B_2$, $B_3$, $B_4$, $B_5$, $B_6$
+initially contains one coin.
+The following two types of operations are allowed:
+\begin{enumerate}
+  \ii Choose a non-empty box $B_j$, $1\leq j \leq 5$,
+  remove one coin from $B_j$ and add two coins to $B_{j+1}$;
+  \ii Choose a non-empty box $B_k$, $1\leq k \leq 4$,
+  remove one coin from $B_k$ and swap the contents
+  (possibly empty) of the boxes $B_{k+1}$ and $B_{k+2}$.
+\end{enumerate}
+Determine if there exists a finite sequence of operations of the allowed types,
+such that the five boxes $B_1$, $B_2$, $B_3$, $B_4$, $B_5$ become empty,
+while box $B_6$ contains exactly $2010^{2010^{2010}}$ coins.
+\end{mdframed}
+First,
+\begin{align*}
+  (1,1,1,1,1,1) &\to (0,3,1,0,3,1) \to (0,0,7,0,0,7) \\
+  &\to (0,0,6,2,0,7) \to (0,0,6,1,2,7) \to (0,0,6,1,0,11) \\
+  &\to (0,0,6,0,11,0) \to (0,0,5,11,0,0).
+\end{align*}
+and henceforth we ignore boxes $B_1$ and $B_2$,
+looking at just the last four boxes;
+so we write the current position as $(5,11,0,0)$.
+
+We prove a lemma:
+\begin{claim*}
+  Let $k \ge 0$ and $n > 0$.
+  From $(k,n,0,0)$ we may reach $(k-1,2^n,0,0)$.
+\end{claim*}
+\begin{proof}
+  Working with only the last three boxes for now,
+  \begin{align*}
+    (n,0,0) &\to (n-1, 2, 0) \to (n-1, 0, 4) \\
+    &\to (n-2, 4, 0) \to (n-2, 0, 8) \\
+    &\to (n-3, 8, 0) \to (n-3, 0, 16) \\
+    &\to \dots \to (1, 2^{n-1}, 0) \to (1, 0, 2^n) \to (0, 2^n, 0).
+  \end{align*}
+  Finally we have $(k,n,0,0) \to (k,0,2^n,0) \to (k-1,2^n, 0,0)$.
+\end{proof}
+
+Now from $(5,11,0,0)$ we go as follows:
+\begin{align*} (5,11,0,0) &\to (4, 2^{11}, 0, 0)
+  \to \left(3, 2^{2^{11}}, 0, 0\right)
+  \to \left(2, 2^{2^{2^{11}}}, 0, 0\right) \\
+  &\to \left( 1, 2^{2^{2^{2^{11}}}}, 0, 0\right)
+  \to \left(0, 2^{2^{2^{2^{2^{11}}}}}, 0, 0\right).
+\end{align*}
+Let $A = 2^{2^{2^{2^{2^{11}}}}} > 2010^{2010^{2010}} = B$.
+Then by using move 2 repeatedly on the fourth box
+(i.e., throwing away several coins by swapping the empty $B_5$ and $B_6$),
+we go from $(0,A,0,0)$ to $(0,B/4,0,0)$.
+From there we reach $(0,0,0,B)$.
+\pagebreak
+
+\subsection{IMO 2010/6, proposed by Morteza Saghafiyan (IRN)}
+\textsl{Available online at \url{https://aops.com/community/p1936918}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $a_1, a_2, a_3, \dots$ be a sequence of positive real numbers, and $s$ be a positive integer, such that
+\[
+  a_n =
+  \max \{ a_k + a_{n-k} \mid 1 \leq k \leq n-1 \}
+  \text{ for all $n > s$}.
+\]
+Prove there exist positive integers $\ell \leq s$ and $N$, such that
+\[
+  a_n =
+  a_{\ell} + a_{n - \ell} \text{ for all $n \ge N$}.
+\]
+\end{mdframed}
+Let \[ w_1 = \frac{a_1}{1}, \quad w_2 = \frac{a_2}{2},
+    \quad \dots, \quad w_s = \frac{a_s}{s}. \]
+(The choice of the letter $w$ is for ``weight''.)
+We claim the right choice of $\ell$
+is the one maximizing $w_\ell$.
+
+Our plan is to view each $a_n$ as a linear combination
+of the weights $w_1, \dots, w_s$ and track their coefficients.
+
+To this end, let's define an \emph{$n$-type}
+to be a vector $T = \left< t_1, \dots, t_s\right>$
+of nonnegative integers such that
+\begin{itemize}
+  \ii $n = t_1 + \dots + t_s$; and
+  \ii $t_i$ is divisible by $i$ for every $i$.
+\end{itemize}
+We then define its \emph{valuation} as $v(T) = \sum_{i=1}^s w_i t_i$.
+
+Now we define a $n$-type to be \emph{valid}
+according to the following recursive rule.
+For $1 \le n \le s$ the only valid $n$-types are
+\begin{align*}
+  T_1 &= \left< 1, 0, 0, \dots, 0 \right> \\
+  T_2 &= \left< 0, 2, 0, \dots, 0 \right> \\
+  T_3 &= \left< 0, 0, 3, \dots, 0 \right> \\
+  &\vdotswithin= \\
+  T_s &= \left< 0, 0, 0, \dots, s \right>
+\end{align*}
+for $n = 1, \dots, s$, respectively.
+Then for any $n > s$, an $n$-type is valid
+if it can be written as the sum of a valid $k$-type
+and a valid $(n-k)$-type, componentwise.
+These represent the linear combinations possible in the recursion;
+in other words the recursion in the problem is phrased as
+\[ a_n = \max_{T \text{ is a valid $n$-type}} v(T). \]
+
+In fact, we have the following description of valid $n$-types:
+\begin{claim*}
+  Assume $n > s$.
+  Then an $n$-type $\left< t_1, \dots, t_s \right>$ is valid
+  if and only if either
+  \begin{itemize}
+    \ii there exist indices $i < j$ with $i+j > s$,
+    $t_i \ge i$ and $t_j \ge j$; or
+    \ii there exists an index $i > s/2$
+    with $t_i \ge 2i$.
+  \end{itemize}
+\end{claim*}
+\begin{proof}
+  Immediate by forwards induction on $n > s$
+  that all $n$-types have this property.
+
+  The reverse direction is by downwards induction on $n$.
+  Indeed if $\sum_i \frac{t_i}{i} > 2$,
+  then we may subtract off on of $\{T_1, \dots, T_s\}$
+  while preserving the condition;
+  and the case $\sum_i \frac{t_i}{i} = 2$
+  is essentially by definition.
+\end{proof}
+\begin{remark*}
+  The claim is a bit confusingly stated in its two cases;
+  really the latter case should be thought of as the situation
+  $i=j$ but requiring that $t_i/i$ is counted with multiplicity.
+\end{remark*}
+
+Now, for each $n > s$ we pick a valid $n$-type $T_n$
+with $a_n = v(T_n)$;
+if there are ties, we pick one for which the $\ell$th
+entry is as large as possible.
+\begin{claim*}
+  For any $n > s$ and index $i \neq \ell$,
+  the $i$th entry of $T_n$
+  is at most $2s + \ell i$.
+\end{claim*}
+\begin{proof}
+  If not, we can go back $i\ell$ steps to get
+  a valid $(n-i\ell)$-type $T$
+  achieved by decreasing the $i$th entry of $T_n$ by $i \ell$.
+  But then we can add $\ell$ to the $\ell$th entry $i$
+  times to get another $n$-type $T'$ which obviously
+  has valuation at least as large,
+  but with larger $\ell$th entry.
+\end{proof}
+
+Now since all other entries in $T_n$ are bounded,
+eventually the sequence $(T_n)_{n > s}$
+just consists of repeatedly
+adding $1$ to the $\ell$th entry, as required.
+
+\begin{remark*}
+One big step is to consider $w_k = a_k / k$.
+You can get this using wishful thinking
+or by examining small cases.
+(In addition this normalization makes it easier
+to see why the largest $w$ plays an important role,
+since then in the definition of type,
+the $n$-types all have a sum of $n$.
+Unfortunately, it makes the characterization
+of valid $n$-types somewhat clumsier too.)
+\end{remark*}
+\pagebreak
+
+
+\end{document}

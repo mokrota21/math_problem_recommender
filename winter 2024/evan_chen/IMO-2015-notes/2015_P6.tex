@@ -1,0 +1,87 @@
+
+\textsl{Available online at \url{https://aops.com/community/p5083494}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+The sequence $a_1,a_2,\dots$ of integers satisfies the conditions:
+\begin{enumerate}[(i)]
+  \ii $1\le a_j\le2015$ for all $j\ge1$,
+  \ii $k+a_k\neq \ell+a_\ell$ for all $1\le k<\ell$.
+\end{enumerate}
+Prove that there exist two positive integers $b$ and $N$ for which
+\[ \left\lvert\sum_{j=m+1}^n (a_j-b) \right\rvert \le 1007^2 \]
+for all integers $m$ and $n$ such that $n > m\ge N$.
+\end{mdframed}
+We give two equivalent solutions with different presentations,
+one with ``arrows'' and the other by ``juggling''.
+
+\paragraph{First solution (arrows).}
+Consider the map
+\[ f \colon k \mapsto k + a_k. \]
+This map is injective, so if we draw all arrows of the form $k \mapsto f(k)$
+we get a partition of $\NN$ into one or more ascending chains
+(which skip by at most $2015$).
+
+There are at most $2015$ such chains,
+since among any $2015$ consecutive points in $\NN$
+every chain must have an element.
+
+We claim we may take $b$ to be the number of such chains,
+and $N$ to be the largest of the start-points of all the chains.
+
+% TODO picture here would be nice
+Consider an interval $I = [m+1, n]$.
+We have that
+\[ \sum_{m<j\le n} a_j = \sum_{\text{chain } c} \left[ \min \left\{ x > n, x \in c \right\}
+  - \min \left\{ x > m, x \in c \right\} \right]. \]
+Thus the upper bound is proved by the calculation
+\begin{align*}
+  \sum_{m<j\le n} (a_j-b)
+  &= \sum_{\text{chain } c} \left[ (\min \left\{ x > n, x \in c \right\} - n)
+    - (\min \left\{ x > m, x \in c \right\} - m) \right] \\
+  &= \sum_{\text{chain } c} \left[ (\min \left\{ x > n, x \in c \right\} - n) \right]
+    - \sum_{\text{chain } c} \left[
+    \min \left\{ x > m, x \in c \right\} - m \right] \\
+  &\le (1+2015+2014+\dots+(2015-(b-2)))-(1+2+\dots+b) = (b-1)(2015-b)
+\end{align*}
+from above (noting that $n+1$ has to belong to some chain).
+The lower bound is similar.
+
+\paragraph{Second solution (juggling).}
+This solution is essentially the same, but phrased as a juggling problem.
+Here is a solution in this interpretation:
+we will consider several balls thrown in the air,
+which may be at heights $0$, $1$, $2$, \dots, $2014$.
+The process is as follows:
+\begin{itemize}
+\ii Initially, at time $t = 0$, there are no balls in the air.
+\ii Then at each integer time $t$ thereafter,
+if there is a ball at height $0$, it is caught;
+otherwise a ball is added to the juggler's hand.
+This ball (either caught or added) is then thrown to a height of $a_t$.
+\ii Immediately afterwards, all balls have their height decreased by one.
+\end{itemize}
+The condition $a_k + k \neq \ell + a_\ell$ thus ensures that
+no two balls are ever at the same height.
+In particular, there will never be more than $2016$ balls,
+since there are only $2015$ possible heights.
+
+We claim we may set.
+\begin{align*}
+  b &= \text{number of balls in entire process} \\
+  N &= \text{last moment in time at which a ball is added}.
+\end{align*}
+Indeed, the key fact is that if we let $S_t$ denote
+the sum of the height of all the balls just after time $t+\half$, then
+\[ S_{t+1} - S_t = a_{t+1} - b \]
+After all, at each time step $t$, the caught ball is thrown to height $a_t$,
+and then all balls have their height decreased by $1$,
+from which the conclusion follows.
+Hence the quantity in the problem is exactly equal to
+\[ \left\lvert\sum_{j=m+1}^n (a_j-b) \right\rvert
+  = \left\lvert S_m - S_n \right\rvert. \]
+For a fixed $b$, we easily have the inequalities
+$0 + 1 + \dots + (b-1) \le S_t \le 2014 + 2013 + \dots + (2015-b)$.
+Hence $|S_m - S_n| \le (b-1)(2015-b) \le 1007^2$ as desired.
+\pagebreak
+
+
+\end{document}

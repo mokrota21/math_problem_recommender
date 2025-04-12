@@ -1,0 +1,132 @@
+\textsl{Available online at \url{https://aops.com/community/p8639236}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $R$ and $S$ be different points on a circle $\Omega$
+such that $\ol{RS}$ is not a diameter.
+Let $\ell$ be the tangent line to $\Omega$ at $R$.
+Point $T$ is such that $S$ is the midpoint of $\ol{RT}$.
+Point $J$ is chosen on minor arc $RS$ of $\Omega$ so that
+the circumcircle $\Gamma$ of triangle $JST$ intersects $\ell$
+at two distinct points.
+Let $A$ be the common point of $\Gamma$ and $\ell$ closer to $R$.
+Line $AJ$ meets $\Omega$ again at $K$.
+Prove that line $KT$ is tangent to $\Gamma$.
+\end{mdframed}
+\paragraph{First solution (elementary).}
+First, note
+\[ \dang RKA = \dang RKJ = \dang RSJ = \dang TSJ = \dang TAJ = \dang TAK \]
+so $\ol{RK} \parallel \ol{AT}$.
+Now,
+\begin{itemize}
+  \ii $\ol{RA}$ is tangent at $R$ iff $\triangle KRS \sim \triangle RTA$ (oppositely),
+  because both equate to $-\dang RKS = \dang SKR = \dang SRA = \dang TRA$.
+  \ii Similarly, $\ol{TK}$ is tangent at $T$
+  iff $\triangle KTS \sim \triangle ART$.
+  \ii The two similarities are equivalent because $RS = ST$
+  the SAS gives $KR \cdot TA = RS \cdot RT = TS \cdot TR$.
+\end{itemize}
+
+\begin{center}
+\begin{asy}
+size(10cm);
+pair T = dir(100);
+pair S = dir(165);
+pair R = 2*S-T;
+pair E = dir(0);
+pair A = IP(unitcircle, R--(R+100*E));
+pair B = OP(unitcircle, R--(R+100*E));
+pair K = extension(T, T+dir(90)*T, R, R+T-A);
+draw(R--B, blue);
+
+filldraw(unitcircle, opacity(0.05)+lightcyan, blue);
+filldraw(circumcircle(R, S, K), opacity(0.05)+paleblue, heavycyan);
+pair J = -A+2*foot(origin, A, K);
+
+
+filldraw(K--R--A--T--cycle, opacity(0.1)+lightred, red);
+draw(A--K, orange);
+draw(R--T, orange);
+
+// invert
+
+pair Js = extension(T, T+A-B, R, J);
+pair Ks = extension(T, T+A-B, R, K);
+draw(K--Ks, heavygreen);
+draw(Ks--Js, heavygreen);
+draw(Js--B, dotted+blue);
+draw(R--Js, dotted+blue);
+
+dot("$T$", T, dir(T));
+dot("$S$", S, dir(355));
+dot("$R$", R, dir(270));
+dot("$A$", A, dir(225));
+dot("$B$", B, dir(315));
+dot("$K$", K, dir(200));
+dot("$J$", J, dir(180));
+dot("$J^\ast$", Js, dir(Js));
+dot("$K^\ast$", Ks, dir(Ks));
+
+/* TSQ Source:
+
+!size(10cm);
+T = dir 100
+S = dir 165 R355
+R = 2*S-T R270
+E := dir 0
+A = IP unitcircle R--(R+100*E) R225
+B = OP unitcircle R--(R+100*E) R315
+K = extension T T+dir(90)*T R R+T-A R200
+T--K blue
+R--B blue
+
+unitcircle 0.05 lightcyan / blue
+circumcircle R S K 0.05 paleblue / heavycyan
+J = -A+2*foot origin A K R180
+
+
+K--R--A--T--cycle 0.1 lightred / red
+A--K orange
+R--T orange
+
+// invert
+
+J* = extension T T+A-B R J
+K* = extension T T+A-B R K
+K--Ks heavygreen
+Ks--Js heavygreen
+Js--B dotted blue
+R--Js dotted blue
+
+*/
+\end{asy}
+\end{center}
+
+\begin{remark*}
+  The problem is actually symmetric with respect to two circles;
+  $\ol{RA}$ is tangent at $R$ if and only if $\ol{TK}$ at $T$.
+\end{remark*}
+
+\paragraph{Second solution (inversion).}
+Consider an inversion at $R$ fixing the circumcircle $\Gamma$ of $TSJA$.
+Then:
+\begin{itemize}
+  \ii $T$ and $S$ swap,
+  \ii $A$ and $B$ swap, where $B$ is the second intersection
+  of $\ell$ with $\Gamma$.
+  \ii Circle $\Omega$ inverts to the line through $T$
+  parallel to $\ol{RAB}$, call it $\ell$.
+  \ii $J^\ast$ is the second intersection of $\ell$ with $\Gamma$.
+  \ii $K^\ast$ is the intersection of $\ell$ with the circumcircle
+  of $RBJ^\ast$; this implies $RK^\ast J^\ast B$ is an isosceles trapezoid.
+  In particular, one reads $\ol{RK^\ast} \parallel \ol{AT}$ from this,
+  hence $RK^\ast TA$ is a parallelogram.
+\end{itemize}
+Thus we wish to show the circumcircle of $RSK^\ast$ is tangent to $\Gamma$.
+But that follows from the final parallelogram observed:
+$S$ is the center of the parallelogram since it is the midpoint of the diagonal.
+
+\begin{remark*}
+  This also implies $RKTB$ is cyclic, from $\ol{K^\ast SA}$ collinear.
+  Moreover, quadrilateral $KK^\ast TS$ is cyclic (by power of a point);
+  this leads to the second official solution to the problem.
+\end{remark*}
+\pagebreak

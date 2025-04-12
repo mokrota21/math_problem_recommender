@@ -1,0 +1,16 @@
+Define a ``hook'' to be a figure made up of six unit squares
+as shown below in the picture,
+or any of the figures obtained by applying rotations
+and reflections to this figure.
+\begin{center}
+\begin{asy}
+unitsize(0.5 cm);
+draw(unitsquare);
+draw(shift(0,1)*unitsquare);
+draw(shift(0,2)*unitsquare);
+draw(shift(1,2)*unitsquare);
+draw(shift(2,1)*unitsquare);
+draw(shift(2,2)*unitsquare);
+\end{asy}
+\end{center}
+Which $m \times n$ rectangles can be tiled by hooks?

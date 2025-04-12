@@ -1,0 +1,61 @@
+\textsl{Available online at \url{https://aops.com/community/p31205957}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+For which pairs of positive integers $(a,b)$ is the sequence
+\[ \gcd(a^n+b, b^n+a) \qquad n = 1, 2, \dotsc \]
+eventually constant?
+\end{mdframed}
+The answer is $(a,b)=(1,1)$ only, which obviously works since the sequence is always $2$.
+
+Conversely, assume the sequence
+\[ x_n \coloneqq \gcd(a^n+b, b^n+a) \] is eventually constant.
+The main crux of the other direction is to consider
+\[ M \coloneqq ab+1. \]
+\begin{remark*}
+  [Motivation]
+  The reason to consider the number is the same technique used in IMO 2005/4,
+  namely the idea to consider ``$n = -1$''.
+  The point is that the two rational numbers
+  \[ \frac 1a + b = \frac{ab+1}{b}, \qquad \frac 1b + a = \frac{ab+1}{a} \]
+  have a large common factor: we could write ``$x_{-1} = ab + 1$'', loosely speaking.
+
+  Now, the sequence is really only defined for $n \ge 1$,
+  so one should instead take $n \equiv -1 \pmod{\varphi(M)}$
+  --- and this is exactly what we do.
+\end{remark*}
+Obviously $\gcd(a,M) = \gcd(b,M) = 1$.
+Let $n$ be a sufficiently large multiple of $\varphi(M)$
+so that \[ x_{n-1} = x_n = x_{n+1} = \dotsb. \]
+We consider the first three terms;
+the first one is the ``key'' one that gets the bulk of the work,
+and the rest is bookkeeping and extraction.
+\begin{itemize}
+  \ii Consider $x_{n-1}$.
+  Note that
+  \[ a (a^{n-1} + b) = a^n + ab \equiv 1 + (-1) \equiv 0 \pmod M \]
+  and similarly $b (b^n + a) \equiv 0 \pmod M$.
+  Hence $M \mid x_{n-1}$.
+
+  \ii Consider $x_n$, which is now known to be divisible by $M$. Note that
+  \begin{align*}
+    0 &\equiv a^n + b \equiv 1 + b \pmod M \\
+    0 &\equiv b^n + a \equiv 1 + a \pmod M.
+  \end{align*}
+  So $a \equiv b \equiv -1 \pmod M$.
+
+  \ii Consider $x_{n+1}$, which is now known to be divisible by $M$. Note that
+  \[ 0 \equiv a^{n+1} + b \equiv b^{n+1} + a \equiv a + b \pmod M. \]
+  We knew $a \equiv b \equiv -1 \pmod M$,
+  hence this means $0 \equiv 2 \pmod M$, so $M = 2$.
+\end{itemize}
+From $M = 2$ we then conclude $a = b = 1$, as desired.
+
+\begin{remark*}
+  [No alternate solutions known]
+  At the time nobody seems to know any solution not depending critically
+  on $M = ab+1$ (or prime numbers dividing $M$, etc.).
+  They vary in execution once some term of the form $x_{k\varphi(n)-1}$ is taken,
+  but avoiding the key idea altogether does not currently seem possible.
+
+  A good example to consider for ruling out candidate ideas is $(a,b) = (18,9)$.
+\end{remark*}
+\pagebreak

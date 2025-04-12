@@ -1,0 +1,102 @@
+\textsl{Available online at \url{https://aops.com/community/p1562847}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $ABC$ be a triangle with $AB = AC$.
+The angle bisectors of $\angle CAB$ and $\angle ABC$
+meet the sides $BC$ and $CA$ at $D$ and $E$, respectively.
+Let $K$ be the incenter of triangle $ADC$.
+Suppose that $\angle BEK = 45^\circ$.
+Find all possible values of $\angle CAB$.
+\end{mdframed}
+Here is the solution presented in my book \emph{EGMO}.
+
+Let $I$ be the incenter of $ABC$,
+and set $\angle DAC = 2x$ (so that $0\dg < x < 45\dg$).
+From $\angle AIE = \angle DIC$, it is easy to compute
+\[
+  \angle KIE = 90\dg - 2x, \;
+  \angle ECI = 45\dg -x, \;
+  \angle IEK = 45\dg, \;
+  \angle KEC = 3x. \]
+Having chased all the angles we want, we need a relationship.
+We can find it by considering the side ratio $\frac{IK}{KC}$.
+Using the angle bisector theorem,
+we can express this in terms of triangle $IDC$;
+however we can also express it in terms of triangle $IEC$.
+
+
+\begin{center}
+  \begin{asy}
+    size(7cm);
+    pair A = Drawing("A", (0,7), dir(90));
+    pair C = Drawing("C", (3,0), dir(-45));
+    pair B = Drawing("B", -C, dir(225));
+    draw(A--B--C--cycle);
+    pair I = incenter(A,B,C);
+    pair D = Drawing("D", origin, dir(-90));
+    pair E = Drawing("E", extension(B,I,A,C), dir(45));
+    pair K = Drawing("K", incenter(A,D,C), dir(-30));
+    draw(A--D--K);
+    draw(B--E--K);
+    draw(incircle(A,D,C));
+    markangle(9.0,B,E,K);
+  \end{asy}
+  \quad
+  \begin{asy}
+    pair A = Drawing("A", (0,5), dir(90));
+    pair C = Drawing("C", (3,0), dir(-45));
+    pair B = -C;
+    pair D = Drawing("D", origin, dir(-90));
+    pair I = Drawing("I", incenter(A,B,C), dir(180));
+    pair E = Drawing("E", extension(B,I,A,C), dir(45));
+    pair K = Drawing("K", incenter(A,D,C), 1.3*dir(-90));
+    draw(A--D--C--cycle);
+    draw(C--I--E--K);
+    draw(D--K);
+    MP("2x", A, dir(K-A)*8);
+    MP(rotate(-35)*"45^{\circ}-x", C+dir(130)*1.2);
+    MP(rotate(-10)*"45^{\circ}-x", C+dir(155));
+    MP("45^{\circ}", E, dir(240)*6);
+    MP("3x", E, dir(-80)*6);
+    markangle(9.0,D,I,C);
+    markangle(9.0,E,I,A);
+  \end{asy}
+\end{center}
+
+By the law of sines, we obtain
+\[ \frac{IK}{KC} = \frac%
+  {\sin 45\dg \cdot \frac{EK}{\sin \left( 90\dg - 2x \right)}}%
+  {\sin \left( 3x \right) \cdot \frac{EK}{\sin \left( 45\dg-x \right)}}
+  = \frac{\sin 45\dg \sin \left( 45\dg - x \right)}%
+  {\sin \left( 3x \right) \sin \left( 90\dg - 2x \right)}. \]
+Also, by the angle bisector theorem on $\triangle IDC$,
+we have
+\[ \frac{IK}{KC} = \frac{ID}{DC}
+  = \frac{\sin \left( 45\dg-x \right)}{\sin\left( 45\dg+x \right)}. \]
+Equating these and cancelling $\sin \left( 45\dg-x \right) \neq 0$ gives
+\[ \sin 45\dg \sin \left( 45\dg + x \right)
+  = \sin 3x \sin \left( 90\dg - 2x \right). \]
+
+Applying the product-sum formula
+(again, we are just trying to break down things as much as possible),
+this just becomes
+\[ \cos\left( x \right) - \cos \left( 90\dg + x \right)
+  = \cos \left( 5x-90\dg \right) - \cos \left( 90\dg+x \right) \]
+or $\cos x = \cos \left( 5x-90\dg \right)$.
+
+At this point we are basically done;
+the rest is making sure we do not miss any solutions
+and write up the completion nicely.
+One nice way to do this is by using product-sum in reverse as
+\[ 0 = \cos \left( 5x-90\dg \right) - \cos x
+  = 2 \sin \left( 3x - 45\dg \right) \sin \left( 2x-45\dg \right). \]
+This way we merely consider the two cases
+\[ \sin \left( 3x-45\dg \right) = 0 \text{ and }
+  \sin \left( 2x - 45\dg \right) = 0. \]
+Notice that $\sin\theta = 0$ if and only $\theta$
+is an integer multiple of $180\dg$.
+Using the bound $0\dg < x < 45\dg$,
+it is easy to see that that the permissible values of $x$
+are $x = 15\dg$ and $x = \frac{45}{2}\dg$.
+As $\angle A = 4x$, this corresponds to $\angle A = 60\dg$
+and $\angle A = 90\dg$, which can be seen to work.
+\pagebreak

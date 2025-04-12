@@ -1,0 +1,22 @@
+An \emph{anti-Pascal triangle} is an equilateral triangular array
+of numbers such that, except for the numbers in the bottom row,
+each number is the absolute value of the difference
+of the two numbers immediately below it.
+For example, the following array is an anti-Pascal triangle
+with four rows which contains every integer from $1$ to $10$.
+\begin{center}
+\begin{tikzpicture}[scale = 0.8]
+\node at (1.5,2.58) {$4$};
+\node at (1,1.72) {$2$};
+\node at (2,1.72) {$6$};
+\node at (0.5,0.86) {$5$};
+\node at (1.5,0.86) {$7$};
+\node at (2.5,0.86) {$1$};
+\node at (0,0) {$8$};
+\node at (1,0) {$3$};
+\node at (2,0) {$10$};
+\node at (3,0) {$9$};
+\end{tikzpicture}
+\end{center}
+Does there exist an anti-Pascal triangle with $2018$ rows
+which contains every integer from $1$ to $1+2+\dots +2018$?

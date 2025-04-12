@@ -1,0 +1,278 @@
+\textsl{Available online at \url{https://aops.com/community/p3542092}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Convex quadrilateral $ABCD$ has $\angle ABC = \angle CDA = 90\dg$.
+Point $H$ is the foot of the perpendicular from $A$ to $\ol{BD}$.
+Points $S$ and $T$ lie on sides $AB$ and $AD$,
+respectively, such that $H$ lies inside triangle $SCT$ and
+\[ \angle CHS - \angle CSB = 90^{\circ},
+  \quad \angle THC - \angle DTC = 90^{\circ}. \]
+Prove that line $BD$ is tangent to the circumcircle of triangle $TSH$.
+\end{mdframed}
+\paragraph{First solution (mine).}
+First we rewrite the angle condition in a suitable way.
+\begin{claim*}
+  We have $\angle ATH = \angle TCH + 90\dg$.
+  Thus the circumcenter of $\triangle CTH$ lies on $\ol{AD}$.
+  Similarly the circumcenter of $\triangle CSH$ lies on $\ol{AB}$.
+\end{claim*}
+\begin{proof}
+  \begin{align*}
+    \dang ATH &= \dang DTH \\
+    &= \dang DTC + \dang CTH \\
+    &= \dang DTC - \dang THC - \dang HCT \\
+    &= 90\dg - \dang HCT = 90\dg + \dang TCH.
+  \end{align*}
+  which implies conclusion.
+\end{proof}
+
+\begin{center}
+\begin{asy}
+pair A = dir(110);
+pair B = dir(200);
+pair D = dir(-20);
+pair C = -A;
+pair H = foot(A, B, D);
+pair Cs = -C+2*foot(origin, H, C);
+pair As = -A+2*foot(origin, A, H);
+
+filldraw(unitcircle, opacity(0.1)+lightcyan, lightblue);
+draw(A--B--C--D--cycle, lightblue);
+
+pair M = midpoint(B--As);
+pair N = midpoint(D--As);
+
+pair U = IP(Cs--N, circumcircle(D, H, As));
+pair V = IP(Cs--M, circumcircle(B, H, As));
+pair Ss = D+As-U;
+pair Ts = B+As-V;
+pair T = extension(Ts, H, A, D);
+pair S = extension(Ss, H, A, B);
+
+pair O_D = circumcenter(C, H, T);
+
+filldraw(circumcircle(C, H, T), opacity(0.1)+yellow, red);
+pair P = extension(A, H, O_D, midpoint(T--H));
+draw(A--H, lightblue);
+draw(B--D, lightblue);
+
+draw(H--C--T--cycle, red);
+draw(H--O_D, lightblue);
+draw(P--O_D, heavygreen);
+
+dot("$A$", A, dir(A));
+dot("$B$", B, dir(B));
+dot("$D$", D, dir(D));
+dot("$C$", C, dir(C));
+dot("$H$", H, dir(H));
+dot("$T$", T, dir(80));
+dot("$S$", S, dir(S));
+dot("$O_D$", O_D, dir(45));
+dot("$P$", P, dir(45));
+
+/* TSQ Source:
+
+A = dir 110
+B = dir 200
+D = dir -20
+C = -A
+H = foot A B D
+C* := -C+2*foot origin H C R80
+A* := -A+2*foot origin A H
+
+unitcircle 0.1 lightcyan / lightblue
+A--B--C--D--cycle lightblue
+
+M := midpoint B--As
+N := midpoint D--As
+
+U := IP Cs--N circumcircle D H As
+V := IP Cs--M circumcircle B H As
+S* := D+As-U
+T* := B+As-V
+T = extension Ts H A D R80
+S = extension Ss H A B
+
+O_D = circumcenter C H T R45
+
+circumcircle C H T 0.1 yellow / red
+P = extension A H O_D midpoint T--H R45
+A--H lightblue
+B--D lightblue
+
+H--C--T--cycle red
+H--O_D lightblue
+P--O_D heavygreen
+
+*/
+\end{asy}
+\end{center}
+
+Let the perpendicular bisector of $TH$ meet $AH$ at $P$ now.
+It suffices to show that $\frac{AP}{PH}$ is symmetric in $b = AD$ and $d=AB$,
+because then $P$ will be the circumcenter of $\triangle TSH$.
+To do this, set $AH = \frac{bd}{2R}$ and $AC=2R$.
+
+Let $O$ denote the circumcenter of $\triangle CHT$.
+Use the Law of Cosines on $\triangle ACO$ and $\triangle AHO$,
+using variables $x=AO$ and $r=HO$.
+We get that
+\[ r^2 = x^2 + AH^2 - 2x \cdot AH \cdot \frac{d}{2R} = x^2 + (2R)^2 - 2bx. \]
+By the angle bisector theorem,
+$\frac{AP}{PH} = \frac{AO}{HO}$.
+
+The rest is computation: notice that
+\[ r^2 - x^2 = h^2 - 2xh \cdot \frac{d}{2R} = (2R)^2 - 2bx \]
+where $h = AH = \frac{bd}{2R}$, whence
+\[ x = \frac{(2R)^2-h^2}{2b - 2h \cdot \frac{d}{2R}}. \]
+Moreover,
+\[ \frac{1}{2} \left( \frac{r^2}{x^2}-1 \right)
+= \frac{1}{x} \left( \frac 2x R^2 - b \right). \]
+Now, if we plug in the $x$ in the
+right-hand side of the above, we obtain
+\[ \frac{2b-2h \cdot \frac{d}{2R}}{4R^2-h^2}
+  \left( \frac{2b-2h \cdot \frac{d}{2R}}{4R^2-h^2} \cdot 2R^2 - b\right)
+  = \frac{2h}{(4R^2-h^2)^2} \left( b- h \cdot \frac{d}{2R} \right)
+  \left( -2hdR + bh^2 \right). \]
+Pulling out a factor of $-2Rh$ from the rightmost term,
+we get something that is symmetric in $b$ and $d$, as required.
+
+\paragraph{Second solution (Victor Reis).}
+Here is the fabled solution using inversion at $H$.
+First, we rephrase the angle conditions in the following ways:
+\begin{itemize}
+  \ii $\ol{AD} \perp (THC)$,
+  which is equivalent to the claim from the first solution.
+  \ii $\ol{AB} \perp (SHC)$, by symmetry.
+  \ii $\ol{AC} \perp (ABCD)$, by definition.
+\end{itemize}
+Now for concreteness we will use a negative inversion at $H$
+which swaps $B$ and $D$ and overlay it on the original diagram.
+As usual we denote inverses with stars.
+
+Let us describe the inverted problem.
+We let $M$ and $N$ denote the midpoints of $\ol{A^\ast B^\ast}$
+and $\ol{A^\ast D^\ast}$, which are the centers of
+$(HA^\ast B^\ast)$ and $(HA^\ast D^\ast)$.
+From $\ol{T^\ast C^\ast} \perp (HA^\ast D^\ast)$,
+we know have $C^\ast$, $M$, $T^\ast$ collinear.
+Similarly, $C^\ast$, $N$, $S^\ast$ are collinear.
+We have that $(A^\ast H C^\ast)$ is orthogonal to $(ABCD)$ which remains fixed.
+We wish to show $\ol{T^\ast S^\ast}$ and $\ol{MN}$ are parallel.
+
+\begin{center}
+\begin{asy}
+pair A = dir(100);
+pair B = dir(200);
+pair D = dir(-20);
+pair C = -A;
+pair H = foot(A, B, D);
+pair Cs = -C+2*foot(origin, H, C);
+pair As = -A+2*foot(origin, A, H);
+
+filldraw(unitcircle, opacity(0.1)+lightcyan, lightblue);
+draw(A--B--C--D--cycle, lightblue);
+
+filldraw(circumcircle(B, H, As), opacity(0.1)+lightgreen, dotted+heavygreen);
+filldraw(circumcircle(D, H, As), opacity(0.1)+lightgreen, dotted+heavygreen);
+
+pair M = midpoint(B--As);
+pair N = midpoint(D--As);
+
+pair U = IP(Cs--N, circumcircle(D, H, As));
+pair V = IP(Cs--M, circumcircle(B, H, As));
+pair Ss = D+As-U;
+pair Ts = B+As-V;
+pair T = extension(Ts, H, A, D);
+pair S = extension(Ss, H, A, B);
+
+draw(Ts--Cs--Ss, heavygreen);
+draw(Ts--Ss, red);
+draw(B--D, lightblue);
+draw(A--As, lightblue);
+draw(A--B--As--D--cycle, lightblue);
+draw(C--Cs--A--cycle, lightblue);
+
+draw(S--Ss, dotted+blue);
+draw(T--Ts, dotted+blue);
+draw(M--N, red);
+
+filldraw(circumcircle(As, M, N), opacity(0.1)+lightred, red+dashed);
+filldraw(circumcircle(As, H, Cs), opacity(0.1)+pink, purple+dashed);
+clip(box((-1.4,-1.4),(2,2)));
+
+dot("$A$", A, dir(A));
+dot("$B$", B, dir(B));
+dot("$D$", D, dir(D));
+dot("$C$", C, dir(C));
+dot("$H$", H, dir(H));
+dot("$C^\ast$", Cs, dir(80));
+dot("$A^\ast$", As, dir(As));
+dot("$M$", M, dir(M));
+dot("$N$", N, dir(N));
+dot("$S^\ast$", Ss, dir(Ss));
+dot("$T^\ast$", Ts, dir(Ts));
+dot("$T$", T, dir(50));
+dot("$S$", S, dir(S));
+
+/* TSQ Source:
+
+A = dir 100
+B = dir 200
+D = dir -20
+C = -A
+H = foot A B D
+C* = -C+2*foot origin H C R80
+A* = -A+2*foot origin A H
+
+unitcircle 0.1 lightcyan / lightblue
+A--B--C--D--cycle lightblue
+
+circumcircle B H As 0.1 lightgreen / dotted heavygreen
+circumcircle D H As 0.1 lightgreen / dotted heavygreen
+
+M = midpoint B--As
+N = midpoint D--As
+
+U := IP Cs--N circumcircle D H As
+V := IP Cs--M circumcircle B H As
+S* = D+As-U
+T* = B+As-V
+T = extension Ts H A D R50
+S = extension Ss H A B
+
+Ts--Cs--Ss heavygreen
+Ts--Ss red
+B--D lightblue
+A--As lightblue
+A--B--As--D--cycle lightblue
+C--Cs--A--cycle lightblue
+
+S--Ss dotted blue
+T--Ts dotted blue
+M--N red
+
+circumcircle As M N 0.1 lightred / red dashed
+circumcircle As H Cs 0.1 pink / purple dashed
+!clip(box((-1.4,-1.4),(2,2)));
+
+*/
+\end{asy}
+\end{center}
+
+Lot $\omega$ denote the circumcircle of $\triangle A^\ast H C^\ast$,
+which is orthogonal to the original circle $(ABCD)$.
+It would suffices to show $(A^\ast H C^\ast)$
+is an $H$-Apollonius circle with respect to $\ol{MN}$,
+from which we would get $C^\ast M / H M = C^\ast N / H N$.
+
+However, $\omega$ through $H$ and $A$,
+hence it center lies on line $MN$.
+Moreover $\omega$ is orthogonal to $(A^\ast MN)$
+(since $(A^\ast MN)$ and $(A^\ast BD)$ are homothetic).
+This is enough (for example, if we let $O$ denote the center of $\omega$,
+we now have $\mathrm{r}(\omega)^2 = OH^2 = OM \cdot ON$).
+(Note in this proof that the fact that $C^\ast$ lies on $(ABCD)$
+is not relevant.)
+\pagebreak
+
+\section{Solutions to Day 2}

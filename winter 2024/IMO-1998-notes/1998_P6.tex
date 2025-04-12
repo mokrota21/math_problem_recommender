@@ -1,0 +1,78 @@
+
+\textsl{Available online at \url{https://aops.com/community/p124426}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Classify all functions $f \colon \NN \to \NN$
+satisfying the identity
+\[ f(n^2 f(m)) = m f(n)^2. \]
+\end{mdframed}
+Let $\mathcal P$ be the set of primes,
+and let $g \colon \mathcal P \to \mathcal P$ be any involution on them.
+Extend $g$ to a completely multiplicative function on $\NN$.
+Then $f(n) = d g(n)$ is a solution for any $d \in \NN$
+which is fixed by $g$.
+
+It's straightforward to check these all work,
+since $g \colon \NN \to \NN$ is an involution on them.
+So we prove these are the only functions.
+
+Let $d = f(1)$.
+\begin{claim*}
+  We have $df(n) = f(dn)$ and $d \cdot f(ab) = f(a) f(b)$.
+\end{claim*}
+\begin{proof}
+  Let $P(m,n)$ denote the assertion in the problem statement.
+  Off the bat,
+  \begin{itemize}
+    \ii $P(1,1)$ implies $f(d) = d^2$.
+    \ii $P(n,1)$ implies $f(f(n)) = d^2n$.
+    In particular, $f$ is injective.
+    \ii $P(1,n)$ implies $f(dn^2) = f(n)^2$.
+  \end{itemize}
+  Then
+  \begin{align*}
+    f(a)^2 f(b)^2 &= f(da^2) f(b)^2 & \text{by third bullet}\\
+    &= f(b^2 f(f(da^2))) & \text{by problem statement} \\
+    &= f(b^2 \cdot d^2 \cdot da^2) & \text{by second bullet} \\
+    &= f(dab)^2 & \text{by third bullet} \\
+    \implies f(a) f(b) &= f(dab).
+  \end{align*}
+  This implies the first claim by taking $(a,b) = (1,n)$.
+  Then $df(a) = f(da)$, and so we actually have
+  $f(a) f(b) = d f(ab)$.
+\end{proof}
+\begin{claim*}
+  All values of $f$ are divisible by $d$.
+\end{claim*}
+\begin{proof}
+  We have
+  \begin{align*}
+    f(n^2) &= \frac 1d f(n)^2 \\
+    f(n^3) &= \frac{f(n^2) f(n)}{d} = \frac{f(n)^3}{d^2} \\
+    f(n^4) &= \frac{f(n^3) f(n)}{d} = \frac{f(n)^4}{d^3}
+  \end{align*}
+  and so on,
+  which implies the result.
+\end{proof}
+Then, define $g(n) = f(n) / d$.
+We conclude that $g$ is completely multiplicative, with $g(1) = 1$.
+However, $f(f(n)) = d^2n$ also implies $g(g(n)) = n$,
+i.e.\ $g$ is an involution.
+Moreover, since $f(d) = d^2$, $g(d) = d$.
+
+All that remains is to check that $g$ must map primes to primes
+to finish the description in the problem.
+This is immediate; since $g$ is multiplicative and $g(1) = 1$,
+if $g(g(p)) = p$ then $g(p)$ can have at most one prime factor,
+hence $g(p)$ is itself prime.
+
+\begin{remark*}
+  The IMO problem actually asked for the least value of $f(1998)$.
+  But for instruction purposes,
+  it is probably better to just find all $f$.
+  Since $1998 = 2 \cdot 3^3 \cdot 37$,
+  this answer is $2^3 \cdot 3 \cdot 5 = 120$, anyways.
+\end{remark*}
+\pagebreak
+
+
+\end{document}

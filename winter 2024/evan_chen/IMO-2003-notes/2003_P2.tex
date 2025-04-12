@@ -1,0 +1,57 @@
+\textsl{Available online at \url{https://aops.com/community/p262}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Determine all pairs of positive integers $(a,b)$ such that
+\[ \frac{a^2}{2ab^2-b^3+1} \]
+is a positive integer.
+\end{mdframed}
+The answer is $(a,b) = (2\ell, 1)$, $(a,b) = (\ell, 2\ell)$
+and $(a,b) = (8\ell^4-\ell, 2\ell)$, for any $\ell$.
+Check these work.
+
+In the sequel, assume $b > 1$,
+and integers $a$, $b$, $k$ obey $k = \frac{a^2}{2ab^2-b^3+1}$.
+Expanding, we have the polynomial
+\[ X^2 - 2kb^2 \cdot X + k(b^3-1) = 0 \]
+has two integer roots, one of which is $X = a$.
+This means solutions to the original problem come in pairs
+(even with $k$ fixed):
+\[ (a,b) \longleftrightarrow
+  \left( 2kb^2 - a, b\right)
+  = \left( \frac{k(b^3-1)}{a}, b\right). \]
+(Here, the first representation ensures
+$2kb^2-a \in \ZZ$,
+while the latter representation and the hypothesis $b > 1$ ensures
+that $\frac{k(b^3-1)}{a} > 0$.)
+
+On the other hand, we claim that:
+\begin{claim*}
+For any solution $(a,b)$,
+either $2a = b$ or $a > b$.
+\end{claim*}
+\begin{proof}
+  Since the denominator is positive, $a \ge b/2$.
+  Now,
+  \[ a^2 \ge 2ab^2 - b^3 + 1 \iff a^2 \ge b^2(2a-b) + 1 \]
+  and so if $2a - b > 0$ then $a^2 > b^2 \implies a > b$.
+\end{proof}
+
+Now assume we have pair $(a_1, b)$ and $(a_2, b)$
+of solutions with $b \neq 2a_1, 2a_2$.
+Then assume $a_1 > a_2 > b$ and
+\begin{align*}
+  a_1 + a_2 &= 2k \cdot b^2 \\
+  a_1a_2 &= k(b^3-1)
+\end{align*}
+That's impossible, since then $a_1 > \frac{a_1+a_2}{2} = k b^2$
+and hence $a_1a_2 > kb^2 \cdot b = kb^3$.
+Thus the only solutions are the ones we claimed at the beginning.
+
+\begin{remark*}
+  Important to notice that the problem is \emph{positive divides},
+  not just divides.
+  There is an implicit inequality built in to the problem
+  statement and it is essentially impossible to solve without.
+  I would be interested in a pair $(a,b)$
+  for which $k < 0$, $k \in \ZZ$ yet $a, b > 0$.
+\end{remark*}
+\pagebreak

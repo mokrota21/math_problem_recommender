@@ -1,0 +1,45 @@
+\textsl{Available online at \url{https://aops.com/community/p25635138}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Find all functions $f \colon \RR^+ \to \RR^+$ such that for each $x \in \RR^+$,
+there is exactly one $y \in \RR^+$ satisfying \[ xf(y)+yf(x) \leq 2. \]
+\end{mdframed}
+The answer is $f(x) \equiv 1/x$ which obviously works (here $y=x$).
+
+For the converse, assume we have $f$ such that
+each $x \in \RR^+$ has a \emph{friend} $y$ with $xf(y)+yf(x)\le2$.
+By symmetry $y$ is also the friend of $x$.
+
+\begin{claim*}
+  In fact every number is its own friend.
+\end{claim*}
+\begin{proof}
+  Assume for contradiction $a \neq b$ are friends.
+  Then we know that  $af(a) + af(a) > 2 \implies f(a) > \frac 1a$.
+  Analogously, $f(b) > \frac 1b$.
+  However, we then get
+  \[ 2 \ge a f(b) + b f(a) > \frac ab + \frac ba \overset{\text{AMGM}}{\ge} 2 \]
+  which is impossible.
+\end{proof}
+
+The problem condition now simplifies to saying
+\[ f(x) \le \frac1x \text{ for all $x$}, \qquad
+  xf(y) + yf(x) > 2 \text{ for all $x \neq y$}. \]
+In particular, for any $x>0$ and $\eps > 0$ we have
+\begin{align*}
+  2 &< xf(x+\eps) + (x+\eps)f(x) \le \frac{x}{x+\eps} + (x+\eps) f(x) \\
+  \implies f(x) &> \frac{x+2\eps}{(x+\eps)^2}
+  = \frac{1}{x + \frac{\eps^2}{x+2\eps}}.
+\end{align*}
+Since this holds for all $\eps > 0$ this forces $f(x) \ge \frac1x$ as well.
+We're done.
+
+\begin{remark*}
+  Alternatively, instead of using $x+\eps$,
+  it also works to consider $y = \frac{1}{f(x)}$.
+  For such a $y$, we would have
+  \[ xf\left( \frac{1}{f(x)} \right) + \frac{1}{f(x)} \cdot f(x)
+    = xf\left( \frac{1}{f(x)} \right) + 1
+    \leq x \cdot f(x) + 1 \leq 1 + 1 = 2 \]
+  which gives a similar contradiction.
+\end{remark*}
+\pagebreak

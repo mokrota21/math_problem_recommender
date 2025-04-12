@@ -1,0 +1,35 @@
+\textsl{Available online at \url{https://aops.com/community/p12752761}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Solve over positive integers the equation
+\[ k! = \prod_{i=0}^{n-1} (2^n-2^i)
+  = (2^n-1)(2^n-2)(2^n-4) \dots (2^n-2^{n-1}). \]
+\end{mdframed}
+The answer is $(n,k) =(1,1)$ and $(n,k) = (2,3)$ which work.
+
+Let $A = \prod_i (2^n-2^k)$, and assume $A = k!$ for some $k \ge 3$.
+Recall by exponent lifting that
+\[ \nu_3(2^t-1) = \begin{cases}
+    0 & t \text{ odd} \\
+    1 + \nu_3(t) & t \text{ even}.
+  \end{cases} \]
+Consequently, we can compute
+\begin{align*}
+  k > \nu_2(k!) &= \nu_2(A) = 1 + 2 + \dots + (n-1) = \frac{n(n-1)}{2} \\
+  \left\lfloor \frac k3 \right\rfloor
+    \le \nu_3(k!) &= \nu_3(A) = \left\lfloor \frac n2 \right\rfloor
+    + \left\lfloor \frac n6 \right\rfloor + \dots < \frac 34n.
+\end{align*}
+where the first inequality can be justified
+by Legendre's formula $\nu_2(k!) = k - s_2(k)$.
+
+In this way, we get
+\[ \frac 94 n + 3 > k > \frac{n(n-1)}{2} \]
+which means $n \le 6$; a manual check then shows the
+solutions we claimed earlier are the only ones.
+
+\begin{remark*}
+  An amusing corollary of the problem pointed out in the shortlist
+  is that the symmetric group $S_k$ cannot be isomorphic to the group $\GL_n(\FF_2)$
+  unless $(n,k) = (1,1)$ or $(n,k) = (2,3)$, which indeed produce isomorphisms.
+\end{remark*}
+\pagebreak

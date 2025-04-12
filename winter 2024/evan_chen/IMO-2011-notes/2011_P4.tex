@@ -1,0 +1,55 @@
+\textsl{Available online at \url{https://aops.com/community/p2365036}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $n > 0$ be an integer.
+We are given a balance and $n$ weights of weight $2^0$, $2^1$, \dots, $2^{n-1}$.
+We are to place each of the $n$ weights on the balance, one after another,
+in such a way that the right pan is never heavier than the left pan.
+At each step we choose one of the weights
+that has not yet been placed on the balance,
+and place it on either the left pan or the right pan,
+until all of the weights have been placed.
+Determine the number of ways in which this can be done.
+\end{mdframed}
+The answer is $a_n = (2n-1)!!$.
+
+We refer to what we're counting as a \emph{valid $n$-sequence}:
+an order of which weights to place,
+and whether to place them on the left or right pan.
+
+We use induction, with $n=1$ being obvious.
+Now consider the weight $2^0 = 1$.
+\begin{itemize}
+  \ii If we delete it from any valid $n$-sequence,
+  we get a valid $(n-1)$-sequence with all weights doubled.
+  \ii Given a valid $(n-1)$-sequence with all weights doubled,
+  we may insert $2^0 = 1$ it into $2n-1$ ways.
+  Indeed, we may insert it anywhere, and designate it either left or right,
+  except we may not designate right if we choose to insert
+  $2^0 = 1$ at the very beginning.
+\end{itemize}
+Consequently, we have that
+\[ a_n = (2n-1) \cdot a_{n-1}. \]
+Since $a_1 = 1$, the conclusion follows.
+
+\begin{remark*}
+  [Gabriel Levin]
+  An alternate approach can be done by considering the heaviest weight $2^{n-1}$
+  instead of the lightest weight $2^0=1$.
+  This gives a more complicated recursion:
+  \[ a_n = \sum_{k=0}^{n-1} \binom{n-1}{k} 2^{n-k-1} (n-k-1)! a_k \]
+  by summing over the index $k$ corresponding to the number of weights
+  placed before the heaviest weight $2^{n-1}$ is placed.
+
+  This recursion can then be rewritten as
+  \begin{align*}
+    a_n &= \sum_{k=0}^{n-1} \binom{n-1}{k} 2^{n-k-1} (n-k-1)! a_k \\
+    &= (n-1)! \sum_{k=0}^{n-1} \frac{2^{n-k-1}a_k}{k!} \\
+    &= 2(n-1)! \sum_{k=0}^{n-1} \frac{2^{(n-1)-k-1}a_k}{k!} \\
+    &= 2(n-1)(n-2)! (\sum_{k=0}^{(n-1)-1} \frac{2^{(n-1)-k-1}a_k}{k!}) + 2(n-1)!
+  \frac{\frac12 a_{n-1}}{(n-1)!}
+    &= 2(n-1) a_{n-1} + a_{n-1}
+    &= (2n-1)a_{n-1}
+  \end{align*}
+  and since $a_1 = 1$, we have $a_n = (2n-1)!!$ by induction on $n$.
+\end{remark*}
+\pagebreak

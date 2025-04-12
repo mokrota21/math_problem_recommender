@@ -1,0 +1,27 @@
+\textsl{Available online at \url{https://aops.com/community/p354109}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $a$, $b$, $c$ be positive real numbers with $abc = 1$.
+Show that
+\[
+  \left( a - 1 + \frac 1b \right)
+  \left( b - 1 + \frac 1c \right)
+  \left( c - 1 + \frac 1a \right)
+  \le 1.
+\]
+\end{mdframed}
+Let $a = x/y$, $b = y/z$, $c = z/x$ for $x,y,z > 0$.
+Then the inequality rewrites as
+\[ (-x+y+z)(x-y+z)(x+y-z) \le xyz \]
+which when expanded is equivalent to Schur's inequality.
+Alternatively, if one wants to avoid appealing to Schur,
+then the following argument works:
+\begin{itemize}
+  \ii At most one term on the left-hand side is negative;
+  if that occurs we are done from $xyz > 0 > (-x+y+z)(x-y+z)(x+y-z)$.
+  \ii If all terms in the left-hand side are nonnegative,
+  let us denote $m = -x+y+z \ge 0$, $n = x-y+z \ge 0$, $p = x+y-z \ge 0$.
+  Then it becomes
+  \[ mnp \le \frac{(m+n)(n+p)(p+m)}{8} \]
+  which follows by AM-GM.
+\end{itemize}
+\pagebreak

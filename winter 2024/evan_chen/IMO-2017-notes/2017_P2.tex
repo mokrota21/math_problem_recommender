@@ -1,0 +1,94 @@
+\textsl{Available online at \url{https://aops.com/community/p8633190}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Solve over $\RR$ the functional equation
+\[ f\left( f(x)f(y) \right) + f(x+y) = f(xy). \]
+\end{mdframed}
+The only solutions are $f(x) = 0$, $f(x) = x-1$ and $f(x)=1-x$,
+which clearly work.
+
+Note that
+\begin{itemize}
+  \ii If $f$ is a solution, so is $-f$.
+  \ii Moreover, if $f(0)=0$ then setting $y=0$ gives $f\equiv0$.
+  So henceforth we assume $f(0)>0$.
+\end{itemize}
+
+\begin{claim*}
+  We have $f(z) = 0 \iff z =1$.
+  Also, $f(0)=1$ and $f(1)=0$.
+\end{claim*}
+\begin{proof}
+  For the forwards direction, if $f(z)=0$ and $z \neq 1$
+  one may put $(x,y) = \left( z, z(z-1)\inv \right)$
+  (so that $x+y=xy$) we deduce $f(0) = 0$
+  which is a contradiction.
+
+  For the reverse, $f(f(0)^2)=0$ by setting $x=y=0$,
+  and use the previous part.
+  We also conclude $f(1) = 0$, $f(0) = 1$.
+\end{proof}
+
+\begin{claim*}
+  If $f$ is injective, we are done.
+\end{claim*}
+\begin{proof}
+  Setting $y=0$ in the original equation
+  gives $f(f(x)) = 1-f(x)$.
+  We apply this three times on the expression $f^3(x)$:
+  \[ f(1-f(x)) = f(f(f(x))) = 1 - f(f(x)) = f(x). \]
+  Hence $1-f(x) = x$ or $f(x) = 1-x$.
+\end{proof}
+\begin{remark*}
+  The result $f(f(x)) + f(x) = 1$ also implies that surjectivity
+  would solve the problem.
+\end{remark*}
+
+\begin{claim*}
+  $f$ is injective.
+\end{claim*}
+\begin{proof}
+  Setting $y=1$ in the original equation gives
+  $f(x+1) = f(x)-1$, and by induction
+  \begin{equation}
+    f(x+n) = f(x)-n.
+    \label{eq:linshift}
+  \end{equation}
+  Assume now $f(a) = f(b)$.
+  By using \eqref{eq:linshift} we may shift $a$ and $b$
+  to be large enough that
+  we may find $x$ and $y$ obeying $x+y=a+1$, $xy=b$.
+  Setting these gives
+  \begin{align*}
+    f(f(x)f(y)) &= f(xy) - f(x+y) = f(b) - f(a+1) \\
+    &= f(b) + 1 - f(a) = 1
+  \end{align*}
+  from which we conclude
+  \[ f\left( f(x)f(y) + 1 \right) = 0. \]
+  Hence by the first claim
+  we have $f(x)f(y) + 1 = 1$, so $f(x)f(y) = 0$.
+  Applying the first claim again gives $1 \in \{x,y\}$.
+  But that implies $a=b$.
+\end{proof}
+
+\begin{remark*}
+  Jessica Wan points out that
+  for any $a \neq b$, at least one of $a^2 > 4(b-1)$
+  and $b^2 > 4(a-1)$ is true.
+  So shifting via \eqref{eq:linshift}
+  is actually unnecessary for this proof.
+\end{remark*}
+
+\begin{remark*}
+  One can solve the problem over $\QQ$
+  using only \eqref{eq:linshift} and the easy parts.
+  Indeed, that already implies $f(n) = 1-n$ for all $n$.
+  Now we induct to show $f(p/q) = 1-p/q$ for all $0 < p < q$ (on $q$).
+  By choosing $x = 1+p/q$, $y = 1+q/p$,
+  we cause $xy = x+y$,
+  and hence $0 = f\left( f(1+p/q)f(1+q/p) \right)$
+  or $1 = f(1+p/q)f(1+q/p)$.
+
+  By induction we compute $f(1+q/p)$
+  and this gives $f(p/q+1) = f(p/q)-1$.
+\end{remark*}
+\pagebreak

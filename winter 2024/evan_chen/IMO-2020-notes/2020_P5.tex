@@ -1,0 +1,53 @@
+ik (EST)}
+\textsl{Available online at \url{https://aops.com/community/p17821528}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+A deck of $n > 1$ cards is given.
+A positive integer is written on each card.
+The deck has the property that the arithmetic mean of the
+numbers on each pair of cards is also the
+geometric mean of the numbers on some collection of one or more cards.
+For which $n$ does it follow that the numbers on the cards are all equal?
+\end{mdframed}
+The assertion is true for all $n$.
+
+\bigskip
+
+\textbf{Setup (boilerplate).}
+Suppose that $a_1$, \dots, $a_n$ satisfy the required properties
+but are not all equal.
+Let $d = \gcd(a_1, \dots, a_n) > 1$
+then replace $a_1$, \dots, $a_n$ by
+$\frac{a_1}{d}$, \dots, $\frac{a_n}{d}$.
+Hence without loss of generality we may assume
+\[ \gcd(a_1, a_2, \dots, a_n) = 1. \]
+WLOG we also assume \[ a_1 \ge a_2 \ge \dots \ge a_n. \]
+
+\bigskip
+
+\textbf{Main proof.}
+As $a_1 \ge 2$, let $p$ be a prime divisor of $a_1$.
+Let $k$ be smallest index such that $p \nmid a_k$ (which must exist).
+In particular, note that $a_1 \neq a_k$.
+
+Consider the mean $x = \frac{a_1+a_k}{2}$; by assumption,
+it equals some geometric mean, hence
+\[ \sqrt[m]{a_{i_1} \dots a_{i_m}} = \frac{a_1 + a_k}{2} > a_k. \]
+Since the arithmetic mean is an integer not divisible by $p$,
+all the indices $i_1$, $i_2$, \dots, $i_m$
+must be at least $k$.
+But then the GM is at most $a_k$, contradiction.
+
+\begin{remark*}
+  A similar approach could be attempted by using
+  the smallest numbers rather than the largest ones,
+  but one must then handle the edge case $a_n = 1$
+  separately since no prime divides $1$.
+\end{remark*}
+
+\begin{remark*}
+  Since $\frac{27+9}{2} = 18 = \sqrt[3]{27 \cdot 27 \cdot 8}$,
+  it is not true that in general the AM of two largest different cards
+  is not the GM of other numbers in the sequence
+  (say the cards are $27, 27, 9, 8, \dots$).
+\end{remark*}
+\pagebreak

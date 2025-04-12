@@ -1,0 +1,30 @@
+\textsl{Available online at \url{https://aops.com/community/p354115}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Does there exist a positive integer $n$
+such that $n$ has exactly 2000 distinct prime divisors
+and $n$ divides $2^n + 1$?
+\end{mdframed}
+Answer: Yes.
+
+We say that $n$ is \emph{Korean} if $n \mid 2^n+1$.
+First, observe that $n=9$ is Korean.
+Now, the problem is solved upon the following claim:
+\begin{claim*}
+  If $n > 3$ is Korean,
+  there exists a prime $p$ not dividing $n$
+  such that $np$ is Korean too.
+\end{claim*}
+\begin{proof}
+  I claim that one can take any primitive prime divisor $p$ of $2^{2n}-1$,
+  which exists by Zsigmondy theorem.
+  Obviously $p \neq 2$.
+  Then:
+  \begin{itemize}
+    \ii Since $p \nmid 2^{\varphi(n)}-1$ it follows then that $p \nmid n$.
+    \ii Moreover, $p \mid 2^n+1$ since $p \nmid 2^n-1$.
+  \end{itemize}
+  Hence $np \mid 2^n+1 \mid 2^{np} + 1$ by Chinese Theorem,
+  since $\gcd(n,p) = 1$.
+  % Thanks Wanlin for catching this
+\end{proof}
+\pagebreak

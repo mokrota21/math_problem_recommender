@@ -1,0 +1,102 @@
+\textsl{Available online at \url{https://aops.com/community/p1935927}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $I$ be the incenter of a triangle $ABC$ and let $\Gamma$ be its circumcircle.
+Let line $AI$ intersect $\Gamma$ again at $D$.
+Let $E$ be a point on arc $\widehat{BDC}$ and $F$ a point on side $BC$ such that
+\[ \angle BAF = \angle CAE < \tfrac12 \angle BAC. \]
+Finally, let $G$ be the midpoint of $\ol{IF}$.
+Prove that $\ol{DG}$ and $\ol{EI}$ intersect on $\Gamma$.
+\end{mdframed}
+Let $\ol{EI}$ meet $\Gamma$ again at $K$.
+Then it suffices to show that $\ol{KD}$ bisects $\ol{IF}$.
+Let $\ol{AF}$ meet $\Gamma$ again at $H$, so $\ol{HE} \parallel \ol{BC}$.
+By Pascal theorem on \[ AHEKDD \]
+we then obtain that $P = \ol{AH} \cap \ol{KD}$ lies on a line through $I$
+parallel to $\ol{BC}$.
+
+Let $I_A$ be the $A$-excenter,
+and set $Q = \ol{I_AF} \cap \ol{IP}$, and $T = \ol{AIDI_A} \cap \ol{BFC}$.
+Then
+\[ -1 = (AI;TI_A) \overset{F} = (IQ;\infty P) \]
+where $\infty$ is the point at infinity along $\ol{IPQ}$.
+Thus $P$ is the midpoint of $\ol{IQ}$.
+Since $D$ is the midpoint of $\ol{II_A}$ by ``Fact 5'',
+it follows that $\ol{DP}$ bisects $\ol{IF}$.
+
+\begin{center}
+\begin{asy}
+size(9cm);
+
+pair A = dir(110);
+pair B = dir(210);
+pair C = dir(330);
+pair D = dir(-90);
+pair I = incenter(A, B, C);
+pair I_A = 2*D-I;
+
+pair E = dir(310);
+pair K = -E+2*foot(origin, E, I);
+pair H = B*C/E;
+pair F = extension(B, C, A, H);
+pair G = extension(D, K, I, F);
+pair P = extension(A, F, D, G);
+pair Q = extension(I, P, I_A, F);
+
+draw(A--B--C--cycle, lightblue);
+filldraw(unitcircle, opacity(0.1)+lightcyan, lightblue);
+
+draw(A--I_A, lightblue);
+draw(A--H--E--K--D--cycle, orange);
+draw((D+0.3)--(D-0.3), orange);
+draw(I--Q--I_A, red);
+draw(I--F, blue);
+pair T = extension(B, C, A, D);
+
+dot("$A$", A, dir(A));
+dot("$B$", B, dir(B));
+dot("$C$", C, dir(C));
+dot("$D$", D, dir(220));
+dot("$I$", I, dir(10));
+dot("$I_A$", I_A, dir(I_A));
+dot("$E$", E, dir(E));
+dot("$K$", K, dir(K));
+dot("$H$", H, dir(H));
+dot("$F$", F, dir(F));
+dot("$G$", G, dir(350));
+dot("$P$", P, dir(45));
+dot("$Q$", Q, dir(Q));
+dot("$T$", T, dir(T));
+
+/* TSQ Source:
+
+!size(9cm);
+
+A = dir 110
+B = dir 210
+C = dir 330
+D = dir -90 R220
+I = incenter A B C R10
+I_A = 2*D-I
+
+E = dir 310
+K = -E+2*foot origin E I
+H = B*C/E
+F = extension B C A H
+G = extension D K I F R350
+P = extension A F D G R45
+Q = extension I P I_A F
+
+A--B--C--cycle lightblue
+unitcircle 0.1 lightcyan / lightblue
+
+A--I_A lightblue
+A--H--E--K--D--cycle orange
+(D+0.3)--(D-0.3) orange
+I--Q--I_A red
+I--F blue
+T = extension B C A D
+
+*/
+\end{asy}
+\end{center}
+\pagebreak

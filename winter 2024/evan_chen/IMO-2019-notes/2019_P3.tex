@@ -1,0 +1,77 @@
+\textsl{Available online at \url{https://aops.com/community/p12744851}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+A social network has $2019$ users, some pairs of which are friends (friendship is symmetric).
+If $A$, $B$, $C$ are three users such that $AB$ are friends and $AC$ are friends but $BC$ is not,
+then the administrator may perform the following operation:
+change the friendships such that $BC$ are friends, but $AB$ and $AC$ are no longer friends.
+
+Initially, $1009$ users have $1010$ friends and $1010$ users have $1009$ friends.
+Prove that the administrator can make a sequence of operations
+such that all users have at most $1$ friend.
+\end{mdframed}
+We take the obvious graph formulation
+and call the move a \emph{toggle}.
+
+\begin{claim*}
+  Let $G$ be a connected graph.
+  Then one can toggle $G$ without disconnecting the graph,
+  unless $G$ is a clique, a cycle, or a tree.
+\end{claim*}
+\begin{proof}
+  Assume $G$ is connected and not a tree, so it has a cycle.
+  Take the smallest cycle $C$; by hypothesis $C \neq G$.
+
+  If $C$ is not a triangle (equivalently, $G$ is triangle-free),
+  then let $b \notin C$ be a vertex adjacent to $C$, say at $a$.
+  Take a vertex $c$ of the cycle adjacent to $a$ (hence not to $b$).
+  Then we can toggle $abc$.
+
+  Now assume there exists a triangle; let $K$ be the maximal clique.
+  By hypothesis, $K \neq G$.
+  We take an edge $e = ab$ dangling off the clique,
+  with $a \in K$ and $b \notin K$.
+  Note some vertex $c$ of $K$ is not adjacent to $b$; now toggle $abc$.
+\end{proof}
+
+Back to the original problem;
+let $G_{\text{imo}}$ be the given graph.
+The point is that we can apply toggles (by the claim) repeatedly,
+without disconnecting the graph, until we get a tree.
+This is because
+\begin{itemize}
+  \ii $G_{\text{imo}}$ is connected,
+  since any two vertices which are not adjacent
+  have a common neighbor by pigeonhole
+  ($1009 + 1009 + 2 > 2019$).
+  \ii $G_{\text{imo}}$ cannot become a cycle,
+  because it initially has an odd-degree vertex,
+  and toggles preserve parity of degree!
+  \ii $G_{\text{imo}}$ is obviously not a clique initially
+  (and hence not afterwards).
+\end{itemize}
+So, we can eventually get $G_{\text{imo}}$ to be a tree.
+
+Once $G_{\text{imo}}$ is a tree the problem follows by repeatedly applying
+toggles arbitrarily until no more are possible;
+the graph (although now disconnected) remains acyclic
+(in particular having no triangles)
+and therefore can only terminate in the desired situation.
+
+\begin{remark*}
+  The above proof in fact shows the following better result:
+  \begin{quote}
+  The task is possible if and only if
+  $G_{\text{imo}}$ is a connected graph which is not a clique
+  and has any vertex of odd degree.
+  \end{quote}
+  The ``only if'' follows from the observation
+  that toggles preserve parity of degree.
+
+  Thus the given condition about the degrees of vertices
+  being $1009$ and $1010$ is largely a red herring;
+  it's a somewhat strange way of masking the correct and more natural
+  both-sufficient-and-necessary condition.
+\end{remark*}
+\pagebreak
+
+\section{Solutions to Day 2}

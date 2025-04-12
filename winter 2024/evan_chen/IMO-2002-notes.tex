@@ -1,0 +1,533 @@
+% © Evan Chen
+% Downloaded from https://web.evanchen.cc/
+
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evan}
+\ihead{\footnotesize\textbf{\thetitle}}
+\ohead{\footnotesize\href{http://web.evanchen.cc}{\ttfamily web.evanchen.cc},
+    updated \today}
+\title{IMO 2002 Solution Notes}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This is a compilation of solutions
+for the 2002 IMO.
+The ideas of the solution are a mix of my own work,
+the solutions provided by the competition organizers,
+and solutions found by the community.
+However, all the writing is maintained by me.
+
+These notes will tend to be a bit more advanced and terse than the ``official''
+solutions from the organizers.
+In particular, if a theorem or technique is not known to beginners
+but is still considered ``standard'', then I often prefer to
+use this theory anyways, rather than try to work around or conceal it.
+For example, in geometry problems I typically use directed angles
+without further comment, rather than awkwardly work around configuration issues.
+Similarly, sentences like ``let $\mathbb{R}$ denote the set of real numbers''
+are typically omitted entirely.
+
+Corrections and comments are welcome!
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\addtocounter{section}{-1}
+\section{Problems}
+\begin{enumerate}[\bfseries 1.]
+\item %% Problem 1
+Let $n$ be a positive integer.
+Let $T$ be the set of points $(x,y)$ in the plane
+where $x$ and $y$ are non-negative integers with $x+y<n$.
+Each point of $T$ is coloured red or blue,
+subject to the following condition:
+if a point $(x,y)$ is red,
+then so are all points $(x',y')$ of $T$
+with $x'\leq x$ and $y'\leq y$.
+Let $A$ be the number of ways to choose $n$ blue points
+with distinct $x$-coordinates,
+and let $B$ be the number of ways to choose $n$ blue
+points with distinct $y$-coordinates.
+Prove that $A=B$.
+
+\item %% Problem 2
+Let $BC$ be a diameter of circle $\omega$ with center $O$. Let $A$ be a point
+of circle $\omega$ such that $0^\circ < \angle AOB < 120^\circ$. Let $D$ be the midpoint
+of arc $AB$ not containing $C$. Line $\ell$ passes through $O$ and is
+parallel to line $AD$. Line $\ell$ intersects line $AC$ at $J$.
+The perpendicular bisector of segment $OA$ intersects circle $\omega$ at $E$
+and $F$. Prove that $J$ is the incenter of triangle $CEF$.
+
+\item %% Problem 3
+Find all pairs of positive integers
+$m, n \ge 3$ for which there exist infinitely many
+positive integers $a$ such that
+\[ \frac{a^m+a-1}{a^n+a^2-1} \]
+is itself an integer.
+
+\item %% Problem 4
+Let $n \ge 2$ be a positive integer
+with divisors $1 = d_1 < d_2 < \dots < d_k = n$.
+Prove that $d_1d_2 + d_2d_3 + \dots + d_{k-1} d_k$ is always less than $n^2$,
+and determine when it is a divisor of $n^2$.
+
+\item %% Problem 5
+Find all functions $f \colon \RR \to \RR$ such that
+\[ \left(f(x)+f(z)\right)\left(f(y)+f(t)\right)
+  = f(xy-zt)+f(xt+yz) \]
+for all real numbers $x$, $y$, $z$, $t$.
+
+\item %% Problem 6
+Let $n \ge 3$ be a positive integer.
+Let $C_1$, $C_2$, \dots, $C_n$ be unit circles in the plane,
+with centers $O_1$, $O_2$, \dots, $O_n$ respectively.
+If no line meets more than two of the circles, prove that
+\[ \sum_{1 \le i < j \le n } \frac{1}{O_i O_j}
+  \le \frac{(n-1)\pi}{4}. \]
+
+\end{enumerate}
+\pagebreak
+
+\section{Solutions to Day 1}
+\subsection{IMO 2002/1, proposed by Federico Ardila (COL)}
+\textsl{Available online at \url{https://aops.com/community/p118710}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $n$ be a positive integer.
+Let $T$ be the set of points $(x,y)$ in the plane
+where $x$ and $y$ are non-negative integers with $x+y<n$.
+Each point of $T$ is coloured red or blue,
+subject to the following condition:
+if a point $(x,y)$ is red,
+then so are all points $(x',y')$ of $T$
+with $x'\leq x$ and $y'\leq y$.
+Let $A$ be the number of ways to choose $n$ blue points
+with distinct $x$-coordinates,
+and let $B$ be the number of ways to choose $n$ blue
+points with distinct $y$-coordinates.
+Prove that $A=B$.
+\end{mdframed}
+Let $a_x$ denote the number of blue points
+with a given $x$-coordinate.
+Define $b_y$ to be the number of blue points
+with a given $y$-coordinate.
+
+We actually claim that
+\begin{claim*}
+The multisets $\mathcal A \coloneqq \{ a_x \mid x \}$
+and $\mathcal B \coloneqq \{ b_y \mid y \}$ are equal.
+\end{claim*}
+\begin{proof}
+By induction on the number of red points.
+If there are no red points at all,
+then $\mathcal A = \mathcal B = \{1, \dots, n\}$.
+\begin{center}
+\begin{asy}
+size(5cm);
+draw( (1,5)--(1,2)--(4,2), lightgreen );
+for (int i=0; i<=6; ++i) {
+for (int j=0; j<=6-i; ++j) {
+dot( (i,j), blue+1.5 );
+}
+}
+dot( (0,0), red+3 );
+dot( (1,0), red+3 );
+dot( (2,0), red+3 );
+dot( (3,0), red+3 );
+dot( (0,1), red+3 );
+dot( (1,1), red+3 );
+dot( (0,2), red+3 );
+dot( (1,2), red+4 );
+dot( (0,3), red+3 );
+dot( (0,4), red+3 );
+draw(circle( (1,2), 0.2 ), red );
+\end{asy}
+\end{center}
+The proof consists of two main steps.
+First, suppose we color a single point $P = (x,y)$
+from blue to red (while preserving the condition).
+Before the coloring, we have $a_x = b_y = n-(x+y)$;
+afterwards $a_x = b_y = n-(x+y)-1$
+and no other numbers change, as desired.
+
+We also must show that this operation
+(repeatedly adding a single point $P$) reaches all
+possible shapes of red points.
+This is well-known as the red points form a Young tableaux;
+for example, one way is to add all the points with $x=0$
+first one by one, then all the points with $x=1$, and so on.
+So the induction implies the result.
+\end{proof}
+Finally, \[ A = \prod_{x=0}^{n-1} a_x = \prod_{y=0}^{n-1} b_y = B. \]
+\pagebreak
+
+\subsection{IMO 2002/2, proposed by Hojoo Lee (KOR)}
+\textsl{Available online at \url{https://aops.com/community/p118672}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $BC$ be a diameter of circle $\omega$ with center $O$. Let $A$ be a point
+of circle $\omega$ such that $0^\circ < \angle AOB < 120^\circ$. Let $D$ be the midpoint
+of arc $AB$ not containing $C$. Line $\ell$ passes through $O$ and is
+parallel to line $AD$. Line $\ell$ intersects line $AC$ at $J$.
+The perpendicular bisector of segment $OA$ intersects circle $\omega$ at $E$
+and $F$. Prove that $J$ is the incenter of triangle $CEF$.
+\end{mdframed}
+By construction, $AEOF$ is a rhombus with $60\dg$-$120\dg$ angles.
+Consequently, we may set $s = AO = AE = AF = EO = EF$.
+\begin{center}
+\begin{asy}
+pair B = dir(0);
+pair C = dir(180);
+pair D = dir(37);
+pair A = D*D;
+pair E = dir(60)*A;
+pair F = dir(-60)*A;
+pair O = origin;
+pair J = A+O-D;
+filldraw(unitcircle, opacity(0.1)+lightcyan, heavycyan);
+
+filldraw(A--B--C--cycle, opacity(0.1)+lightcyan, heavycyan);
+draw(A--D, red);
+draw(O--J, red);
+filldraw(C--E--F--cycle, opacity(0.1)+green, heavygreen);
+filldraw(A--E--O--F--cycle, opacity(0.1)+lightblue, blue);
+draw(E--F, blue);
+draw(A--O, blue);
+
+dot("$B$", B, dir(B));
+dot("$C$", C, dir(C));
+dot("$D$", D, dir(D));
+dot("$A$", A, dir(A));
+dot("$E$", E, dir(E));
+dot("$F$", F, dir(F));
+dot("$O$", O, dir(-90));
+dot("$J$", J, dir(J));
+
+/* TSQ Source:
+
+B = dir 0
+C = dir 180
+D = dir 37
+A = D*D
+E = dir(60)*A
+F = dir(-60)*A
+O = origin R-90
+J = A+O-D
+unitcircle 0.1 lightcyan / heavycyan
+
+A--B--C--cycle 0.1 lightcyan / heavycyan
+A--D red
+O--J red
+C--E--F--cycle 0.1 green / heavygreen
+A--E--O--F--cycle 0.1 lightblue / blue
+E--F blue
+A--O blue
+
+*/
+\end{asy}
+\end{center}
+\begin{claim*}
+  We have $AJ = s$ too.
+\end{claim*}
+\begin{proof}
+  It suffices to show $AJ = AO$ which is angle chasing.
+  Let $\theta = \angle BOD = \angle DOA$,
+  so $\angle BOA = 2\theta$.
+  Thus $\angle CAO = \half \angle BOA = \theta$.
+  However $\angle AOJ = \angle OAD = 90\dg - \half \theta$,
+  as desired.
+\end{proof}
+Then, since $AE = AJ = AF$,
+we are done by the infamous Fact 5.
+\pagebreak
+
+\subsection{IMO 2002/3, proposed by Laurentiu Panaitopol (ROU)}
+\textsl{Available online at \url{https://aops.com/community/p118695}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Find all pairs of positive integers
+$m, n \ge 3$ for which there exist infinitely many
+positive integers $a$ such that
+\[ \frac{a^m+a-1}{a^n+a^2-1} \]
+is itself an integer.
+\end{mdframed}
+The condition is equivalent to $a^n+a^2-1$
+dividing $a^m+a-1$ as polynomials.
+The big step is the following analytic one.
+
+\begin{claim*}
+  We must have $m \le 2n$.
+\end{claim*}
+\begin{proof}
+  Assume on contrary $m > 2n$
+  and let $0 < r < 1$ be the unique real number
+  with $r^n+r^2 = 1$, hence $r^m+r = 1$.
+  But now
+  \begin{align*}
+    0 &= r^m + r - 1 < r(r^n)^2 + r - 1 = r\left( (1-r^2)^2+1 \right) - 1 \\
+    &= -(1-r)\left( r^4+r^3-r^2-r+1 \right).
+  \end{align*}
+  As $1-r > 0$ and $r^4+r^3-r^2-r+1 > 0$, this is a contradiction
+\end{proof}
+
+Now for the algebraic part.
+Obviously $m > n$.
+\begin{align*}
+  a^n+a^2-1 &\mid a^m+a-1 \\
+  \iff a^n+a^2-1 &\mid (a^m+a-1)(a+1) = a^m(a+1) + (a^2-1)  \\
+  \iff a^n+a^2-1 &\mid a^m(a+1) - a^n \\
+  \iff a^n+a^2-1 &\mid a^{m-n}(a+1) - 1.
+\end{align*}
+The right-hand side has degree $m-n+1 \le n+1$,
+and the leading coefficients are both $+1$.
+So the only possible situations are
+\begin{align*}
+  a^{m-n}(a+1) - 1 &= (a+1)\left( a^n+a^2-1 \right) \\
+  a^{m-n}(a+1) + 1 &=  a^n+a^2-1.
+\end{align*}
+The former fails by just taking $a=-1$;
+the latter implies $(m,n) = (5,3)$.
+As our work was reversible, this also implies $(m,n) = (5,3)$ works, done.
+\pagebreak
+
+\section{Solutions to Day 2}
+\subsection{IMO 2002/4, proposed by Mihai Manea (ROU)}
+\textsl{Available online at \url{https://aops.com/community/p118687}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $n \ge 2$ be a positive integer
+with divisors $1 = d_1 < d_2 < \dots < d_k = n$.
+Prove that $d_1d_2 + d_2d_3 + \dots + d_{k-1} d_k$ is always less than $n^2$,
+and determine when it is a divisor of $n^2$.
+\end{mdframed}
+We always have
+\begin{align*}
+  d_k d_{k-1} + d_{k-1} d_{k-2} + \dots + d_2 d_1
+  &< n \cdot \frac n2 + \frac n2 \cdot \frac n3 + \dots \\
+  &= \left( \frac{1}{1 \cdot 2} + \frac{1}{2 \cdot 3} + \dots \right) n^2 = n^2.
+\end{align*}
+This proves the first part.
+
+For the second, we claim that this only happens
+when $n$ is prime (in which case we get $d_1 d_2 = n$).
+Assume $n$ is not prime (equivalently $k \ge 2$)
+and let $p$ be the smallest prime dividing $n$.
+Then
+\[ d_k d_{k-1} + d_{k-1} d_{k-2} + \dots + d_2 d_1
+  > d_k d_{k-1} = \frac{n^2}{p} \]
+exceeds the largest proper divisor of $n^2$,
+but is less than $n^2$, so does not divide $n^2$.
+\pagebreak
+
+\subsection{IMO 2002/5, proposed by Belur Jana Venkatachala (IND)}
+\textsl{Available online at \url{https://aops.com/community/p118703}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Find all functions $f \colon \RR \to \RR$ such that
+\[ \left(f(x)+f(z)\right)\left(f(y)+f(t)\right)
+  = f(xy-zt)+f(xt+yz) \]
+for all real numbers $x$, $y$, $z$, $t$.
+\end{mdframed}
+The answer is $f(x) \equiv 0$, $f(x) \equiv 1/2$
+and $f(x) \equiv x^2$ which are easily seen to work.
+Let's prove they are the only ones;
+we show two solutions.
+
+\paragraph{First solution (multiplicativity).}
+Let $P(x,y,z,t)$ denote the given statement.
+\begin{itemize}
+  \ii By comparing $P(x,1,0,0)$ and $P(0,0,1,x)$
+  we get $\boxed{f \text{ even}}$.
+  \ii By $P(0,y,0,t)$ we get for nonconstant $f$
+  that $f(0) = 0$.
+  If $f$ is constant we get the solutions earlier,
+  so in the sequel assume $\boxed{f(0) = 0}$.
+  \ii By $P(x,y,0,0)$ we get $\boxed{f(xy) = f(x) f(y)}$.
+  Note in particular that for any real number $x$ we now have
+  \[ f(x) = f(|x|) = f\left( \sqrt{|x|} \right)^2 \ge 0 \]
+  that is, $f \ge 0$.
+\end{itemize}
+
+From $P(x,y,y,x)$ we now have
+\[ f(x^2 + y^2) = \left( f(x) + f(y) \right)^2
+  = f(x^2) + 2f(x)f(y) + f(y^2) \ge f(x^2) \]
+so $f$ is weakly increasing.
+Combined with $f$ multiplicative and nonconstant,
+this implies $f(x) = |x|^r$ for some real number $r$.
+
+Finally, $P(1,1,1,1)$ gives $f(2) = 4f(1)$,
+so $f(x) \equiv x^2$.
+
+\paragraph{Second solution (ELMO).}
+Let $P(x,y,z,t)$ denote the statement.
+Assume $f$ is nonconstant,
+as before we derive that $f$ is even, $f(0) = 0$,
+and $f(x) \ge 0$ for all $x$.
+
+Now comparing $P(x,y,z,t)$ and $P(z,y,x,t)$ we obtain
+\[ f(xy-zt) + f(xt+yz) =
+  \left( f(x)+f(z) \right)
+  \left( f(y)+f(t) \right)
+  = f(xy+zt) + f(xt-yz) \]
+which in particular implies that
+\[ f(a-d) + f(b+c) = f(a+d) + f(b-c)
+\qquad \text{ if } ad=bc \text{ and } a,b,c,d > 0. \]
+Thus the restriction of $f$ to $(0,\infty)$ satisfies
+\textbf{ELMO 2011, problem 4}
+which implies that $f(x) = kx^2+\ell$ for constants $k$ and $\ell$.
+From here we recover the original.
+
+(Minor note: technically ELMO 2011/4 is $f \colon (0,\infty) \to (0,\infty)$
+but we only have $f \ge 0$,
+however the proof for the ELMO problem
+works as long as $f$ is bounded below;
+we could also just apply the ELMO problem to $f+0.01$ instead.)
+\pagebreak
+
+\subsection{IMO 2002/6, proposed by Vyacheslav Yasinsky (UKR)}
+\textsl{Available online at \url{https://aops.com/community/p118677}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $n \ge 3$ be a positive integer.
+Let $C_1$, $C_2$, \dots, $C_n$ be unit circles in the plane,
+with centers $O_1$, $O_2$, \dots, $O_n$ respectively.
+If no line meets more than two of the circles, prove that
+\[ \sum_{1 \le i < j \le n } \frac{1}{O_i O_j}
+  \le \frac{(n-1)\pi}{4}. \]
+\end{mdframed}
+For brevity, let $d_{ij}$ be the length of $O_{ij}$
+and let $\angle(ijk)$ be shorthand for $\angle O_i O_j O_k$
+(or its measure in radians).
+
+First, we eliminate the circles completely
+and reduce the problem to angles using the following fact
+(which is in part motivated by the mysterious
+presence of $\pi$ on right-hand side,
+and also brings $d_{ij}\inv$ into the picture).
+
+\begin{lemma*}
+  For any indices $i$, $j$, $m$ we have the inequalities
+  \[ \angle (imj) \ge
+      \max \left( \frac{2}{d_{mi}}, \frac{2}{d_{mj}} \right)
+      \quad\text{and}\quad
+    \pi - \angle (imj) \ge
+    \max \left( \frac{2}{d_{mi}}, \frac{2}{d_{mj}} \right). \]
+\end{lemma*}
+\begin{proof}
+  We first prove the former line.
+  Consider the altitude from $O_i$ to $O_m O_j$.
+  The altitude must have length at least $2$,
+  otherwise its perpendicular bisector passes
+  intersects all of $C_i$ , $C_m$, $C_j$.
+  Thus
+  \[ 2 \le d_{mi} \sin \angle(imj) \le \angle(imj) \]
+  proving the first line.
+  The second line follows by considering the external
+  angle formed by lines $O_m O_i$ and $O_m O_j$
+  instead of the internal one.
+\end{proof}
+
+Our idea now is for any index $m$
+we will make an estimate on
+$\sum_{\substack{1 \le i \le n \\ i \neq b}} \frac{1}{d_{bi}}$
+for each index $b$.
+If the centers formed a convex polygon,
+this would be much simpler,
+but because we do not have this assumption some more care is needed.
+
+\begin{claim*}
+  Suppose $O_a$, $O_b$, $O_c$ are consecutive vertices
+  of the convex hull.
+  Then
+  \[ \frac{n-1}{n-2} \dang(abc) \ge \frac{2}{d_{1b}} + \frac{2}{d_{2b}}
+    + \dots + \frac{2}{d_{nb}} \]
+  where the term $\frac{2}{d_{bb}}$ does not appear (obviously).
+\end{claim*}
+
+\begin{proof}
+  WLOG let's suppose $(a,b,c) = (2,1,n)$ and
+  that rotating ray $O_2 O_1$ hits $O_3$, $O_4$, \dots, $O_n$
+  in that order.
+  We have
+  \begin{align*}
+    \frac{2}{d_{12}} &\le \angle(213) \\
+    \frac{2}{d_{13}} &\le \min \left\{ \angle(213), \angle(314) \right\} \\
+    \frac{2}{d_{14}} &\le \min \left\{ \angle(314), \angle(415) \right\} \\
+    &\vdotswithin=  \\
+    \frac{2}{d_{1(n-1)}} &\le
+      \min \left\{ \angle((n-2)1(n-1)), \angle((n-1)1n) \right\} \\
+    \frac{2}{d_{1n}} &\le \angle\left( (n-1) 1 n \right).
+  \end{align*}
+  Of the $n-1$ distinct angles appearing on the right-hand side,
+  we let $\kappa$ denote the smallest of them.
+  We have $\kappa \le \frac{1}{n-2} \angle(21n)$
+  by pigeonhole principle.
+  Then we pick the minimums on the right-hand side in
+  the unique way such that summing gives
+  \begin{align*}
+    \sum_{i=2}^n \frac{2}{d_{1i}}
+    &\ge \left( \angle(213)+\angle(314)+\dots+\angle( (n-1)1n ) \right)
+      + \kappa \\
+    &\ge \angle(21n) + \frac{1}{n-2} \angle(21n) = \frac{n-1}{n-2} \angle(21n)
+  \end{align*}
+  as desired.
+\end{proof}
+
+
+Next we show a bound that works for any center,
+even if it does not lie on the convex hull $\mathcal H$.
+\begin{claim*}
+  For any index $b$ we have
+  \[ \frac{n-1}{n-2} \pi \ge \frac{2}{d_{1b}} + \frac{2}{d_{2b}}
+    + \dots + \frac{2}{d_{nb}} \]
+  where the term $\frac{2}{d_{bb}}$ does not appear (obviously).
+\end{claim*}
+\begin{proof}
+  This is the same argument as in the previous proof,
+  with the modification that
+  because $O_b$ could lie inside the convex hull now,
+  our rotation argument should use lines instead of rays
+  (in order for the angle to be $\pi$ rather than $2\pi$).
+  This is why the first lemma is stated with two cases;
+  we need it now.
+
+  Again WLOG $b=1$.
+  Consider line $O_{1} O_2$ (rather than just the ray)
+  and imagine rotating it counterclockwise through $O_2$;
+  suppose that this line passes through $O_3$, $O_4$, \dots, $O_{n}$
+  in that order before returning to $O_{2}$ again.
+  We let $\dang (i1j) \in \{ \angle (i1j), \pi-\angle(i1j) \} \in [0, \pi)$ %chktex 9
+  be the counterclockwise rotations obtained in this way,
+  so that
+  \[ \dang(21n) = \dang(213) + \dang(314) +
+    + \dots + \dang((n-1)1n). \]
+  (This is not ``directed angles'', but related.)
+
+  Then we get bounds
+  \begin{align*}
+    \frac{2}{d_{12}} &\le \dang(213) \\
+    \frac{2}{d_{13}} &\le \min \left\{ \dang(213), \dang(314) \right\} \\
+    &\vdotswithin=  \\
+    \frac{2}{d_{1(n-1)}} &\le
+      \min \left\{ \dang((n-2)1(n-1)), \dang((n-1)1n) \right\} \\
+    \frac{2}{d_{1n}} &\le \dang\left\{ (n-1) 1 n \right\}
+  \end{align*}
+  as in the last proof, and so as before we get
+  \[ \sum_{i=1}^n \frac{2}{d_{1i}} \le \frac{n-1}{n-2} \dang(21n) \]
+  which is certainly less than $\frac{n-1}{n-2} \pi$.
+\end{proof}
+
+Now suppose there were $r$ vertices in the convex hull.
+If we sum the first claim across all $b$ on the hull,
+and the second across all $b$ not on the hull (inside it),
+we get
+\begin{align*}
+  \sum_{1 \le i<j \le n} \frac{2}{d_{ij}}
+  &= \half \sum_b \sum_{i \neq b} \frac{2}{d_{bi}} \\
+  &\le \half \cdot \frac{n-1}{n-2} \left( (r-2)\pi + (n-r)\pi  \right) \\
+  &= \frac{(n-1)\pi}{4}
+\end{align*}
+as needed (with $(r-2)\pi$ being the sum of angles in the hull).
+\pagebreak
+
+
+\end{document}

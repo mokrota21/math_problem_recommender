@@ -1,0 +1,571 @@
+% © Evan Chen
+% Downloaded from https://web.evanchen.cc/
+
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evan}
+\ihead{\footnotesize\textbf{\thetitle}}
+\ohead{\footnotesize\href{http://web.evanchen.cc}{\ttfamily web.evanchen.cc},
+    updated \today}
+\title{IMO 2022 Solution Notes}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This is a compilation of solutions
+for the 2022 IMO.
+The ideas of the solution are a mix of my own work,
+the solutions provided by the competition organizers,
+and solutions found by the community.
+However, all the writing is maintained by me.
+
+These notes will tend to be a bit more advanced and terse than the ``official''
+solutions from the organizers.
+In particular, if a theorem or technique is not known to beginners
+but is still considered ``standard'', then I often prefer to
+use this theory anyways, rather than try to work around or conceal it.
+For example, in geometry problems I typically use directed angles
+without further comment, rather than awkwardly work around configuration issues.
+Similarly, sentences like ``let $\mathbb{R}$ denote the set of real numbers''
+are typically omitted entirely.
+
+Corrections and comments are welcome!
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\addtocounter{section}{-1}
+\section{Problems}
+\begin{enumerate}[\bfseries 1.]
+\item %% Problem 1
+The Bank of Oslo issues two types of coin: aluminum (denoted $A$) and bronze
+(denoted $B$). Marianne has $n$ aluminum coins and $n$ bronze coins arranged in a
+row in some arbitrary initial order.
+A chain is any subsequence of consecutive coins of the same type.
+Given a fixed positive integer $k \leq 2n$,
+Gilberty repeatedly performs the following operation:
+he identifies the longest chain containing the $k$\ts{th} coin from the left
+and moves all coins in that chain to the left end of the row.
+For example, if $n=4$ and $k=4$, the process starting
+from the ordering $AABBBABA$ would be
+$AABBBABA \to BBBAAABA \to AAABBBBA \to BBBBAAAA \to \dotsb$.
+
+Find all pairs $(n,k)$ with $1 \leq k \leq 2n$
+such that for every initial ordering,
+at some moment during the process,
+the leftmost $n$ coins will all be of the same type.
+
+\item %% Problem 2
+Find all functions $f \colon \RR^+ \to \RR^+$ such that for each $x \in \RR^+$,
+there is exactly one $y \in \RR^+$ satisfying \[ xf(y)+yf(x) \leq 2. \]
+
+\item %% Problem 3
+Let $k$ be a positive integer and let $S$ be a finite set of odd prime numbers.
+Prove that there is at most one way (up to rotation and reflection)
+to place the elements of $S$ around the circle such that the product
+of any two neighbors is of the form $x^2+x+k$ for some positive integer $x$.
+
+\item %% Problem 4
+Let $ABCDE$ be a convex pentagon such that $BC=DE$.
+Assume that there is a point $T$ inside $ABCDE$
+with $TB=TD$, $TC=TE$ and $\angle ABT = \angle TEA$.
+Let line $AB$ intersect lines $CD$ and $CT$ at points $P$ and $Q$, respectively.
+Assume that the points $P$, $B$, $A$, $Q$ occur on their line in that order.
+Let line $AE$ intersect $CD$ and $DT$ at points $R$ and $S$, respectively.
+Assume that the points $R$, $E$, $A$, $S$ occur on their line in that order.
+Prove that the points $P$, $S$, $Q$, $R$ lie on a circle.
+
+\item %% Problem 5
+Find all triples $(a,b,p)$ of positive integers with $p$ prime and
+\[ a^p=b!+p. \]
+
+\item %% Problem 6
+Let $n$ be a positive integer.
+A \emph{Nordic square} is an $n \times n$ board
+containing all the integers from $1$ to $n^2$
+so that each cell contains exactly one number.
+An \emph{uphill path} is a sequence of one or more cells such that:
+\begin{enumerate}
+  \ii the first cell in the sequence is a \emph{valley},
+  meaning the number written is less than all its orthogonal neighbors,
+
+  \ii each subsequent cell in the sequence is orthogonally
+  adjacent to the previous cell, and
+
+  \ii the numbers written in the cells in the sequence are in increasing order.
+\end{enumerate}
+Find, as a function of $n$, the smallest possible total number
+of uphill paths in a Nordic square.
+
+\end{enumerate}
+\pagebreak
+
+\section{Solutions to Day 1}
+\subsection{IMO 2022/1, proposed by Baptiste Serraille (FRA)}
+\textsl{Available online at \url{https://aops.com/community/p25635135}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+The Bank of Oslo issues two types of coin: aluminum (denoted $A$) and bronze
+(denoted $B$). Marianne has $n$ aluminum coins and $n$ bronze coins arranged in a
+row in some arbitrary initial order.
+A chain is any subsequence of consecutive coins of the same type.
+Given a fixed positive integer $k \leq 2n$,
+Gilberty repeatedly performs the following operation:
+he identifies the longest chain containing the $k$\ts{th} coin from the left
+and moves all coins in that chain to the left end of the row.
+For example, if $n=4$ and $k=4$, the process starting
+from the ordering $AABBBABA$ would be
+$AABBBABA \to BBBAAABA \to AAABBBBA \to BBBBAAAA \to \dotsb$.
+
+Find all pairs $(n,k)$ with $1 \leq k \leq 2n$
+such that for every initial ordering,
+at some moment during the process,
+the leftmost $n$ coins will all be of the same type.
+\end{mdframed}
+Answer: $n \le k \le \left\lceil \frac 32 n \right\rceil$.
+
+Call a maximal chain a \emph{block}.
+Then the line can be described as a sequence of blocks: it's one of:
+\begin{align*}
+  \underbrace{A\dots A}_{e_1}
+  \underbrace{B\dots B}_{e_2}
+  \underbrace{A\dots A}_{e_3}
+  \dots
+  \underbrace{A\dots A}_{e_m} & \text{ for odd $m$} \\
+  \underbrace{A\dots A}_{e_1}
+  \underbrace{B\dots B}_{e_2}
+  \underbrace{A\dots A}_{e_3}
+  \dots
+  \underbrace{B\dots B}_{e_m} & \text{ for even $m$}
+\end{align*}
+or the same thing with the roles of $A$ and $B$ flipped.
+
+The main claim is the following:
+\begin{claim*}
+  The number $m$ of blocks will never increase after an operation.
+  Moreover, it stays the same if and only if
+  \begin{itemize}
+    \ii $k \le e_1$; or
+    \ii $m$ is even and $e_m \ge 2n+1-k$.
+  \end{itemize}
+\end{claim*}
+\begin{proof}
+  This is obvious, just run the operation and see!
+\end{proof}
+
+The problem asks for which values of $k$ we always reach $m=2$ eventually;
+we already know that it's non-increasing.
+We consider a few cases:
+\begin{itemize}
+  \ii If $k < n$, then any configuration with $e_1 = n-1$ will never change.
+  \ii If $k > \left\lceil 3n/2 \right\rceil$,
+  then take $m=4$ and $e_1 = e_2 = \left\lfloor n/2 \right\rfloor$
+  and $e_3 = e_4 = \left\lceil n/2 \right\rceil$.
+  This configuration retains $m=4$ always:
+  the blocks simply rotate.
+
+  \ii Conversely, suppose $k \ge n$ has the property that $m > 2$ stays fixed.
+  If after the first three operations $m$ hasn't changed,
+  then we must have $m \ge 4$ even, and $e_m, e_{m-1}, e_{m-2} \ge 2n+1 - k$.
+  Now,
+  \[ n \ge e_m + e_{m-2} \ge 2(2n+1-k) \implies k \ge \frac 32 n + 1 \]
+  so this completes the proof.
+\end{itemize}
+\pagebreak
+
+\subsection{IMO 2022/2, proposed by Merlijn Staps (NLD)}
+\textsl{Available online at \url{https://aops.com/community/p25635138}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Find all functions $f \colon \RR^+ \to \RR^+$ such that for each $x \in \RR^+$,
+there is exactly one $y \in \RR^+$ satisfying \[ xf(y)+yf(x) \leq 2. \]
+\end{mdframed}
+The answer is $f(x) \equiv 1/x$ which obviously works (here $y=x$).
+
+For the converse, assume we have $f$ such that
+each $x \in \RR^+$ has a \emph{friend} $y$ with $xf(y)+yf(x)\le2$.
+By symmetry $y$ is also the friend of $x$.
+
+\begin{claim*}
+  In fact every number is its own friend.
+\end{claim*}
+\begin{proof}
+  Assume for contradiction $a \neq b$ are friends.
+  Then we know that  $af(a) + af(a) > 2 \implies f(a) > \frac 1a$.
+  Analogously, $f(b) > \frac 1b$.
+  However, we then get
+  \[ 2 \ge a f(b) + b f(a) > \frac ab + \frac ba \overset{\text{AMGM}}{\ge} 2 \]
+  which is impossible.
+\end{proof}
+
+The problem condition now simplifies to saying
+\[ f(x) \le \frac1x \text{ for all $x$}, \qquad
+  xf(y) + yf(x) > 2 \text{ for all $x \neq y$}. \]
+In particular, for any $x>0$ and $\eps > 0$ we have
+\begin{align*}
+  2 &< xf(x+\eps) + (x+\eps)f(x) \le \frac{x}{x+\eps} + (x+\eps) f(x) \\
+  \implies f(x) &> \frac{x+2\eps}{(x+\eps)^2}
+  = \frac{1}{x + \frac{\eps^2}{x+2\eps}}.
+\end{align*}
+Since this holds for all $\eps > 0$ this forces $f(x) \ge \frac1x$ as well.
+We're done.
+
+\begin{remark*}
+  Alternatively, instead of using $x+\eps$,
+  it also works to consider $y = \frac{1}{f(x)}$.
+  For such a $y$, we would have
+  \[ xf\left( \frac{1}{f(x)} \right) + \frac{1}{f(x)} \cdot f(x)
+    = xf\left( \frac{1}{f(x)} \right) + 1
+    \leq x \cdot f(x) + 1 \leq 1 + 1 = 2 \]
+  which gives a similar contradiction.
+\end{remark*}
+\pagebreak
+
+\subsection{IMO 2022/3, proposed by Ankan Bhattacharya (USA)}
+\textsl{Available online at \url{https://aops.com/community/p25635143}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $k$ be a positive integer and let $S$ be a finite set of odd prime numbers.
+Prove that there is at most one way (up to rotation and reflection)
+to place the elements of $S$ around the circle such that the product
+of any two neighbors is of the form $x^2+x+k$ for some positive integer $x$.
+\end{mdframed}
+We replace ``positive integer $x$'' with ``nonnegative integer $x$'',
+and say numbers of the form $x^2+x+k$ are \emph{good}.
+We could also replace ``nonnegative integer $x$'' with ``integer $x$''
+owing to the obvious map $x \mapsto 1-x$.
+
+\begin{claim*}
+  If $p$ is an odd prime, there are at most two odd primes $q$ and $r$
+  less than $p$ for which $pq = x^2+x+k$ and $pr = y^2+y+k$ are good.
+
+  Moreover, if the above occurs and $x,y \ge 0$,
+  then $x+y+1=p$ and $xy \equiv k \pmod p$.
+\end{claim*}
+\begin{proof}
+  The equation $T^2+T+k \equiv 0 \pmod{p}$ has at most two solutions
+  modulo $p$, i.e.\ at most two solutions in the interval $[0,p-1]$.
+  Because $0 \le x,y < p$ from $p > \max(q,r)$ and $k > 0$,
+  the first half follows.
+
+  For the second half,
+  Vieta also gives $x+y \equiv -1 \pmod p$ and $xy \equiv k \pmod p$,
+  and we know $0 < x+y < 2p$.
+\end{proof}
+
+\begin{claim*}
+  If two such primes do exist as above, then $qr$ is also good (!).
+\end{claim*}
+\begin{proof}
+  Let $pq = x^2+x+k$ and $pr = y^2+y+k$ for $x,y \ge 0$ as before.
+  Fix $\alpha \in \CC$ such that $\alpha^2 + \alpha + k = 0$;
+  then for any $n \in \ZZ$, we have
+  \[ n^2 + n + k = \opname{Norm}(n-\alpha). \]
+  Hence
+  \[
+    pq \cdot pr = \opname{Norm}\Big((x-\alpha)(y-\alpha)\Big)
+    = \opname{Norm}\Big( (xy-k) - (x+y+1)\alpha\Big)
+  \]
+  But $\opname{Norm}(p) = p^2$,
+  so combining with the second half of the previous claim gives
+  \[ qr = \opname{Norm}(\frac1p(xy-k)-\alpha) \] as needed.
+\end{proof}
+
+These two claims imply the claim directly by induction on $|S|$,
+since one can now delete the largest element of $S$.
+
+\begin{remark*}
+  To show that the condition is not vacuous,
+  the author gave a ring of $385$ primes for $k=41$;
+  see \url{https://aops.com/community/p26068963}.
+\end{remark*}
+\pagebreak
+
+\section{Solutions to Day 2}
+\subsection{IMO 2022/4, proposed by Patrik Bak (SVK)}
+\textsl{Available online at \url{https://aops.com/community/p25635154}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $ABCDE$ be a convex pentagon such that $BC=DE$.
+Assume that there is a point $T$ inside $ABCDE$
+with $TB=TD$, $TC=TE$ and $\angle ABT = \angle TEA$.
+Let line $AB$ intersect lines $CD$ and $CT$ at points $P$ and $Q$, respectively.
+Assume that the points $P$, $B$, $A$, $Q$ occur on their line in that order.
+Let line $AE$ intersect $CD$ and $DT$ at points $R$ and $S$, respectively.
+Assume that the points $R$, $E$, $A$, $S$ occur on their line in that order.
+Prove that the points $P$, $S$, $Q$, $R$ lie on a circle.
+\end{mdframed}
+The conditions imply
+\[ \triangle BTC \cong \triangle DTE,
+  \qquad\text{and}\qquad
+  \triangle BTY \overset{-}{\sim} \triangle ETX. \]
+Define $K = \ol{CT} \cap \ol{AE}$, $L = \ol{DT} \cap \ol{AB}$,
+$X = \ol{BT} \cap \ol{AE}$, $Y = \ol{ET} \cap \ol{BY}$.
+
+\begin{center}
+\begin{asy}
+size(12cm);
+pair Y = dir(116.9642725);
+pair X = dir(76.9642725);
+pair B = dir(175.9642725);
+pair E = dir(24.9642725);
+pair A = extension(X, E, B, Y);
+pair T = extension(X, B, E, Y);
+pair D = T+(B-T)*dir(83);
+pair C = T+(E-T)*dir(-83);
+pair Q = extension(C, T, A, B);
+pair S = extension(D, T, A, E);
+pair P = extension(C, D, A, B);
+pair R = extension(C, D, A, E);
+pair L = extension(D, T, A, B);
+pair K = extension(C, T, A, E);
+
+filldraw(B--T--C--cycle, opacity(0.1)+yellow, 0.1+yellow);
+filldraw(D--T--E--cycle, opacity(0.1)+yellow, 0.1+yellow);
+
+filldraw(B--T--Q--cycle, opacity(0.1)+lightred, red);
+filldraw(E--T--S--cycle, opacity(0.1)+lightcyan, blue);
+draw(T--X, blue);
+draw(T--Y, red);
+draw(circumcircle(L, K, Q), grey);
+draw(circumcircle(P, Q, R), dotted);
+draw(T--D, red+dashed);
+draw(T--C, blue+dashed);
+draw(K--L, grey);
+draw(B--P--R--E, grey);
+draw(B--C, dotted);
+draw(D--E, dotted);
+write(angle(D-C));
+
+dot("$Y$", Y, dir(Y));
+dot("$X$", X, dir(60));
+dot("$B$", B, dir(B));
+dot("$E$", E, dir(E));
+dot("$A$", A, dir(A));
+dot("$T$", T, 1.8*dir(280));
+dot("$D$", D, dir(270));
+dot("$C$", C, dir(270));
+dot("$Q$", Q, dir(Q));
+dot("$S$", S, dir(S));
+dot("$P$", P, dir(P));
+dot("$R$", R, dir(R));
+dot("$L$", L, 1.4*dir(200));
+dot("$K$", K, 1.4*dir(355));
+
+/* TSQ Source:
+
+!size(12cm);
+Y = dir 116.9642725
+X = dir 76.9642725 R60
+B = dir 175.9642725
+E = dir 24.9642725
+A = extension X E B Y
+T = extension X B E Y 1.8R280
+D = T+(B-T)*dir(83) R270
+C = T+(E-T)*dir(-83) R270
+Q = extension C T A B
+S = extension D T A E
+P = extension C D A B
+R = extension C D A E
+L = extension D T A B 1.4R200
+K = extension C T A E 1.4R355
+
+B--T--C--cycle 0.1 yellow / 0.1 yellow
+D--T--E--cycle 0.1 yellow / 0.1 yellow
+
+B--T--Q--cycle 0.1 lightred / red
+E--T--S--cycle 0.1 lightcyan / blue
+T--X blue
+T--Y red
+circumcircle L K Q grey
+circumcircle P Q R dotted
+T--D red dashed
+T--C blue dashed
+K--L grey
+B--P--R--E grey
+B--C dotted
+D--E dotted
+!write(angle(D-C));
+
+*/
+\end{asy}
+\end{center}
+
+\begin{claim*}
+  [Main claim]
+  We have
+  \[ \triangle BTQ \overset{-}{\sim} \triangle ETS,
+    \qquad\text{and}\qquad
+    BY:YL:LQ = EX:XK:KS. \]
+  In other words, $TBYLQ \overset{-}{\sim} TEXKS$.
+\end{claim*}
+\begin{proof}
+  We know $\triangle BTY \overset{-}{\sim} \triangle ETX$.
+  Also, $\dang BTL = \dang BTD = \dang CTE = \dang KTE$
+  and $\dang BTQ = \dang BTC = \dang DTE = \dang STE$.
+\end{proof}
+
+It follows from the claim that:
+\begin{itemize}
+  \ii $TL/TQ = TK/TS$, ergo $TL \cdot TS = TK \cdot TQ$,
+  so $KLSQ$ is cyclic; and
+  \ii $TC/TK = TE/TK = TB/TL = TD/TL$, so $\ol{KL} \parallel \ol{PCDR}$.
+\end{itemize}
+With these two bullets, we're done by Reim theorem.
+\pagebreak
+
+\subsection{IMO 2022/5, proposed by Tijs Buggenhout (BEL)}
+\textsl{Available online at \url{https://aops.com/community/p25635158}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Find all triples $(a,b,p)$ of positive integers with $p$ prime and
+\[ a^p=b!+p. \]
+\end{mdframed}
+The answer is $(2,2,2)$ and $(3,4,3)$ only, which work.
+
+In what follows we assume $a \ge 2$.
+
+\begin{claim*}
+  We have $b \le 2p-2$, and hence $a < p^2$.
+\end{claim*}
+\begin{proof}
+  For the first half, assume first for contradiction that $b \ge 2p$.
+  Then $b!+p \equiv p \pmod{p^2}$, so $\nu_p(b!+p)=1$,
+  but $\nu_p(a^p)=1$ never occurs.
+
+  We can also rule out $b = 2p-1$ since that would give
+  \[ (2p-1)!+p = p \left[ (p-1)! (p+1)(p+2)\dots(2p-1) + 1 \right] \]
+  By Wilson theorem the inner bracket is $(-1)^2+1 \equiv 2 \pmod p$
+  exactly, contradiction for $p > 2$.
+  And when $p=2$, $3!+2=8$ is not a perfect square.
+
+  The second half follows as $a^p \le (2p-2)!+p < p^{2p}$.
+  (Here we used the crude estimate
+  $(2p-2)! = \prod_{k=1}^{p-1}k \cdot (2p-1-k) < (p(p-1))^{p-1}$).
+\end{proof}
+
+\begin{claim*}
+  We have $a \ge p$, and hence $b \ge p$.
+\end{claim*}
+\begin{proof}
+  For the first half, assume for contradiction that $p > a$.
+  Then
+  \[ b! + p = a^p \ge a^{p-1} + p \ge a^a + p > a! + p \implies b > a. \]
+  Then taking modulo $a$ now gives $0 \equiv 0 + p \pmod{a}$,
+  which is obviously impossible.
+
+  The second half follows from $b! = a^p-p \ge p! - p > (p-1)!$.
+\end{proof}
+
+\begin{claim*}
+  We have $a=p$ exactly.
+\end{claim*}
+\begin{proof}
+  We know $p \ge b$ hence $p \mid b!+p$, so let $a = pk$ for $k < p$.
+  Then $k \mid b!$ yet $k \nmid a^p-p$, contradiction.
+\end{proof}
+
+Let's get the small $p$ out of the way:
+\begin{itemize}
+  \ii For $p=2$, checking $2 \le b \le 3$ gives $(a,b)=(2,2)$ only.
+  \ii For $p=3$, checking $3 \le b \le 5$ gives $(a,b)=(3,4)$ only.
+\end{itemize}
+Once $p \ge 5$, if $b! = p^p - p = p(p^{p-1}-1)$
+then applying Zsigmondy gets a prime factor $q \equiv 1 \pmod{p-1}$
+which divides $p^{p-1}-1$.
+Yet $q \le b \le 2p-2$ and $q \neq p$, contradiction.
+\pagebreak
+
+\subsection{IMO 2022/6, proposed by Nikola Petrovi\'{c} (SRB)}
+\textsl{Available online at \url{https://aops.com/community/p25635163}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $n$ be a positive integer.
+A \emph{Nordic square} is an $n \times n$ board
+containing all the integers from $1$ to $n^2$
+so that each cell contains exactly one number.
+An \emph{uphill path} is a sequence of one or more cells such that:
+\begin{enumerate}
+  \ii the first cell in the sequence is a \emph{valley},
+  meaning the number written is less than all its orthogonal neighbors,
+
+  \ii each subsequent cell in the sequence is orthogonally
+  adjacent to the previous cell, and
+
+  \ii the numbers written in the cells in the sequence are in increasing order.
+\end{enumerate}
+Find, as a function of $n$, the smallest possible total number
+of uphill paths in a Nordic square.
+\end{mdframed}
+Answer: $2n^2-2n+1$.
+
+\paragraph{Bound.}
+The lower bound is the ``obvious'' one:
+\begin{itemize}
+  \ii For any pair of adjacent cells, say $a > b$,
+  one can extend it to a downhill path (the reverse of an uphill path)
+  by walking downwards until one reaches a valley.
+  This gives $2n(n-1)=2n^2-2n$ uphill paths of length $\ge 2$.
+
+  \ii There is always at least one uphill path of length $1$,
+  namely the single cell $\{1\}$ (or indeed any valley).
+\end{itemize}
+
+\paragraph{Construction.}
+For the construction, the ideas it build a tree $T$ on the grid
+such that no two cells not in $T$ are adjacent.
+
+An example of such a grid is shown below for $n=15$ with $T$ in yellow
+and cells not in $T$ in black; it generalizes to any $3 \mid n$,
+and then to any $n$ by deleting the last $n \bmod 3$ rows
+and either/both of the leftmost/rightmost column.
+
+\begin{center}
+\begin{asy}
+  size(11cm);
+  defaultpen(fontsize(8pt));
+  filldraw(box( (0,0),(15,-15) ), black, black+2);
+  int L = 0;
+  void go(int x, int y) {
+    ++L;
+    filldraw(shift(x,-y-1)*unitsquare, paleyellow,black);
+    label("$"+(string)L+"$", (x+0.5,-y-0.5));
+  }
+  for (int m=0; m<=2; ++m) {
+    go(6*m, 0);
+    go(6*m+1, 0);
+    go(6*m+2, 0);
+    for (int j=0; j<7; ++j) {
+      go(6*m+1, 2*j+1);
+      go(6*m+1, 2*j+2);
+      go(6*m, 2*j+2);
+      go(6*m+2, 2*j+2);
+    }
+
+    if (m != 2) {
+      go(6*m+3, 0);
+      go(6*m+3, 1);
+      go(6*m+4, 1);
+      go(6*m+5, 1);
+      go(6*m+5, 0);
+      for (int j=1; j<7; ++j) {
+        go(6*m+4, 2*j);
+        go(6*m+4, 2*j+1);
+        go(6*m+3, 2*j+1);
+        go(6*m+5, 2*j+1);
+      }
+      go(6*m+4,14);
+    }
+  }
+\end{asy}
+\end{center}
+
+Place $1$ anywhere in $T$ and then place all the small numbers at most $|T|$
+adjacent to previously placed numbers (example above).
+Then place the remaining numbers outside $T$ arbitrarily.
+
+By construction, as $1$ is the only valley, any uphill path must start from $1$.
+And by construction, it may only reach a given pair of terminal cells in one
+way, i.e.\ the downhill paths we mentioned are the only one.
+End proof.
+\pagebreak
+
+
+\end{document}

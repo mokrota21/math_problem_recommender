@@ -1,0 +1,478 @@
+% © Evan Chen
+% Downloaded from https://web.evanchen.cc/
+
+\documentclass[11pt]{scrartcl}
+\usepackage[sexy]{evan}
+\ihead{\footnotesize\textbf{\thetitle}}
+\ohead{\footnotesize\href{http://web.evanchen.cc}{\ttfamily web.evanchen.cc},
+    updated \today}
+\title{IMO 2008 Solution Notes}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This is a compilation of solutions
+for the 2008 IMO.
+The ideas of the solution are a mix of my own work,
+the solutions provided by the competition organizers,
+and solutions found by the community.
+However, all the writing is maintained by me.
+
+These notes will tend to be a bit more advanced and terse than the ``official''
+solutions from the organizers.
+In particular, if a theorem or technique is not known to beginners
+but is still considered ``standard'', then I often prefer to
+use this theory anyways, rather than try to work around or conceal it.
+For example, in geometry problems I typically use directed angles
+without further comment, rather than awkwardly work around configuration issues.
+Similarly, sentences like ``let $\mathbb{R}$ denote the set of real numbers''
+are typically omitted entirely.
+
+Corrections and comments are welcome!
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+\addtocounter{section}{-1}
+\section{Problems}
+\begin{enumerate}[\bfseries 1.]
+\item %% Problem 1
+Let $H$ be the orthocenter of an acute-angled triangle $ABC$.
+The circle $\Gamma_{A}$ centered at the midpoint of $\ol{BC}$ and passing
+through $H$ intersects the sideline $BC$ at points  $A_1$ and $A_2$.
+Similarly, define the points $B_1$, $B_2$, $C_1$, and $C_2$.
+Prove that six points $A_1$, $A_2$, $B_1$, $B_2$, $C_1$, $C_2$ are concyclic.
+
+\item %% Problem 2
+Let $x$, $y$, $z$ be real numbers with $xyz = 1$,
+all different from $1$.
+Prove that
+\[ \frac{x^2}{(x-1)^2} + \frac{y^2}{(y-1)^2}
++ \frac{z^2}{(z-1)^2} \ge 1 \]
+and show that equality holds for infinitely many choices
+of rational numbers $x$, $y$, $z$.
+
+\item %% Problem 3
+Prove that there are infinitely many positive integers $n$
+such that $n^2+1$ has a prime factor greater than $2n + \sqrt{2n}$.
+
+\item %% Problem 4
+Find all functions $f$ from the positive reals to the positive reals such that
+\[ \frac{f(w)^2 + f(x)^2}{f(y^2)+f(z^2)} = \frac{w^2+x^2}{y^2+z^2} \]
+for all positive real numbers $w$, $x$, $y$, $z$ satisfying $wx=yz$.
+
+\item %% Problem 5
+Let $n$ and $k$ be positive integers with $k \geq n$ and $k - n$ an even number.
+There are $2n$ lamps labelled $1$, $2$, \dots, $2n$ each of which can be either on or off.
+Initially all the lamps are off.
+We consider sequences of steps: at each step one of the lamps is switched
+(from on to off or from off to on).
+Let $N$ be the number of such sequences consisting of $k$ steps
+and resulting in the state where lamps $1$ through $n$ are all on,
+and lamps $n + 1$ through $2n$ are all off.
+Let $M$ be number of such sequences consisting of $k$ steps,
+resulting in the state where lamps $1$ through $n$ are all on,
+and lamps $n + 1$ through $2n$ are all off,
+but where none of the lamps $n + 1$ through $2n$ is ever switched on.
+Determine $\frac{N}{M}$.
+
+\item %% Problem 6
+Let $ABCD$ be a convex quadrilateral with $BA \neq BC$.
+Denote the incircles of triangles $ABC$ and $ADC$
+by $\omega_1$ and $\omega_2$ respectively.
+Suppose that there exists a circle $\omega$ tangent
+to ray $BA$ beyond $A$ and to the ray $BC$ beyond $C$,
+which is also tangent to the lines $AD$ and $CD$.
+Prove that the common external tangents to
+$\omega_1$ and $\omega_2$ intersect on $\omega$.
+
+\end{enumerate}
+\pagebreak
+
+\section{Solutions to Day 1}
+\subsection{IMO 2008/1, proposed by Andrey Gavrilyuk (RUS)}
+\textsl{Available online at \url{https://aops.com/community/p1190553}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $H$ be the orthocenter of an acute-angled triangle $ABC$.
+The circle $\Gamma_{A}$ centered at the midpoint of $\ol{BC}$ and passing
+through $H$ intersects the sideline $BC$ at points  $A_1$ and $A_2$.
+Similarly, define the points $B_1$, $B_2$, $C_1$, and $C_2$.
+Prove that six points $A_1$, $A_2$, $B_1$, $B_2$, $C_1$, $C_2$ are concyclic.
+\end{mdframed}
+We show two solutions.
+
+\paragraph{First solution using power of a point.}
+Let $D$, $E$, $F$ be the centers of $\Gamma_A$, $\Gamma_B$, $\Gamma_C$
+(in other words, the midpoints of the sides).
+
+We first show that $B_1$, $B_2$, $C_1$, $C_2$ are concyclic.
+It suffices to prove that $A$
+lies on the radical axis of the circles $\Gamma_B$ and $\Gamma_C$.
+
+\begin{center}
+\begin{asy}
+pair A = dir(110);
+pair B = dir(210);
+pair C = dir(330);
+draw(A--B--C--cycle);
+
+pair D = midpoint(B--C);
+pair E = midpoint(C--A);
+pair F = midpoint(A--B);
+pair H = orthocenter(A, B, C);
+draw(E--F);
+
+pair X = -H+2*foot(H, E, F);
+path w1 = Drawing(CP(E,H));
+path w2 = Drawing(CP(F,H));
+pair B_1 = IP(w1, A--C);
+pair B_2 = OP(w1, A--C);
+pair C_1 = IP(w2, A--B);
+pair C_2 = OP(w2, A--B);
+
+pair T = foot(A, B, C);
+draw(A--T, dotted);
+
+dot("$A$", A, dir(A));
+dot("$B$", B, dir(B));
+dot("$C$", C, dir(C));
+dot("$D$", D, dir(D));
+dot("$E$", E, dir(E));
+dot("$F$", F, dir(F));
+dot("$H$", H, 1.4*dir(-10));
+dot("$X$", X, 1.4*dir(10));
+dot("$B_1$", B_1, 1.5*dir(90));
+dot("$B_2$", B_2, 1.2*dir(-10));
+dot("$C_1$", C_1, 1.2*dir(120));
+dot("$C_2$", C_2, dir(C_2));
+
+/* TSQ Source:
+
+A = dir 110
+B = dir 210
+C = dir 330
+A--B--C--cycle
+
+D = midpoint B--C
+E = midpoint C--A
+F = midpoint A--B
+H = orthocenter A B C 1.4R-10
+E--F
+
+X = -H+2*foot H E F 1.4R10
+! path w1 = Drawing(CP(E,H));
+! path w2 = Drawing(CP(F,H));
+B_1 = IP w1 A--C 1.5R90
+B_2 = OP w1 A--C 1.2R-10
+C_1 = IP w2 A--B 1.2R120
+C_2 = OP w2 A--B
+
+T := foot A B C
+A--T dotted
+
+*/
+\end{asy}
+\end{center}
+
+Let $X$ be the second intersection of $\Gamma_B$ and $\Gamma_C$.
+Clearly $\ol{XH}$ is perpendicular to the line
+joining the centers of the circles, namely $\ol{EF}$.
+But $\ol{EF} \parallel \ol{BC}$, so $\ol{XH} \perp \ol{BC}$.
+Since $\ol{AH} \perp \ol{BC}$ as well,
+we find that $A$, $X$, $H$ are collinear, as needed.
+
+Thus, $B_1$, $B_2$, $C_1$, $C_2$ are concyclic.
+Similarly, $C_1$, $C_2$, $A_1$, $A_2$ are concyclic,
+as are $A_1$, $A_2$, $B_1$, $B_2$.
+Now if any two of these three circles coincide, we are done;
+else the pairwise radical axii are not concurrent, contradiction.
+(Alternatively, one can argue directly that $O$ is the center of all
+three circles, by taking the perpendicular bisectors.)
+
+\paragraph{Second solution using length chase (Ritwin Narra).}
+We claim the circumcenter $O$ of $\triangle ABC$
+is in fact the center of $(A_1A_2B_1B_2C_1C_2)$.
+
+Define $D$, $E$, $F$ as before.
+Then since $\ol{OD} \perp \ol{A_1A_2}$ and $DA_1 = DA_2$,
+which means $OA_1 = OA_2$. Similarly, we have $OB_1 = OB_2$ and $OC_1 = OC_2$.
+
+Now since $DA_1 = DA_2 = DH$, we have $OA_1^2 = OD^2 + HD^2$.
+We seek to show
+\[ OD^2 + HD^2 = OE^2 + HE^2 = OF^2 + HF^2. \]
+This is clear by Appollonius's Theorem
+since $D$, $E$, and $F$ lie on the nine-point circle,
+which is centered at the midpoint of $\ol{OH}$.
+\pagebreak
+
+\subsection{IMO 2008/2, proposed by Walther Janous (AUT)}
+\textsl{Available online at \url{https://aops.com/community/p1190551}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $x$, $y$, $z$ be real numbers with $xyz = 1$,
+all different from $1$.
+Prove that
+\[ \frac{x^2}{(x-1)^2} + \frac{y^2}{(y-1)^2}
++ \frac{z^2}{(z-1)^2} \ge 1 \]
+and show that equality holds for infinitely many choices
+of rational numbers $x$, $y$, $z$.
+\end{mdframed}
+Let $x=a/b$, $y=b/c$, $z=c/a$, so we want to show
+\[ \left(\frac{a}{a-b}\right)^2+\left(\frac{b}{b-c}\right)^2
+  +\left(\frac{c}{c-a}\right)^2\ge 1.\]
+A very boring computation shows this is equivalent to
+\[ \frac{(a^2b+b^2c+c^2a-3abc)^2}%
+  {(a-b)^2(b-c)^2(c-a)^2}\ge 0\]
+which proves the inequality
+(and it is unsurprising we are in such a situation,
+given that there is an infinite curve of rationals).
+
+For equality, it suffices to show there are infinitely
+many integer solutions to
+\[ a^2b+b^2c+c^2a=3abc
+  \iff \frac ac + \frac ba + \frac ca = 3
+\]
+or equivalently that
+there are infinitely many rational solutions to
+\[ u + v + \frac{1}{uv} = 3. \]
+For any $0 \neq u \in \QQ$ the real solution for $u$ is
+\[ v = \frac{-u + (u-1)\sqrt{1-4/u} + 3}{2} \]
+and there are certainly infinitely many rational numbers $u$
+for which $1-4/u$ is a rational square
+(say, $u = \frac{-4}{q^2-1}$ for $q \neq \pm 1$ a rational number).
+\pagebreak
+
+\subsection{IMO 2008/3, proposed by Kęstutis Česnavičius (LTU)}
+\textsl{Available online at \url{https://aops.com/community/p1190546}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Prove that there are infinitely many positive integers $n$
+such that $n^2+1$ has a prime factor greater than $2n + \sqrt{2n}$.
+\end{mdframed}
+The idea is to pick the prime $p$ first!
+
+Select any large prime $p \ge 2013$,
+and let $h = \left\lceil \sqrt p \right\rceil$.
+We will try to find an $n$ such that
+\[ n \le \frac 12 (p-h) \quad \text{and} \quad p \mid n^2+1. \]
+This implies $p \ge 2n+\sqrt{p}$
+which is enough to ensure $p \ge 2n + \sqrt{2n}$.
+
+Assume $p \equiv 1 \pmod 8$ henceforth.
+Then there exists some $\frac 12 p < x < p$
+such that $x^2 \equiv -1 \pmod p$,
+and we set \[ x = \frac{p+1}{2} + t. \]
+\begin{claim*}
+  We have $t \ge \frac{h-1}{2}$ and hence may take $n = p-x$.
+\end{claim*}
+\begin{proof}
+Assume for contradiction this is false; then
+\begin{align*}
+  0 &\equiv  4(x^2+1) \pmod{p} \\
+  &= \left( p+1+2t \right)^2 + 4 \\
+  &\equiv (2t+1)^2 + 4 \pmod{p} \\
+  &< h^2+4
+\end{align*}
+So we have that $(2t+1)^2+4$ is positive and divisible by $p$,
+yet at most $\left\lceil \sqrt{p} \right\rceil^2 + 4 < 2p$.
+So it must be the case that $(2t+1)^2+4 = p$,
+but this has no solutions modulo $8$.
+\end{proof}
+\pagebreak
+
+\section{Solutions to Day 2}
+\subsection{IMO 2008/4, proposed by Hojoo Lee (KOR)}
+\textsl{Available online at \url{https://aops.com/community/p1191683}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Find all functions $f$ from the positive reals to the positive reals such that
+\[ \frac{f(w)^2 + f(x)^2}{f(y^2)+f(z^2)} = \frac{w^2+x^2}{y^2+z^2} \]
+for all positive real numbers $w$, $x$, $y$, $z$ satisfying $wx=yz$.
+\end{mdframed}
+The answers are $f(x) \equiv x$ and $f(x) \equiv 1/x$.
+These work, so we show they are the only ones.
+
+First, setting $(t,t,t,t)$ gives $f(t^2) = f(t)^2$.
+In particular, $f(1) = 1$.
+Next, setting $(t, 1, \sqrt t, \sqrt t)$ gives
+\[ \frac{f(t)^2 + 1}{2f(t)} = \frac{t^2 + 1}{2t} \]
+which as a quadratic implies $f(t) \in \{t, 1/t\}$.
+
+Now assume $f(a) = a$ and $f(b) = 1/b$.
+Setting $(\sqrt a, \sqrt b, 1, \sqrt{ab})$ gives
+\[ \frac{a + 1/b}{f(ab) + 1} = \frac{a+b}{ab+1}. \]
+One can check the two cases on $f(ab)$ each imply
+$a=1$ and $b=1$ respectively.
+Hence the only answers are those claimed.
+\pagebreak
+
+\subsection{IMO 2008/5, proposed by Bruno Le Floch and Ilia Smilga (FRA)}
+\textsl{Available online at \url{https://aops.com/community/p1191679}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $n$ and $k$ be positive integers with $k \geq n$ and $k - n$ an even number.
+There are $2n$ lamps labelled $1$, $2$, \dots, $2n$ each of which can be either on or off.
+Initially all the lamps are off.
+We consider sequences of steps: at each step one of the lamps is switched
+(from on to off or from off to on).
+Let $N$ be the number of such sequences consisting of $k$ steps
+and resulting in the state where lamps $1$ through $n$ are all on,
+and lamps $n + 1$ through $2n$ are all off.
+Let $M$ be number of such sequences consisting of $k$ steps,
+resulting in the state where lamps $1$ through $n$ are all on,
+and lamps $n + 1$ through $2n$ are all off,
+but where none of the lamps $n + 1$ through $2n$ is ever switched on.
+Determine $\frac{N}{M}$.
+\end{mdframed}
+The answer is $2^{k-n}$.
+
+Consider the following map $\Psi$ from $N$-sequences to $M$-sequences:
+\begin{itemize}
+  \ii change every instance of $n+1$ to $1$;
+  \ii change every instance of $n+2$ to $2$;
+  \ii[$\vdots$]
+  \ii change every instance of $2n$ to $n$.
+\end{itemize}
+(For example, suppose $k=9$, $n=3$;
+then $144225253 \mapsto 111222223$.)
+
+Clearly this is map is well-defined and surjective.
+So all that remains is:
+\begin{claim*}
+  Every $M$-sequence has exactly $2^{k-n}$ pre-images under $\Psi$.
+\end{claim*}
+\begin{proof}
+  Indeed, suppose that there are $c_1$ instances of lamp $1$.
+  Then we want to pick an odd subset of the $1$'s to change to $n+1$'s,
+  so $2^{c_1 - 1}$ ways to do this.
+  And so on.
+  Hence the number of pre-images is
+  \[ \prod_i 2^{c_i - 1} = 2^{k-n}. \qedhere \]
+\end{proof}
+\pagebreak
+
+\subsection{IMO 2008/6, proposed by Vladimir Shmarov (RUS)}
+\textsl{Available online at \url{https://aops.com/community/p1191671}.}
+\begin{mdframed}[style=mdpurplebox,frametitle={Problem statement}]
+Let $ABCD$ be a convex quadrilateral with $BA \neq BC$.
+Denote the incircles of triangles $ABC$ and $ADC$
+by $\omega_1$ and $\omega_2$ respectively.
+Suppose that there exists a circle $\omega$ tangent
+to ray $BA$ beyond $A$ and to the ray $BC$ beyond $C$,
+which is also tangent to the lines $AD$ and $CD$.
+Prove that the common external tangents to
+$\omega_1$ and $\omega_2$ intersect on $\omega$.
+\end{mdframed}
+By the external version of Pitot theorem, the existence
+of $\omega$ implies that
+\[ BA + AD = CB + CD. \]
+Let $\ol{PQ}$ and $\ol{ST}$ be diameters of $\omega_1$ and $\omega_2$
+with $P, T \in \ol{AC}$.
+Then the length relation on $ABCD$ implies that $P$ and $T$
+are reflections about the midpoint of $\ol{AC}$.
+
+Now orient $AC$ horizontally and let $K$ be the ``uppermost'' point of $\omega$, as shown.
+
+\begin{center}
+\begin{asy}
+size(12cm);
+pair W = dir(48.4);
+pair X = dir(68.4);
+pair Y = dir(138.4);
+pair Z = dir(173.4);
+
+pair A = 2*X*Z/(X+Z);
+pair B = 2*W*Z/(W+Z);
+pair C = 2*W*Y/(W+Y);
+pair D = 2*X*Y/(X+Y);
+
+draw(arc(origin, 1, 40, 180), dashed+orange);
+
+filldraw(incircle(A, B, C), opacity(0.1)+lightred, red);
+filldraw(incircle(A, D, C), opacity(0.1)+lightred, red);
+filldraw(A--B--C--D--cycle, opacity(0.1)+yellow, orange);
+draw(A--C, red);
+
+pair I_B = incenter(A, B, C);
+pair I_D = incenter(A, D, C);
+pair P = foot(I_B, A, C);
+pair Q = 2*I_B-P;
+pair T = foot(I_D, A, C);
+pair S = 2*I_D-T;
+
+draw(A--Z, orange);
+draw(C--W, orange);
+pair E = 2*Y*Z/(Y+Z);
+pair F = 2*X*W/(X+W);
+draw(E--D--F, orange);
+
+pair K = extension(B, Q, D, P);
+draw(B--K--P, dashed+red);
+draw(P--Q, red);
+draw(S--T, red);
+
+dot("$W$", W, dir(W));
+dot("$X$", X, dir(95));
+dot("$Y$", Y, dir(Y));
+dot("$Z$", Z, dir(Z));
+dot("$A$", A, dir(135));
+dot("$B$", B, dir(B));
+dot("$C$", C, dir(45));
+dot("$D$", D, dir(-D));
+dot("$P$", P, dir(270));
+dot("$Q$", Q, 0.8*dir(95));
+dot("$T$", T, dir(45));
+dot("$S$", S, dir(225));
+dot("$K$", K, dir(315));
+
+/* TSQ Source:
+
+!size(12cm);
+W = dir 48.4
+X = dir 68.4 R95
+Y = dir 138.4
+Z = dir 173.4
+
+A = 2*X*Z/(X+Z) R135
+B = 2*W*Z/(W+Z)
+C = 2*W*Y/(W+Y) R45
+D = 2*X*Y/(X+Y) R-D
+
+!draw(arc(origin, 1, 40, 180), dashed+orange);
+
+incircle A B C 0.1 lightred / red
+incircle A D C 0.1 lightred / red
+A--B--C--D--cycle 0.1 yellow / orange
+A--C red
+
+I_B := incenter A B C
+I_D := incenter A D C
+P = foot I_B A C R270
+Q = 2*I_B-P 0.8R95
+T = foot I_D A C R45
+S = 2*I_D-T R225
+
+A--Z orange
+C--W orange
+E := 2*Y*Z/(Y+Z)
+F := 2*X*W/(X+W)
+E--D--F orange
+
+K = extension B Q D P R315
+B--K--P dashed red
+P--Q red
+S--T red
+
+*/
+\end{asy}
+\end{center}
+
+Consequently, a homothety at $B$ maps $Q$, $T$, $K$ to each other
+(since $T$ is the uppermost of the excircle, $Q$ of the incircle).
+Similarly, a homothety at $D$ maps $P$, $S$, $K$ to each other.
+As $\ol{PQ}$ and $\ol{ST}$ are parallel diameters
+it then follows $K$ is the exsimilicenter of $\omega_1$ and $\omega_2$.
+\pagebreak
+
+
+\end{document}
