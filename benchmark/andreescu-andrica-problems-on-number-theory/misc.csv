@@ -1,0 +1,1446 @@
+,TopicMetadata,Problem,Solution,Problem&Solution,Problem Book No
+417,(Miscellaneous Problems),"Problem. Find all positive integers $x,y,z$ which satisfy conditions: $x+y\ge2z$ and $x^{2}+y^{2}-2z^{2}=8$ .  
+
+(2003 Romanian Mathematical Olympiad)  
+
+","Solution. There are two possible cases:  
+
+Case I. $x\geq y\geq z$ .  
+
+We denote $x-z=a\ge0$ , $y-z=b\ge0$ , $a\geq b$ . One obtains the equation $2z(a+b)+a^{2}+b^{2}=8$ . When $z\geq3$ , there are no solutions. For $z=2$ , we get $(a+2)^{2}+(b+2)^{2}=16$ , which again has no solution. When $z=1$ we obtain solutions $(x,y,z)=(3,1,1)$ or $(x,y,z)=(1,3,1)$ . When $z=0$ , $a^{2}+b^{2}=8$ and we get the solution $(x,y,z)=(2,2,0)$ .  
+
+Case II. $x\geq z\geq y$ .  
+
+Note again that $x-z=a$ , $y-z=b$ and obtain the solution $(x,y,z)=$ $(n+2,n-2,n)$ or $(x,y,z)=(n-2,n+2,n)$ .  
+
+","Problem. Find all positive integers $x,y,z$ which satisfy conditions: $x+y\ge2z$ and $x^{2}+y^{2}-2z^{2}=8$ .  
+
+(2003 Romanian Mathematical Olympiad)  
+
+Solution. There are two possible cases:  
+
+Case I. $x\geq y\geq z$ .  
+
+We denote $x-z=a\ge0$ , $y-z=b\ge0$ , $a\geq b$ . One obtains the equation $2z(a+b)+a^{2}+b^{2}=8$ . When $z\geq3$ , there are no solutions. For $z=2$ , we get $(a+2)^{2}+(b+2)^{2}=16$ , which again has no solution. When $z=1$ we obtain solutions $(x,y,z)=(3,1,1)$ or $(x,y,z)=(1,3,1)$ . When $z=0$ , $a^{2}+b^{2}=8$ and we get the solution $(x,y,z)=(2,2,0)$ .  
+
+Case II. $x\geq z\geq y$ .  
+
+Note again that $x-z=a$ , $y-z=b$ and obtain the solution $(x,y,z)=$ $(n+2,n-2,n)$ or $(x,y,z)=(n-2,n+2,n)$ .  
+
+",11.1.
+418,(Miscellaneous Problems),"Problem. Let $n$ be a positive integer. Find all integers that can be written as:  
+
+$$
+{\frac{1}{a_{1}}}+{\frac{2}{a_{2}}}+\cdots+{\frac{n}{a_{n}}},
+$$  
+
+for some positive integers $a_{1},a_{2},\ldots,a_{n}$ .  
+
+","Solution. First, observe that $k={\frac{1}{a_{1}}}+{\frac{1}{a_{2}}}+\cdot\cdot\cdot+{\frac{n}{a_{n}}}$ then  
+
+$$
+k\leq1+2+3+\cdots+n={\frac{n(n+1)}{2}}.
+$$  
+
+We prove that any integer $k\in\left\{1,2,\ldots,{\frac{n(n+1)}{2}}\right\}$ can be written as requested.  
+
+For k = 1, put a1 = a2 = $a_{1}=a_{2}=\cdots\cdot\cdot=a_{n}={\frac{n(n+1)}{2}}$  
+
+For $k=n$ , set $a_{1}=1$ , $a_{2}=2,\dots$ , $a_{n}=n$ .  
+
+For $1<k<n$ , let $a_{k-1}=1$ and $a_{i}={\frac{n(n+1)}{2}}-k+1$ for $i\neq k-1$ .  
+
+Thus  
+
+$$
+{\frac{1}{a_{1}}}+{\frac{2}{a_{2}}}+\cdots+{\frac{n}{a_{n}}}={\frac{k-1}{1}}+\sum_{i=1\atop i\neq k-1}{\frac{i}{a_{i}}}=k-1+{\frac{{\frac{n(n+1)}{2}}-k+1}{{\frac{n(n+1)}{2}}-k+1}}=k.
+$$  
+
+For $n<k<{\frac{n(n+1)}{2}}$ write $k$ as  
+
+$$
+k=n+p_{1}+p_{2}+\cdot\cdot\cdot+p_{i},
+$$  
+
+with $1\leq p_{i}\leq\cdot\cdot\cdot\leq p_{2}\leq p_{1}\leq n-1$ .  
+
+Setting $a_{p_{1}+1}=a_{p_{2}+1}=\cdot\cdot\cdot=a_{p_{i}+1}=1$ and else $a_{j}=j$ we are done.  
+
+","Problem. Let $n$ be a positive integer. Find all integers that can be written as:  
+
+$$
+{\frac{1}{a_{1}}}+{\frac{2}{a_{2}}}+\cdots+{\frac{n}{a_{n}}},
+$$  
+
+for some positive integers $a_{1},a_{2},\ldots,a_{n}$ .  
+
+Solution. First, observe that $k={\frac{1}{a_{1}}}+{\frac{1}{a_{2}}}+\cdot\cdot\cdot+{\frac{n}{a_{n}}}$ then  
+
+$$
+k\leq1+2+3+\cdots+n={\frac{n(n+1)}{2}}.
+$$  
+
+We prove that any integer $k\in\left\{1,2,\ldots,{\frac{n(n+1)}{2}}\right\}$ can be written as requested.  
+
+For k = 1, put a1 = a2 = $a_{1}=a_{2}=\cdots\cdot\cdot=a_{n}={\frac{n(n+1)}{2}}$  
+
+For $k=n$ , set $a_{1}=1$ , $a_{2}=2,\dots$ , $a_{n}=n$ .  
+
+For $1<k<n$ , let $a_{k-1}=1$ and $a_{i}={\frac{n(n+1)}{2}}-k+1$ for $i\neq k-1$ .  
+
+Thus  
+
+$$
+{\frac{1}{a_{1}}}+{\frac{2}{a_{2}}}+\cdots+{\frac{n}{a_{n}}}={\frac{k-1}{1}}+\sum_{i=1\atop i\neq k-1}{\frac{i}{a_{i}}}=k-1+{\frac{{\frac{n(n+1)}{2}}-k+1}{{\frac{n(n+1)}{2}}-k+1}}=k.
+$$  
+
+For $n<k<{\frac{n(n+1)}{2}}$ write $k$ as  
+
+$$
+k=n+p_{1}+p_{2}+\cdot\cdot\cdot+p_{i},
+$$  
+
+with $1\leq p_{i}\leq\cdot\cdot\cdot\leq p_{2}\leq p_{1}\leq n-1$ .  
+
+Setting $a_{p_{1}+1}=a_{p_{2}+1}=\cdot\cdot\cdot=a_{p_{i}+1}=1$ and else $a_{j}=j$ we are done.  
+
+",11.2.
+419,(Miscellaneous Problems),"Problem. Find all the positive integers $a<b<c<d$ with the property that each of them divides the sum of the other three.  
+
+","Solution. Since $d|(a+b+c)$ and $a+b+c<3d$ , it follows that $a+b+c=d$ or $a+b+c=2d$ .  
+
+Case i). If $a+b+c=d$ , as $a|(b+c+d)$ , we have $a|2d$ and similarly $b|2d$ , $c|2d$ .  
+
+Let $2d=a x=b y=c z$ , where $2<z<y<x$ . Thus ${\frac{1}{x}}+{\frac{1}{y}}+{\frac{1}{z}}={\frac{1}{2}}$  
+
+$1^{\circ}$ If $z=3$ , then ${\frac{1}{x}}+{\frac{1}{y}}={\frac{1}{6}}$ The solutions are  
+
+$$
+(x,y)=\{(42,7),(24,8),(18,9),(15,10)\},
+$$  
+
+hence  
+
+$$
+\begin{array}{c}{(a,b,c,d)\in\{(k,6k,14k,21k),(k,3k,8k,12k),(k,2k,6k,9k),}\\ {\ }\\ {(2k,3k,10k,15k),(k,3k,8k,12k)\},}\end{array}
+$$  
+
+for $k>0$ .  
+
+$2^{\circ}$ If $z=4$ , then ${\frac{1}{x}}+{\frac{1}{y}}={\frac{1}{4}}$ , and  
+
+$$
+(x,y)=\{(20,5),(12,6)\}.
+$$  
+
+The solutions are  
+
+$$
+(a,b,c,d)=(k,4k,5k,10k){\mathrm{~and~}}(a,b,c,d)=(k,2k,3k,6k)
+$$  
+
+for $k>0$ .  
+
+As $3x-10\equiv2$ (mod 3), it follows that $3x-10=20$ and $3y-10=5$ . Thus $y=3$ , false.  
+
+$4^{\circ}$ If $z\geq6$ then ${\frac{1}{x}}+{\frac{1}{y}}+{\frac{1}{z}}<{\frac{1}{6}}+{\frac{1}{6}}+{\frac{1}{6}}={\frac{1}{2}}$ so there are no solutions.  
+
+Case ii). If $a+b+c=2d$ , we obtain $a|3d,b|3d,c|3d$  
+
+Then $3d=a x=b y=c z$ , with $x>y>z>3$ and $\frac{1}{x}+\frac{1}{y}+\frac{1}{z}=\frac{2}{3}$ Since $x\geq4$ , $y\geq5$ , $z\geq6$ we have $\frac{1}{x}+\frac{1}{y}+\frac{1}{z}\leq\frac{1}{6}+\frac{1}{5}+\frac{1}{4}=\frac{37}{60}<\frac{2}{3}$ so there are no solutions in this case.  
+
+","Problem. Find all the positive integers $a<b<c<d$ with the property that each of them divides the sum of the other three.  
+
+Solution. Since $d|(a+b+c)$ and $a+b+c<3d$ , it follows that $a+b+c=d$ or $a+b+c=2d$ .  
+
+Case i). If $a+b+c=d$ , as $a|(b+c+d)$ , we have $a|2d$ and similarly $b|2d$ , $c|2d$ .  
+
+Let $2d=a x=b y=c z$ , where $2<z<y<x$ . Thus ${\frac{1}{x}}+{\frac{1}{y}}+{\frac{1}{z}}={\frac{1}{2}}$  
+
+$1^{\circ}$ If $z=3$ , then ${\frac{1}{x}}+{\frac{1}{y}}={\frac{1}{6}}$ The solutions are  
+
+$$
+(x,y)=\{(42,7),(24,8),(18,9),(15,10)\},
+$$  
+
+hence  
+
+$$
+\begin{array}{c}{(a,b,c,d)\in\{(k,6k,14k,21k),(k,3k,8k,12k),(k,2k,6k,9k),}\\ {\ }\\ {(2k,3k,10k,15k),(k,3k,8k,12k)\},}\end{array}
+$$  
+
+for $k>0$ .  
+
+$2^{\circ}$ If $z=4$ , then ${\frac{1}{x}}+{\frac{1}{y}}={\frac{1}{4}}$ , and  
+
+$$
+(x,y)=\{(20,5),(12,6)\}.
+$$  
+
+The solutions are  
+
+$$
+(a,b,c,d)=(k,4k,5k,10k){\mathrm{~and~}}(a,b,c,d)=(k,2k,3k,6k)
+$$  
+
+for $k>0$ .  
+
+As $3x-10\equiv2$ (mod 3), it follows that $3x-10=20$ and $3y-10=5$ . Thus $y=3$ , false.  
+
+$4^{\circ}$ If $z\geq6$ then ${\frac{1}{x}}+{\frac{1}{y}}+{\frac{1}{z}}<{\frac{1}{6}}+{\frac{1}{6}}+{\frac{1}{6}}={\frac{1}{2}}$ so there are no solutions.  
+
+Case ii). If $a+b+c=2d$ , we obtain $a|3d,b|3d,c|3d$  
+
+Then $3d=a x=b y=c z$ , with $x>y>z>3$ and $\frac{1}{x}+\frac{1}{y}+\frac{1}{z}=\frac{2}{3}$ Since $x\geq4$ , $y\geq5$ , $z\geq6$ we have $\frac{1}{x}+\frac{1}{y}+\frac{1}{z}\leq\frac{1}{6}+\frac{1}{5}+\frac{1}{4}=\frac{37}{60}<\frac{2}{3}$ so there are no solutions in this case.  
+
+",11.3.
+420,(Miscellaneous Problems),"Problem. Find the greatest number that can be written as a product of some positive integers with the sum 1976.  
+
+( $18^{t h}$ IMO)  
+
+","Solution. Let $x_{1},x_{2},\ldots,x_{n}$ be the numbers having the sum $x_{1}+x_{2}+$ $\cdot\cdot\cdot+x_{n}=1976$ and the maximum value of the product $x_{1}\cdot x_{2}\cdot\cdot\cdot x_{n}=p$ . If one of the numbers, say $x_{1}$ , is equal to $1$ , then $x_{1}+x_{2}=1+x_{2}>x_{2}=$ $x_{1}x_{2}$ . Hence the product $(x_{1}+x_{2})\cdot x_{3}\cdot\cdot\cdot x_{n}$ is greater than $x_{1}\cdot x_{2}\cdot\cdot\cdot x_{n}=p$ , false. Therefore $x_{k}\geq2$ for all $k$ .  
+
+If one of the numbers is equal to 4 we can replace him with two numbers 2 without changing the sum or the product.  
+
+Suppose that $x_{k}\geq5$ for some $k$ . Then $x_{k}<3(x_{k}-3)$ , so replacing the number $x_{k}$ with the numbers 3 and $x_{k}-3$ , the sum remains constant while the product increases, contradiction.  
+
+Therefore all the numbers are equal to 2 or 3. If there are more than 3 numbers equal to 2, we can replace them by two numbers equal to 3, preserving the sum and increasing the product (as $2\cdot2\cdot2<3\cdot3$ ). Hence at most two terms equal to 2 are allowed. Since $1976=3\cdot658+2$ the maximum product is equal to $2\cdot3^{658}$ .  
+
+","Problem. Find the greatest number that can be written as a product of some positive integers with the sum 1976.  
+
+( $18^{t h}$ IMO)  
+
+Solution. Let $x_{1},x_{2},\ldots,x_{n}$ be the numbers having the sum $x_{1}+x_{2}+$ $\cdot\cdot\cdot+x_{n}=1976$ and the maximum value of the product $x_{1}\cdot x_{2}\cdot\cdot\cdot x_{n}=p$ . If one of the numbers, say $x_{1}$ , is equal to $1$ , then $x_{1}+x_{2}=1+x_{2}>x_{2}=$ $x_{1}x_{2}$ . Hence the product $(x_{1}+x_{2})\cdot x_{3}\cdot\cdot\cdot x_{n}$ is greater than $x_{1}\cdot x_{2}\cdot\cdot\cdot x_{n}=p$ , false. Therefore $x_{k}\geq2$ for all $k$ .  
+
+If one of the numbers is equal to 4 we can replace him with two numbers 2 without changing the sum or the product.  
+
+Suppose that $x_{k}\geq5$ for some $k$ . Then $x_{k}<3(x_{k}-3)$ , so replacing the number $x_{k}$ with the numbers 3 and $x_{k}-3$ , the sum remains constant while the product increases, contradiction.  
+
+Therefore all the numbers are equal to 2 or 3. If there are more than 3 numbers equal to 2, we can replace them by two numbers equal to 3, preserving the sum and increasing the product (as $2\cdot2\cdot2<3\cdot3$ ). Hence at most two terms equal to 2 are allowed. Since $1976=3\cdot658+2$ the maximum product is equal to $2\cdot3^{658}$ .  
+
+",11.4.
+421,(Miscellaneous Problems),"Problem. Prove that there exist infinitely many positive integers that cannot be written in the form  
+
+$$
+x_{1}^{3}+x_{2}^{5}+x_{3}^{7}+x_{4}^{9}+x_{5}^{11}
+$$  
+
+for some positive integers $x_{1},x_{2},x_{3},x_{4},x_{5}$ .  
+
+(2002 Belarussian Mathematical Olympiad)  
+
+","Solution. For each integer $N$ , we consider the number of integers in $[1,N]$ that can be written in the above form. Because $x_{1}\leq N^{\frac{1}{3}}$ , there are at most $N^{\frac{1}{3}}$ ways to choose $x_{1}$ . Similar argument applies to the other $x_{i}\mathrm{s}$ . Therefore, there are at most $N^{\frac{1}{3}}N^{\frac{1}{5}}N^{\frac{1}{7}}N^{\frac{1}{9}}N^{\frac{1}{11}}=N^{\frac{3043}{3465}}$ combinations. So there are at least $N-N^{\frac{3043}{3465}}$ integers not covered. It is easy to see that this value can be arbitrarily large as $N$ approaches infinity. Therefore, there exist infinitely many positive integers that cannot be written in the form $x_{1}^{3}+x_{2}^{5}+x_{3}^{7}+x_{4}^{9}+x_{5}^{11}$ .  
+
+# Proposed problems  
+
+","Problem. Prove that there exist infinitely many positive integers that cannot be written in the form  
+
+$$
+x_{1}^{3}+x_{2}^{5}+x_{3}^{7}+x_{4}^{9}+x_{5}^{11}
+$$  
+
+for some positive integers $x_{1},x_{2},x_{3},x_{4},x_{5}$ .  
+
+(2002 Belarussian Mathematical Olympiad)  
+
+Solution. For each integer $N$ , we consider the number of integers in $[1,N]$ that can be written in the above form. Because $x_{1}\leq N^{\frac{1}{3}}$ , there are at most $N^{\frac{1}{3}}$ ways to choose $x_{1}$ . Similar argument applies to the other $x_{i}\mathrm{s}$ . Therefore, there are at most $N^{\frac{1}{3}}N^{\frac{1}{5}}N^{\frac{1}{7}}N^{\frac{1}{9}}N^{\frac{1}{11}}=N^{\frac{3043}{3465}}$ combinations. So there are at least $N-N^{\frac{3043}{3465}}$ integers not covered. It is easy to see that this value can be arbitrarily large as $N$ approaches infinity. Therefore, there exist infinitely many positive integers that cannot be written in the form $x_{1}^{3}+x_{2}^{5}+x_{3}^{7}+x_{4}^{9}+x_{5}^{11}$ .  
+
+# Proposed problems  
+
+",11.5.
+638,(Miscellaneous Problems),"Problem. Let $a,b$ be positive integers. By integer division of $a^{2}+b^{2}$ to $a+b$ we obtain the quotient $q$ and the remainder $r$ . Find all pairs $(a,b)$ such that $q^{2}+r=1977$ .  
+
+( $19^{t h}$ IMO)  
+
+","Solution. There are finitely many possibilities to obtain $1977=q^{2}+r$ . Since 1977 is not a perfect square, $0<r<a+b$ . Also, $q\leq[\sqrt{1977}]=44$ . From $a^{2}+b^{2}=q(a+b)+r$ , we obtain:  
+
+$$
+q=\left[{\frac{a^{2}+b^{2}}{a+b}}\right]\geq{\frac{a^{2}+b^{2}}{a+b}}-1\geq{\frac{1}{2}}(a+b)-1>{\frac{r}{2}}-1.
+$$  
+
+Suppose $q\leq43$ . Then $r=1977-q^{2}\geq1977-43^{2}=128$ and $43\geq q>$ − 1 ≥ 63, contradiction.  
+
+We obtained $q=44$ and $r=1977-44^{2}=41$ . To finish, we have to solve in integer numbers the equation  
+
+$$
+a^{2}+b^{2}=44(a+b)+41.
+$$  
+
+Write it under the form:  
+
+$$
+(a-22)^{2}+(b-22)^{2}=1009.
+$$  
+
+It is not difficult to have all pairs of perfect squares having their sum 1009. There exists only the representation $1009=28^{2}+15^{2}$ . Then the solutions are $a=50$ , $b=37$ or $a=37$ , $b=50$ .  
+
+","Problem. Let $a,b$ be positive integers. By integer division of $a^{2}+b^{2}$ to $a+b$ we obtain the quotient $q$ and the remainder $r$ . Find all pairs $(a,b)$ such that $q^{2}+r=1977$ .  
+
+( $19^{t h}$ IMO)  
+
+Solution. There are finitely many possibilities to obtain $1977=q^{2}+r$ . Since 1977 is not a perfect square, $0<r<a+b$ . Also, $q\leq[\sqrt{1977}]=44$ . From $a^{2}+b^{2}=q(a+b)+r$ , we obtain:  
+
+$$
+q=\left[{\frac{a^{2}+b^{2}}{a+b}}\right]\geq{\frac{a^{2}+b^{2}}{a+b}}-1\geq{\frac{1}{2}}(a+b)-1>{\frac{r}{2}}-1.
+$$  
+
+Suppose $q\leq43$ . Then $r=1977-q^{2}\geq1977-43^{2}=128$ and $43\geq q>$ − 1 ≥ 63, contradiction.  
+
+We obtained $q=44$ and $r=1977-44^{2}=41$ . To finish, we have to solve in integer numbers the equation  
+
+$$
+a^{2}+b^{2}=44(a+b)+41.
+$$  
+
+Write it under the form:  
+
+$$
+(a-22)^{2}+(b-22)^{2}=1009.
+$$  
+
+It is not difficult to have all pairs of perfect squares having their sum 1009. There exists only the representation $1009=28^{2}+15^{2}$ . Then the solutions are $a=50$ , $b=37$ or $a=37$ , $b=50$ .  
+
+",11.6.
+639,(Miscellaneous Problems),"Problem. Let $m,n$ be positive integers. Show that $25^{n}-7^{m}$ is divisible by 3 and find the least positive integer of the form $\left|25^{n}-7^{m}-3^{m}\right|$ , when $m,n$ run over the set of non-negative integers.  
+
+(2004 Romanian Mathematical Regional Contest)  
+
+","Solution. Because $25\equiv1$ (mod 3) and $7\equiv1$ (mod 3), it follows that $25^{n}-7^{m}\equiv0$ (mod 3).  
+
+For the second part of the problem, we first remark that if $m$ is odd, then any number $a=25^{n}-7^{m}-3^{m}$ is divisible by 15. This follows from the first part together with  
+
+$$
+7^{m}+3^{m}\equiv2^{m}+(-2)^{m}\equiv0{\pmod{5}}.
+$$  
+
+Moreover, for $m=n=1$ one obtains $25-7-3=15$ .  
+
+Assume now that $m$ is even, say $m=2k$ . Then  
+
+$$
+\begin{array}{c}{{7^{m}+3^{m}=7^{2k}+3^{2k}\equiv\left((-3)^{2k}+3^{2k}\right)\pmod{10}}}\\ {{\equiv2\cdot9^{k}\pmod{10}\equiv\pm2\pmod{10}\equiv2\mathrm{~or~}8\pmod{10}}}\end{array}
+$$  
+
+So, the last digit of the number $25^{n}-7^{m}-3^{m}$ is either 3 or 7. Because the number $25^{n}-7^{m}-3^{m}$ is divisible by 3, the required number cannot be 7. The situation $\left|25^{n}-7^{m}-3^{m}\right|=3$ also cannot occur, because $25^{n}-$ $7^{m}-3^{m}\equiv1$ (mod 8).  
+
+","Problem. Let $m,n$ be positive integers. Show that $25^{n}-7^{m}$ is divisible by 3 and find the least positive integer of the form $\left|25^{n}-7^{m}-3^{m}\right|$ , when $m,n$ run over the set of non-negative integers.  
+
+(2004 Romanian Mathematical Regional Contest)  
+
+Solution. Because $25\equiv1$ (mod 3) and $7\equiv1$ (mod 3), it follows that $25^{n}-7^{m}\equiv0$ (mod 3).  
+
+For the second part of the problem, we first remark that if $m$ is odd, then any number $a=25^{n}-7^{m}-3^{m}$ is divisible by 15. This follows from the first part together with  
+
+$$
+7^{m}+3^{m}\equiv2^{m}+(-2)^{m}\equiv0{\pmod{5}}.
+$$  
+
+Moreover, for $m=n=1$ one obtains $25-7-3=15$ .  
+
+Assume now that $m$ is even, say $m=2k$ . Then  
+
+$$
+\begin{array}{c}{{7^{m}+3^{m}=7^{2k}+3^{2k}\equiv\left((-3)^{2k}+3^{2k}\right)\pmod{10}}}\\ {{\equiv2\cdot9^{k}\pmod{10}\equiv\pm2\pmod{10}\equiv2\mathrm{~or~}8\pmod{10}}}\end{array}
+$$  
+
+So, the last digit of the number $25^{n}-7^{m}-3^{m}$ is either 3 or 7. Because the number $25^{n}-7^{m}-3^{m}$ is divisible by 3, the required number cannot be 7. The situation $\left|25^{n}-7^{m}-3^{m}\right|=3$ also cannot occur, because $25^{n}-$ $7^{m}-3^{m}\equiv1$ (mod 8).  
+
+",11.7.
+640,(Miscellaneous Problems),"Problem. Given an integer $d$ , let  
+
+$$
+S=\{m^{2}+d n^{2}|m,n\in\mathbb{Z}\}.
+$$  
+
+Let $p,q\in S$ be such that $p$ is a prime and $r={\frac{q}{p}}$ is an integer. Prove that $r\in S$ .  
+
+(1999 Hungary-Israel Mathematical Competition)  
+
+","Solution. Note that  
+
+$$
+(x^{2}+d y^{2})(u^{2}+d v^{2})=(x u\pm d y v)^{2}+d(x v\mp y u)^{2}.
+$$  
+
+Write $q=a^{2}+d b^{2}$ and $p=x^{2}+d y^{2}$ for integers $a,b,x,y$ . Reversing the above construction yields the desired result. Indeed, solving for $u$ and  
+
+$v$ after setting $a=x u+d y v$ , $b=x v-y u$ and $a=x u-d y v$ , $b=x v+y u$ gives  
+
+$$
+\begin{array}{l}{\displaystyle{u_{1}=\frac{a x-d b y}{p},\quad v_{1}=\frac{a y+b x}{p},}}\\ {\displaystyle{u_{2}=\frac{a x+d b y}{p},\quad v_{2}=\frac{a y-b x}{p}.}}\end{array}
+$$  
+
+Note that  
+
+$$
+(a y+b x)(a y-b x)=(a^{2}+d b^{2})y^{2}-(x^{2}+d y^{2})b^{2}\equiv0{\pmod{p}}.
+$$  
+
+Hence $p$ divides one of $a y+b x,a y-b x$ so that one of $\boldsymbol{v}_{1},\boldsymbol{v}_{2}$ is an integer. Without loss of generality, assume that $v_{1}$ is an integer. Because $r=u_{1}^{2}+$ $d v_{1}^{2}$ is an integer and $u_{1}$ is rational, $u_{1}$ is an integer as well and $r\in S$ , as desired.  
+
+","Problem. Given an integer $d$ , let  
+
+$$
+S=\{m^{2}+d n^{2}|m,n\in\mathbb{Z}\}.
+$$  
+
+Let $p,q\in S$ be such that $p$ is a prime and $r={\frac{q}{p}}$ is an integer. Prove that $r\in S$ .  
+
+(1999 Hungary-Israel Mathematical Competition)  
+
+Solution. Note that  
+
+$$
+(x^{2}+d y^{2})(u^{2}+d v^{2})=(x u\pm d y v)^{2}+d(x v\mp y u)^{2}.
+$$  
+
+Write $q=a^{2}+d b^{2}$ and $p=x^{2}+d y^{2}$ for integers $a,b,x,y$ . Reversing the above construction yields the desired result. Indeed, solving for $u$ and  
+
+$v$ after setting $a=x u+d y v$ , $b=x v-y u$ and $a=x u-d y v$ , $b=x v+y u$ gives  
+
+$$
+\begin{array}{l}{\displaystyle{u_{1}=\frac{a x-d b y}{p},\quad v_{1}=\frac{a y+b x}{p},}}\\ {\displaystyle{u_{2}=\frac{a x+d b y}{p},\quad v_{2}=\frac{a y-b x}{p}.}}\end{array}
+$$  
+
+Note that  
+
+$$
+(a y+b x)(a y-b x)=(a^{2}+d b^{2})y^{2}-(x^{2}+d y^{2})b^{2}\equiv0{\pmod{p}}.
+$$  
+
+Hence $p$ divides one of $a y+b x,a y-b x$ so that one of $\boldsymbol{v}_{1},\boldsymbol{v}_{2}$ is an integer. Without loss of generality, assume that $v_{1}$ is an integer. Because $r=u_{1}^{2}+$ $d v_{1}^{2}$ is an integer and $u_{1}$ is rational, $u_{1}$ is an integer as well and $r\in S$ , as desired.  
+
+",11.8.
+641,(Miscellaneous Problems),"Problem. Prove that every positive rational number can be represented in the form  
+
+$$
+\frac{a^{3}+b^{3}}{c^{3}+d^{3}}
+$$  
+
+where $a,b,c,d$ are positive integers.  
+
+(1999 IMO Shortlist)  
+
+","Solution. We firstly claim if $m,n$ are positive integers such that the rational number $r={\frac{\pi}{n}}$ m belongs to the interval (1,2) then r can be represented in the form  
+
+$$
+{\frac{a^{3}+b^{3}}{c^{3}+d^{3}}}.
+$$  
+
+This can be realized by taking $a^{2}-a b+b^{2}=a^{2}-a d+d^{2}$ , i.e. $b+d=a$ and $a+b=3m$ , $a+d=2a-b=3n$ , that is $a=m+n$ , $b=2m-n$ , $d=2n-m$ .  
+
+We will prove now the required conclusion. If $s>0$ is a rational number take positive integers $p,q$ such that $q<\frac{p^{3}}{q^{3}}s<2$ . There exists positive integers $a,b,d$ such that ${\frac{p^{3}}{q^{3}}}s={\frac{a^{3}+b^{3}}{a^{3}+d^{3}}}$ a3 + d3 , whence s = $s=\frac{(a q)^{3}+(b q)^{3}}{(a p)^{3}+(b p)^{3}}$  
+
+","Problem. Prove that every positive rational number can be represented in the form  
+
+$$
+\frac{a^{3}+b^{3}}{c^{3}+d^{3}}
+$$  
+
+where $a,b,c,d$ are positive integers.  
+
+(1999 IMO Shortlist)  
+
+Solution. We firstly claim if $m,n$ are positive integers such that the rational number $r={\frac{\pi}{n}}$ m belongs to the interval (1,2) then r can be represented in the form  
+
+$$
+{\frac{a^{3}+b^{3}}{c^{3}+d^{3}}}.
+$$  
+
+This can be realized by taking $a^{2}-a b+b^{2}=a^{2}-a d+d^{2}$ , i.e. $b+d=a$ and $a+b=3m$ , $a+d=2a-b=3n$ , that is $a=m+n$ , $b=2m-n$ , $d=2n-m$ .  
+
+We will prove now the required conclusion. If $s>0$ is a rational number take positive integers $p,q$ such that $q<\frac{p^{3}}{q^{3}}s<2$ . There exists positive integers $a,b,d$ such that ${\frac{p^{3}}{q^{3}}}s={\frac{a^{3}+b^{3}}{a^{3}+d^{3}}}$ a3 + d3 , whence s = $s=\frac{(a q)^{3}+(b q)^{3}}{(a p)^{3}+(b p)^{3}}$  
+
+",11.9.
+642,(Miscellaneous Problems),"Problem. Two positive integers are written on the board. The following operation is repeated: if $a<b$ are the numbers on the board, then $a$ is erased and ab/ $(b-a)$ is written in its place. At some point the numbers on the board are equal. Prove that again they are positive integers.  
+
+(1998 Russian Mathematical Olympiad)  
+
+","Solution. Call the original numbers $x$ and $y$ and let $L=\operatorname{lcm}(x,y)$ . For each number $n$ on the board consider the quotient $L/n$ ; during each operation, the quotients $L/b$ and $L/a$ become $L/b$ and $L/a-L/b$ . This is the Euclidean algorithm, so the two equal quotients would be $g c d(L/b,L/a)$ and the two equal numbers on the board are $L/g c d(L/x,L/y)$ . But $\begin{array}{l l l}{g c d(L/x,L/y)}&{=}&{1}\end{array}$ , because otherwise $x$ and $y$ would both divide $L/g c d(L/x,L/y)$ and $L$ would not be a least common multiple. So, the two equal numbers equal $L=\operatorname{lcm}(x,y)$ , an integer.  
+
+Second solution. Again, let $x$ and $y$ be the original numbers and suppose both numbers eventually equal $N$ . We prove by induction, on the number of steps $k$ before we obtain $(N,N)$ , that all previous numbers divide $N$ . Specifically, $x|N$ , so $N$ must be an integer.  
+
+The claim is clear for $k=0$ . Now assume that $k$ steps before we obtain $(N,N)$ , the numbers on the board are $(c,d)=(N/p,N/q)$ for some integers $p\ <\ q$ . Then reversing the operation, the number erased in the $(k+1)\mathrm{st}$ step must be $c d/(c+d)=N/(p+q)$ or ${c d/(c-d)}=N/(q-p)$ , completing the inductive step.  
+
+","Problem. Two positive integers are written on the board. The following operation is repeated: if $a<b$ are the numbers on the board, then $a$ is erased and ab/ $(b-a)$ is written in its place. At some point the numbers on the board are equal. Prove that again they are positive integers.  
+
+(1998 Russian Mathematical Olympiad)  
+
+Solution. Call the original numbers $x$ and $y$ and let $L=\operatorname{lcm}(x,y)$ . For each number $n$ on the board consider the quotient $L/n$ ; during each operation, the quotients $L/b$ and $L/a$ become $L/b$ and $L/a-L/b$ . This is the Euclidean algorithm, so the two equal quotients would be $g c d(L/b,L/a)$ and the two equal numbers on the board are $L/g c d(L/x,L/y)$ . But $\begin{array}{l l l}{g c d(L/x,L/y)}&{=}&{1}\end{array}$ , because otherwise $x$ and $y$ would both divide $L/g c d(L/x,L/y)$ and $L$ would not be a least common multiple. So, the two equal numbers equal $L=\operatorname{lcm}(x,y)$ , an integer.  
+
+Second solution. Again, let $x$ and $y$ be the original numbers and suppose both numbers eventually equal $N$ . We prove by induction, on the number of steps $k$ before we obtain $(N,N)$ , that all previous numbers divide $N$ . Specifically, $x|N$ , so $N$ must be an integer.  
+
+The claim is clear for $k=0$ . Now assume that $k$ steps before we obtain $(N,N)$ , the numbers on the board are $(c,d)=(N/p,N/q)$ for some integers $p\ <\ q$ . Then reversing the operation, the number erased in the $(k+1)\mathrm{st}$ step must be $c d/(c+d)=N/(p+q)$ or ${c d/(c-d)}=N/(q-p)$ , completing the inductive step.  
+
+",11.10.
+643,(Miscellaneous Problems),"Problem. Let $f(x)+a_{0}+a_{1}x+\cdot\cdot\cdot+a_{m}x^{m}$ , with $m\geq2$ and $a_{m}\neq0$ , be a polynomial with integer coefficients. Let n be a positive integer, and suppose that:  
+
+i) $a_{2},a_{3},\dotsc,a_{m}$ are divisible by all the prime factors of $n$ ;  
+
+ii) $a_{1}$ and $n$ are relatively prime.  
+
+Prove that for any positive integer $k$ , there exists a positive integer c such that $f(c)$ is divisible by $n^{k}$ .  
+
+(2001 Romanian IMO Team Selection Test)  
+
+","Solution. Consider any integers $c_{1},c_{2}$ such that $c_{1}\not\equiv c_{2}$ (mod $n^{k}$ ). Observe that if $n^{k}|s t$ for some integers $s,t$ where $t$ is relatively prime to $n$ , then $n^{k}|_{s}$ . In particular, $n^{k}\nmid(c_{1}-c_{2})t$ if $t$ is relatively prime to $n$ .  
+
+Note that  
+
+$$
+f(c_{1})-f(c_{2})=(c_{1}-c_{2})a_{1}+\sum_{i=2}^{m}a_{i}(c_{1}^{i}-c_{2}^{i})
+$$  
+
+$$
+=(c_{1}-c_{2})\left(a_{1}+\sum_{i=2}^{m}\left(a_{i}\sum_{j=0}^{i-1}(c_{1}^{j}c_{2}^{i-1-j})\right)\right).
+$$  
+
+For any prime $p$ dividing $n$ , $p$ divides $a_{2},\ldots,a_{m}$ but not $a_{1}$ . Hence, $p$ does not divide the second factor $t$ in the expression above. This implies that $t$ is relatively prime to $n$ , so $n^{k}$ does not divide the product $(c_{1}-c_{2})t=$ $f(c_{1})-f(c_{2})$ .  
+
+Therefore, $f(0),f(1),\ldots,f(n^{k}-1)$ are distinct modulo $n^{k}$ , and one of them, say $f(c)$ , must be congruent to 0 modulo $n^{k}$ . That is, $n^{k}|f(c)$ , as desired.  
+
+","Problem. Let $f(x)+a_{0}+a_{1}x+\cdot\cdot\cdot+a_{m}x^{m}$ , with $m\geq2$ and $a_{m}\neq0$ , be a polynomial with integer coefficients. Let n be a positive integer, and suppose that:  
+
+i) $a_{2},a_{3},\dotsc,a_{m}$ are divisible by all the prime factors of $n$ ;  
+
+ii) $a_{1}$ and $n$ are relatively prime.  
+
+Prove that for any positive integer $k$ , there exists a positive integer c such that $f(c)$ is divisible by $n^{k}$ .  
+
+(2001 Romanian IMO Team Selection Test)  
+
+Solution. Consider any integers $c_{1},c_{2}$ such that $c_{1}\not\equiv c_{2}$ (mod $n^{k}$ ). Observe that if $n^{k}|s t$ for some integers $s,t$ where $t$ is relatively prime to $n$ , then $n^{k}|_{s}$ . In particular, $n^{k}\nmid(c_{1}-c_{2})t$ if $t$ is relatively prime to $n$ .  
+
+Note that  
+
+$$
+f(c_{1})-f(c_{2})=(c_{1}-c_{2})a_{1}+\sum_{i=2}^{m}a_{i}(c_{1}^{i}-c_{2}^{i})
+$$  
+
+$$
+=(c_{1}-c_{2})\left(a_{1}+\sum_{i=2}^{m}\left(a_{i}\sum_{j=0}^{i-1}(c_{1}^{j}c_{2}^{i-1-j})\right)\right).
+$$  
+
+For any prime $p$ dividing $n$ , $p$ divides $a_{2},\ldots,a_{m}$ but not $a_{1}$ . Hence, $p$ does not divide the second factor $t$ in the expression above. This implies that $t$ is relatively prime to $n$ , so $n^{k}$ does not divide the product $(c_{1}-c_{2})t=$ $f(c_{1})-f(c_{2})$ .  
+
+Therefore, $f(0),f(1),\ldots,f(n^{k}-1)$ are distinct modulo $n^{k}$ , and one of them, say $f(c)$ , must be congruent to 0 modulo $n^{k}$ . That is, $n^{k}|f(c)$ , as desired.  
+
+",11.11.
+644,(Miscellaneous Problems),"Problem. Let $x,a,b$ be positive integers such that $x^{a+b}=a^{b}b$ . Prove that $a=x$ and $b=x^{x}$ .  
+
+(1998 Iranian Mathematical Olympiad)  
+
+","Solution. If $x=1$ , then $a=b=1$ and we are done. So we may assume n $x>1$ . Write $x=\prod_{i=1}p_{i}^{\gamma_{i}}$ , where the $p_{i}$ are the distinct prime factors of $x$ . Since $a$ and $b$ divide $x^{a+b}$ , we have $a=\prod p_{i}^{\alpha_{i}}$ and $b=\prod p_{i}^{\beta_{i}}$ for some nonnegative integers $\alpha_{i},\beta_{i}$ .  
+
+First suppose that some $\beta_{i}$ is zero, that is, $p_{i}$ does not divide $b$ . Then the given equation implies that $\gamma_{i}(a+b)=\alpha_{i}b$ , so that $(\alpha_{i}-\gamma_{i})b=a\gamma_{i}$ . Now $p_{i}^{\alpha_{i}}$ divides $a$ but is coprime to $b$ , so $p_{i}^{\alpha_{i}}$ divides $\alpha_{i}-\gamma_{i}$ also. But $p_{i}^{\alpha_{i}}>\alpha_{i}$ for $\alpha_{i}>0$ , contradiction. We conclude that $\beta_{i}>0$ .  
+
+Now from the fact that  
+
+$$
+\gamma_{i}(a+b)=\beta_{i}+b\alpha_{i}
+$$  
+
+and the fact that $p^{\beta_{i}}$ does not divide $\beta_{i}$ (again for size reasons), we deduce that $p^{\beta_{i}}$ also does not divide $a$ , that is, $\alpha_{i}<\beta_{i}$ for all $i$ and so $a$ divides $b$ . Moreover, the equation above implies that $a$ divides $\beta_{i}$ , so we may write $b=c^{a}$ with $c\geq2$ a positive integer.  
+
+Write $x/a=p/q$ in lowest terms (so $g c d(p,q)=1$ ). Then the original equation becomes $x^{a}p^{b}=b q^{b}$ . Now $p^{b}$ must divide $b$ , which can only occur if $p=1$ . That is, $x$ divides $a$ .  
+
+If $x\neq a$ , then there exists $i$ with $\alpha_{i}\geq\gamma_{i}+1$ , so  
+
+$$
+\gamma_{i}(a+b)=\beta_{i}+\alpha_{i}b\geq(\gamma_{i}+1)b
+$$  
+
+and so $\gamma_{i}a>b$ . On the other hand, $a$ is divisible by $p_{i}^{\gamma_{i}}$ , so in particular $a\geq\gamma_{i}$ . Thus $a^{2}>b=c^{a}$ , or ${\sqrt{c}}<a^{1/a}$ ; however, $a^{1/a}<{\sqrt{2}}$ for $a\geq5$ , so this can only hold for $c=2$ and $a=3$ , in which case $b=8$ is not divisible by $a$ , contrary to our earlier observation.  
+
+Thus $x=a$ , and from the original equation we get $b=x^{x}$ , as desired.  
+
+","Problem. Let $x,a,b$ be positive integers such that $x^{a+b}=a^{b}b$ . Prove that $a=x$ and $b=x^{x}$ .  
+
+(1998 Iranian Mathematical Olympiad)  
+
+Solution. If $x=1$ , then $a=b=1$ and we are done. So we may assume n $x>1$ . Write $x=\prod_{i=1}p_{i}^{\gamma_{i}}$ , where the $p_{i}$ are the distinct prime factors of $x$ . Since $a$ and $b$ divide $x^{a+b}$ , we have $a=\prod p_{i}^{\alpha_{i}}$ and $b=\prod p_{i}^{\beta_{i}}$ for some nonnegative integers $\alpha_{i},\beta_{i}$ .  
+
+First suppose that some $\beta_{i}$ is zero, that is, $p_{i}$ does not divide $b$ . Then the given equation implies that $\gamma_{i}(a+b)=\alpha_{i}b$ , so that $(\alpha_{i}-\gamma_{i})b=a\gamma_{i}$ . Now $p_{i}^{\alpha_{i}}$ divides $a$ but is coprime to $b$ , so $p_{i}^{\alpha_{i}}$ divides $\alpha_{i}-\gamma_{i}$ also. But $p_{i}^{\alpha_{i}}>\alpha_{i}$ for $\alpha_{i}>0$ , contradiction. We conclude that $\beta_{i}>0$ .  
+
+Now from the fact that  
+
+$$
+\gamma_{i}(a+b)=\beta_{i}+b\alpha_{i}
+$$  
+
+and the fact that $p^{\beta_{i}}$ does not divide $\beta_{i}$ (again for size reasons), we deduce that $p^{\beta_{i}}$ also does not divide $a$ , that is, $\alpha_{i}<\beta_{i}$ for all $i$ and so $a$ divides $b$ . Moreover, the equation above implies that $a$ divides $\beta_{i}$ , so we may write $b=c^{a}$ with $c\geq2$ a positive integer.  
+
+Write $x/a=p/q$ in lowest terms (so $g c d(p,q)=1$ ). Then the original equation becomes $x^{a}p^{b}=b q^{b}$ . Now $p^{b}$ must divide $b$ , which can only occur if $p=1$ . That is, $x$ divides $a$ .  
+
+If $x\neq a$ , then there exists $i$ with $\alpha_{i}\geq\gamma_{i}+1$ , so  
+
+$$
+\gamma_{i}(a+b)=\beta_{i}+\alpha_{i}b\geq(\gamma_{i}+1)b
+$$  
+
+and so $\gamma_{i}a>b$ . On the other hand, $a$ is divisible by $p_{i}^{\gamma_{i}}$ , so in particular $a\geq\gamma_{i}$ . Thus $a^{2}>b=c^{a}$ , or ${\sqrt{c}}<a^{1/a}$ ; however, $a^{1/a}<{\sqrt{2}}$ for $a\geq5$ , so this can only hold for $c=2$ and $a=3$ , in which case $b=8$ is not divisible by $a$ , contrary to our earlier observation.  
+
+Thus $x=a$ , and from the original equation we get $b=x^{x}$ , as desired.  
+
+",11.12.
+645,(Miscellaneous Problems),"Problem. Let $m,n$ be integers with $1\leq m<n$ . In their decimal representations, the last three digits of $1978^{m}$ are equal, respectively, to the last three digits of $1978^{n}$ . Find m and $n$ such that $m+n$ is minimal.  
+
+( $20^{t h}$ IMO)  
+
+","Solution. Since $1978^{n}$ and $1978^{m}$ agree in their last three digits, we have  
+
+$$
+1978^{n}-1978^{m}=1978^{m}(1978^{n-m}-1)\equiv0{\pmod{10^{3}}}.
+$$  
+
+From the decomposition $10^{3}=2^{3}\cdot5^{3}$ and since $1978^{n-m}-1$ is odd we obtain $2^{3}|1978^{m}$ . From $1978=2\cdot989$ , it follows $m\geq3$ .  
+
+Let us write $m+n=(n-m)+2m$ . Our strategy is to minimize $m+n$ by taking $m=3$ and seek the smallest value of $n-m$ such that  
+
+$$
+1978^{n-m}\equiv1{\pmod{5^{3}}}.
+$$  
+
+Since $(1978,5)=1$ , the problem is to find the order $h$ of the residue-class 1978 (mod 125). It is known that the order $h$ of an inversible residue-class modulo $m$ is a divisor of $\varphi(m)$ , where $\varphi$ is the Euler function. In our case,  
+
+$$
+\varphi(125)=5^{2}(5-1)=100.
+$$  
+
+Hence, $h|100$ . From $1978^{h}\ \equiv\ 1$ (mod 125) we also have $1978^{h}\ \equiv\ 1$ (mod 5). But $1978^{h}\equiv3^{h}$ (mod 5). Since the order of the residue-class 3 (mod 5) is 4, it follows $4|h$ . Using the congruence $1978\equiv-22$ (mod 125) we obtain:  
+
+$$
+\begin{array}{c}{1978^{4}\equiv(-22)^{4}\equiv2^{4}\cdot11^{4}\equiv4^{2}\cdot121^{2}}\\ {=(4\cdot(-4))^{2}\equiv(-1)^{2}\equiv256\equiv6\not\equiv1{\pmod{125}}.}\end{array}
+$$  
+
+So we rule out the case $h=4$ . Because $h|100$ , the next possibilities are $h=20$ or $h=100$ . By a standard computation we have:  
+
+$$
+1978^{20}\equiv6^{5}\equiv2^{5}\cdot3^{5}\equiv32\cdot(-7)\equiv-224\equiv26{\pmod{125}}\not\equiv1{\pmod{125}}.
+$$  
+
+Hence we necessarily have: $h=m-n=100$ and $n+m=106$ .  
+
+Glossary  
+
+Arithmetic function  
+
+A function defined on the positive integers and which is complex valued.  
+
+Arithmetic-Geometric Means Inequality  
+
+If $n$ is a positive integer and $a_{1},a_{2},\ldots,a_{n}$ are nonnegative real numbers, then  
+
+$$
+{\frac{1}{n}}\sum_{i=1}^{n}a_{i}\geq(a_{1}a_{2}\cdot\cdot\cdot a_{n})^{1/n},
+$$  
+
+with equality if and only if $a_{1}=a_{2}=\cdot\cdot\cdot=a_{n}$ . This inequality is a special case of the power mean inequality.  
+
+# Base b representation  
+
+Let $b$ be an integer greater than 1. For any integer $n\geq1$ there is a unique system $(k,a_{0},a_{1},\ldots,a_{k})$ of integers such that $0\leq a_{i}\leq b-1$ , $i=0,1,\ldots,k$ , $a_{k}\neq0$ and  
+
+$$
+n=a_{k}b^{k}+a_{k-1}b^{k-1}+\cdot\cdot\cdot+a_{1}b+a_{0}.
+$$  
+
+# Beatty’s Theorem  
+
+Let $\alpha$ and $\beta$ be two positive irrational real numbers such that  
+
+$$
+{\frac{1}{\alpha}}+{\frac{1}{\beta}}=1.
+$$  
+
+The sets $\{\lfloor\alpha\rfloor,\lfloor2\alpha\rfloor,\lfloor3\alpha\rfloor,\dots\}$ , $\{\lfloor\beta\rfloor,\lfloor2\beta\rfloor,\lfloor3\beta\rfloor,\dots\}$ form a partition of the set of positive integers.  
+
+Bernoulli’s Inequality  
+
+For $x>-1$ and $a>1$ ,  
+
+$$
+(1+x)^{a}\geq1+a x,
+$$  
+
+with equality when $x=0$ .  
+
+Bezout’s Identity  
+
+For positive integers $m$ and $n$ , there exist integers $x$ and $y$ such that $m x+$ $b y=g c d(m,n)$ .  
+
+Binomial Coefficient  
+
+$$
+{\binom{n}{k}}=\frac{n!}{k!(n-k)!},
+$$  
+
+the coefficient of $x^{k}$ in the expansion of $(x+1)^{n}$ .  
+
+Binomial Theorem  
+
+The expansion  
+
+$$
+(x+y)^{n}={\binom{n}{0}}x^{n}+{\binom{n}{1}}x^{n-1}y+{\binom{n}{2}}x^{n-2}y+\cdot\cdot\cdot+{\binom{n}{n-1}}x y^{n-1}+{\binom{n}{n}}y^{n}
+$$  
+
+Canonical factorization  
+
+Any integer $n>1$ can be written uniquely in the form  
+
+$$
+n=p_{1}^{\alpha_{1}}\cdot\cdot\cdot p_{k}^{\alpha_{k}},
+$$  
+
+where $p_{1},\ldots,p_{k}$ are distinct primes and $\alpha_{1},\ldots,\alpha_{k}$ are positive integers.  
+
+Carmichael’s integers  
+
+The composite integers $n$ satisfying $\boldsymbol{a}^{n}\equiv\boldsymbol{a}$ (mod $n$ ) for any integer $a$ .  
+
+Complete set of residue classes modulo $n$  
+
+A set $S$ of integers such that for each $0\leq i\leq n-1$ there is an element $s\in S$ with $i\equiv s$ (mod $n$ ).  
+
+Congruence relation  
+
+Let $a,b$ , and $m$ be integers, with $m\neq0$ . We say that $a$ and $b$ are congruent modulo $m$ if $m|a-b$ . We denote this by $a\equiv b$ (mod $m$ ). The relation ” $=$ ” on the set $\mathbb{Z}$ of integers is called the congruence relation.  
+
+Convolution product  
+
+The arithmetic function defined by  
+
+$$
+(f*g)(n)=\sum_{d\mid n}f(d)g\left({\frac{n}{d}}\right),
+$$  
+
+where $f$ and $g$ are two arithmetic functions.  
+
+Division Algorithm  
+
+For any positive integers $a$ and $b$ there exists a unique pair $(q,r)$ of nonnegative integers such that $b=a q+r$ and $r<a$ .  
+
+Euclidean Algorithm  
+
+Repeated application of the Division Algorithm:  
+
+$$
+\begin{array}{r l}&{m=n q_{1}+r_{1},\ 1\leq r_{1}<n,}\\ &{n=r_{1}q_{2}+r_{2},\ 1\leq r_{2}<r_{1},}\\ &{...}\\ &{r_{k-2}=r_{k-1}q_{k}+r_{k},\ 1\leq r_{k}<r_{k-1},}\\ &{r_{k-1}=r_{k}q_{k+1}+r_{k+1},\ r_{k+1}=0}\end{array}
+$$  
+
+This chain of equalities is finite because $n>r_{1}>r_{2}>\cdot\cdot\cdot>r_{k}$ .  
+
+Euler’s Theorem  
+
+Let $a$ and $m$ be relatively prime positive integers. Then  
+
+$$
+a^{\varphi(m)}\equiv1{\pmod{m}}.
+$$  
+
+Euler’s totient function  
+
+The function $\varphi$ defined by $\varphi(m)=\mathrm{the}$ number of all positive integers $n$ less than $m$ that are relatively prime to $m$ .  
+
+Factorial base expansion  
+
+Every positive integer $k$ has a unique expansion  
+
+$$
+k=1!\cdot f_{1}+2!\cdot f_{2}+3!\cdot f_{3}+\cdot\cdot\cdot+m!\cdot f_{m},
+$$  
+
+where each $f_{i}$ is an integer, $0\leq f_{i}\leq i$ and $f_{m}>0$ .  
+
+Fermat’s Little Theorem (F.L.T.)  
+
+Let $a$ be a positive integer and let $p$ be a prime. Then  
+
+$$
+a^{p}\equiv a{\pmod{p}}.
+$$  
+
+Fermat’s numbers  
+
+The integers $f_{n}=2^{2^{n}}+1$ , $n\geq0$ .  
+
+Fibonacci sequence  
+
+The sequence defined by $F_{0}=1$ , $F_{1}=1$ and $F_{n+1}=F_{n}+F_{n-1}$ for every positive integer $n$ .  
+
+Floor function  
+
+For a real number $x$ there is a unique integer $n$ such that $n\leq x<n+1$ . We say that $n$ is the greatest integer less than or equal to $x$ or the floor of $x$ and we denote $n=\lfloor x\rfloor$ .  
+
+Fractional part  
+
+The difference $x-\lfloor x\rfloor$ is called the fractional part of $x$ and is denoted by $\{x\}$ .  
+
+Fundamental Theorem of Arithmetic  
+
+Any integer $n$ greater than 1 has a unique representation (up to a permutation) as a product of primes.  
+
+Hermite’s Identity  
+
+For any real number $x$ and for any positive integer $n$ ,  
+
+$$
+\lfloor x\rfloor+\left\lfloor+{\frac{1}{n}}\right\rfloor+\left\lfloor+{\frac{2}{n}}\right\rfloor+\dots+\left\lfloor+{\frac{n-1}{n}}\right\rfloor=\lfloor n x\rfloor.
+$$  
+
+Legendre’s formula  
+
+For any prime $p$ and any positive integer $n$ ,  
+
+$$
+e_{p}(n)=\sum_{i\geq1}\left\lfloor{\frac{n}{p^{i}}}\right\rfloor.
+$$  
+
+Legendre’s function  
+
+Let $p$ be a prime. For any positive integer $n$ , let $e_{p}(n)$ be the exponent of $p$ in the prime factorization of $n!$ .  
+
+Legedre’s symbol  
+
+Let $p$ be an odd prime and let $a$ be a positive integer not divisible by $p$ . The Legendre’s symbol of $a$ with respect to $p$ is defined by  
+
+$$
+\left({\frac{a}{p}}\right)={\left\{\begin{array}{l l}{1}&{{\mathrm{if~}}a{\mathrm{~is~a~quadratic~residue~mod~}}p}\\ {-1}&{{\mathrm{otherwise}}}\end{array}\right.}
+$$  
+
+Linear Diophantine equation  
+
+An equation of the form  
+
+$$
+a_{1}x_{1}+\cdot\cdot\cdot+a_{n}x_{n}=b,
+$$  
+
+where $a_{1},a_{2},\dotsc,a_{n},b$ are fixed integers.  
+
+Linear recurrence of order $k$  
+
+A sequence $x_{0},x_{1},\ldots,x_{2},\ldots.$ of complex numbers defined by  
+
+$$
+x_{n}=a_{1}x_{n-1}+a_{2}x_{n-2}+\cdot\cdot\cdot+a_{k}x_{n-k},\quad n\geq k
+$$  
+
+where $a_{1},a_{2},\ldots,a_{k}$ are given complex numbers and $x_{0}=\alpha_{0}$ , $x_{1}=\alpha_{1},\ldots$ $x_{k-1}=\alpha_{k-1}$ are also given.  
+
+Lucas’ sequence  
+
+The sequence defined by $L_{0}=2$ , $L_{1}=1$ , $L_{n+1}=L_{n}+L_{n-1}$ for every positive integer $n$ .  
+
+Mersenne’s numbers  
+
+The integers $M_{n}=2^{n}-1$ , $n\geq1$ .  
+
+Mo¨bius function  
+
+The arithmetic function $\mu$ defined by  
+
+$$
+\begin{array}{r}{\mu(n)=\left\{\begin{array}{l l l}{1}&{\mathrm{if}}&{n=1,}\\ {0}&{\mathrm{if}}&{p^{2}|n\mathrm{~for~some~prime~}p>1,}\\ {(-1)^{k}}&{\mathrm{if}}&{n=p_{1}\ldots p_{k},\mathrm{~where~}p_{1},\ldots,p_{k}\mathrm{~are~c~}}\end{array}\right.}\end{array}
+$$  
+
+Mo¨bius inversion formula  
+
+Let $f$ be an arithmetic function and let $F$ be its summation function. Then  
+
+$$
+f(n)=\sum_{d\mid n}\mu(d)F\left({\frac{n}{d}}\right)
+$$  
+
+# Multiplicative function  
+
+An arithmetic function $f\neq0$ with the property that for any relative prime positive integers $m$ and $n$ ,  
+
+$$
+f(m n)=f(m)f(n).
+$$  
+
+Number of divisors  
+
+For a positive integer $n$ denote by $\tau(n)$ the number of its divisors. It is clear that  
+
+$$
+\tau(n)=\sum_{d\mid n}1
+$$  
+
+Order modulo $m$  
+
+We say that $a$ has order $d$ modulo $m$ , denoted by $o_{m}(a)=d$ , if $d$ is the smallest positive integer such that $\boldsymbol{a}^{d}\equiv1$ (mod $m$ ).  
+
+# Pell’s equation  
+
+The quadratic equation $u^{2}-D v^{2}=1$ , where $D$ is a positive integer that is not a perfect square.  
+
+Perfect number  
+
+An integer $n\geq2$ with the property that the sum of its divisors is equal to $2n$ .  
+
+Prime Number Theorem  
+
+The relation  
+
+$$
+\operatorname*{lim}_{n\to\infty}{\frac{\pi(n)}{\frac{n}{\log n}}}=1,
+$$  
+
+where $\pi(n)$ denotes the number of primes $\leq n$ .  
+
+Prime Number Theorem for arithmetic progressions Let $\pi_{r,a}^{(n)}$ be the number of primes in the arithmetic progression $a,a+r,a+$ $2r,a+3r,\ldots$ , less than $n$ , where $a$ and $r$ are relatively prime. Then  
+
+$$
+\operatorname*{lim}_{n\to\infty}{\frac{\pi_{r,a}(n)}{\frac{n}{\log n}}}={\frac{1}{\varphi(r)}}
+$$  
+
+This was conjectured by Legendre and Dirichlet and proved by de la Vall´ee Poussin.  
+
+Pythagorean equation The Diophantine equation $x^{2}+y^{2}=z^{2}$ .  
+
+Pythagorean triple  
+
+A triple of the form $(m^{2}-n^{2},2m n,m^{2}+n^{2})$ , where $m$ and $n$ are positive integers.  
+
+Quadratic residue mod $m$  
+
+Let $a$ and $m$ be positive integers such that $g c d(a,m)=1$ . We say that $a$ is a quadratic residue mod $m$ if the convergence $x^{2}\equiv a$ (mod $m$ ) has a solution.  
+
+Quadratic Reciprocity Law of Gauss  
+
+If $p$ and $q$ are distinct odd primes, then  
+
+$$
+\left({\frac{q}{p}}\right)\left({\frac{p}{q}}\right)=(-1)^{{\frac{p-1}{2}}\cdot{\frac{q-1}{2}}}
+$$  
+
+Sum of divisors  
+
+For a positive integer $n$ denote by $\sigma(n)$ the sum of its positive divisors including 1 and $n$ itself. It is clear that  
+
+$$
+\sigma(n)=\sum_{d\mid n}d
+$$  
+
+Summation function  
+
+For an arithmetic function $f$ the function $F$ defined by  
+
+$$
+F(n)=\sum_{d\mid n}f(d)
+$$  
+
+Wilson’s Theorem  
+
+For any prime $p$ , $(p-1)!\equiv-1$ (mod $p$ ).  
+
+# References  
+
+[1] Andreescu, T.; Feng, Z., 101 Problems in Algebra from the Training of the USA IMO Team, Australian Mathematics Trust, 2001.   
+[2] Andreescu, T.; Feng, Z., 102 Combinatorial Problems from the Training of the USA IMO Team, Birkha¨user, 2002.   
+[3] Andreescu, T.; Feng, Z., 103 Trigonometry Problems from the Training of the USA IMO Team, Birkha¨user, 2004.   
+[4] Feng, Z.; Rousseau, C.; Wood, M., USA and International Mathematical Olympiads 2005, Mathematical Association of America, 2006.   
+[5] Andreescu, T.; Feng, Z.; Loh, P., USA and International Mathematical Olympiads 2004, Mathematical Association of America, 2005.   
+[6] Andreescu, T.; Feng, Z., USA and International Mathematical Olympiads 2003, Mathematical Association of America, 2004.   
+[7] Andreescu, T.; Feng, Z., USA and International Mathematical Olympiads 2002, Mathematical Association of America, 2003.   
+[8] Andreescu, T.; Feng, Z., USA and International Mathematical Olympiads 2001, Mathematical Association of America, 2002. [9] Andreescu, T.; Feng, Z., USA and International Mathematical Olympiads 2000, Mathematical Association of America, 2001.   
+[10] Andreescu, T.; Feng, Z.; Lee, G.; Loh, P., Mathematical Olympiads: Problems and ","Problem. Let $m,n$ be integers with $1\leq m<n$ . In their decimal representations, the last three digits of $1978^{m}$ are equal, respectively, to the last three digits of $1978^{n}$ . Find m and $n$ such that $m+n$ is minimal.  
+
+( $20^{t h}$ IMO)  
+
+Solution. Since $1978^{n}$ and $1978^{m}$ agree in their last three digits, we have  
+
+$$
+1978^{n}-1978^{m}=1978^{m}(1978^{n-m}-1)\equiv0{\pmod{10^{3}}}.
+$$  
+
+From the decomposition $10^{3}=2^{3}\cdot5^{3}$ and since $1978^{n-m}-1$ is odd we obtain $2^{3}|1978^{m}$ . From $1978=2\cdot989$ , it follows $m\geq3$ .  
+
+Let us write $m+n=(n-m)+2m$ . Our strategy is to minimize $m+n$ by taking $m=3$ and seek the smallest value of $n-m$ such that  
+
+$$
+1978^{n-m}\equiv1{\pmod{5^{3}}}.
+$$  
+
+Since $(1978,5)=1$ , the problem is to find the order $h$ of the residue-class 1978 (mod 125). It is known that the order $h$ of an inversible residue-class modulo $m$ is a divisor of $\varphi(m)$ , where $\varphi$ is the Euler function. In our case,  
+
+$$
+\varphi(125)=5^{2}(5-1)=100.
+$$  
+
+Hence, $h|100$ . From $1978^{h}\ \equiv\ 1$ (mod 125) we also have $1978^{h}\ \equiv\ 1$ (mod 5). But $1978^{h}\equiv3^{h}$ (mod 5). Since the order of the residue-class 3 (mod 5) is 4, it follows $4|h$ . Using the congruence $1978\equiv-22$ (mod 125) we obtain:  
+
+$$
+\begin{array}{c}{1978^{4}\equiv(-22)^{4}\equiv2^{4}\cdot11^{4}\equiv4^{2}\cdot121^{2}}\\ {=(4\cdot(-4))^{2}\equiv(-1)^{2}\equiv256\equiv6\not\equiv1{\pmod{125}}.}\end{array}
+$$  
+
+So we rule out the case $h=4$ . Because $h|100$ , the next possibilities are $h=20$ or $h=100$ . By a standard computation we have:  
+
+$$
+1978^{20}\equiv6^{5}\equiv2^{5}\cdot3^{5}\equiv32\cdot(-7)\equiv-224\equiv26{\pmod{125}}\not\equiv1{\pmod{125}}.
+$$  
+
+Hence we necessarily have: $h=m-n=100$ and $n+m=106$ .  
+
+Glossary  
+
+Arithmetic function  
+
+A function defined on the positive integers and which is complex valued.  
+
+Arithmetic-Geometric Means Inequality  
+
+If $n$ is a positive integer and $a_{1},a_{2},\ldots,a_{n}$ are nonnegative real numbers, then  
+
+$$
+{\frac{1}{n}}\sum_{i=1}^{n}a_{i}\geq(a_{1}a_{2}\cdot\cdot\cdot a_{n})^{1/n},
+$$  
+
+with equality if and only if $a_{1}=a_{2}=\cdot\cdot\cdot=a_{n}$ . This inequality is a special case of the power mean inequality.  
+
+# Base b representation  
+
+Let $b$ be an integer greater than 1. For any integer $n\geq1$ there is a unique system $(k,a_{0},a_{1},\ldots,a_{k})$ of integers such that $0\leq a_{i}\leq b-1$ , $i=0,1,\ldots,k$ , $a_{k}\neq0$ and  
+
+$$
+n=a_{k}b^{k}+a_{k-1}b^{k-1}+\cdot\cdot\cdot+a_{1}b+a_{0}.
+$$  
+
+# Beatty’s Theorem  
+
+Let $\alpha$ and $\beta$ be two positive irrational real numbers such that  
+
+$$
+{\frac{1}{\alpha}}+{\frac{1}{\beta}}=1.
+$$  
+
+The sets $\{\lfloor\alpha\rfloor,\lfloor2\alpha\rfloor,\lfloor3\alpha\rfloor,\dots\}$ , $\{\lfloor\beta\rfloor,\lfloor2\beta\rfloor,\lfloor3\beta\rfloor,\dots\}$ form a partition of the set of positive integers.  
+
+Bernoulli’s Inequality  
+
+For $x>-1$ and $a>1$ ,  
+
+$$
+(1+x)^{a}\geq1+a x,
+$$  
+
+with equality when $x=0$ .  
+
+Bezout’s Identity  
+
+For positive integers $m$ and $n$ , there exist integers $x$ and $y$ such that $m x+$ $b y=g c d(m,n)$ .  
+
+Binomial Coefficient  
+
+$$
+{\binom{n}{k}}=\frac{n!}{k!(n-k)!},
+$$  
+
+the coefficient of $x^{k}$ in the expansion of $(x+1)^{n}$ .  
+
+Binomial Theorem  
+
+The expansion  
+
+$$
+(x+y)^{n}={\binom{n}{0}}x^{n}+{\binom{n}{1}}x^{n-1}y+{\binom{n}{2}}x^{n-2}y+\cdot\cdot\cdot+{\binom{n}{n-1}}x y^{n-1}+{\binom{n}{n}}y^{n}
+$$  
+
+Canonical factorization  
+
+Any integer $n>1$ can be written uniquely in the form  
+
+$$
+n=p_{1}^{\alpha_{1}}\cdot\cdot\cdot p_{k}^{\alpha_{k}},
+$$  
+
+where $p_{1},\ldots,p_{k}$ are distinct primes and $\alpha_{1},\ldots,\alpha_{k}$ are positive integers.  
+
+Carmichael’s integers  
+
+The composite integers $n$ satisfying $\boldsymbol{a}^{n}\equiv\boldsymbol{a}$ (mod $n$ ) for any integer $a$ .  
+
+Complete set of residue classes modulo $n$  
+
+A set $S$ of integers such that for each $0\leq i\leq n-1$ there is an element $s\in S$ with $i\equiv s$ (mod $n$ ).  
+
+Congruence relation  
+
+Let $a,b$ , and $m$ be integers, with $m\neq0$ . We say that $a$ and $b$ are congruent modulo $m$ if $m|a-b$ . We denote this by $a\equiv b$ (mod $m$ ). The relation ” $=$ ” on the set $\mathbb{Z}$ of integers is called the congruence relation.  
+
+Convolution product  
+
+The arithmetic function defined by  
+
+$$
+(f*g)(n)=\sum_{d\mid n}f(d)g\left({\frac{n}{d}}\right),
+$$  
+
+where $f$ and $g$ are two arithmetic functions.  
+
+Division Algorithm  
+
+For any positive integers $a$ and $b$ there exists a unique pair $(q,r)$ of nonnegative integers such that $b=a q+r$ and $r<a$ .  
+
+Euclidean Algorithm  
+
+Repeated application of the Division Algorithm:  
+
+$$
+\begin{array}{r l}&{m=n q_{1}+r_{1},\ 1\leq r_{1}<n,}\\ &{n=r_{1}q_{2}+r_{2},\ 1\leq r_{2}<r_{1},}\\ &{...}\\ &{r_{k-2}=r_{k-1}q_{k}+r_{k},\ 1\leq r_{k}<r_{k-1},}\\ &{r_{k-1}=r_{k}q_{k+1}+r_{k+1},\ r_{k+1}=0}\end{array}
+$$  
+
+This chain of equalities is finite because $n>r_{1}>r_{2}>\cdot\cdot\cdot>r_{k}$ .  
+
+Euler’s Theorem  
+
+Let $a$ and $m$ be relatively prime positive integers. Then  
+
+$$
+a^{\varphi(m)}\equiv1{\pmod{m}}.
+$$  
+
+Euler’s totient function  
+
+The function $\varphi$ defined by $\varphi(m)=\mathrm{the}$ number of all positive integers $n$ less than $m$ that are relatively prime to $m$ .  
+
+Factorial base expansion  
+
+Every positive integer $k$ has a unique expansion  
+
+$$
+k=1!\cdot f_{1}+2!\cdot f_{2}+3!\cdot f_{3}+\cdot\cdot\cdot+m!\cdot f_{m},
+$$  
+
+where each $f_{i}$ is an integer, $0\leq f_{i}\leq i$ and $f_{m}>0$ .  
+
+Fermat’s Little Theorem (F.L.T.)  
+
+Let $a$ be a positive integer and let $p$ be a prime. Then  
+
+$$
+a^{p}\equiv a{\pmod{p}}.
+$$  
+
+Fermat’s numbers  
+
+The integers $f_{n}=2^{2^{n}}+1$ , $n\geq0$ .  
+
+Fibonacci sequence  
+
+The sequence defined by $F_{0}=1$ , $F_{1}=1$ and $F_{n+1}=F_{n}+F_{n-1}$ for every positive integer $n$ .  
+
+Floor function  
+
+For a real number $x$ there is a unique integer $n$ such that $n\leq x<n+1$ . We say that $n$ is the greatest integer less than or equal to $x$ or the floor of $x$ and we denote $n=\lfloor x\rfloor$ .  
+
+Fractional part  
+
+The difference $x-\lfloor x\rfloor$ is called the fractional part of $x$ and is denoted by $\{x\}$ .  
+
+Fundamental Theorem of Arithmetic  
+
+Any integer $n$ greater than 1 has a unique representation (up to a permutation) as a product of primes.  
+
+Hermite’s Identity  
+
+For any real number $x$ and for any positive integer $n$ ,  
+
+$$
+\lfloor x\rfloor+\left\lfloor+{\frac{1}{n}}\right\rfloor+\left\lfloor+{\frac{2}{n}}\right\rfloor+\dots+\left\lfloor+{\frac{n-1}{n}}\right\rfloor=\lfloor n x\rfloor.
+$$  
+
+Legendre’s formula  
+
+For any prime $p$ and any positive integer $n$ ,  
+
+$$
+e_{p}(n)=\sum_{i\geq1}\left\lfloor{\frac{n}{p^{i}}}\right\rfloor.
+$$  
+
+Legendre’s function  
+
+Let $p$ be a prime. For any positive integer $n$ , let $e_{p}(n)$ be the exponent of $p$ in the prime factorization of $n!$ .  
+
+Legedre’s symbol  
+
+Let $p$ be an odd prime and let $a$ be a positive integer not divisible by $p$ . The Legendre’s symbol of $a$ with respect to $p$ is defined by  
+
+$$
+\left({\frac{a}{p}}\right)={\left\{\begin{array}{l l}{1}&{{\mathrm{if~}}a{\mathrm{~is~a~quadratic~residue~mod~}}p}\\ {-1}&{{\mathrm{otherwise}}}\end{array}\right.}
+$$  
+
+Linear Diophantine equation  
+
+An equation of the form  
+
+$$
+a_{1}x_{1}+\cdot\cdot\cdot+a_{n}x_{n}=b,
+$$  
+
+where $a_{1},a_{2},\dotsc,a_{n},b$ are fixed integers.  
+
+Linear recurrence of order $k$  
+
+A sequence $x_{0},x_{1},\ldots,x_{2},\ldots.$ of complex numbers defined by  
+
+$$
+x_{n}=a_{1}x_{n-1}+a_{2}x_{n-2}+\cdot\cdot\cdot+a_{k}x_{n-k},\quad n\geq k
+$$  
+
+where $a_{1},a_{2},\ldots,a_{k}$ are given complex numbers and $x_{0}=\alpha_{0}$ , $x_{1}=\alpha_{1},\ldots$ $x_{k-1}=\alpha_{k-1}$ are also given.  
+
+Lucas’ sequence  
+
+The sequence defined by $L_{0}=2$ , $L_{1}=1$ , $L_{n+1}=L_{n}+L_{n-1}$ for every positive integer $n$ .  
+
+Mersenne’s numbers  
+
+The integers $M_{n}=2^{n}-1$ , $n\geq1$ .  
+
+Mo¨bius function  
+
+The arithmetic function $\mu$ defined by  
+
+$$
+\begin{array}{r}{\mu(n)=\left\{\begin{array}{l l l}{1}&{\mathrm{if}}&{n=1,}\\ {0}&{\mathrm{if}}&{p^{2}|n\mathrm{~for~some~prime~}p>1,}\\ {(-1)^{k}}&{\mathrm{if}}&{n=p_{1}\ldots p_{k},\mathrm{~where~}p_{1},\ldots,p_{k}\mathrm{~are~c~}}\end{array}\right.}\end{array}
+$$  
+
+Mo¨bius inversion formula  
+
+Let $f$ be an arithmetic function and let $F$ be its summation function. Then  
+
+$$
+f(n)=\sum_{d\mid n}\mu(d)F\left({\frac{n}{d}}\right)
+$$  
+
+# Multiplicative function  
+
+An arithmetic function $f\neq0$ with the property that for any relative prime positive integers $m$ and $n$ ,  
+
+$$
+f(m n)=f(m)f(n).
+$$  
+
+Number of divisors  
+
+For a positive integer $n$ denote by $\tau(n)$ the number of its divisors. It is clear that  
+
+$$
+\tau(n)=\sum_{d\mid n}1
+$$  
+
+Order modulo $m$  
+
+We say that $a$ has order $d$ modulo $m$ , denoted by $o_{m}(a)=d$ , if $d$ is the smallest positive integer such that $\boldsymbol{a}^{d}\equiv1$ (mod $m$ ).  
+
+# Pell’s equation  
+
+The quadratic equation $u^{2}-D v^{2}=1$ , where $D$ is a positive integer that is not a perfect square.  
+
+Perfect number  
+
+An integer $n\geq2$ with the property that the sum of its divisors is equal to $2n$ .  
+
+Prime Number Theorem  
+
+The relation  
+
+$$
+\operatorname*{lim}_{n\to\infty}{\frac{\pi(n)}{\frac{n}{\log n}}}=1,
+$$  
+
+where $\pi(n)$ denotes the number of primes $\leq n$ .  
+
+Prime Number Theorem for arithmetic progressions Let $\pi_{r,a}^{(n)}$ be the number of primes in the arithmetic progression $a,a+r,a+$ $2r,a+3r,\ldots$ , less than $n$ , where $a$ and $r$ are relatively prime. Then  
+
+$$
+\operatorname*{lim}_{n\to\infty}{\frac{\pi_{r,a}(n)}{\frac{n}{\log n}}}={\frac{1}{\varphi(r)}}
+$$  
+
+This was conjectured by Legendre and Dirichlet and proved by de la Vall´ee Poussin.  
+
+Pythagorean equation The Diophantine equation $x^{2}+y^{2}=z^{2}$ .  
+
+Pythagorean triple  
+
+A triple of the form $(m^{2}-n^{2},2m n,m^{2}+n^{2})$ , where $m$ and $n$ are positive integers.  
+
+Quadratic residue mod $m$  
+
+Let $a$ and $m$ be positive integers such that $g c d(a,m)=1$ . We say that $a$ is a quadratic residue mod $m$ if the convergence $x^{2}\equiv a$ (mod $m$ ) has a solution.  
+
+Quadratic Reciprocity Law of Gauss  
+
+If $p$ and $q$ are distinct odd primes, then  
+
+$$
+\left({\frac{q}{p}}\right)\left({\frac{p}{q}}\right)=(-1)^{{\frac{p-1}{2}}\cdot{\frac{q-1}{2}}}
+$$  
+
+Sum of divisors  
+
+For a positive integer $n$ denote by $\sigma(n)$ the sum of its positive divisors including 1 and $n$ itself. It is clear that  
+
+$$
+\sigma(n)=\sum_{d\mid n}d
+$$  
+
+Summation function  
+
+For an arithmetic function $f$ the function $F$ defined by  
+
+$$
+F(n)=\sum_{d\mid n}f(d)
+$$  
+
+Wilson’s Theorem  
+
+For any prime $p$ , $(p-1)!\equiv-1$ (mod $p$ ).  
+
+# References  
+
+[1] Andreescu, T.; Feng, Z., 101 Problems in Algebra from the Training of the USA IMO Team, Australian Mathematics Trust, 2001.   
+[2] Andreescu, T.; Feng, Z., 102 Combinatorial Problems from the Training of the USA IMO Team, Birkha¨user, 2002.   
+[3] Andreescu, T.; Feng, Z., 103 Trigonometry Problems from the Training of the USA IMO Team, Birkha¨user, 2004.   
+[4] Feng, Z.; Rousseau, C.; Wood, M., USA and International Mathematical Olympiads 2005, Mathematical Association of America, 2006.   
+[5] Andreescu, T.; Feng, Z.; Loh, P., USA and International Mathematical Olympiads 2004, Mathematical Association of America, 2005.   
+[6] Andreescu, T.; Feng, Z., USA and International Mathematical Olympiads 2003, Mathematical Association of America, 2004.   
+[7] Andreescu, T.; Feng, Z., USA and International Mathematical Olympiads 2002, Mathematical Association of America, 2003.   
+[8] Andreescu, T.; Feng, Z., USA and International Mathematical Olympiads 2001, Mathematical Association of America, 2002. [9] Andreescu, T.; Feng, Z., USA and International Mathematical Olympiads 2000, Mathematical Association of America, 2001.   
+[10] Andreescu, T.; Feng, Z.; Lee, G.; Loh, P., Mathematical Olympiads: Problems and Solutions from around the World, 2001–2002, Mathematical Association of America, 2004.   
+[11] Andreescu, T.; Feng, Z.; Lee, G., Mathematical Olympiads: Problems and Solutions from around the World, 2000–2001, Mathematical Association of America, 2003.   
+[12] Andreescu, T.; Feng, Z., Mathematical Olympiads: Problems and Solutions from around the World, 1999–2000, Mathematical Association of America, 2002.   
+[13] Andreescu, T.; Feng, Z., Mathematical Olympiads: Problems and Solutions from around the World, 1998–1999, Mathematical Association of America, 2000.   
+[14] Andreescu, T.; Kedlaya, K., Mathematical Contests 1997–1998: Olympiad Problems from around the World, with Solutions, American Mathematics Competitions, 1999.   
+[15] Andreescu, T.; Kedlaya, K., Mathematical Contests 1996–1997: Olympiad Problems from around the World, with Solutions, American Mathematics Competitions, 1998.   
+[16] Andreescu, T.; Kedlaya, K.; Zeitz, P., Mathematical Contests 1995– 1996: Olympiad Problems from around the World, with Solutions, American Mathematics Competitions, 1997.   
+[17] Andreescu, T.; Enescu, B., Mathematical Olympiad Treasures, Birkha¨user, 2003.   
+[18] Andreescu, T.; Gelca, R., Mathematical Olympiad Challenges, Birkha¨user, 2000.   
+[19] Andreescu, T., Andrica, D., An Introduction to Diophantine Equations, GIL Publishing House, 2002.   
+[20] Andreescu, T.; Andrica, D., 360 Problems for Mathematical Contests, GIL Publishing House, 2003.   
+[21] Andreescu, T.; Andrica, D.; Feng, Z., 104 Number Theory Problems From the Training of the USA IMO Team, Birkha¨user, 2006 (to appear).   
+[22] Djuiki´c, D.; Jankovi´c, V.; Mati´c, I.; Petrovi´c, N., The IMO Compendium, A Collection of Problems Suggested for the International Mathematical Olympiads: 1959-2004, Springer, 2006.   
+[23] Doob, M., The Canadian Mathematical Olympiad 1969–1993, University of Toronto Press, 1993.   
+[24] Engel, A., Problem-Solving Strategies, Problem Books in Mathematics, Springer, 1998.   
+[25] Everest, G., Ward, T., An Introduction to Number Theory, Springer, 2005.   
+[26] Fomin, D.; Kirichenko, A., Leningrad Mathematical Olympiads 1987– 1991, MathPro Press, 1994.   
+[27] Fomin, D.; Genkin, S.; Itenberg, I., Mathematical Circles, American Mathematical Society, 1996.   
+[28] Graham, R. L.; Knuth, D. E.; Patashnik, O., Concrete Mathematics, Addison-Wesley, 1989.   
+[29] Gillman, R., A Friendly Mathematics Competition, The Mathematical Association of America, 2003.   
+[30] Greitzer, S. L., International Mathematical Olympiads, 1959–1977, New Mathematical Library, Vol. 27, Mathematical Association of America, 1978.   
+[31] Grosswald, E., Topics from the Theory of Numbers, Second Edition, Birkha¨user, 1984.   
+[32] Hardy, G.H.; Wright, E.M., An Introduction to the Theory of Numbers, Oxford University Press, 5th Edition, 1980.   
+[33] Holton, D., Let’s Solve Some Math Problems, A Canadian Mathematics Competition Publication, 1993.   
+[34] Kedlaya, K; Poonen, B.; Vakil, R., The William Lowell Putnam Mathematical Competition 1985–2000, The Mathematical Association of America, 2002.   
+[35] Klamkin, M., International Mathematical Olympiads, 1978–1985, New Mathematical Library, Vol. 31, Mathematical Association of America, 1986.   
+[36] Klamkin, M., USA Mathematical Olympiads, 1972–1986, New Mathematical Library, Vol. 33, Mathematical Association of America, 1988.   
+[37] K¨urscha´k, J., Hungarian Problem Book, volumes I & II, New Mathematical Library, Vols. 11 & 12, Mathematical Association of America, 1967.   
+[38] Kuczma, M., 144 Problems of the Austrian–Polish Mathematics Competition 1978–1993, The Academic Distribution Center, 1994.   
+[39] Kuczma, M., International Mathematical Olympiads 1986–1999, Mathematical Association of America, 2003.   
+[40] Larson, L. C., Problem-Solving Through Problems, Springer-Verlag, 1983.   
+[41] Lausch, H. The Asian Pacific Mathematics Olympiad 1989–1993, Australian Mathematics Trust, 1994.   
+[42] Liu, A., Chinese Mathematics Competitions and Olympiads 1981– 1993, Australian Mathematics Trust, 1998.   
+[43] Liu, A., Hungarian Problem Book III, New Mathematical Library, Vol. 42, Mathematical Association of America, 2001.   
+[44] Lozansky, E.; Rousseau, C. Winning Solutions, Springer, 1996.   
+[45] Mordell, L.J., Diophantine Equations, Academic Press, London and New York, 1969.   
+[46] Niven, I., Zuckerman, H.S., Montgomery, H.L., An Introduction to the Theory of Numbers, Fifth Edition, John Wiley & Sons, Inc., New York, Chichester, Brisbane, Toronto, Singapore, 1991.   
+[47] Savchev, S.; Andreescu, T. Mathematical Miniatures, Anneli Lax New Mathematical Library, Vol. 43, Mathematical Association of America, 2002.   
+[48] Shklarsky, D. O; Chentzov, N. N; Yaglom, I. M., The USSR Olympiad Problem Book, Freeman, 1962.   
+[49] Slinko, A., USSR Mathematical Olympiads 1989–1992, Australian Mathematics Trust, 1997.   
+[50] Szekely, G. J., Contests in Higher Mathematics, Springer-Verlag, 1996.   
+[51] Tattersall, J.J., Elementary Number Theory in Nine Chapters, Cambridge University Press, 1999.   
+[52] Taylor, P. J., Tournament of Towns 1980–1984, Australian Mathematics Trust, 1993.   
+[53] Taylor, P. J., Tournament of Towns 1984–1989, Australian Mathematics Trust, 1992.   
+[54] Taylor, P. J., Tournament of Towns 1989–1993, Australian Mathematics Trust, 1994.   
+[55] Taylor, P. J.; Storozhev, A., Tournament of Towns 1993–1997, Australian Mathematics Trust, 1998.  
+
+# Index of Authors  
+
+This is page 409 Printer: Opaque this  
+
+# Subject Index  
+
+arithmetic function, 119   
+base $b$ representation, 51   
+Binet’s formula, 193   
+binomial coefficients, 211   
+Bonse’s inequality, 30   
+canonical factorization, 23   
+Carmichael’s integers, 142   
+characteristic equation, 198   
+Chinese Remainder Theorem, 47   
+composite, 22   
+congruence relation, 42   
+congruent modulo $n$ , 42   
+convolution inverse, 123   
+convolution product, 122   
+cubic equations, 171   
+decimal representation, 51   
+Division Algorithm, 15  
+
+Euclidean Algorithm, 31  
+
+Euler’s criterion, 180   
+Euler’s Theorem, 74, 147   
+Euler’s totient function, 132   
+Fermat’s Little Theorem, 141   
+Fermat’s numbers, 189   
+Fibonacci numbers, 194   
+floor, 77   
+fractional part, 77   
+fully divides, 25   
+Giuga’s conjecture, 267   
+greatest common divisor, 30   
+Inclusion-Exclusion Principle,   
+115   
+infinite descent, 113   
+Kronecker’s theorem, 259   
+lattice point, 48   
+least common multiple, 32   
+Legendre’s formula, 136   
+Legendre’s function, 136   
+Legendre’s symbol, 179   
+linear Diophantine equation, 157   
+linear recurrence of order $k$ , 197   
+Lucas’ sequence, 195   
+M¨obius function, 120   
+mathematical induction, 108   
+Mersenne’s numbers, 191   
+Niven number, 288   
+number of divisors, 126  
+
+order of $a$ modulo $n$ , 150  
+
+Pascal’s triangle, 211   
+Pell’s equation, 164   
+Pell’s sequence, 199   
+perfect cube, 70   
+perfect numbers, 192   
+perfect power, 61   
+perfect square, 61   
+Pigeonhole Principle, 106   
+prime, 21   
+prime factorization theorem, 22   
+Prime Number Theorem, 24   
+primitive root modulo $n$ , 150   
+primitive solution, 161   
+problem of Frobenius, 336   
+Pythagorean equation, 161   
+Pythagorean triple, 162   
+Quadratic Reciprocity Law of   
+Gauss, 182   
+quadratic residue, 179   
+quotient, 16   
+relatively prime, 30   
+remainder, 16   
+squarefree, 61   
+sum of divisors, 129   
+sum of the digits, 94   
+summation function, 120   
+twin primes, 25   
+Vandermonde property, 212   
+Wilson’s Theorem, 153 ",11.13.
