@@ -40,6 +40,7 @@ def visualise_clusters(clusters_gt, clusters_pred, corpus_embeddings_2d):
     fig = make_subplots(rows=1, cols=2, subplot_titles=("Clusters of 2D Embeddings gt", "Clusters of 2D Embeddings pred"))
 
     for i, cluster in enumerate(clusters_gt):
+        print(cluster)
         points = corpus_embeddings_2d[cluster]
         fig.add_trace(
             go.Scatter(

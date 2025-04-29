@@ -1,0 +1,56 @@
+,id,text,label
+0,3006,Assume that we have a prime $p$ such that $p|2^{n}+1$ and $p\equiv-1$ (mod 8),Modular arithmetics
+1,3006,Assume that we have a prime $p$ such that $p|2^{n}+1$ and $p\equiv-1$ (mod 8),Prime numbers
+2,3006,"If $n$ is even, then $p\equiv3$ (mod 4) and $\left({\frac{-1}{p}}\right)=1$ , a contradiction.",Modular arithmetics
+3,3006,"If $n$ is even, then $p\equiv3$ (mod 4) and $\left({\frac{-1}{p}}\right)=1$ , a contradiction.",Quadratic residues. Legendreâ€™s symbol
+4,3006," If $n$ is odd, then $\left({\frac{-2}{p}}\right)=1$ and we get $(-1)^{\frac{p^{2}-1}{8}}(-1)^{\frac{p-1}{2}}=1$ , again a contradiction.  ",Quadratic residues. Legendreâ€™s symbol
+5,3006,"If $n$ is odd, then $\left({\frac{-2}{p}}\right)=1$ and we get $(-1)^{\frac{p^{2}-1}{8}}(-1)^{\frac{p-1}{2}}=1$ , again a contradiction.  ",Modular arithmetics
+6,3012, Let $x\leq y\leq z$ . We consider the following cases:  ,General problems
+7,3012,"If $x\geq3$ , $y\geq3$ , $z\geq3$ then $x y z\geq3y z$ , $x y z\geq3x z$ , $x y z\geq3x y$ .",Extremal arguments
+8,3018,"Let $S$ be the set of nonnegative integers less than $10^{n}$ whose decimal digits are all $0$ or 1. Since $|S|=2^{n}>k$ , we can find two elements $a<b$ of $S$ which are congruent modulo $k$ , and $b-a$ only has the digits 8, $9$ , $0$ , $^{1}$ in its decimal representation.",Pigeonhole principle
+9,3018,"Since $|S|=2^{n}>k$ , we can find two elements $a<b$ of $S$ which are congruent modulo $k$ , and $b-a$ only has the digits 8, $9$ , $0$ , $^{1}$ in its decimal representation.",Modular arithmetics
+10,3024,"Let $m=g c d(x,y)$ .",The greatest common divisor and the least common multiple
+11,3024,"Then $x=m x_{1}$ , $y=m y_{1}$ and by virtue of the given equation, $m^{n}(x_{1}^{n}+y_{1}^{n})=p^{k}$ , and so $m=p^{\alpha}$ for some nonnegative integer $\alpha$ .",Prime numbers
+12,3024,"Then $x=m x_{1}$ , $y=m y_{1}$ and by virtue of the given equation, $m^{n}(x_{1}^{n}+y_{1}^{n})=p^{k}$ , and so $m=p^{\alpha}$ for some nonnegative integer $\alpha$ .",The greatest common divisor and the least common multiple
+13,3024,"By the condition $p>2$ , it follows that at least one of $x_{1},y_{1}$ is greater than $^{1}$ , so since $n>1$ , $A>1$ .",Prime numbers
+14,3024,"From (1) it follows that $A(x_{1}+y_{1})=p^{k-n\alpha}$ , so, since $x_{1}+y_{1}>1$ and $A>1$ , both of these numbers are divisible by $p$ ; moreover, $x_{1}+y_{1}=p^{\beta}$ for some natural number $\beta$ .",Divisibility
+15,3024,"From (1) it follows that $A(x_{1}+y_{1})=p^{k-n\alpha}$ , so, since $x_{1}+y_{1}>1$ and $A>1$ , both of these numbers are divisible by $p$ ; moreover, $x_{1}+y_{1}=p^{\beta}$ for some natural number $\beta$ .",Prime numbers
+16,3024,"Since $A$ is divisible by $p$ and $x_{1}$ is relatively prime to $p$ , it follows that $n$ is divisible by $p$ .  ",Divisibility
+17,3024,"Since $A$ is divisible by $p$ and $x_{1}$ is relatively prime to $p$ , it follows that $n$ is divisible by $p$ .  ",Prime numbers
+18,3030,"In fact, every integer that is not divisible by 10 divides some element of $X$",Divisibility
+19,3030,"This follows by induction on $p$ : itâ€™s obvious for $p=0,1$ , and if $x$ is such a multiple for $p=k$ , then we can choose $a_{2k}$ so that $x+a_{2k}10^{2k}\equiv0$ (mod $4^{k+1}$ ) since $10^{2k}\equiv0{\pmod{4^{k}}}$ ",Mathematical induction
+20,3030,", then we can choose $a_{2k}$ so that $x+a_{2k}10^{2k}\equiv0$ (mod $4^{k+1}$ ) since $10^{2k}\equiv0{\pmod{4^{k}}}$",Modular arithmetics
+21,3030,"$ . By Eulerâ€™s Theorem, $10^{\varphi(f k)}\equiv1_{}$ (mod $",Eulerâ€™s Theorem
+22,3030,k$ ). Therefore $m(10^{(d+1)\varphi(f k)}-1)/(10^{d+1}-1)$ is divisible by $2,Divisibility
+23,3036, Let $a_{2}$ be the maximum integer such that $2^{a_{2}}|a$ .,Extremal arguments
+24,3036,"find $a,b$ such that $\operatorname*{min}\{a_{5}a+b_{5}b,a_{2}a+b_{2}b\}=98$ and $a b$ is minimal.",Extremal arguments
+25,3042,"Because $p|12^{2^{16}}-1$ , we find that $o_{p}(12)|2^{16}$ .",The order of an element
+26,3042,We find that $o_{p}(12)=2^{16}$ and so $2^{16}|p-1$ .,The order of an element
+27,3042,It remains to see whether $\left({\frac{3}{q}}\right)=-1$ .,Quadratic residues. Legendreâ€™s symbol
+28,3048,Note that 2 divides $2^{\pi}+2$ for all $n$ .,Divisibility
+29,3048,"Also, 11 divides $2^{n}+2$ if and only if $n\equiv6$ (mod 10), and 43 divides $2^{n}+2$ if and only if $n\equiv8$ (mod 14).",Modular arithmetics
+30,3054,"If $n$ is odd, let $d$ be the smallest odd prime that does not divide $n$ .",Extremal arguments
+31,3054,"If $n$ is odd, let $d$ be the smallest odd prime that does not divide $n$ .",Prime numbers
+32,3054,The number $d n$ contains exactly one more prime factor than $n$ .,Prime numbers
+33,3060,The formula in our problem shows that the sum of the quotients obtained when $k^{p}{-}k$ is divided by $p$ (Fermatâ€™s Little Theorem) is congruent to $\textstyle{\frac{p+1}{2}}$ modulo $p$ ,Fermatâ€™s Little Theorem
+34,3066,$\lfloor x+k\rfloor=\lfloor x\rfloor+k$ for each integer $k$,Floor function and integer points
+35,3072,"Because $m\equiv-1$ (mod 3), there exists an odd prime $p$ such that $p\equiv-1$ (mod 3) and $p|m$ .",Divisibility
+36,3072,"Because $m\equiv-1$ (mod 3), there exists an odd prime $p$ such that $p\equiv-1$ (mod 3) and $p|m$ .",Prime numbers
+37,3072,Note that $(p/3)=(-1/3)=-1$ .,Quadratic residues. Legendreâ€™s symbol
+38,3078,. Kummerâ€™s Theorem states that $p^{t}|\binom{n}{i}$ if and only if $t$ is less than or equal to the number of carries in the addition $(n-i)+i$ in base $,Lucasâ€™ and Kummerâ€™s Theorems
+39,3084,"
+We claim that there are at most 20 perfect squares $\overline{{a_{1}a_{2}\ldots a_{k}}}$ with an even (resp. odd) number of digits",Other problems involving digits
+40,3090,It suffices to take 25 such numbers.,Pigeonhole principle
+41,3090," To each number, associate the triple $(x_{2},x_{3},x_{5})$ recording the parity of the exponents of 2, 3, and 5 is its prime factorization. ",Prime numbers
+42,3090,Two numbers have the same triple if and only if their product is a perfect square.,Perfect squares
+43,3096,Observe that for any integer $x$ we have $x^{4}=16k$ or $x^{4}=$ $16k+1$ for some $k$ .  ,Modular arithmetics
+45,3108,The values are $k=(p+1)^{2}/4$ for $p$ odd (and none for $p=2$ ).,Prime numbers
+46,3108,We first consider $p=2$ ,Odd and even
+47,3108,Now assume $p$ is odd.,Odd and even
+48,3108,"We first rule out the case where $k$ is divisible by $p$ : if $k=n p$ , then $k^{2}-p k=p^{2}n(n-1)$ , and $n$ and $n-1$ are consecutive numbers, so they cannot both be squares.  ",Perfect squares
+49,3108,"We thus assume $k$ and $p$ are coprime, in which case $k$ and $k-p$ are coprime.",The greatest common divisor and the least common multiple
+50,3114,a_{1}+a_{2}+\cdot\cdot\cdot+a_{l}=\sum_{d\mid n}\tau(d),Number of divisors
+51,3114,where $n=p_{1}^{\alpha_{1}}\ldots p_{k}^{\alpha_{k}}$ is the prime factorization of $n$ . ,Prime factorization
+52,3120,The desired result is an immediate consequence of the following fact applied on $p=101$ .  ,Prime numbers
+53,3126,use $m$ and $m^{n-2}-1$ have different paritie,Odd and even
+54,3132,"Observe that from any 2001 consecutive natural numbers, at least one is a term of the sequence.",Pigeonhole principle
