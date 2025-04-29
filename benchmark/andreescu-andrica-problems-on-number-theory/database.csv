@@ -1,0 +1,1613 @@
+,TopicMetadata,Problem,Solution,text,Problem Book No,label
+0,(Divisibility)->(Divisibility),"Problem. Prove that for all integers $n$ :  
+
+a) $n^{5}-5n^{3}+4n$ is divisible by 120;   
+$b$ ) $n^{2}+3n+5$ is not divisible by 121.  
+
+","Solution. a) $n^{5}-5n^{3}+4n=n(n^{2}-1)(n^{2}-4)$  
+
+$$
+=n(n-1)(n+1)(n-2)(n+2).
+$$  
+
+the product of five consecutive integers: $n-2$ , $n-1$ , $n$ , $n+1$ , $n+2$ .  
+
+If $n\in\{-2,-1,0,1,2\}$ we get $n^{5}-5n^{3}+4n=0$ and the property holds If $n\geq3$ we can write  
+
+$$
+n^{5}-5n^{3}+4n=5!{\binom{n+2}{5}}=120{\binom{n+2}{5}},
+$$  
+
+and the conclusion follows.  
+
+If $n\leq-3$ , write $n=-m$ , where $m\geq3$ , and obtain  
+
+$$
+n^{5}-5n^{3}+4n=-120{\binom{m+2}{5}},
+$$  
+
+and we are done.  
+
+b) Observe that  
+
+$$
+n^{2}+3n+5=(n+7)(n-4)+33.
+$$  
+
+so that $11|n^{2}+3n+5$ if and only if $11|(n{+}7)(n{-}4)$ . Thus, if $11\div(n+7)(n-4)$ then 11 (and hence 121) does not divide $n^{2}+3n+5$ . So, assume 11 divides $(n+7)(n-4)$ . Then $11|n+7$ or $11|n-4$ ; but then 11 must divide both of $n+7$ and $n-4$ , since $(n+7)-(n-4)=11$ . Thus, $121|(n+7)(n-4)$ . However, $121\nmid33$ . So $121\uparrow n^{2}+3n+5=(n+7)(n-4)+33$ . Hence, in all cases, $121\uparrow n^{2}+3n+5$ .  
+
+","Problem. Prove that for all integers $n$ :  
+
+a) $n^{5}-5n^{3}+4n$ is divisible by 120;   
+$b$ ) $n^{2}+3n+5$ is not divisible by 121.  
+
+Solution. a) $n^{5}-5n^{3}+4n=n(n^{2}-1)(n^{2}-4)$  
+
+$$
+=n(n-1)(n+1)(n-2)(n+2).
+$$  
+
+the product of five consecutive integers: $n-2$ , $n-1$ , $n$ , $n+1$ , $n+2$ .  
+
+If $n\in\{-2,-1,0,1,2\}$ we get $n^{5}-5n^{3}+4n=0$ and the property holds If $n\geq3$ we can write  
+
+$$
+n^{5}-5n^{3}+4n=5!{\binom{n+2}{5}}=120{\binom{n+2}{5}},
+$$  
+
+and the conclusion follows.  
+
+If $n\leq-3$ , write $n=-m$ , where $m\geq3$ , and obtain  
+
+$$
+n^{5}-5n^{3}+4n=-120{\binom{m+2}{5}},
+$$  
+
+and we are done.  
+
+b) Observe that  
+
+$$
+n^{2}+3n+5=(n+7)(n-4)+33.
+$$  
+
+so that $11|n^{2}+3n+5$ if and only if $11|(n{+}7)(n{-}4)$ . Thus, if $11\div(n+7)(n-4)$ then 11 (and hence 121) does not divide $n^{2}+3n+5$ . So, assume 11 divides $(n+7)(n-4)$ . Then $11|n+7$ or $11|n-4$ ; but then 11 must divide both of $n+7$ and $n-4$ , since $(n+7)-(n-4)=11$ . Thus, $121|(n+7)(n-4)$ . However, $121\nmid33$ . So $121\uparrow n^{2}+3n+5=(n+7)(n-4)+33$ . Hence, in all cases, $121\uparrow n^{2}+3n+5$ .  
+
+",1.1.1.,
+1,(Divisibility)->(Divisibility),"Problem. Let $p>2$ be an odd number and let $n$ be a positive integer. Prove that $p$ divides $1^{p^{n}}+2^{p^{n}}+\cdot\cdot\cdot+(p-1)^{p^{n}}$ .  
+
+","Solution. Define $k=p^{n}$ and note that $k$ is odd. Then  
+
+$$
+d^{k}+(p-d)^{k}=p[d^{k-1}-d^{k-2}(p-d)+\cdot\cdot\cdot+(p-d)^{k-1}]
+$$  
+
+Summing up the equalities from $d=1$ to $d=\frac{p-1}{2}$ implies that $p$ divides $1^{k}+2^{k}+\cdot\cdot\cdot+(p-1)^{k}$ , as claimed.  
+
+","Problem. Let $p>2$ be an odd number and let $n$ be a positive integer. Prove that $p$ divides $1^{p^{n}}+2^{p^{n}}+\cdot\cdot\cdot+(p-1)^{p^{n}}$ .  
+
+Solution. Define $k=p^{n}$ and note that $k$ is odd. Then  
+
+$$
+d^{k}+(p-d)^{k}=p[d^{k-1}-d^{k-2}(p-d)+\cdot\cdot\cdot+(p-d)^{k-1}]
+$$  
+
+Summing up the equalities from $d=1$ to $d=\frac{p-1}{2}$ implies that $p$ divides $1^{k}+2^{k}+\cdot\cdot\cdot+(p-1)^{k}$ , as claimed.  
+
+",1.1.2.,
+2,(Divisibility)->(Divisibility),"Problem. Prove that  
+
+$$
+3^{4^{5}}+4^{5^{6}}
+$$  
+
+is a product of two integers, each of which is larger than $10^{2002}$ .  
+
+","Solution. The given number is of the form $m^{4}+\frac{1}{4}n^{4}$ , where $m=3^{4^{4}}$ and  
+
+$$
+n=4^{\frac{5^{6}+1}{4}}=2^{\frac{5^{6}+1}{2}}.
+$$  
+
+The conclusion follows from the identity  
+
+$$
+m^{4}+{\frac{n^{4}}{4}}=m^{4}+m^{2}n^{2}+{\frac{1}{4}}n^{4}-m^{2}n^{2}=\left(m^{2}+{\frac{1}{2}}n^{2}\right)^{2}-m^{2}n^{2}=
+$$  
+
+$$
+=\left(m^{2}+m n+\frac{1}{2}n^{2}\right)\left(m^{2}-m n+\frac{1}{2}n^{2}\right),
+$$  
+
+where $n$ is even so $\frac{n^{2}}{2}$ is an integer, and from the inequalities:  
+
+$$
+m^{2}-m n+{\frac{1}{2}}n^{2}=\left(m-{\frac{n}{2}}\right)^{2}+{\frac{n^{2}}{4}}>{\frac{n^{2}}{4}}
+$$  
+
+$$
+=2^{5^{6}-1}>2^{10008}>(2^{4})^{2002}>10^{2002}.
+$$  
+
+","Problem. Prove that  
+
+$$
+3^{4^{5}}+4^{5^{6}}
+$$  
+
+is a product of two integers, each of which is larger than $10^{2002}$ .  
+
+Solution. The given number is of the form $m^{4}+\frac{1}{4}n^{4}$ , where $m=3^{4^{4}}$ and  
+
+$$
+n=4^{\frac{5^{6}+1}{4}}=2^{\frac{5^{6}+1}{2}}.
+$$  
+
+The conclusion follows from the identity  
+
+$$
+m^{4}+{\frac{n^{4}}{4}}=m^{4}+m^{2}n^{2}+{\frac{1}{4}}n^{4}-m^{2}n^{2}=\left(m^{2}+{\frac{1}{2}}n^{2}\right)^{2}-m^{2}n^{2}=
+$$  
+
+$$
+=\left(m^{2}+m n+\frac{1}{2}n^{2}\right)\left(m^{2}-m n+\frac{1}{2}n^{2}\right),
+$$  
+
+where $n$ is even so $\frac{n^{2}}{2}$ is an integer, and from the inequalities:  
+
+$$
+m^{2}-m n+{\frac{1}{2}}n^{2}=\left(m-{\frac{n}{2}}\right)^{2}+{\frac{n^{2}}{4}}>{\frac{n^{2}}{4}}
+$$  
+
+$$
+=2^{5^{6}-1}>2^{10008}>(2^{4})^{2002}>10^{2002}.
+$$  
+
+",1.1.3.,
+3,(Divisibility)->(Divisibility),"Problem. Find all positive integers $n$ such that for all odd integers $a$ , if $a^{2}\leq n$ then $a|n$ .  
+
+","Solution. Let $a$ be the greatest odd integer such that $a^{2}<n$ , hence $n\leq(a+2)^{2}$ . If $a\geq7$ , then $a-4,a-2,a$ are odd integers which divide $n$ . Note that any two of these numbers are relatively prime, so $(a-4)(a-2)a$ divides $n$ . It follows that $(a-4)(a-2)a\leq(a+2)^{2}$ so $a^{3}-6a^{2}+8a\leq$ $a^{2}+4a+4$ . Then $a^{3}-7a^{2}+4a-4\leq0$ or $a^{2}(a-7)+4(a-1)\leq0$ . This is false, because $a\geq7$ , hence $a=1,3$ or 5.  
+
+If $a=1$ , then $1^{2}\leq n\leq3^{2}$ , so $n\in\{1,2,\ldots,8\}$ .  
+
+If $a=3$ , then $3^{2}\leq n\leq5^{2}$ and $1\cdot3|n$ , so $n\in\{9,12,15,18,21,24\}$  
+
+If $a=5$ , then $5^{2}\leq n\leq7^{2}$ and $1\cdot3\cdot5|n$ so $n\in\{30,45\}$ . Therefore $n\in\{1,2,3,4,5,6,7,8,9,12,15,18,21,24,30,45\}$ .  
+
+","Problem. Find all positive integers $n$ such that for all odd integers $a$ , if $a^{2}\leq n$ then $a|n$ .  
+
+Solution. Let $a$ be the greatest odd integer such that $a^{2}<n$ , hence $n\leq(a+2)^{2}$ . If $a\geq7$ , then $a-4,a-2,a$ are odd integers which divide $n$ . Note that any two of these numbers are relatively prime, so $(a-4)(a-2)a$ divides $n$ . It follows that $(a-4)(a-2)a\leq(a+2)^{2}$ so $a^{3}-6a^{2}+8a\leq$ $a^{2}+4a+4$ . Then $a^{3}-7a^{2}+4a-4\leq0$ or $a^{2}(a-7)+4(a-1)\leq0$ . This is false, because $a\geq7$ , hence $a=1,3$ or 5.  
+
+If $a=1$ , then $1^{2}\leq n\leq3^{2}$ , so $n\in\{1,2,\ldots,8\}$ .  
+
+If $a=3$ , then $3^{2}\leq n\leq5^{2}$ and $1\cdot3|n$ , so $n\in\{9,12,15,18,21,24\}$  
+
+If $a=5$ , then $5^{2}\leq n\leq7^{2}$ and $1\cdot3\cdot5|n$ so $n\in\{30,45\}$ . Therefore $n\in\{1,2,3,4,5,6,7,8,9,12,15,18,21,24,30,45\}$ .  
+
+",1.1.4.,
+4,(Divisibility)->(Divisibility),"Problem. Find the elements of the set  
+
+$$
+S=\left\{x\in\mathbb{Z}\vert\ {\frac{x^{3}-3x+2}{2x+1}}\in\mathbb{Z}\right\}.
+$$  
+
+","Solution. Since $\frac{x^{3}-3x+2}{2x+1}\in\mathbb{Z}$ , then  
+
+$$
+{\frac{8x^{3}-24x+16}{2x+1}}=4x^{2}-2x-11+{\frac{27}{2x+1}}\in\mathbb{Z}.
+$$  
+
+It follows that $2x+1$ divides 27, so  
+
+since $2x+1$ is odd, ${\frac{x^{3}-3x+2}{2x+1}}\in\mathbb{Z}\Leftrightarrow{\frac{8x^{3}-24x+16}{2x+1}}\in\mathbb{Z}$ , so all these are solutions.  
+
+","Problem. Find the elements of the set  
+
+$$
+S=\left\{x\in\mathbb{Z}\vert\ {\frac{x^{3}-3x+2}{2x+1}}\in\mathbb{Z}\right\}.
+$$  
+
+Solution. Since $\frac{x^{3}-3x+2}{2x+1}\in\mathbb{Z}$ , then  
+
+$$
+{\frac{8x^{3}-24x+16}{2x+1}}=4x^{2}-2x-11+{\frac{27}{2x+1}}\in\mathbb{Z}.
+$$  
+
+It follows that $2x+1$ divides 27, so  
+
+since $2x+1$ is odd, ${\frac{x^{3}-3x+2}{2x+1}}\in\mathbb{Z}\Leftrightarrow{\frac{8x^{3}-24x+16}{2x+1}}\in\mathbb{Z}$ , so all these are solutions.  
+
+",1.1.5.,
+5,(Divisibility)->(Divisibility),"Problem. Find all positive integers $n$ for which the number obtained by erasing the last digit is a divisor of $n$ .  
+
+","Solution. Let $b$ be the last digit of the number $n$ and let $a$ be the number obtained from $n$ by erasing the last digit $b$ . Then $n=10a+b$ . Since $a$ is a divisor of $n$ , we infer that $a$ divides $b$ . Any number $n$ that ends in $0$ is therefore a solution. If $b\neq0$ , then $a$ is a digit and $n$ is one of the numbers 11, 12,. . . , 19, 22, 24, 26, 28, 33, 36, 39, 44, 48, 55, 56, 77, 88 or 99.  
+
+","Problem. Find all positive integers $n$ for which the number obtained by erasing the last digit is a divisor of $n$ .  
+
+Solution. Let $b$ be the last digit of the number $n$ and let $a$ be the number obtained from $n$ by erasing the last digit $b$ . Then $n=10a+b$ . Since $a$ is a divisor of $n$ , we infer that $a$ divides $b$ . Any number $n$ that ends in $0$ is therefore a solution. If $b\neq0$ , then $a$ is a digit and $n$ is one of the numbers 11, 12,. . . , 19, 22, 24, 26, 28, 33, 36, 39, 44, 48, 55, 56, 77, 88 or 99.  
+
+",1.1.6.,
+6,(Divisibility)->(Divisibility),"Problem. Find the greatest positive integer x such that $23^{6+x}$ divides 2000!.  
+
+","Solution. The number 23 is prime and divides every $23^{r d}$ number. In all, there are $\left\lfloor{\frac{2000}{23}}\right\rfloor=86$ numbers from 1 to 2000 that are divisible by 23. Among those 86 numbers, three of them, namely 23, $2\cdot23$ and $3\cdot23^{2}$ are divisible by $23^{3}$ . Hence $23^{89}|2000!$ and $x=89-6=83$ .  
+
+","Problem. Find the greatest positive integer x such that $23^{6+x}$ divides 2000!.  
+
+Solution. The number 23 is prime and divides every $23^{r d}$ number. In all, there are $\left\lfloor{\frac{2000}{23}}\right\rfloor=86$ numbers from 1 to 2000 that are divisible by 23. Among those 86 numbers, three of them, namely 23, $2\cdot23$ and $3\cdot23^{2}$ are divisible by $23^{3}$ . Hence $23^{89}|2000!$ and $x=89-6=83$ .  
+
+",1.1.7.,
+7,(Divisibility)->(Divisibility),"Problem. Find the positive integers n with exactly 12 divisors $1=d_{1}<d_{2}<\dots<d_{12}=n$ such that the divisor with index $d_{4}$ (that is, $d_{d_{4}}-1)$ is $(d_{1}+d_{2}+d_{4})d_{8}$ .  
+
+(1989 Russian Mathematical Olympiad)  
+
+","Solution. Of course, there is $1\leq i\leq12$ such that $d_{i}=d_{1}+d_{2}+d_{4}$ . Since $d_{i}>d_{4}$ , we have $i\geq5$ . Also, observe that $d_{j}d_{13-j}=m$ for all $j$ and since $d_{i}d_{8}=d_{d_{4}-1}\leq n$ , we must have $i\leq5$ , thus $i=5$ and $d_{1}+d_{2}+d_{4}=d_{5}$ . Also, $d_{d_{4}-1}=d_{5}d_{8}=n=d_{12}$ , thus $d_{4}=13$ and $d_{5}=14+d_{2}$ . Of course, $d_{2}$ is the smallest prime divisor of $n$ and since $d_{4}=13$ , we can only have $d_{2}\in\{2,3,5,7,11\}$ . Also, since $n$ has 12 divisors, it has at most 3 prime divisors. If $d_{2}=2$ then $d_{5}=16$ and then 4 and 8 are divisors of $n$ , smaller than $d_{4}~=~13$ , impossible. A similar argument shows that $d_{2}~=~3$ and $d_{5}=17$ . Since $n$ has 12 divisors and is a multiple of $3\cdot13\cdot17$ , the only possibilities are $9\cdot13\cdot17$ , $3\cdot1697$ or $3\cdot13\cdot289$ . One can easily check that only $9\cdot13\cdot17=1989$ is a solution.  
+
+","Problem. Find the positive integers n with exactly 12 divisors $1=d_{1}<d_{2}<\dots<d_{12}=n$ such that the divisor with index $d_{4}$ (that is, $d_{d_{4}}-1)$ is $(d_{1}+d_{2}+d_{4})d_{8}$ .  
+
+(1989 Russian Mathematical Olympiad)  
+
+Solution. Of course, there is $1\leq i\leq12$ such that $d_{i}=d_{1}+d_{2}+d_{4}$ . Since $d_{i}>d_{4}$ , we have $i\geq5$ . Also, observe that $d_{j}d_{13-j}=m$ for all $j$ and since $d_{i}d_{8}=d_{d_{4}-1}\leq n$ , we must have $i\leq5$ , thus $i=5$ and $d_{1}+d_{2}+d_{4}=d_{5}$ . Also, $d_{d_{4}-1}=d_{5}d_{8}=n=d_{12}$ , thus $d_{4}=13$ and $d_{5}=14+d_{2}$ . Of course, $d_{2}$ is the smallest prime divisor of $n$ and since $d_{4}=13$ , we can only have $d_{2}\in\{2,3,5,7,11\}$ . Also, since $n$ has 12 divisors, it has at most 3 prime divisors. If $d_{2}=2$ then $d_{5}=16$ and then 4 and 8 are divisors of $n$ , smaller than $d_{4}~=~13$ , impossible. A similar argument shows that $d_{2}~=~3$ and $d_{5}=17$ . Since $n$ has 12 divisors and is a multiple of $3\cdot13\cdot17$ , the only possibilities are $9\cdot13\cdot17$ , $3\cdot1697$ or $3\cdot13\cdot289$ . One can easily check that only $9\cdot13\cdot17=1989$ is a solution.  
+
+",1.1.8.,
+8,(Divisibility)->(Divisibility),"Problem. Let n be a positive integer. Show that any number greater than $n^{4}/16$ can be written in at most one way as the product of two of its divisors having difference not exceeding $n$ .  
+
+# (1998 St. Petersburg City Mathematical Olympiad)  
+
+First ","Solution. Suppose, on the contrary, that there exist $a>c\geq d>b$ with $a-b\leq n$ and $a b=c d>n^{4}/16$ . Put $p=a+b$ , $q=a-b$ , $r=c+d$ , $s=c-d$ . Now  
+
+$$
+p^{2}-q^{2}=4a b=4c d=r^{2}-s^{2}>n^{4}/4.
+$$  
+
+Thus $p^{2}-r^{2}=q^{2}-s^{2}\leq q^{2}\leq n^{2}$ . But $r^{2}>n^{4}/4$ (so $r>n^{2}/2$ ) and $p>r$ , so  
+
+$$
+p^{2}-r^{2}>(n^{2}/2+1)^{2}-(n^{2}/2)^{2}\geq n^{2}+1,
+$$  
+
+a contradiction.  
+
+Second solution. Again, suppose that $a b=c d>n^{4}/16$ , with $a>c,d$ ！ and $n\geq a-b$ . If we let $\boldsymbol{p}=g c d(\boldsymbol{a},\boldsymbol{c})$ , we can find positive integers $p,q,r,s$ such that $a=p q$ , $b=r s$ , $c=p r$ , $d=q s$ . Then $a>c\Rightarrow q>r$ and $a>d\Rightarrow p>s$ , so that  
+
+$$
+\begin{array}{l}{n\geq p q-r s}\\ {\ \geq(s+1)(r+1)-r s}\\ {\ =r+s+1}\\ {\ \geq2\sqrt{b}+1.}\end{array}
+$$  
+
+Thus $b\ \leq\ \left({\frac{n-1}{2}}\right)^{2}\ <\ n^{2}/4$ , and $a\leq{\bigg(}{\frac{n-1}{2}}{\bigg)}^{2}+n={\bigg(}{\frac{n+1}{2}}{\bigg)}^{2}.$ Therefore $a b\leq\left(\frac{n^{2}-1}{4}\right)^{2}<n^{4}/16$ , a contradiction.  
+
+# Proposed problems  
+
+","Problem. Let n be a positive integer. Show that any number greater than $n^{4}/16$ can be written in at most one way as the product of two of its divisors having difference not exceeding $n$ .  
+
+# (1998 St. Petersburg City Mathematical Olympiad)  
+
+First Solution. Suppose, on the contrary, that there exist $a>c\geq d>b$ with $a-b\leq n$ and $a b=c d>n^{4}/16$ . Put $p=a+b$ , $q=a-b$ , $r=c+d$ , $s=c-d$ . Now  
+
+$$
+p^{2}-q^{2}=4a b=4c d=r^{2}-s^{2}>n^{4}/4.
+$$  
+
+Thus $p^{2}-r^{2}=q^{2}-s^{2}\leq q^{2}\leq n^{2}$ . But $r^{2}>n^{4}/4$ (so $r>n^{2}/2$ ) and $p>r$ , so  
+
+$$
+p^{2}-r^{2}>(n^{2}/2+1)^{2}-(n^{2}/2)^{2}\geq n^{2}+1,
+$$  
+
+a contradiction.  
+
+Second solution. Again, suppose that $a b=c d>n^{4}/16$ , with $a>c,d$ ！ and $n\geq a-b$ . If we let $\boldsymbol{p}=g c d(\boldsymbol{a},\boldsymbol{c})$ , we can find positive integers $p,q,r,s$ such that $a=p q$ , $b=r s$ , $c=p r$ , $d=q s$ . Then $a>c\Rightarrow q>r$ and $a>d\Rightarrow p>s$ , so that  
+
+$$
+\begin{array}{l}{n\geq p q-r s}\\ {\ \geq(s+1)(r+1)-r s}\\ {\ =r+s+1}\\ {\ \geq2\sqrt{b}+1.}\end{array}
+$$  
+
+Thus $b\ \leq\ \left({\frac{n-1}{2}}\right)^{2}\ <\ n^{2}/4$ , and $a\leq{\bigg(}{\frac{n-1}{2}}{\bigg)}^{2}+n={\bigg(}{\frac{n+1}{2}}{\bigg)}^{2}.$ Therefore $a b\leq\left(\frac{n^{2}-1}{4}\right)^{2}<n^{4}/16$ , a contradiction.  
+
+# Proposed problems  
+
+",1.1.9.,
+19,(Divisibility)->(Prime numbers),"Problem. Prove that for any integer $n>1$ the number $n^{5}+n^{4}+1$ is not a prime.  
+
+","Solution. We have  
+
+$$
+\begin{array}{c l c r}{{n^{5}+n^{4}+1=n^{5}+n^{4}+n^{3}-n^{3}-n^{2}-n+n^{2}+n+1}}\\ {{}}&{{}}\\ {{}}&{{}}&{{=n^{3}(n^{2}+n+1)-n(n^{2}+n+1)+(n^{2}+n+1)}}\\ {{}}&{{}}&{{=(n^{2}+n+1)(n^{3}-n+1),}}\end{array}
+$$  
+
+the product of two integers greater than 1. Hence $n^{5}+n^{4}+1$ is not a prime.  
+
+","Problem. Prove that for any integer $n>1$ the number $n^{5}+n^{4}+1$ is not a prime.  
+
+Solution. We have  
+
+$$
+\begin{array}{c l c r}{{n^{5}+n^{4}+1=n^{5}+n^{4}+n^{3}-n^{3}-n^{2}-n+n^{2}+n+1}}\\ {{}}&{{}}\\ {{}}&{{}}&{{=n^{3}(n^{2}+n+1)-n(n^{2}+n+1)+(n^{2}+n+1)}}\\ {{}}&{{}}&{{=(n^{2}+n+1)(n^{3}-n+1),}}\end{array}
+$$  
+
+the product of two integers greater than 1. Hence $n^{5}+n^{4}+1$ is not a prime.  
+
+",1.2.1.,
+20,(Divisibility)->(Prime numbers),"Problem. Find all primes $a,b,c$ such that  
+
+$$
+a b+b c+a c>a b c.
+$$  
+
+","Solution. Assume that $a\leq b\leq c$ . If $a\geq3$ then $a b+b c+a c\leq3b c\leq a b c$ a contradiction. Since $a$ is prime, it is left that $a=2$ .  
+
+The inequality becomes $2b+2c+b c>2b c$ , hence $\frac{1}{c}+\frac{1}{b}>\frac{1}{2}$ If $b\geq5$ , then $c\geq5$ and  
+
+$$
+{\frac{1}{2}}<{\frac{1}{b}}+{\frac{1}{c}}<{\frac{1}{5}}+{\frac{1}{5}}={\frac{2}{5}},
+$$  
+
+false.  
+
+Therefore $b\leq5$ , that is  
+
+$1^{\circ}\ b=2$ and $c$ is any prime;  
+
+$2^{\circ}\ b=3$ and $c$ is 3 or 5.  
+
+","Problem. Find all primes $a,b,c$ such that  
+
+$$
+a b+b c+a c>a b c.
+$$  
+
+Solution. Assume that $a\leq b\leq c$ . If $a\geq3$ then $a b+b c+a c\leq3b c\leq a b c$ a contradiction. Since $a$ is prime, it is left that $a=2$ .  
+
+The inequality becomes $2b+2c+b c>2b c$ , hence $\frac{1}{c}+\frac{1}{b}>\frac{1}{2}$ If $b\geq5$ , then $c\geq5$ and  
+
+$$
+{\frac{1}{2}}<{\frac{1}{b}}+{\frac{1}{c}}<{\frac{1}{5}}+{\frac{1}{5}}={\frac{2}{5}},
+$$  
+
+false.  
+
+Therefore $b\leq5$ , that is  
+
+$1^{\circ}\ b=2$ and $c$ is any prime;  
+
+$2^{\circ}\ b=3$ and $c$ is 3 or 5.  
+
+",1.2.2.,
+21,(Divisibility)->(Prime numbers),"Problem. Find all the positive integers $a,b$ for which $a^{4}+4b^{4}$ is a prime.  
+
+","Solution. Observe that  
+
+$$
+{\begin{array}{r l}&{a^{4}+4b^{4}=a^{4}+4b^{4}+4a^{2}b^{2}-4a^{2}b^{2}}\\ &{\qquad=(a^{2}+2b^{2})^{2}-4a^{2}b^{2}}\\ &{\qquad=(a^{2}+2b^{2}+2a b)(a^{2}+2b^{2}-2a b)}\\ &{\qquad=[(a+b)^{2}+b^{2}][(a-b)^{2}+b^{2}].}\end{array}}
+$$  
+
+As $(a+b)^{2}+b^{2}>1$ , then $a^{4}+4b^{4}$ can be a prime number only if $(a-b)^{2}+b^{2}=1$ . This implies $a=b=1$ , which is the only solution of the problem.  
+
+","Problem. Find all the positive integers $a,b$ for which $a^{4}+4b^{4}$ is a prime.  
+
+Solution. Observe that  
+
+$$
+{\begin{array}{r l}&{a^{4}+4b^{4}=a^{4}+4b^{4}+4a^{2}b^{2}-4a^{2}b^{2}}\\ &{\qquad=(a^{2}+2b^{2})^{2}-4a^{2}b^{2}}\\ &{\qquad=(a^{2}+2b^{2}+2a b)(a^{2}+2b^{2}-2a b)}\\ &{\qquad=[(a+b)^{2}+b^{2}][(a-b)^{2}+b^{2}].}\end{array}}
+$$  
+
+As $(a+b)^{2}+b^{2}>1$ , then $a^{4}+4b^{4}$ can be a prime number only if $(a-b)^{2}+b^{2}=1$ . This implies $a=b=1$ , which is the only solution of the problem.  
+
+",1.2.3.,
+22,(Divisibility)->(Prime numbers),"Problem. Let $p,q$ be two distinct primes. Prove that there are positive integers $a,b$ so that the arithmetic mean of all the divisors of the number $n=p^{a}\cdot q^{b}$ is also an integer.  
+
+(2002 Romanian Mathematical Olympiad)  
+
+","Solution. The sum of all divisors of $n$ is given by the formula  
+
+$$
+(1+p+p^{2}+\cdot\cdot\cdot+p^{a})(1+q+q^{2}+\cdot\cdot\cdot+q^{b}),
+$$  
+
+as it can be easily seen by expanding the brackets. The number $n$ has $(a+1)(b+1)$ positive divisors and their arithmetic mean is  
+
+$$
+M={\frac{(1+p+p^{2}+\cdot\cdot\cdot+p^{a})(1+q+q^{2}+\cdot\cdot\cdot+q^{b})}{(a+1)(b+1)}}.
+$$  
+
+If $p$ and $q$ are both odd numbers, we can take $a=p$ and $b=q$ , and it is easy to see that $m$ is an integer.  
+
+If $p=2$ and $q$ odd, choose again $b=q$ and consider $a+1=1+q+q^{2}+$ $\cdots+q^{q-1}$ . Then $m=1+2+2^{2}+\cdot\cdot\cdot+2^{a}$ , and it is an integer.  
+
+For $p$ odd and $q=2$ , set $a=p$ and $b=p+p^{2}+p^{3}+\cdot\cdot\cdot+p^{p-1}$ . The solution is complete.  
+
+","Problem. Let $p,q$ be two distinct primes. Prove that there are positive integers $a,b$ so that the arithmetic mean of all the divisors of the number $n=p^{a}\cdot q^{b}$ is also an integer.  
+
+(2002 Romanian Mathematical Olympiad)  
+
+Solution. The sum of all divisors of $n$ is given by the formula  
+
+$$
+(1+p+p^{2}+\cdot\cdot\cdot+p^{a})(1+q+q^{2}+\cdot\cdot\cdot+q^{b}),
+$$  
+
+as it can be easily seen by expanding the brackets. The number $n$ has $(a+1)(b+1)$ positive divisors and their arithmetic mean is  
+
+$$
+M={\frac{(1+p+p^{2}+\cdot\cdot\cdot+p^{a})(1+q+q^{2}+\cdot\cdot\cdot+q^{b})}{(a+1)(b+1)}}.
+$$  
+
+If $p$ and $q$ are both odd numbers, we can take $a=p$ and $b=q$ , and it is easy to see that $m$ is an integer.  
+
+If $p=2$ and $q$ odd, choose again $b=q$ and consider $a+1=1+q+q^{2}+$ $\cdots+q^{q-1}$ . Then $m=1+2+2^{2}+\cdot\cdot\cdot+2^{a}$ , and it is an integer.  
+
+For $p$ odd and $q=2$ , set $a=p$ and $b=p+p^{2}+p^{3}+\cdot\cdot\cdot+p^{p-1}$ . The solution is complete.  
+
+",1.2.4.,
+23,(Divisibility)->(Prime numbers),"Problem. Let $p,q,r$ be primes and let $n$ be a positive integer such that  
+
+$$
+p^{n}+q^{n}=r^{2}.
+$$  
+
+Prove that $n=1$ .  
+
+(2004 Romanian Mathematical Olympiad)  
+
+","Solution. Clearly one of the primes $p,q$ or $r$ is equal to 2. If $r=2$ then $p^{n}+q^{n}=4$ , false, so assume that $p>q=2$ .  
+
+Consider the case when $n>1$ is odd; we have  
+
+$$
+(p+2)(p^{n-1}-2p^{n-2}+2^{2}p^{n-3}-\cdot\cdot\cdot+2^{n-1})=r^{2}.
+$$  
+
+Notice that  
+
+$p^{n-1}-2p^{n-2}+2^{2}p^{n-3}-\cdot\cdot\cdot+2^{n-1}=2^{n-1}+(p-2)(p^{n-2}+2^{2}p^{n-4}+\cdot\cdot\cdot)>1$ and $p+2>1$ hence both factors are equal to $r$ . This rewrites as $p^{n}+2^{n}=$ $(p+2)^{2}=p^{2}+4p+4$ , which is false for $n\geq3$ .  
+
+Consider the case when $n>1$ is even and let $n=2m$ . It follows that $p^{m}=a^{2}-b^{2}$ , $2^{m}=2a b$ and $r\ =\ a^{2}+b^{2}$ , for some integers $a,b$ with $(a,b)=1$ . Therefore, $a$ and $b$ are powers of 2, so $b=1$ and $a=2^{m-1}$ . This implies $p^{m}=4^{m-1}-1<4^{m}$ , so $p$ must be equal to 3. The equality $3^{m}=4^{m-1}-1$ fails for $m=1$ and also for $m\geq2$ , as $4^{m-1}>3^{m}+1$ , by induction.  
+
+Consequently $n=1$ . Take for example $p=23$ , $q=2$ and $r=5$ .  
+
+","Problem. Let $p,q,r$ be primes and let $n$ be a positive integer such that  
+
+$$
+p^{n}+q^{n}=r^{2}.
+$$  
+
+Prove that $n=1$ .  
+
+(2004 Romanian Mathematical Olympiad)  
+
+Solution. Clearly one of the primes $p,q$ or $r$ is equal to 2. If $r=2$ then $p^{n}+q^{n}=4$ , false, so assume that $p>q=2$ .  
+
+Consider the case when $n>1$ is odd; we have  
+
+$$
+(p+2)(p^{n-1}-2p^{n-2}+2^{2}p^{n-3}-\cdot\cdot\cdot+2^{n-1})=r^{2}.
+$$  
+
+Notice that  
+
+$p^{n-1}-2p^{n-2}+2^{2}p^{n-3}-\cdot\cdot\cdot+2^{n-1}=2^{n-1}+(p-2)(p^{n-2}+2^{2}p^{n-4}+\cdot\cdot\cdot)>1$ and $p+2>1$ hence both factors are equal to $r$ . This rewrites as $p^{n}+2^{n}=$ $(p+2)^{2}=p^{2}+4p+4$ , which is false for $n\geq3$ .  
+
+Consider the case when $n>1$ is even and let $n=2m$ . It follows that $p^{m}=a^{2}-b^{2}$ , $2^{m}=2a b$ and $r\ =\ a^{2}+b^{2}$ , for some integers $a,b$ with $(a,b)=1$ . Therefore, $a$ and $b$ are powers of 2, so $b=1$ and $a=2^{m-1}$ . This implies $p^{m}=4^{m-1}-1<4^{m}$ , so $p$ must be equal to 3. The equality $3^{m}=4^{m-1}-1$ fails for $m=1$ and also for $m\geq2$ , as $4^{m-1}>3^{m}+1$ , by induction.  
+
+Consequently $n=1$ . Take for example $p=23$ , $q=2$ and $r=5$ .  
+
+",1.2.5.,
+24,(Divisibility)->(Prime numbers),"Problem. Let $a,b,c$ be non zero integers, $a\neq c$ , such that  
+
+$$
+{\frac{a}{c}}={\frac{a^{2}+b^{2}}{c^{2}+b^{2}}}.
+$$  
+
+Prove that $a^{2}+b^{2}+c^{2}$ cannot be a prime.  
+
+(1999 Romanian Mathematical Olympiad)  
+
+","Solution. The equality ${\frac{a}{c}}={\frac{a^{2}+b^{2}}{c^{2}+b^{2}}}$ is equivalent to $(a-c)(b^{2}-a c)=0$ . Since $a\neq c$ , it follows that $b^{2}=a c$ and therefore:  
+
+$$
+a^{2}+b^{2}+c^{2}=a^{2}+a c+c^{2}=a^{2}+2a c+c^{2}-b^{2}
+$$  
+
+$$
+=(a+c)^{2}-b^{2}=(a+c-b)(a+c+b).
+$$  
+
+Now, clearly, $a^{2}+b^{2}+c^{2}>3$ , so, if $a^{2}+b^{2}+c^{2}$ is a prime number, then only four cases are possible:  
+
+(1) $a+c-b=1$ and $a+c-b=a^{2}+b^{2}+c^{2}$ ; (2) $a+c+b=1$ and $a+c+b=a^{2}+b^{2}+c^{2}$ ; (3) $a+c-b=-1$ and $\displaystyle a+c+b=-(a^{2}+b^{2}+c^{2})$ , and finally: (4) $a+c+b=-1$ and $\displaystyle a+c-b=-(a^{2}+b^{2}+c^{2})$ .  
+
+In the first two cases we are lead to: $a^{2}+b^{2}+c^{2}-2(a+c)+1=0$ , or $(a-1)^{2}+(c-1)^{2}+b^{2}=1$ , hence $a=c=1$ .  
+
+In other cases we obtain: $(a+1)^{2}+(c+1)^{2}+b^{2}=1$ , hence $a=c=-1$ . But $a=c$ is a contradiction.  
+
+","Problem. Let $a,b,c$ be non zero integers, $a\neq c$ , such that  
+
+$$
+{\frac{a}{c}}={\frac{a^{2}+b^{2}}{c^{2}+b^{2}}}.
+$$  
+
+Prove that $a^{2}+b^{2}+c^{2}$ cannot be a prime.  
+
+(1999 Romanian Mathematical Olympiad)  
+
+Solution. The equality ${\frac{a}{c}}={\frac{a^{2}+b^{2}}{c^{2}+b^{2}}}$ is equivalent to $(a-c)(b^{2}-a c)=0$ . Since $a\neq c$ , it follows that $b^{2}=a c$ and therefore:  
+
+$$
+a^{2}+b^{2}+c^{2}=a^{2}+a c+c^{2}=a^{2}+2a c+c^{2}-b^{2}
+$$  
+
+$$
+=(a+c)^{2}-b^{2}=(a+c-b)(a+c+b).
+$$  
+
+Now, clearly, $a^{2}+b^{2}+c^{2}>3$ , so, if $a^{2}+b^{2}+c^{2}$ is a prime number, then only four cases are possible:  
+
+(1) $a+c-b=1$ and $a+c-b=a^{2}+b^{2}+c^{2}$ ; (2) $a+c+b=1$ and $a+c+b=a^{2}+b^{2}+c^{2}$ ; (3) $a+c-b=-1$ and $\displaystyle a+c+b=-(a^{2}+b^{2}+c^{2})$ , and finally: (4) $a+c+b=-1$ and $\displaystyle a+c-b=-(a^{2}+b^{2}+c^{2})$ .  
+
+In the first two cases we are lead to: $a^{2}+b^{2}+c^{2}-2(a+c)+1=0$ , or $(a-1)^{2}+(c-1)^{2}+b^{2}=1$ , hence $a=c=1$ .  
+
+In other cases we obtain: $(a+1)^{2}+(c+1)^{2}+b^{2}=1$ , hence $a=c=-1$ . But $a=c$ is a contradiction.  
+
+",1.2.6.,
+25,(Divisibility)->(Prime numbers),"Problem. Show that each natural number can be written as the difference of two natural numbers having the same number of prime factors.  
+
+(1999 Russian Mathematical Olympiad)  
+
+","Solution. If $n$ is even, then we can write it as $(2n)-(n)$ . If $n$ is odd, let $d$ be the smallest odd prime that does not divide $n$ . Then write $n=$ $(d n)-((d-1)n)$ . The number $d n$ contains exactly one more prime factor than $n$ . As for $(d-1)n$ , it is divisible by 2 because $d-1$ is even. Its odd factors are less than $d$ so they all divide $n$ . Therefore $(d-1)n$ also contains exactly one more prime factor than $n$ , and $d n$ and $(d-1)n$ have the same number of prime factors.  
+
+","Problem. Show that each natural number can be written as the difference of two natural numbers having the same number of prime factors.  
+
+(1999 Russian Mathematical Olympiad)  
+
+Solution. If $n$ is even, then we can write it as $(2n)-(n)$ . If $n$ is odd, let $d$ be the smallest odd prime that does not divide $n$ . Then write $n=$ $(d n)-((d-1)n)$ . The number $d n$ contains exactly one more prime factor than $n$ . As for $(d-1)n$ , it is divisible by 2 because $d-1$ is even. Its odd factors are less than $d$ so they all divide $n$ . Therefore $(d-1)n$ also contains exactly one more prime factor than $n$ , and $d n$ and $(d-1)n$ have the same number of prime factors.  
+
+",1.2.7.,
+26,(Divisibility)->(Prime numbers),"Problem. Let $p$ be a prime number. Find all $k\in\ensuremath{\mathbb{Z}}$ such that $\sqrt{k^{2}-p k}$ is a positive integer.  
+
+(1997 Spanish Mathematical Olympiad)  
+
+","Solution. The values are $k=(p+1)^{2}/4$ for $p$ odd (and none for $p=2$ ). We first consider $p=2$ , in which case we need $k^{2}-2k=(k-1)^{2}-1$ to be a positive square, which is impossible, as the only consecutive squares are 0 and 1.  
+
+Now assume $p$ is odd. We first rule out the case where $k$ is divisible by $p$ : if $k=n p$ , then $k^{2}-p k=p^{2}n(n-1)$ , and $n$ and $n-1$ are consecutive numbers, so they cannot both be squares.  
+
+We thus assume $k$ and $p$ are coprime, in which case $k$ and $k-p$ are coprime. Thus $k^{2}-p k$ is a square if and only if $k$ and $k-p$ are squares, say $k=m^{2}$ and $k-p=n^{2}$ . Then $p=m^{2}-n^{2}=(m+n)(m-n)$ , which implies $m+n=p$ , $m-n=1$ and $k=(p+1)^{2}/4$ .  
+
+","Problem. Let $p$ be a prime number. Find all $k\in\ensuremath{\mathbb{Z}}$ such that $\sqrt{k^{2}-p k}$ is a positive integer.  
+
+(1997 Spanish Mathematical Olympiad)  
+
+Solution. The values are $k=(p+1)^{2}/4$ for $p$ odd (and none for $p=2$ ). We first consider $p=2$ , in which case we need $k^{2}-2k=(k-1)^{2}-1$ to be a positive square, which is impossible, as the only consecutive squares are 0 and 1.  
+
+Now assume $p$ is odd. We first rule out the case where $k$ is divisible by $p$ : if $k=n p$ , then $k^{2}-p k=p^{2}n(n-1)$ , and $n$ and $n-1$ are consecutive numbers, so they cannot both be squares.  
+
+We thus assume $k$ and $p$ are coprime, in which case $k$ and $k-p$ are coprime. Thus $k^{2}-p k$ is a square if and only if $k$ and $k-p$ are squares, say $k=m^{2}$ and $k-p=n^{2}$ . Then $p=m^{2}-n^{2}=(m+n)(m-n)$ , which implies $m+n=p$ , $m-n=1$ and $k=(p+1)^{2}/4$ .  
+
+",1.2.8.,
+27,(Divisibility)->(Prime numbers),"Problem. Let $p>5$ be a prime number and  
+
+$$
+X=\{p-n^{2}|n\in\mathbb{N},n^{2}<p\}.
+$$  
+
+Prove that $X$ contains two distinct elements $x,y$ such that $x\neq1$ and $x$ divides y.  
+
+(1996 Balkan Mathematical Olympiad)  
+
+","Solution. Take $m$ such that $m^{2}<p<(m+1)^{2}$ and write $p=k+m^{2}$ , with $1\leq k\leq2m$ . Since $p-(m-k)^{2}=k(2m-k+1)$ we have $p-m^{2}|p-$ $(m-k)^{2}$ . Of course, $k\neq m$ since $p$ is a prime number. Also, $m-k<m$ and $-m+k\neq m$ since $p$ is not composite. The only case which remains is $k=1$ . Since $m$ is even, $p-(m-1)^{2}$ divides $p-1$ we are done again.  
+
+# Proposed problems  
+
+","Problem. Let $p>5$ be a prime number and  
+
+$$
+X=\{p-n^{2}|n\in\mathbb{N},n^{2}<p\}.
+$$  
+
+Prove that $X$ contains two distinct elements $x,y$ such that $x\neq1$ and $x$ divides y.  
+
+(1996 Balkan Mathematical Olympiad)  
+
+Solution. Take $m$ such that $m^{2}<p<(m+1)^{2}$ and write $p=k+m^{2}$ , with $1\leq k\leq2m$ . Since $p-(m-k)^{2}=k(2m-k+1)$ we have $p-m^{2}|p-$ $(m-k)^{2}$ . Of course, $k\neq m$ since $p$ is a prime number. Also, $m-k<m$ and $-m+k\neq m$ since $p$ is not composite. The only case which remains is $k=1$ . Since $m$ is even, $p-(m-1)^{2}$ divides $p-1$ we are done again.  
+
+# Proposed problems  
+
+",1.2.9.,
+36,(Divisibility)->(The greatest common divisor and the least common multiple),"Problem. Prove that for any odd integers $n,\ a_{1}$ , $a_{2},\ldots,a_{n}$ , the greatest common divisor of numbers $a_{1},a_{2},\ldots,a_{n}$ is equal to the greatest common divisor of a1 + a2 , a2 + a3 , $\frac{a_{1}+a_{2}}{2},\frac{a_{2}+a_{3}}{2},...,\frac{a_{n}+a_{1}}{2}$  
+
+","Solution. Let  
+
+$$
+a=g c d(a_{1},a_{2},\ldots,a_{n})\quad{\mathrm{and}}\quad b=g c d\left({\frac{a_{1}+a_{2}}{2}},{\frac{a_{2}+a_{3}}{2}},\ldots,{\frac{a_{n}+a_{1}}{2}}\right)
+$$  
+
+Then $a_{k}=\alpha_{k}a$ , for some integers $\alpha_{k}$ , $k=1,2,\ldots,n$ . It follows that  
+
+$$
+\frac{a_{k}+a_{k+1}}{2}=\frac{\alpha_{k}+\alpha_{k+1}}{2}a,
+$$  
+
+where $u_{n+1}=u_{1}$ and $\alpha_{n+1}=\alpha_{1}$ . Since $a_{k}$ are odd numbers, $\alpha_{k}$ are also odd, so $\frac{\alpha_{k}+\alpha_{k+1}}{2}$ are integers.  
+
+From relation (1) it follows that $a$ divides ak + ak+1 for all so a divides b. On the other hand, ak + ak+1 = βkb, for some integers βk. Then  
+
+$$
+a_{k}+a_{k+1}\equiv0{\pmod{2b}}
+$$  
+
+for all $k\in\{1,2,\ldots,n\}$ . Summing up from $k=1$ to $k=n$ yields  
+
+$$
+2(a_{1}+a_{2}+\cdot\cdot\cdot+a_{n})\equiv0{\pmod{2b}},
+$$  
+
+hence  
+
+$$
+a_{1}+a_{2}+\cdot\cdot\cdot+a_{n}\equiv0{\pmod{b}}.
+$$  
+
+Summing up for $k=1,3,\dotsc,n-2$ implies  
+
+$$
+a_{1}+a_{2}+\cdot\cdot\cdot+a_{n-1}\equiv0{\pmod{2b}}
+$$  
+
+and furthermore  
+
+$$
+a_{1}+a_{2}+\cdots+a_{n-1}\equiv0{\pmod{b}}.
+$$  
+
+Subtracting (4) from (3) implies $a_{n}\equiv0{\pmod{b}}$ ), then using relation (2) we obtain $\ensuremath{a_{k}}\equiv0$ (mod $b$ ) for all $k$ . Hence $b|a$ and the proof is complete.  
+
+","Problem. Prove that for any odd integers $n,\ a_{1}$ , $a_{2},\ldots,a_{n}$ , the greatest common divisor of numbers $a_{1},a_{2},\ldots,a_{n}$ is equal to the greatest common divisor of a1 + a2 , a2 + a3 , $\frac{a_{1}+a_{2}}{2},\frac{a_{2}+a_{3}}{2},...,\frac{a_{n}+a_{1}}{2}$  
+
+Solution. Let  
+
+$$
+a=g c d(a_{1},a_{2},\ldots,a_{n})\quad{\mathrm{and}}\quad b=g c d\left({\frac{a_{1}+a_{2}}{2}},{\frac{a_{2}+a_{3}}{2}},\ldots,{\frac{a_{n}+a_{1}}{2}}\right)
+$$  
+
+Then $a_{k}=\alpha_{k}a$ , for some integers $\alpha_{k}$ , $k=1,2,\ldots,n$ . It follows that  
+
+$$
+\frac{a_{k}+a_{k+1}}{2}=\frac{\alpha_{k}+\alpha_{k+1}}{2}a,
+$$  
+
+where $u_{n+1}=u_{1}$ and $\alpha_{n+1}=\alpha_{1}$ . Since $a_{k}$ are odd numbers, $\alpha_{k}$ are also odd, so $\frac{\alpha_{k}+\alpha_{k+1}}{2}$ are integers.  
+
+From relation (1) it follows that $a$ divides ak + ak+1 for all so a divides b. On the other hand, ak + ak+1 = βkb, for some integers βk. Then  
+
+$$
+a_{k}+a_{k+1}\equiv0{\pmod{2b}}
+$$  
+
+for all $k\in\{1,2,\ldots,n\}$ . Summing up from $k=1$ to $k=n$ yields  
+
+$$
+2(a_{1}+a_{2}+\cdot\cdot\cdot+a_{n})\equiv0{\pmod{2b}},
+$$  
+
+hence  
+
+$$
+a_{1}+a_{2}+\cdot\cdot\cdot+a_{n}\equiv0{\pmod{b}}.
+$$  
+
+Summing up for $k=1,3,\dotsc,n-2$ implies  
+
+$$
+a_{1}+a_{2}+\cdot\cdot\cdot+a_{n-1}\equiv0{\pmod{2b}}
+$$  
+
+and furthermore  
+
+$$
+a_{1}+a_{2}+\cdots+a_{n-1}\equiv0{\pmod{b}}.
+$$  
+
+Subtracting (4) from (3) implies $a_{n}\equiv0{\pmod{b}}$ ), then using relation (2) we obtain $\ensuremath{a_{k}}\equiv0$ (mod $b$ ) for all $k$ . Hence $b|a$ and the proof is complete.  
+
+",1.3.1.,
+37,(Divisibility)->(The greatest common divisor and the least common multiple),"Problem. Prove that for all nonnegative integers $a,b,c,d$ such that $a$ and $b$ are relatively prime, the system  
+
+$$
+\begin{array}{c}{{a x-y z-c=0}}\\ {{b x-y t+d=0}}\end{array}
+$$  
+
+has at least a solution in nonnegative integers.  
+
+","Solution. We start with a useful lemma.  
+
+Lemma. If a and b are relatively prime positive integers, then there are positive integers u and v such that  
+
+$$
+a u-b v=1.
+$$  
+
+Proof. Consider the numbers  
+
+$$
+1\cdot2,\ 2\cdot a,\ldots,(b-1)\cdot a
+$$  
+
+When divided by $b$ the remainders of these numbers are distinct. Indeed, otherwise we have $k_{1}\neq k_{2}\in\{1,2,\ldots,b-1\}$ such that  
+
+$$
+k_{1}a=p_{1}b+r,\quad k_{2}a=p_{2}b+r
+$$  
+
+for some integers $p_{1},p_{2}$ . Hence  
+
+$$
+(k_{1}-k_{2})a=(p_{1}-p_{2})b\equiv0{\pmod{b}}.
+$$  
+
+Since $a$ and $b$ are relatively prime it follows that $|k_{1}-k_{2}|\equiv0$ (mod $b$ ), which is false because $1\leq|k_{1}-k_{2}|<b$ .  
+
+On the other hand, none of the numbers listed in (1) is divisible by $b$ . Indeed, if so, then there is $k\in\{1,2,\ldots,n-1\}$ such that  
+
+$$
+k\cdot a=p\cdot b{\mathrm{~for~some~integer~}}p.
+$$  
+
+Let $d$ be the greatest common divisor of $k$ and $p$ . Hence $k=k_{1}d$ , $p=p_{1}d$ , for some integers $p_{1},k_{1}$ with $g c d(p_{1},k_{1})=1$ . Then $k_{1}a=p_{1}b$ and since $g c d(a,b)=1$ , we have $k_{1}=b$ , $p_{1}=a$ . This is false, because $k_{1}<b$ .  
+
+It follows that one of the numbers from (1) has the remainder 1 when divided by $b$ so there is $u\in\{1,2,\dotsc,b-1\}$ such that $a u=b v+1$ and the lemma is proved.  
+
+We prove now that the system  
+
+$$
+\left\{{\begin{array}{l}{a x-y z-c=0}\\ {b x-y t+d=0}\end{array}}\right.
+$$  
+
+with $a,b,c,d$ nonnegative integers and $g c d(a,b)=1$ has at least a solution in nonnegative integers.  
+
+Because $g c d(a,b)=1$ using the lemma, there are positive integers $u$ and $v$ such that $a u-b v=1$ . Hence  
+
+$$
+x=c u+d v,\quad y=a d+b c,\quad z=v,\quad t=u,
+$$  
+
+is a solution to the system.  
+
+","Problem. Prove that for all nonnegative integers $a,b,c,d$ such that $a$ and $b$ are relatively prime, the system  
+
+$$
+\begin{array}{c}{{a x-y z-c=0}}\\ {{b x-y t+d=0}}\end{array}
+$$  
+
+has at least a solution in nonnegative integers.  
+
+Solution. We start with a useful lemma.  
+
+Lemma. If a and b are relatively prime positive integers, then there are positive integers u and v such that  
+
+$$
+a u-b v=1.
+$$  
+
+Proof. Consider the numbers  
+
+$$
+1\cdot2,\ 2\cdot a,\ldots,(b-1)\cdot a
+$$  
+
+When divided by $b$ the remainders of these numbers are distinct. Indeed, otherwise we have $k_{1}\neq k_{2}\in\{1,2,\ldots,b-1\}$ such that  
+
+$$
+k_{1}a=p_{1}b+r,\quad k_{2}a=p_{2}b+r
+$$  
+
+for some integers $p_{1},p_{2}$ . Hence  
+
+$$
+(k_{1}-k_{2})a=(p_{1}-p_{2})b\equiv0{\pmod{b}}.
+$$  
+
+Since $a$ and $b$ are relatively prime it follows that $|k_{1}-k_{2}|\equiv0$ (mod $b$ ), which is false because $1\leq|k_{1}-k_{2}|<b$ .  
+
+On the other hand, none of the numbers listed in (1) is divisible by $b$ . Indeed, if so, then there is $k\in\{1,2,\ldots,n-1\}$ such that  
+
+$$
+k\cdot a=p\cdot b{\mathrm{~for~some~integer~}}p.
+$$  
+
+Let $d$ be the greatest common divisor of $k$ and $p$ . Hence $k=k_{1}d$ , $p=p_{1}d$ , for some integers $p_{1},k_{1}$ with $g c d(p_{1},k_{1})=1$ . Then $k_{1}a=p_{1}b$ and since $g c d(a,b)=1$ , we have $k_{1}=b$ , $p_{1}=a$ . This is false, because $k_{1}<b$ .  
+
+It follows that one of the numbers from (1) has the remainder 1 when divided by $b$ so there is $u\in\{1,2,\dotsc,b-1\}$ such that $a u=b v+1$ and the lemma is proved.  
+
+We prove now that the system  
+
+$$
+\left\{{\begin{array}{l}{a x-y z-c=0}\\ {b x-y t+d=0}\end{array}}\right.
+$$  
+
+with $a,b,c,d$ nonnegative integers and $g c d(a,b)=1$ has at least a solution in nonnegative integers.  
+
+Because $g c d(a,b)=1$ using the lemma, there are positive integers $u$ and $v$ such that $a u-b v=1$ . Hence  
+
+$$
+x=c u+d v,\quad y=a d+b c,\quad z=v,\quad t=u,
+$$  
+
+is a solution to the system.  
+
+",1.3.2.,
+38,(Divisibility)->(The greatest common divisor and the least common multiple),"Problem. Find all the pairs of integers $(m,n)$ so that the numbers $A=n^{2}+2m n+3m^{2}+2$ , $B=2n^{2}+3m n+m^{2}+2$ , $C=3n^{2}+m n+2m^{2}+1$ have a common divisor greater than $\mathit{1}$ .  
+
+","Solution. A common divisor of $A,B$ and $C$ is also a divisor for $D=$ $2A-B$ , $E=3A-C$ , $F=5E-7D$ , $G=5D-E$ , $H=18A-2F-3E$ , $I=n G-m F$ and $126=18n I-5H+11F=2\cdot3^{2}\cdot7$ . Since 2 and 3 do not divide $A,B$ and $C$ , then $d=7$ . It follows that $(m,n)$ is equal to $(7a+2,7b+3)$ or $(7c+5,7d+4)$ .  
+
+","Problem. Find all the pairs of integers $(m,n)$ so that the numbers $A=n^{2}+2m n+3m^{2}+2$ , $B=2n^{2}+3m n+m^{2}+2$ , $C=3n^{2}+m n+2m^{2}+1$ have a common divisor greater than $\mathit{1}$ .  
+
+Solution. A common divisor of $A,B$ and $C$ is also a divisor for $D=$ $2A-B$ , $E=3A-C$ , $F=5E-7D$ , $G=5D-E$ , $H=18A-2F-3E$ , $I=n G-m F$ and $126=18n I-5H+11F=2\cdot3^{2}\cdot7$ . Since 2 and 3 do not divide $A,B$ and $C$ , then $d=7$ . It follows that $(m,n)$ is equal to $(7a+2,7b+3)$ or $(7c+5,7d+4)$ .  
+
+",1.3.3.,
+39,(Divisibility)->(The greatest common divisor and the least common multiple),"Problem. Let n be an even positive integer and let $a,b$ be positive coprime integers. Find a and $b$ if $a+b$ divides $a^{n}+b^{n}$ .  
+
+(2003 Romanian Mathematical Olympiad)  
+
+","Solution. As $n$ is even, we have  
+
+$$
+a^{n}-b^{n}=(a^{2}-b^{2})(a^{n-2}+a^{n-4}b^{2}+\cdot\cdot\cdot+b^{n-2}).
+$$  
+
+Since $a+b$ is a divisor of $a^{2}-b^{2}$ , it follows that $a+b$ is a divisor of $a^{n}-b^{n}$ . In turn, $a+b$ divides $2a^{n}=(a^{n}+b^{n})+(a^{n}-b^{n})$ , and $2b^{n}=(a^{n}+$ $b^{n})-(a^{n}-b^{n})$ . But $a$ and $b$ are coprime numbers, and so $g c d(2a^{n},2b^{n})=2$ . Therefore $a+b$ is a divisor of 2, hence $a=b=1$ .  
+
+","Problem. Let n be an even positive integer and let $a,b$ be positive coprime integers. Find a and $b$ if $a+b$ divides $a^{n}+b^{n}$ .  
+
+(2003 Romanian Mathematical Olympiad)  
+
+Solution. As $n$ is even, we have  
+
+$$
+a^{n}-b^{n}=(a^{2}-b^{2})(a^{n-2}+a^{n-4}b^{2}+\cdot\cdot\cdot+b^{n-2}).
+$$  
+
+Since $a+b$ is a divisor of $a^{2}-b^{2}$ , it follows that $a+b$ is a divisor of $a^{n}-b^{n}$ . In turn, $a+b$ divides $2a^{n}=(a^{n}+b^{n})+(a^{n}-b^{n})$ , and $2b^{n}=(a^{n}+$ $b^{n})-(a^{n}-b^{n})$ . But $a$ and $b$ are coprime numbers, and so $g c d(2a^{n},2b^{n})=2$ . Therefore $a+b$ is a divisor of 2, hence $a=b=1$ .  
+
+",1.3.4.,
+40,(Divisibility)->(The greatest common divisor and the least common multiple),"Problem. $M$ is the set of all values of the greatest common divisor $d$ of the numbers $A=2n+3m+13$ , $B=3n+5m+1$ , $C=6n+8m-1$ , where m and $n$ are positive integers. Prove that $M$ is the set of all divisors of an integer $k$ .  
+
+","Solution. If $d$ is a common divisor of the numbers $A,B$ and $C$ , then $d$ divides $E=3A-C=m+40$ , $F=2B-C=2m+3$ and $G=2E-F=77$ . We prove that $k=77$ satisfies the conditions.  
+
+Let $d^{\prime}$ be the greatest common divisor of the numbers $E$ and $F$ . Then $d^{\prime}=7u$ for $m=7p+2$ . Moreover, $u=1$ if $p\neq11v+5$ and $u=11$ if $p=11v+5$ . On the other hand, $d^{\prime}=11v$ for $m=11q+4$ . Furthermore, $v=1$ for $q\neq7z+3$ and $v=7$ for $q=7z+3$ .  
+
+The number $d^{\prime}$ is common divisor of the numbers $A,B,C$ if and only if $d^{\prime}$ divides $A$ .  
+
+For $m=7p+2$ , 7 divides $A=2n+21p+19$ if and only if $n=7p^{\prime}+1$ .  
+
+For $m=7(11v+5)$ , $A=2(n+59)+3\cdot77v$ is divisible by 77 if and only if $n=77t+18$ .  
+
+","Problem. $M$ is the set of all values of the greatest common divisor $d$ of the numbers $A=2n+3m+13$ , $B=3n+5m+1$ , $C=6n+8m-1$ , where m and $n$ are positive integers. Prove that $M$ is the set of all divisors of an integer $k$ .  
+
+Solution. If $d$ is a common divisor of the numbers $A,B$ and $C$ , then $d$ divides $E=3A-C=m+40$ , $F=2B-C=2m+3$ and $G=2E-F=77$ . We prove that $k=77$ satisfies the conditions.  
+
+Let $d^{\prime}$ be the greatest common divisor of the numbers $E$ and $F$ . Then $d^{\prime}=7u$ for $m=7p+2$ . Moreover, $u=1$ if $p\neq11v+5$ and $u=11$ if $p=11v+5$ . On the other hand, $d^{\prime}=11v$ for $m=11q+4$ . Furthermore, $v=1$ for $q\neq7z+3$ and $v=7$ for $q=7z+3$ .  
+
+The number $d^{\prime}$ is common divisor of the numbers $A,B,C$ if and only if $d^{\prime}$ divides $A$ .  
+
+For $m=7p+2$ , 7 divides $A=2n+21p+19$ if and only if $n=7p^{\prime}+1$ .  
+
+For $m=7(11v+5)$ , $A=2(n+59)+3\cdot77v$ is divisible by 77 if and only if $n=77t+18$ .  
+
+",1.3.5.,
+41,(Divisibility)->(The greatest common divisor and the least common multiple),"Problem. Find the greatest common divisor of the numbers  
+
+$$
+A_{n}=2^{3n}+3^{6n+2}+5^{6n+2}
+$$  
+
+when $n=0,1,\ldots,1999$ .  
+
+(2001 Junior Balkan Mathematical Olympiad)  
+
+","Solution. We have  
+
+$$
+A_{0}=1+9+25=35=5\cdot7.
+$$  
+
+Using congruence mod 5, it follows that  
+
+$$
+A_{n}\equiv2^{3n}+3^{6n+2}\equiv2^{3n}+9^{3n+1}\equiv2^{3n}+(-1)^{3n+1}{\pmod{5}}.
+$$  
+
+For $n=1$ , $A_{1}\equiv9\neq0$ (mod 5), hence 5 is not a common divisor. On the other hand,  
+
+$$
+{\begin{array}{r l}&{A_{n}=8^{n}+9\cdot9^{3n}+25\cdot25^{3n}}\\ &{\qquad\equiv1+2\cdot2^{3n}+4\cdot4^{3n}}\\ &{\qquad\equiv1+2\cdot8^{n}+4\cdot64^{n}}\\ &{\qquad\equiv1+2\cdot1^{n}+4\cdot1^{n}}\\ &{\qquad\equiv0{\pmod{7}},}\end{array}}
+$$  
+
+therefore 7 divides $A_{n}$ , for all integers $n\geq0$ .  
+
+Consequently, the greatest common divisor of the numbers $A_{0}$ , $A_{1},\dotsc$ $A_{1999}$ is equal to 7.  
+
+","Problem. Find the greatest common divisor of the numbers  
+
+$$
+A_{n}=2^{3n}+3^{6n+2}+5^{6n+2}
+$$  
+
+when $n=0,1,\ldots,1999$ .  
+
+(2001 Junior Balkan Mathematical Olympiad)  
+
+Solution. We have  
+
+$$
+A_{0}=1+9+25=35=5\cdot7.
+$$  
+
+Using congruence mod 5, it follows that  
+
+$$
+A_{n}\equiv2^{3n}+3^{6n+2}\equiv2^{3n}+9^{3n+1}\equiv2^{3n}+(-1)^{3n+1}{\pmod{5}}.
+$$  
+
+For $n=1$ , $A_{1}\equiv9\neq0$ (mod 5), hence 5 is not a common divisor. On the other hand,  
+
+$$
+{\begin{array}{r l}&{A_{n}=8^{n}+9\cdot9^{3n}+25\cdot25^{3n}}\\ &{\qquad\equiv1+2\cdot2^{3n}+4\cdot4^{3n}}\\ &{\qquad\equiv1+2\cdot8^{n}+4\cdot64^{n}}\\ &{\qquad\equiv1+2\cdot1^{n}+4\cdot1^{n}}\\ &{\qquad\equiv0{\pmod{7}},}\end{array}}
+$$  
+
+therefore 7 divides $A_{n}$ , for all integers $n\geq0$ .  
+
+Consequently, the greatest common divisor of the numbers $A_{0}$ , $A_{1},\dotsc$ $A_{1999}$ is equal to 7.  
+
+",1.3.6.,
+42,(Divisibility)->(The greatest common divisor and the least common multiple),"Problem. Let $m\geq2$ be an integer. A positive integer $n$ is called $m$ -good if for every positive integer $a$ , relatively prime to $n$ , one has $\boldsymbol{n}|\boldsymbol{a}^{m}-$ 1.  
+
+Show that any m-good number is at most $4m(2^{m}-1)$ .  
+
+(2004 Romanian IMO Team Selection Test)  
+
+","Solution. If $m$ is odd then $n|(n-1)^{m}-1$ implies $n|2$ , hence $n\leq2$ .  
+
+Take now $m=2^{t}q$ , $t\geq1$ , $q$ odd, If $n=2^{u}(2v+1)$ is $m$ -good, then $(2v+1)|(2v-1)^{m}-1$ , hence $(2v+1)|2^{m}-1$ . Also, if $a=8v+5$ then $(a,n)=1$ , so  
+
+$$
+2^{u}|(a^{q})^{2^{t}}-1=(a^{q}-1)(a^{q}+1)(a^{2q}+1)\dots(a^{2^{t-1}q}+1).
+$$  
+
+But $a^{q}\equiv5$ (mod 8) implies that the exponent of the factor 2 in the last product is $t+2$ , therefore $u\leq t+2$ , whence $n\leq4\cdot2^{t}(2v+1)\leq4m(2^{m}-1)$ .  
+
+Remark. The estimation is optimal only for $m=2$ , $m=4$ .  
+
+","Problem. Let $m\geq2$ be an integer. A positive integer $n$ is called $m$ -good if for every positive integer $a$ , relatively prime to $n$ , one has $\boldsymbol{n}|\boldsymbol{a}^{m}-$ 1.  
+
+Show that any m-good number is at most $4m(2^{m}-1)$ .  
+
+(2004 Romanian IMO Team Selection Test)  
+
+Solution. If $m$ is odd then $n|(n-1)^{m}-1$ implies $n|2$ , hence $n\leq2$ .  
+
+Take now $m=2^{t}q$ , $t\geq1$ , $q$ odd, If $n=2^{u}(2v+1)$ is $m$ -good, then $(2v+1)|(2v-1)^{m}-1$ , hence $(2v+1)|2^{m}-1$ . Also, if $a=8v+5$ then $(a,n)=1$ , so  
+
+$$
+2^{u}|(a^{q})^{2^{t}}-1=(a^{q}-1)(a^{q}+1)(a^{2q}+1)\dots(a^{2^{t-1}q}+1).
+$$  
+
+But $a^{q}\equiv5$ (mod 8) implies that the exponent of the factor 2 in the last product is $t+2$ , therefore $u\leq t+2$ , whence $n\leq4\cdot2^{t}(2v+1)\leq4m(2^{m}-1)$ .  
+
+Remark. The estimation is optimal only for $m=2$ , $m=4$ .  
+
+",1.3.7.,
+43,(Divisibility)->(The greatest common divisor and the least common multiple),"Problem. Find all triples of positive integers $(a,b,c)$ such that $a^{3}+b^{3}+c^{3}$ is divisible by $a^{2}b$ , $b^{2}c$ , and $c^{2}a$ .  
+
+(2001 Bulgarian Mathematical Olympiad)  
+
+","Solution. Answer: triples of the form $(k,k,k)$ or $(k,2k,3k)$ or their permutations.  
+
+Let $g$ be the positive greatest common divisor of $a$ and $b$ . Then $g^{3}$ divides $a^{2}b$ , so $g^{3}$ divides $a^{3}+b^{3}+c^{3}$ , and $g$ divides $c$ . Thus, the gcd of any two of $a,b,c$ is the $g c d$ of all three.  
+
+Let $(l,m,n)=(a/g,b/g,c/g)$ . Then $(l,m,n)$ is a triple satisfying the conditions of the problem, and $\iota,m,n$ are pairwise relatively prime. Because $l^{2},m^{2}$ and $n^{2}$ all divide $l^{3}+m^{3}+n^{3}$ , we have  
+
+$$
+l^{2}m^{2}n^{2}|(l^{3}+m^{3}+n^{3}).
+$$  
+
+We will prove that $(l,m,n)$ is either (1,1,1) or a permutation of (1,2,3). Assume without loss of generality that $l\geq m\geq n$ . We have  
+
+$$
+3l^{3}\ge l^{3}+m^{3}+n^{3}\ge l^{2}m^{2}n^{2},
+$$  
+
+and, therefore, $l\ge m^{2}n^{2}/3$ . Because $l^{2}\vert(m^{3}+n^{3})$ , we also have  
+
+$$
+2m^{3}\geq m^{3}+n^{3}\geq l^{2}\geq m^{4}n^{4}/9.
+$$  
+
+If $n\geq2$ , then $m\leq2\cdot9/2^{4}<2\leq n$ , which contradicts the assumption that $m\geq n$ . Therefore, $n$ must be 1. It is not difficult to see that (1,1,1) is the unique solution with $m=1$ .  
+
+If $m\geq2$ , then $l>m$ because $\it{l}$ and $m$ are relatively prime, so  
+
+$$
+2l^{3}>l^{3}+m^{3}+1\ge l^{2}m^{2},
+$$  
+
+and $l>m^{2}/2$ , so  
+
+$$
+m^{3}+1\ge l^{2}>m^{4}/4,
+$$  
+
+and $m\leq4$ . It is not difficult to check that the only solution here is (3,2,1).  
+
+# Proposed problems  
+
+","Problem. Find all triples of positive integers $(a,b,c)$ such that $a^{3}+b^{3}+c^{3}$ is divisible by $a^{2}b$ , $b^{2}c$ , and $c^{2}a$ .  
+
+(2001 Bulgarian Mathematical Olympiad)  
+
+Solution. Answer: triples of the form $(k,k,k)$ or $(k,2k,3k)$ or their permutations.  
+
+Let $g$ be the positive greatest common divisor of $a$ and $b$ . Then $g^{3}$ divides $a^{2}b$ , so $g^{3}$ divides $a^{3}+b^{3}+c^{3}$ , and $g$ divides $c$ . Thus, the gcd of any two of $a,b,c$ is the $g c d$ of all three.  
+
+Let $(l,m,n)=(a/g,b/g,c/g)$ . Then $(l,m,n)$ is a triple satisfying the conditions of the problem, and $\iota,m,n$ are pairwise relatively prime. Because $l^{2},m^{2}$ and $n^{2}$ all divide $l^{3}+m^{3}+n^{3}$ , we have  
+
+$$
+l^{2}m^{2}n^{2}|(l^{3}+m^{3}+n^{3}).
+$$  
+
+We will prove that $(l,m,n)$ is either (1,1,1) or a permutation of (1,2,3). Assume without loss of generality that $l\geq m\geq n$ . We have  
+
+$$
+3l^{3}\ge l^{3}+m^{3}+n^{3}\ge l^{2}m^{2}n^{2},
+$$  
+
+and, therefore, $l\ge m^{2}n^{2}/3$ . Because $l^{2}\vert(m^{3}+n^{3})$ , we also have  
+
+$$
+2m^{3}\geq m^{3}+n^{3}\geq l^{2}\geq m^{4}n^{4}/9.
+$$  
+
+If $n\geq2$ , then $m\leq2\cdot9/2^{4}<2\leq n$ , which contradicts the assumption that $m\geq n$ . Therefore, $n$ must be 1. It is not difficult to see that (1,1,1) is the unique solution with $m=1$ .  
+
+If $m\geq2$ , then $l>m$ because $\it{l}$ and $m$ are relatively prime, so  
+
+$$
+2l^{3}>l^{3}+m^{3}+1\ge l^{2}m^{2},
+$$  
+
+and $l>m^{2}/2$ , so  
+
+$$
+m^{3}+1\ge l^{2}>m^{4}/4,
+$$  
+
+and $m\leq4$ . It is not difficult to check that the only solution here is (3,2,1).  
+
+# Proposed problems  
+
+",1.3.8.,
+53,(Divisibility)->(Odd and even),"Problem. Let m and n be integers greater than 1. Prove that $m^{\pi}$ is the sum of m odd consecutive integers.  
+
+","Solution. The equality  
+
+$$
+m^{n}=(2k+1)+(2k+3)+\cdot\cdot\cdot+(2k+2m-1)
+$$  
+
+is equivalent to  
+
+$$
+m^{n}=2k m+(1+3+\cdot\cdot\cdot+2m-1)
+$$  
+
+or mn = 2km + m2. It follows that k = m(mn−2 − 1) which is an integer, because $m$ and $m^{n-2}-1$ have different parities.  
+
+","Problem. Let m and n be integers greater than 1. Prove that $m^{\pi}$ is the sum of m odd consecutive integers.  
+
+Solution. The equality  
+
+$$
+m^{n}=(2k+1)+(2k+3)+\cdot\cdot\cdot+(2k+2m-1)
+$$  
+
+is equivalent to  
+
+$$
+m^{n}=2k m+(1+3+\cdot\cdot\cdot+2m-1)
+$$  
+
+or mn = 2km + m2. It follows that k = m(mn−2 − 1) which is an integer, because $m$ and $m^{n-2}-1$ have different parities.  
+
+",1.4.1.,
+54,(Divisibility)->(Odd and even),"Problem. Let n be a positive integer. Find the sum of all even numbers between $n^{2}-n+1$ and $n^{2}+n+1$ .  
+
+","Solution. We have $n^{2}-n+1=n(n-1)+1$ and $n^{2}+n+1=n(n+1)+1$ , both odd numbers. It follows that the least even number to be considered is $n^{2}-n+2$ and the greatest is $n^{2}+n$ . The desired sum is  
+
+$$
+(n^{2}-n+2)+(n^{2}-n+4)+\cdots+(n^{2}+n-2)+(n^{2}+n)
+$$  
+
+$$
+=(n^{2}-n)+2+(n^{2}-n)+4+\cdot\cdot\cdot+(n^{2}-n)+2n-2+(n^{2}-n)+2n
+$$  
+
+$$
+=n(n^{2}-n)+2(1+2+\cdots+n)=n^{3}-n^{2}+n^{2}+n=n^{3}+n.
+$$  
+
+","Problem. Let n be a positive integer. Find the sum of all even numbers between $n^{2}-n+1$ and $n^{2}+n+1$ .  
+
+Solution. We have $n^{2}-n+1=n(n-1)+1$ and $n^{2}+n+1=n(n+1)+1$ , both odd numbers. It follows that the least even number to be considered is $n^{2}-n+2$ and the greatest is $n^{2}+n$ . The desired sum is  
+
+$$
+(n^{2}-n+2)+(n^{2}-n+4)+\cdots+(n^{2}+n-2)+(n^{2}+n)
+$$  
+
+$$
+=(n^{2}-n)+2+(n^{2}-n)+4+\cdot\cdot\cdot+(n^{2}-n)+2n-2+(n^{2}-n)+2n
+$$  
+
+$$
+=n(n^{2}-n)+2(1+2+\cdots+n)=n^{3}-n^{2}+n^{2}+n=n^{3}+n.
+$$  
+
+",1.4.2.,
+55,(Divisibility)->(Odd and even),"Problem. Let $n$ be a positive integer and let $\varepsilon_{1},\varepsilon_{2},\ldots,\varepsilon_{n}\in$ $\{-1,1\}$ such that $\varepsilon_{1}\varepsilon_{2}+\varepsilon_{2}\varepsilon_{3}+\cdot\cdot\cdot+\varepsilon_{n}\varepsilon_{1}=0$ . Prove that $n$ is divisible by $\it4$ .  
+
+","Solution. The sum $\varepsilon_{1}\varepsilon_{2}+\varepsilon_{2}\varepsilon_{3}+\cdot\cdot\cdot+\varepsilon_{n}\varepsilon_{1}$ has $n$ terms equal to $1$ or $-1$ , so $n$ is even, say $n=2k$ . It is clear that $k$ of the terms $\varepsilon_{1}\varepsilon_{2},\varepsilon_{2}\varepsilon_{3},\ldots,\varepsilon_{n}\varepsilon_{1}$ are $^{1}$ and $k$ are $-1$ . On the other hand, the product of the terms in the sum is  
+
+$$
+\begin{array}{r}{\left(\varepsilon_{1}\varepsilon_{2}\right)(\varepsilon_{2}\varepsilon_{3})\ldots(\varepsilon_{n}\varepsilon_{1})=\varepsilon_{1}^{2}\varepsilon_{2}^{2}\ldots\varepsilon_{n}^{2}=1,}\end{array}
+$$  
+
+hence $(+1)^{k}(-1)^{k}=1$ . That is $k$ is even and the conclusion follows.  
+
+For any integer $n=4m$ there exist $\varepsilon_{1},\varepsilon_{2},\ldots,\varepsilon_{n}$ such that  
+
+$$
+\varepsilon_{1}\varepsilon_{2}+\varepsilon_{2}\varepsilon_{3}+\cdot\cdot\cdot+\varepsilon_{n}\varepsilon_{1}=0,
+$$  
+
+for example  
+
+$$
+\begin{array}{r}{\varepsilon_{1}=\varepsilon_{4}=\varepsilon_{5}=\varepsilon_{8}=\cdot\cdot\cdot=\varepsilon_{4m-3}=\varepsilon_{4m}=+1,}\\ {\phantom{\varepsilon_{2}=}\varepsilon_{3}=\varepsilon_{6}=\varepsilon_{7}=\cdot\cdot\cdot=\varepsilon_{4m-2}=\varepsilon_{4m-1}=-1}\end{array}
+$$  
+
+","Problem. Let $n$ be a positive integer and let $\varepsilon_{1},\varepsilon_{2},\ldots,\varepsilon_{n}\in$ $\{-1,1\}$ such that $\varepsilon_{1}\varepsilon_{2}+\varepsilon_{2}\varepsilon_{3}+\cdot\cdot\cdot+\varepsilon_{n}\varepsilon_{1}=0$ . Prove that $n$ is divisible by $\it4$ .  
+
+Solution. The sum $\varepsilon_{1}\varepsilon_{2}+\varepsilon_{2}\varepsilon_{3}+\cdot\cdot\cdot+\varepsilon_{n}\varepsilon_{1}$ has $n$ terms equal to $1$ or $-1$ , so $n$ is even, say $n=2k$ . It is clear that $k$ of the terms $\varepsilon_{1}\varepsilon_{2},\varepsilon_{2}\varepsilon_{3},\ldots,\varepsilon_{n}\varepsilon_{1}$ are $^{1}$ and $k$ are $-1$ . On the other hand, the product of the terms in the sum is  
+
+$$
+\begin{array}{r}{\left(\varepsilon_{1}\varepsilon_{2}\right)(\varepsilon_{2}\varepsilon_{3})\ldots(\varepsilon_{n}\varepsilon_{1})=\varepsilon_{1}^{2}\varepsilon_{2}^{2}\ldots\varepsilon_{n}^{2}=1,}\end{array}
+$$  
+
+hence $(+1)^{k}(-1)^{k}=1$ . That is $k$ is even and the conclusion follows.  
+
+For any integer $n=4m$ there exist $\varepsilon_{1},\varepsilon_{2},\ldots,\varepsilon_{n}$ such that  
+
+$$
+\varepsilon_{1}\varepsilon_{2}+\varepsilon_{2}\varepsilon_{3}+\cdot\cdot\cdot+\varepsilon_{n}\varepsilon_{1}=0,
+$$  
+
+for example  
+
+$$
+\begin{array}{r}{\varepsilon_{1}=\varepsilon_{4}=\varepsilon_{5}=\varepsilon_{8}=\cdot\cdot\cdot=\varepsilon_{4m-3}=\varepsilon_{4m}=+1,}\\ {\phantom{\varepsilon_{2}=}\varepsilon_{3}=\varepsilon_{6}=\varepsilon_{7}=\cdot\cdot\cdot=\varepsilon_{4m-2}=\varepsilon_{4m-1}=-1}\end{array}
+$$  
+
+",1.4.3.,
+56,(Divisibility)->(Odd and even),"Problem. A table with m rows and n columns has all entries $-1$ or 1 such that for each row and each column the product of entries is $-1$ . Prove that m and n have the same parity.  
+
+","Solution. We compute the product $P$ of the $m\cdot n$ entries in two ways, by rows and by columns, respectively:  
+
+$$
+P=\underbrace{(-1)(-1)\dots(-1)}_{m\ t i m e s}=(-1)^{m}=(-1)^{n}=\underbrace{(-1)(-1)\dots(-1)}_{n\ t i m e s}.
+$$  
+
+The conclusion now follows.  
+
+We will show such a table for $m=3$ and $n=5$ .  
+
+$$
+\begin{array}{r r r r r}{-1}&{{}1}&{1}&{{}-1}&{{}-1}\\ {1}&{{}1}&{-1}&{{}1}&{{}1}\\ {1}&{{}-1}&{1}&{{}1}&{{}1}\end{array}
+$$  
+
+Remark. If $m$ and $n$ have the same parity, then the number of tables with the above property is $2^{(m-1)(n-1)}$ .  
+
+# Proposed problems  
+
+","Problem. A table with m rows and n columns has all entries $-1$ or 1 such that for each row and each column the product of entries is $-1$ . Prove that m and n have the same parity.  
+
+Solution. We compute the product $P$ of the $m\cdot n$ entries in two ways, by rows and by columns, respectively:  
+
+$$
+P=\underbrace{(-1)(-1)\dots(-1)}_{m\ t i m e s}=(-1)^{m}=(-1)^{n}=\underbrace{(-1)(-1)\dots(-1)}_{n\ t i m e s}.
+$$  
+
+The conclusion now follows.  
+
+We will show such a table for $m=3$ and $n=5$ .  
+
+$$
+\begin{array}{r r r r r}{-1}&{{}1}&{1}&{{}-1}&{{}-1}\\ {1}&{{}1}&{-1}&{{}1}&{{}1}\\ {1}&{{}-1}&{1}&{{}1}&{{}1}\end{array}
+$$  
+
+Remark. If $m$ and $n$ have the same parity, then the number of tables with the above property is $2^{(m-1)(n-1)}$ .  
+
+# Proposed problems  
+
+",1.4.4.,
+61,(Divisibility)->(Modular arithmetics),"Problem. For all the positive integers $k\leq1999$ , let $S_{1}(k)$ be the sum of all the remainders of the numbers $1,2,\ldots,k$ when divided by 4, and let $S_{2}(k)$ be the sum of all the remainders of the numbers $k+1,k+$ $2,\ldots,2000$ when divided by 3. Prove that there is an unique positive integer $m\leq1999$ so that $S_{1}(m)=S_{2}(m)$ .  
+
+(1999 Romanian Mathematical Olympiad)  
+
+","Solution. Let $A_{k}=\{1,2,3,...,k\}$ and $B_{k}=\{k+1,k+2,\ldots,2000\}$ . From the division of integers we have  
+
+$$
+k=4q_{1}+r_{1},\mathrm{with}r_{1}\in\{0,1,2,3\}.
+$$  
+
+If $s_{1}(k)$ is the sum of the remainders at the division by 4 of the last $r_{1}$ elements of $A_{k}$ , then  
+
+$$
+S_{1}(k)=6q_{1}+s_{1}(k),\mathrm{with}0\le s_{1}(k)\le6
+$$  
+
+(if $r_{1}=0$ , then set $s_{1}(k)=0$ ).  
+
+Using again the division of integers there exist integers $q_{2},r_{2}$ such that  
+
+$$
+2000-k=3q_{2}+r_{2},\mathrm{with}r_{2}\in\{0,1,2\}.
+$$  
+
+If $s_{2}(k)$ is the sum of the remainders at the division by 3 of the last $r_{2}$ elements of $B_{k}$ , then  
+
+$$
+S_{2}(k)=3q_{2}+s_{2}(k),\mathrm{with}0\le s_{2}(k)\le3
+$$  
+
+(again we set $s_{2}(k)=0$ , if $r_{2}=0$ ).  
+
+As $S_{1}(k)=S_{2}(k)$ , $s_{2}(k)-s_{1}(k)=3(2q_{1}-q_{2})$ , so $3|2q_{1}-q_{2}|=|s_{2}(k)-$ $s_{1}(k)|\leq6$ , and $|2q_{1}-q_{2}|\leq2$ . In other words, $|2q_{1}-q_{2}|\in\{0,1,2\}$ .  
+
+If $2q_{1}~=~q_{2}$ , then (1) and (3) imply $2000-(r_{1}+r_{2})=10q_{1}$ , hence $10|(r_{1}+r_{2})$ . Then $r_{1}=r_{2}=0$ and $q_{1}=200$ . From (1) it follows that $k=800$ , and from (2) and (4) we have $S_{1}(800)=S_{2}(800)=1200$ .  
+
+Furthermore $S_{1}(k)\ \leq\ S_{1}(k+1)$ , and $S_{2}(k)~\geq~S_{2}(k+1)$ for all $k\in$ $\{1,2,\ldots,1998\}$ . Since $S_{1}(799)\:=\:S_{1}(800)$ and $S_{2}(799)=S_{2}(800)+2\ <\$ $S_{1}(800)$ , we deduce that $S_{1}(k)<S_{2}(k)$ for all $k\in\{1,2,...,799\}$ . Since $S_{1}(801)=S_{1}(800)+1>S_{2}(800)\geq S_{2}(801)$ , we derive that $S_{1}(k)>S_{2}(k)$ for all $k\in\{801,802,\ldots,1999\}$ . Consequently, $S_{1}(m)=S_{2}(m)$ if and only if $m=800$ .  
+
+","Problem. For all the positive integers $k\leq1999$ , let $S_{1}(k)$ be the sum of all the remainders of the numbers $1,2,\ldots,k$ when divided by 4, and let $S_{2}(k)$ be the sum of all the remainders of the numbers $k+1,k+$ $2,\ldots,2000$ when divided by 3. Prove that there is an unique positive integer $m\leq1999$ so that $S_{1}(m)=S_{2}(m)$ .  
+
+(1999 Romanian Mathematical Olympiad)  
+
+Solution. Let $A_{k}=\{1,2,3,...,k\}$ and $B_{k}=\{k+1,k+2,\ldots,2000\}$ . From the division of integers we have  
+
+$$
+k=4q_{1}+r_{1},\mathrm{with}r_{1}\in\{0,1,2,3\}.
+$$  
+
+If $s_{1}(k)$ is the sum of the remainders at the division by 4 of the last $r_{1}$ elements of $A_{k}$ , then  
+
+$$
+S_{1}(k)=6q_{1}+s_{1}(k),\mathrm{with}0\le s_{1}(k)\le6
+$$  
+
+(if $r_{1}=0$ , then set $s_{1}(k)=0$ ).  
+
+Using again the division of integers there exist integers $q_{2},r_{2}$ such that  
+
+$$
+2000-k=3q_{2}+r_{2},\mathrm{with}r_{2}\in\{0,1,2\}.
+$$  
+
+If $s_{2}(k)$ is the sum of the remainders at the division by 3 of the last $r_{2}$ elements of $B_{k}$ , then  
+
+$$
+S_{2}(k)=3q_{2}+s_{2}(k),\mathrm{with}0\le s_{2}(k)\le3
+$$  
+
+(again we set $s_{2}(k)=0$ , if $r_{2}=0$ ).  
+
+As $S_{1}(k)=S_{2}(k)$ , $s_{2}(k)-s_{1}(k)=3(2q_{1}-q_{2})$ , so $3|2q_{1}-q_{2}|=|s_{2}(k)-$ $s_{1}(k)|\leq6$ , and $|2q_{1}-q_{2}|\leq2$ . In other words, $|2q_{1}-q_{2}|\in\{0,1,2\}$ .  
+
+If $2q_{1}~=~q_{2}$ , then (1) and (3) imply $2000-(r_{1}+r_{2})=10q_{1}$ , hence $10|(r_{1}+r_{2})$ . Then $r_{1}=r_{2}=0$ and $q_{1}=200$ . From (1) it follows that $k=800$ , and from (2) and (4) we have $S_{1}(800)=S_{2}(800)=1200$ .  
+
+Furthermore $S_{1}(k)\ \leq\ S_{1}(k+1)$ , and $S_{2}(k)~\geq~S_{2}(k+1)$ for all $k\in$ $\{1,2,\ldots,1998\}$ . Since $S_{1}(799)\:=\:S_{1}(800)$ and $S_{2}(799)=S_{2}(800)+2\ <\$ $S_{1}(800)$ , we deduce that $S_{1}(k)<S_{2}(k)$ for all $k\in\{1,2,...,799\}$ . Since $S_{1}(801)=S_{1}(800)+1>S_{2}(800)\geq S_{2}(801)$ , we derive that $S_{1}(k)>S_{2}(k)$ for all $k\in\{801,802,\ldots,1999\}$ . Consequently, $S_{1}(m)=S_{2}(m)$ if and only if $m=800$ .  
+
+",1.5.1.,
+62,(Divisibility)->(Modular arithmetics),"Problem. Let n be a positive integer. Show that if $a$ and $b$ are integers greater than 1 such that $2^{n}-1=a b$ , then $a b-(a-b)-1$ can be written as $k\cdot2^{2m}$ for some odd integer $k$ and some positive integer $m$ .  
+
+(2001 Balkan Mathematical Olympiad)  
+
+","Solution. Note that $a b-(a-b)-1=(a+1)(b-1)$ . We shall show that the highest powers of two dividing $(a+1)$ and $(b-1)$ are the same. Let $2^{s}$  
+
+and $2^{t}$ be the highest powers of 2 dividing $(a+1)$ and $(b-1)$ , respectively.   
+Because $a+1,b+1\leq a b+1=2^{n}$ , we have $s,t\leq n$ .  
+
+Note that $2^{s}$ divides $2^{n}=a b+1$ and $a+1$ , so that  
+
+$$
+a b\equiv a\equiv-1{\pmod{2^{s}}}.
+$$  
+
+Hence, $b\equiv1$ (mod $2^{s}$ ), or $2^{s}|b-1$ , so that $s\leq t$ .  
+
+Similarly, $a b\equiv-b\equiv-1$ (mod $2^{t}$ ), so $a\equiv-1$ (mod $2^{t}$ ), and $2^{t}|a+1$ . Thus, $t\leq s$ .  
+
+Therefore, $s=t$ , the highest power of two dividing $(a+1)(b-1)$ is $2s$ , and $a b-(a-b)-1=k\cdot2^{:2s}$ for some odd $k$ .  
+
+","Problem. Let n be a positive integer. Show that if $a$ and $b$ are integers greater than 1 such that $2^{n}-1=a b$ , then $a b-(a-b)-1$ can be written as $k\cdot2^{2m}$ for some odd integer $k$ and some positive integer $m$ .  
+
+(2001 Balkan Mathematical Olympiad)  
+
+Solution. Note that $a b-(a-b)-1=(a+1)(b-1)$ . We shall show that the highest powers of two dividing $(a+1)$ and $(b-1)$ are the same. Let $2^{s}$  
+
+and $2^{t}$ be the highest powers of 2 dividing $(a+1)$ and $(b-1)$ , respectively.   
+Because $a+1,b+1\leq a b+1=2^{n}$ , we have $s,t\leq n$ .  
+
+Note that $2^{s}$ divides $2^{n}=a b+1$ and $a+1$ , so that  
+
+$$
+a b\equiv a\equiv-1{\pmod{2^{s}}}.
+$$  
+
+Hence, $b\equiv1$ (mod $2^{s}$ ), or $2^{s}|b-1$ , so that $s\leq t$ .  
+
+Similarly, $a b\equiv-b\equiv-1$ (mod $2^{t}$ ), so $a\equiv-1$ (mod $2^{t}$ ), and $2^{t}|a+1$ . Thus, $t\leq s$ .  
+
+Therefore, $s=t$ , the highest power of two dividing $(a+1)(b-1)$ is $2s$ , and $a b-(a-b)-1=k\cdot2^{:2s}$ for some odd $k$ .  
+
+",1.5.2.,
+63,(Divisibility)->(Modular arithmetics),"Problem. Find all nonnegative integers m such that $(2^{2m+1})^{2}+1$ is divisible by at most two different primes.  
+
+(2002 Baltic Mathematics Competition)  
+
+","Solution. We claim $m=0,1,2$ are the only such integers. It is easy to check that these values of $m$ satisfy the requirement. Suppose some $m\geq3$ works. Write  
+
+$$
+\begin{array}{c}{{(2^{2m+1})^{2}+1=(2^{2m+1}+1)^{2}-2\cdot2^{2m+1}}}\\ {{=(2^{2m+1}+2^{m+1}+1)(2^{2m+1}-2^{m+1}+1).}}\end{array}
+$$  
+
+The two factors are both odd, and their difference is $2^{m+2}$ ; hence, they are relatively prime. It follows that each is a prime power. We also know that $(2^{2m+1})^{2}=4^{2m+1}\equiv-1$ (mod 5), so one of the factors $2^{2m+1}\pm2^{m+1}+1$ must be a power of 5. Let $2^{2m+1}+2^{m+1}s+1=5^{k}$ , where $s=\pm1$ is the appropriate sign.  
+
+Taking the above equation modulo 8, and using the assumption $m\geq3$ , we obtain $5^{k}\equiv1$ (mod 8), so that $k$ is even. Writing $k=2l$ , we have  
+
+$$
+2^{m+1}(2^{m}+s)=(5^{l}-1)(5^{l}+1).
+$$  
+
+The factor $5^{l}+1\equiv2$ (mod 4), so $5^{l}-1=2^{m}a$ for some odd integer $a$ . But if $a=1$ , then  
+
+$$
+2=(5^{l}+1)-(5^{l}-1)=2(2^{m}+s)-2^{m}=2^{m}+2s\geq2^{3}-2_{\cdot}
+$$  
+
+a contradiction, whereas if $a\geq3$ , then $5^{l}-1\ge3{\cdot}2^{m}$ while $5^{l}+1\le2(2^{m}+s)$ , another contradiction.  
+
+","Problem. Find all nonnegative integers m such that $(2^{2m+1})^{2}+1$ is divisible by at most two different primes.  
+
+(2002 Baltic Mathematics Competition)  
+
+Solution. We claim $m=0,1,2$ are the only such integers. It is easy to check that these values of $m$ satisfy the requirement. Suppose some $m\geq3$ works. Write  
+
+$$
+\begin{array}{c}{{(2^{2m+1})^{2}+1=(2^{2m+1}+1)^{2}-2\cdot2^{2m+1}}}\\ {{=(2^{2m+1}+2^{m+1}+1)(2^{2m+1}-2^{m+1}+1).}}\end{array}
+$$  
+
+The two factors are both odd, and their difference is $2^{m+2}$ ; hence, they are relatively prime. It follows that each is a prime power. We also know that $(2^{2m+1})^{2}=4^{2m+1}\equiv-1$ (mod 5), so one of the factors $2^{2m+1}\pm2^{m+1}+1$ must be a power of 5. Let $2^{2m+1}+2^{m+1}s+1=5^{k}$ , where $s=\pm1$ is the appropriate sign.  
+
+Taking the above equation modulo 8, and using the assumption $m\geq3$ , we obtain $5^{k}\equiv1$ (mod 8), so that $k$ is even. Writing $k=2l$ , we have  
+
+$$
+2^{m+1}(2^{m}+s)=(5^{l}-1)(5^{l}+1).
+$$  
+
+The factor $5^{l}+1\equiv2$ (mod 4), so $5^{l}-1=2^{m}a$ for some odd integer $a$ . But if $a=1$ , then  
+
+$$
+2=(5^{l}+1)-(5^{l}-1)=2(2^{m}+s)-2^{m}=2^{m}+2s\geq2^{3}-2_{\cdot}
+$$  
+
+a contradiction, whereas if $a\geq3$ , then $5^{l}-1\ge3{\cdot}2^{m}$ while $5^{l}+1\le2(2^{m}+s)$ , another contradiction.  
+
+",1.5.3.,
+64,(Divisibility)->(Modular arithmetics),"Problem. Find an integer $n$ with $100\leq n\leq1997$ such that $n$ divides $2^{n}+2$ .  
+
+(1997 Asian Pacific Mathematics Olympiad)  
+
+","Solution. Note that 2 divides $2^{\pi}+2$ for all $n$ . Also, 11 divides $2^{n}+2$ if and only if $n\equiv6$ (mod 10), and 43 divides $2^{n}+2$ if and only if $n\equiv8$ (mod 14). Since $n=946=2\cdot11\cdot43$ satisfies both congruences, $n$ divides $2^{n}+2$ .  
+
+Remark. Actually, one can prove that there are infinitely many $n$ such that $n|2^{n}+2$ . Also, any such $n$ is even since by a theorem of W. Sierpinski we cannot have $n|2^{n-1}+1$ unless $n=1$ .  
+
+","Problem. Find an integer $n$ with $100\leq n\leq1997$ such that $n$ divides $2^{n}+2$ .  
+
+(1997 Asian Pacific Mathematics Olympiad)  
+
+Solution. Note that 2 divides $2^{\pi}+2$ for all $n$ . Also, 11 divides $2^{n}+2$ if and only if $n\equiv6$ (mod 10), and 43 divides $2^{n}+2$ if and only if $n\equiv8$ (mod 14). Since $n=946=2\cdot11\cdot43$ satisfies both congruences, $n$ divides $2^{n}+2$ .  
+
+Remark. Actually, one can prove that there are infinitely many $n$ such that $n|2^{n}+2$ . Also, any such $n$ is even since by a theorem of W. Sierpinski we cannot have $n|2^{n-1}+1$ unless $n=1$ .  
+
+",1.5.4.,
+65,(Divisibility)->(Modular arithmetics),"Problem. The number $99\ldots99\$ (with 1997 nines) is written on a blackboard. Each minute, one number written on the blackboard is factored into two factors and erased, each factor is (independently) increased or diminished by 2, and the resulting two numbers are written. Is it possible that at some point all of the numbers on the blackboard equal 9?  
+
+(1997 St. Petersburg City Mathematical Olympiad)  
+
+","Solution. No, there is always a number congruent to 3 modulo 4: factoring such a number gives one factor congruent to 3 modulo 4, and changing that by 2 in either direction gives a number congruent to 3 modulo 4.  
+
+","Problem. The number $99\ldots99\$ (with 1997 nines) is written on a blackboard. Each minute, one number written on the blackboard is factored into two factors and erased, each factor is (independently) increased or diminished by 2, and the resulting two numbers are written. Is it possible that at some point all of the numbers on the blackboard equal 9?  
+
+(1997 St. Petersburg City Mathematical Olympiad)  
+
+Solution. No, there is always a number congruent to 3 modulo 4: factoring such a number gives one factor congruent to 3 modulo 4, and changing that by 2 in either direction gives a number congruent to 3 modulo 4.  
+
+",1.5.5.,
+66,(Divisibility)->(Modular arithmetics),"Problem. Find the smallest positive integer which can be written both as (i) a sum of 2002 positive integers (not necessarily distinct), each of which has the same sum of digits and (ii) as a sum of 2003 positive integers (not necessarily distinct), each of which has the same sum of digits.  
+
+(2002 Russian Mathematical Olympiad)  
+
+","Solution. The answer is 10010. First observe that this is indeed a solution: $10010=2002{\cdot}5=1781{\cdot}4+222{\cdot}13$ , so we may express 10010 as the sum of 2002 fives or of 1781 fours and 222 thirteens, where $1781+222=2003$ . To prove minimality, observe that a number is congruent modulo 9 to the sum of its digits, so two positive integers with the same digit sum are in the same residue class modulo 9. Let $k_{1}$ be the digit sum of the 2002 numbers and $k_{2}$ the digit sum of the 2003 numbers. Then $4k_{1}\equiv2002k_{1}\equiv2003k_{2}\equiv5k_{2}$ (mod 9). If $k_{1}\geq5$ , the sum of the 2002 numbers is at least 10010; if $k_{2}\geq5$ , the sum of the 2003 numbers is greater than 10010. However, the solutions $k_{1}\equiv1,2,3,4$ (mod 9) give $k_{2}\equiv8,7,6,5$ , respectively, so that at least one of $k_{1}$ or $k_{2}$ is greater than or equal to 5, and the minimal integer is 10010.  
+
+# Proposed problems  
+
+","Problem. Find the smallest positive integer which can be written both as (i) a sum of 2002 positive integers (not necessarily distinct), each of which has the same sum of digits and (ii) as a sum of 2003 positive integers (not necessarily distinct), each of which has the same sum of digits.  
+
+(2002 Russian Mathematical Olympiad)  
+
+Solution. The answer is 10010. First observe that this is indeed a solution: $10010=2002{\cdot}5=1781{\cdot}4+222{\cdot}13$ , so we may express 10010 as the sum of 2002 fives or of 1781 fours and 222 thirteens, where $1781+222=2003$ . To prove minimality, observe that a number is congruent modulo 9 to the sum of its digits, so two positive integers with the same digit sum are in the same residue class modulo 9. Let $k_{1}$ be the digit sum of the 2002 numbers and $k_{2}$ the digit sum of the 2003 numbers. Then $4k_{1}\equiv2002k_{1}\equiv2003k_{2}\equiv5k_{2}$ (mod 9). If $k_{1}\geq5$ , the sum of the 2002 numbers is at least 10010; if $k_{2}\geq5$ , the sum of the 2003 numbers is greater than 10010. However, the solutions $k_{1}\equiv1,2,3,4$ (mod 9) give $k_{2}\equiv8,7,6,5$ , respectively, so that at least one of $k_{1}$ or $k_{2}$ is greater than or equal to 5, and the minimal integer is 10010.  
+
+# Proposed problems  
+
+",1.5.6.,
+73,(Divisibility)->(Chinese remainder theorem),"Problem. We call a lattice point $X$ in the plane visible from the origin $O$ if the segment $\overline{{O X}}$ does not contain any other lattice points besides $O$ and $X$ . Show that for any positive integer $n$ , there exists a square of $n^{2}$ lattice points (with sides parallel to the coordinate axes) such that none of the lattice points inside the square is visible from the origin.  
+
+(2002 Taiwanese Mathematical Olympiad)  
+
+","Solution. Suppose that the lower-left lattice point of such a square has coordinates $(x_{1},y_{1})$ . We shall show that it is possible to select $(x_{1},y_{1})$ such that the square of lattice points with $(x_{1},y_{1})$ at its corner and $n$ points on a side contains only invisible points. This can be accomplished by ensuring that each point has both coordinates divisible by some prime number; this would imply that by dividing both coordinates by this prime we could find another lattice point that is between the origin and this point.  
+
+Select $n^{2}$ distinct prime numbers and call them $p_{i,j}$ , $1\leq1,j\leq n$ . Now find $x_{1}$ satisfying the following congruences:  
+
+$$
+x_{1}\equiv0{\pmod{p_{1,1},p_{1,2}\ldots p_{1,n}}},
+$$  
+
+$$
+x_{1}+\equiv0{\pmod{p_{2,1}p_{2,2}\ldots p_{2,n}}},
+$$  
+
+$$
+x_{1}+n-1\equiv0{\pmod{p_{n,1}p_{n,2}\ldots p_{n,n}}}.
+$$  
+
+Likewise select $y_{1}$ satisfying:  
+
+$$
+y_{1}\equiv0{\pmod{p_{1,1}p_{2,1}\ldots p_{n,1}}},
+$$  
+
+$$
+y_{1}+1\equiv0{\pmod{p_{1,2}p_{2,2}\ldots p_{n,2}}},
+$$  
+
+$$
+y_{1}+n-1\equiv0{\pmod{p_{1,n}p_{2,n}\ldots,p_{n,n}}}.
+$$  
+
+Both values must exist by the Chinese Remainder Theorem. Thus we have proved that it is possible to determine a position for $(x_{1},y_{1})$ such that every point in the square of $n^{2}$ lattice points with $(x_{1},y_{1})$ at it’s lower left corner is associated with some prime by which both of its coordinates are divisible, thus all points in this square are not visible from the origin.  
+
+","Problem. We call a lattice point $X$ in the plane visible from the origin $O$ if the segment $\overline{{O X}}$ does not contain any other lattice points besides $O$ and $X$ . Show that for any positive integer $n$ , there exists a square of $n^{2}$ lattice points (with sides parallel to the coordinate axes) such that none of the lattice points inside the square is visible from the origin.  
+
+(2002 Taiwanese Mathematical Olympiad)  
+
+Solution. Suppose that the lower-left lattice point of such a square has coordinates $(x_{1},y_{1})$ . We shall show that it is possible to select $(x_{1},y_{1})$ such that the square of lattice points with $(x_{1},y_{1})$ at its corner and $n$ points on a side contains only invisible points. This can be accomplished by ensuring that each point has both coordinates divisible by some prime number; this would imply that by dividing both coordinates by this prime we could find another lattice point that is between the origin and this point.  
+
+Select $n^{2}$ distinct prime numbers and call them $p_{i,j}$ , $1\leq1,j\leq n$ . Now find $x_{1}$ satisfying the following congruences:  
+
+$$
+x_{1}\equiv0{\pmod{p_{1,1},p_{1,2}\ldots p_{1,n}}},
+$$  
+
+$$
+x_{1}+\equiv0{\pmod{p_{2,1}p_{2,2}\ldots p_{2,n}}},
+$$  
+
+$$
+x_{1}+n-1\equiv0{\pmod{p_{n,1}p_{n,2}\ldots p_{n,n}}}.
+$$  
+
+Likewise select $y_{1}$ satisfying:  
+
+$$
+y_{1}\equiv0{\pmod{p_{1,1}p_{2,1}\ldots p_{n,1}}},
+$$  
+
+$$
+y_{1}+1\equiv0{\pmod{p_{1,2}p_{2,2}\ldots p_{n,2}}},
+$$  
+
+$$
+y_{1}+n-1\equiv0{\pmod{p_{1,n}p_{2,n}\ldots,p_{n,n}}}.
+$$  
+
+Both values must exist by the Chinese Remainder Theorem. Thus we have proved that it is possible to determine a position for $(x_{1},y_{1})$ such that every point in the square of $n^{2}$ lattice points with $(x_{1},y_{1})$ at it’s lower left corner is associated with some prime by which both of its coordinates are divisible, thus all points in this square are not visible from the origin.  
+
+",1.6.1.,
+74,(Divisibility)->(Chinese remainder theorem),"Problem. Show that there exists an increasing sequence $\{a_{n}\}_{n=1}^{\infty}$ of natural numbers such that for any $k\geq0$ , the sequence $\{k+a_{n}\}$ contains only finitely many primes.  
+
+# (1997 Czech and Slovak Mathematical Olympiad)  
+
+","Solution. Let $p_{k}$ be the $k$ -th prime number, $k\geq1$ . Set $a_{1}=2$ . For $n\geq1$ , let $\boldsymbol a_{n+1}$ be the least integer greater than $a_{n}$ that is congruent to $-k$ modulo $p_{k+1}$ for all $k\leq n$ . Such an integer exists by the Chinese Remainder Theorem. Thus, for all $k\geq0$ , $k+a_{n}\equiv0{\pmod{p_{k+1}}}$ for $n\geq k+1$ . Then at most $k+1$ values in the sequence $\left\{k+a_{n}\right\}$ can be prime; from the $k+2$ - th term onward, the values are nontrivial multiples of $p_{k+1}$ and must be composite. This completes the proof.  
+
+# Proposed problems  
+
+","Problem. Show that there exists an increasing sequence $\{a_{n}\}_{n=1}^{\infty}$ of natural numbers such that for any $k\geq0$ , the sequence $\{k+a_{n}\}$ contains only finitely many primes.  
+
+# (1997 Czech and Slovak Mathematical Olympiad)  
+
+Solution. Let $p_{k}$ be the $k$ -th prime number, $k\geq1$ . Set $a_{1}=2$ . For $n\geq1$ , let $\boldsymbol a_{n+1}$ be the least integer greater than $a_{n}$ that is congruent to $-k$ modulo $p_{k+1}$ for all $k\leq n$ . Such an integer exists by the Chinese Remainder Theorem. Thus, for all $k\geq0$ , $k+a_{n}\equiv0{\pmod{p_{k+1}}}$ for $n\geq k+1$ . Then at most $k+1$ values in the sequence $\left\{k+a_{n}\right\}$ can be prime; from the $k+2$ - th term onward, the values are nontrivial multiples of $p_{k+1}$ and must be composite. This completes the proof.  
+
+# Proposed problems  
+
+",1.6.2.,
+77,(Divisibility)->(Numerical systems)->(Divisibility criteria in the decimal system),"Problem. Find all integers written as $\overline{{a b c d}}$ in decimal representation and dcba in base 7.  
+
+","Solution. We have  
+
+$$
+\overline{{a b c d}}_{(10)}=\overline{{d c b a}}_{(7)}\Leftrightarrow999a+93b=39c+342d\Leftrightarrow333a+31b=13c+114d,
+$$  
+
+hence $b\equiv c$ (mod 3). As $b,c\in\{0,1,2,3,4,5,6\}$ , the possibilities are:  
+
+i) $b=c$ ;   
+ii) $b=c+3$ ;   
+iii) $b+3=c$ .  
+
+In the first case we must have $a=2a^{\prime}$ , $d=3d^{\prime}$ , $37a^{\prime}+b=19d^{\prime}$ , $d^{\prime}=2$ . Hence $a^{\prime}=1$ , $a=2$ , $d=6$ , $b=1$ , $c=1$ , and the number $\overline{{a b c d}}$ is 2116.  
+
+In the other cases $a$ has to be odd. Considering $a=1$ , $3$ or 5 we obtain no solutions.  
+
+","Problem. Find all integers written as $\overline{{a b c d}}$ in decimal representation and dcba in base 7.  
+
+Solution. We have  
+
+$$
+\overline{{a b c d}}_{(10)}=\overline{{d c b a}}_{(7)}\Leftrightarrow999a+93b=39c+342d\Leftrightarrow333a+31b=13c+114d,
+$$  
+
+hence $b\equiv c$ (mod 3). As $b,c\in\{0,1,2,3,4,5,6\}$ , the possibilities are:  
+
+i) $b=c$ ;   
+ii) $b=c+3$ ;   
+iii) $b+3=c$ .  
+
+In the first case we must have $a=2a^{\prime}$ , $d=3d^{\prime}$ , $37a^{\prime}+b=19d^{\prime}$ , $d^{\prime}=2$ . Hence $a^{\prime}=1$ , $a=2$ , $d=6$ , $b=1$ , $c=1$ , and the number $\overline{{a b c d}}$ is 2116.  
+
+In the other cases $a$ has to be odd. Considering $a=1$ , $3$ or 5 we obtain no solutions.  
+
+",1.7.1.,
+78,(Divisibility)->(Numerical systems)->(Divisibility criteria in the decimal system),"Problem. Prove that every integer $k>1$ has a multiple less than $k^{4}$ whose decimal expansion has at most four distinct digits.  
+
+(1996 German Mathematical Olympiad)  
+
+","Solution. Let $n$ be the integer such that $2^{n-1}\leq k<2^{n}$ . For $n\leq6$ the result is immediate, so assume $n>6$ .  
+
+Let $S$ be the set of nonnegative integers less than $10^{n}$ whose decimal digits are all $0$ or 1. Since $|S|=2^{n}>k$ , we can find two elements $a<b$ of $S$ which are congruent modulo $k$ , and $b-a$ only has the digits 8, $9$ , $0$ , $^{1}$ in its decimal representation. On the other hand,  
+
+$$
+b-a\leq1+10+\cdots+10^{n-1}<10^{n}<16^{n-1}\leq k^{4};
+$$  
+
+hence $b-a$ is the desired multiple.  
+
+","Problem. Prove that every integer $k>1$ has a multiple less than $k^{4}$ whose decimal expansion has at most four distinct digits.  
+
+(1996 German Mathematical Olympiad)  
+
+Solution. Let $n$ be the integer such that $2^{n-1}\leq k<2^{n}$ . For $n\leq6$ the result is immediate, so assume $n>6$ .  
+
+Let $S$ be the set of nonnegative integers less than $10^{n}$ whose decimal digits are all $0$ or 1. Since $|S|=2^{n}>k$ , we can find two elements $a<b$ of $S$ which are congruent modulo $k$ , and $b-a$ only has the digits 8, $9$ , $0$ , $^{1}$ in its decimal representation. On the other hand,  
+
+$$
+b-a\leq1+10+\cdots+10^{n-1}<10^{n}<16^{n-1}\leq k^{4};
+$$  
+
+hence $b-a$ is the desired multiple.  
+
+",1.7.2.,

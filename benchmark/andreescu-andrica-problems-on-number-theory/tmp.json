@@ -1,0 +1,302 @@
+[
+    {
+        "text": "Divisibility",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Prime numbers",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "The greatest common divisor and the least common multiple",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Odd and even",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Modular arithmetics",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Chinese remainder theorem",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Divisibility criteria in the decimal system",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Perfect squares",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Perfect cubes",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "$k^{t h}$ powers of integers, $k\\geq4$",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "General problems",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Floor function and integer points",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "An useful result",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "The last digits of a number",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "The sum of the digits of a number",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Other problems involving digits",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Extremal arguments",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Pigeonhole principle",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Mathematical induction",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Infinite descent",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Inclusion-exclusion",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Multiplicative functions",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Number of divisors",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Sum of divisors",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Euler’s totient function",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Exponent of a prime and Legendre’s formula",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Fermat’s Little Theorem",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Euler’s Theorem",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "The order of an element",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Wilson’s Theorem",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Linear Diophantine equations",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Pythagorean equation",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Pell’s equation",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Other quadratic equations",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Cubic equations",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "High-order polynomial equations",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Exponential Diophantine equations",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Quadratic residues. Legendre’s symbol",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Fermat’s numbers",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Mersenne’s numbers",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Perfect numbers",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Fibonacci and Lucas sequences",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Problems involving linear recursive relations",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Nonstandard sequences of integers",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Binomial coefficients",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Lucas’ and Kummer’s Theorems",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Miscellaneous Problems",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Numerical systems",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Two simple principles",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    },
+    {
+        "text": "Pythagorean equations",
+        "suffix_key": "a",
+        "background_color": "#FF0000",
+        "text_color": "#ffffff"
+    }
+]

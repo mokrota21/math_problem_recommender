@@ -1,0 +1,152 @@
+[
+    {
+        "text": "(Divisibility)->(Divisibility)"
+    },
+    {
+        "text": "(Divisibility)->(Prime numbers)"
+    },
+    {
+        "text": "(Divisibility)->(The greatest common divisor and the least common multiple)"
+    },
+    {
+        "text": "(Divisibility)->(Odd and even)"
+    },
+    {
+        "text": "(Divisibility)->(Modular arithmetics)"
+    },
+    {
+        "text": "(Divisibility)->(Chinese remainder theorem)"
+    },
+    {
+        "text": "(Divisibility)->(Numerical systems)->(Divisibility criteria in the decimal system)"
+    },
+    {
+        "text": "(Powers of Integers)->(Perfect squares)"
+    },
+    {
+        "text": "(Powers of Integers)->(Perfect cubes)"
+    },
+    {
+        "text": "(Powers of Integers)->($k^{t h}$ powers of integers, $k\\geq4$)"
+    },
+    {
+        "text": "(Floor Function and Fractional Part)->(General problems)"
+    },
+    {
+        "text": "(Floor Function and Fractional Part)->(Floor function and integer points)"
+    },
+    {
+        "text": "(Floor Function and Fractional Part)->(An useful result)"
+    },
+    {
+        "text": "(Digits of Numbers)->(The last digits of a number)"
+    },
+    {
+        "text": "(Digits of Numbers)->(The sum of the digits of a number)"
+    },
+    {
+        "text": "(Digits of Numbers)->(Other problems involving digits)"
+    },
+    {
+        "text": "(Basic Principles in Number Theory)->(Two simple principles)->(Extremal arguments)"
+    },
+    {
+        "text": "(Basic Principles in Number Theory)->(Two simple principles)->(Pigeonhole principle)"
+    },
+    {
+        "text": "(Basic Principles in Number Theory)->(Mathematical induction)"
+    },
+    {
+        "text": "(Basic Principles in Number Theory)->(Infinite descent)"
+    },
+    {
+        "text": "(Basic Principles in Number Theory)->(Inclusion-exclusion)"
+    },
+    {
+        "text": "(Arithmetic Functions)->(Multiplicative functions)"
+    },
+    {
+        "text": "(Arithmetic Functions)->(Number of divisors)"
+    },
+    {
+        "text": "(Arithmetic Functions)->(Sum of divisors)"
+    },
+    {
+        "text": "(Arithmetic Functions)->(Euler\u2019s totient function)"
+    },
+    {
+        "text": "(Arithmetic Functions)->(Exponent of a prime and Legendre\u2019s formula)"
+    },
+    {
+        "text": "(More on Divisibility)->(Fermat\u2019s Little Theorem)"
+    },
+    {
+        "text": "(More on Divisibility)->(Euler\u2019s Theorem)"
+    },
+    {
+        "text": "(More on Divisibility)->(The order of an element)"
+    },
+    {
+        "text": "(More on Divisibility)->(Wilson\u2019s Theorem)"
+    },
+    {
+        "text": "(Diophantine Equations)->(Linear Diophantine equations)"
+    },
+    {
+        "text": "(Diophantine Equations)->(Quadratic Diophantine equations)->(Pythagorean equation)"
+    },
+    {
+        "text": "(Diophantine Equations)->(Quadratic Diophantine equations)->(Pell\u2019s equation)"
+    },
+    {
+        "text": "(Diophantine Equations)->(Quadratic Diophantine equations)->(Other quadratic equations)"
+    },
+    {
+        "text": "(Diophantine Equations)->(Nonstandard Diophantine equations)->(Cubic equations)"
+    },
+    {
+        "text": "(Diophantine Equations)->(Nonstandard Diophantine equations)->(High-order polynomial equations)"
+    },
+    {
+        "text": "(Diophantine Equations)->(Nonstandard Diophantine equations)->(Exponential Diophantine equations)"
+    },
+    {
+        "text": "(Some special problems in number theory)->(Quadratic residues. Legendre\u2019s symbol)"
+    },
+    {
+        "text": "(Some special problems in number theory)->(Special numbers)->(Fermat\u2019s numbers)"
+    },
+    {
+        "text": "(Some special problems in number theory)->(Special numbers)->(Mersenne\u2019s numbers)"
+    },
+    {
+        "text": "(Some special problems in number theory)->(Special numbers)->(Perfect numbers)"
+    },
+    {
+        "text": "(Some special problems in number theory)->(Sequences of integers)->(Fibonacci and Lucas sequences)"
+    },
+    {
+        "text": "(Some special problems in number theory)->(Sequences of integers)->(Problems involving linear recursive relations)"
+    },
+    {
+        "text": "(Some special problems in number theory)->(Sequences of integers)->(Nonstandard sequences of integers)"
+    },
+    {
+        "text": "(Problems Involving Binomial Coefficients)->(Binomial coefficients)"
+    },
+    {
+        "text": "(Problems Involving Binomial Coefficients)->(Lucas\u2019 and Kummer\u2019s Theorems)"
+    },
+    {
+        "text": "(Miscellaneous Problems)"
+    },
+    {
+        "text": "(Divisibility)->(Numerical systems)"
+    },
+    {
+        "text": "(Basic Principles in Number Theory)->(Two simple principles)"
+    },
+    {
+        "text": "(Diophantine Equations)->(Quadratic Diophantine equations)->(Pythagorean equations)"
+    }
+]
