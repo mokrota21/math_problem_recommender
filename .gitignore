@@ -3,3 +3,4 @@
 /__pycache__
 /checkpoints
 /utils/__pycache__
+benchmark/neo4j/password.txt
