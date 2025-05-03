@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+{% block title %}Labeling Tool{% endblock %}
+{% block body %}
+<h2>Labeling for Subtopic: {{ subtopic }}</h2>
+<form method="post" action="{{ url_for('submit_labels') }}">
+    <div class="accordion" id="labelAccordion">
+        {% for label, df in tables.items() %}
+            <div style="display: flex; align-items: center;">
+                <button type="button" class="accordion-button" onclick="showAccordion('{{ label }}')" id="btn-{{ label }}">{{ label }} Samples</button>
+                <button type="button" onclick="resampleTableDirect('{{ label }}')" class="reload-btn">&#x21bb; Reload</button>
+            </div>
+            <div class="accordion-content" id="content-{{ label }}">
+                <div class="table-responsive" id="table-{{ label }}">
+                    {% include 'table_snippet.html' %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <input type="hidden" name="subtopic" value="{{ subtopic }}">
+    <input type="submit" value="Submit Labels">
+</form>
+<a href="{{ url_for('index') }}">Back to Subtopics</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block title %}Choose Subtopic{% endblock %}
+{% block body %}
+<h2>Select a Subtopic to Label</h2>
+<form method="get" action="{{ url_for('label_subtopic') }}">
+    <select name="subtopic">
+        {% for st in subtopics %}
+        <option value="{{ st }}">{{ st }}</option>
+        {% endfor %}
+    </select>
+    <input type="submit" value="Label">
+</form>
+{% endblock %}

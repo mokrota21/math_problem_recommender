@@ -1,4 +1,4 @@
-,TopicMetadata,Problem,Solution,Problem&Solution,Problem Book No
+,TopicMetadata,Problem,Solution,Problem&Solution,Problem Book No,label
 417,(Miscellaneous Problems),"Problem. Find all positive integers $x,y,z$ which satisfy conditions: $x+y\ge2z$ and $x^{2}+y^{2}-2z^{2}=8$ .  
 
 (2003 Romanian Mathematical Olympiad)  
@@ -27,7 +27,7 @@ Case II. $x\geq z\geq y$ .
 
 Note again that $x-z=a$ , $y-z=b$ and obtain the solution $(x,y,z)=$ $(n+2,n-2,n)$ or $(x,y,z)=(n-2,n+2,n)$ .  
 
-",11.1.
+",11.1.,
 418,(Miscellaneous Problems),"Problem. Let $n$ be a positive integer. Find all integers that can be written as:  
 
 $$
@@ -104,7 +104,7 @@ with $1\leq p_{i}\leq\cdot\cdot\cdot\leq p_{2}\leq p_{1}\leq n-1$ .
 
 Setting $a_{p_{1}+1}=a_{p_{2}+1}=\cdot\cdot\cdot=a_{p_{i}+1}=1$ and else $a_{j}=j$ we are done.  
 
-",11.2.
+",11.2.,
 419,(Miscellaneous Problems),"Problem. Find all the positive integers $a<b<c<d$ with the property that each of them divides the sum of the other three.  
 
 ","Solution. Since $d|(a+b+c)$ and $a+b+c<3d$ , it follows that $a+b+c=d$ or $a+b+c=2d$ .  
@@ -193,7 +193,7 @@ Case ii). If $a+b+c=2d$ , we obtain $a|3d,b|3d,c|3d$
 
 Then $3d=a x=b y=c z$ , with $x>y>z>3$ and $\frac{1}{x}+\frac{1}{y}+\frac{1}{z}=\frac{2}{3}$ Since $x\geq4$ , $y\geq5$ , $z\geq6$ we have $\frac{1}{x}+\frac{1}{y}+\frac{1}{z}\leq\frac{1}{6}+\frac{1}{5}+\frac{1}{4}=\frac{37}{60}<\frac{2}{3}$ so there are no solutions in this case.  
 
-",11.3.
+",11.3.,
 420,(Miscellaneous Problems),"Problem. Find the greatest number that can be written as a product of some positive integers with the sum 1976.  
 
 ( $18^{t h}$ IMO)  
@@ -218,7 +218,7 @@ Suppose that $x_{k}\geq5$ for some $k$ . Then $x_{k}<3(x_{k}-3)$ , so replacing 
 
 Therefore all the numbers are equal to 2 or 3. If there are more than 3 numbers equal to 2, we can replace them by two numbers equal to 3, preserving the sum and increasing the product (as $2\cdot2\cdot2<3\cdot3$ ). Hence at most two terms equal to 2 are allowed. Since $1976=3\cdot658+2$ the maximum product is equal to $2\cdot3^{658}$ .  
 
-",11.4.
+",11.4.,
 421,(Miscellaneous Problems),"Problem. Prove that there exist infinitely many positive integers that cannot be written in the form  
 
 $$
@@ -247,7 +247,7 @@ Solution. For each integer $N$ , we consider the number of integers in $[1,N]$ t
 
 # Proposed problems  
 
-",11.5.
+",11.5.,
 638,(Miscellaneous Problems),"Problem. Let $a,b$ be positive integers. By integer division of $a^{2}+b^{2}$ to $a+b$ we obtain the quotient $q$ and the remainder $r$ . Find all pairs $(a,b)$ such that $q^{2}+r=1977$ .  
 
 ( $19^{t h}$ IMO)  
@@ -300,7 +300,7 @@ $$
 
 It is not difficult to have all pairs of perfect squares having their sum 1009. There exists only the representation $1009=28^{2}+15^{2}$ . Then the solutions are $a=50$ , $b=37$ or $a=37$ , $b=50$ .  
 
-",11.6.
+",11.6.,
 639,(Miscellaneous Problems),"Problem. Let $m,n$ be positive integers. Show that $25^{n}-7^{m}$ is divisible by 3 and find the least positive integer of the form $\left|25^{n}-7^{m}-3^{m}\right|$ , when $m,n$ run over the set of non-negative integers.  
 
 (2004 Romanian Mathematical Regional Contest)  
@@ -345,7 +345,7 @@ $$
 
 So, the last digit of the number $25^{n}-7^{m}-3^{m}$ is either 3 or 7. Because the number $25^{n}-7^{m}-3^{m}$ is divisible by 3, the required number cannot be 7. The situation $\left|25^{n}-7^{m}-3^{m}\right|=3$ also cannot occur, because $25^{n}-$ $7^{m}-3^{m}\equiv1$ (mod 8).  
 
-",11.7.
+",11.7.,
 640,(Miscellaneous Problems),"Problem. Given an integer $d$ , let  
 
 $$
@@ -410,7 +410,7 @@ $$
 
 Hence $p$ divides one of $a y+b x,a y-b x$ so that one of $\boldsymbol{v}_{1},\boldsymbol{v}_{2}$ is an integer. Without loss of generality, assume that $v_{1}$ is an integer. Because $r=u_{1}^{2}+$ $d v_{1}^{2}$ is an integer and $u_{1}$ is rational, $u_{1}$ is an integer as well and $r\in S$ , as desired.  
 
-",11.8.
+",11.8.,
 641,(Miscellaneous Problems),"Problem. Prove that every positive rational number can be represented in the form  
 
 $$
@@ -451,7 +451,7 @@ This can be realized by taking $a^{2}-a b+b^{2}=a^{2}-a d+d^{2}$ , i.e. $b+d=a$ 
 
 We will prove now the required conclusion. If $s>0$ is a rational number take positive integers $p,q$ such that $q<\frac{p^{3}}{q^{3}}s<2$ . There exists positive integers $a,b,d$ such that ${\frac{p^{3}}{q^{3}}}s={\frac{a^{3}+b^{3}}{a^{3}+d^{3}}}$ a3 + d3 , whence s = $s=\frac{(a q)^{3}+(b q)^{3}}{(a p)^{3}+(b p)^{3}}$  
 
-",11.9.
+",11.9.,
 642,(Miscellaneous Problems),"Problem. Two positive integers are written on the board. The following operation is repeated: if $a<b$ are the numbers on the board, then $a$ is erased and ab/ $(b-a)$ is written in its place. At some point the numbers on the board are equal. Prove that again they are positive integers.  
 
 (1998 Russian Mathematical Olympiad)  
@@ -472,7 +472,7 @@ Second solution. Again, let $x$ and $y$ be the original numbers and suppose both
 
 The claim is clear for $k=0$ . Now assume that $k$ steps before we obtain $(N,N)$ , the numbers on the board are $(c,d)=(N/p,N/q)$ for some integers $p\ <\ q$ . Then reversing the operation, the number erased in the $(k+1)\mathrm{st}$ step must be $c d/(c+d)=N/(p+q)$ or ${c d/(c-d)}=N/(q-p)$ , completing the inductive step.  
 
-",11.10.
+",11.10.,
 643,(Miscellaneous Problems),"Problem. Let $f(x)+a_{0}+a_{1}x+\cdot\cdot\cdot+a_{m}x^{m}$ , with $m\geq2$ and $a_{m}\neq0$ , be a polynomial with integer coefficients. Let n be a positive integer, and suppose that:  
 
 i) $a_{2},a_{3},\dotsc,a_{m}$ are divisible by all the prime factors of $n$ ;  
@@ -525,7 +525,7 @@ For any prime $p$ dividing $n$ , $p$ divides $a_{2},\ldots,a_{m}$ but not $a_{1}
 
 Therefore, $f(0),f(1),\ldots,f(n^{k}-1)$ are distinct modulo $n^{k}$ , and one of them, say $f(c)$ , must be congruent to 0 modulo $n^{k}$ . That is, $n^{k}|f(c)$ , as desired.  
 
-",11.11.
+",11.11.,
 644,(Miscellaneous Problems),"Problem. Let $x,a,b$ be positive integers such that $x^{a+b}=a^{b}b$ . Prove that $a=x$ and $b=x^{x}$ .  
 
 (1998 Iranian Mathematical Olympiad)  
@@ -582,7 +582,7 @@ and so $\gamma_{i}a>b$ . On the other hand, $a$ is divisible by $p_{i}^{\gamma_{
 
 Thus $x=a$ , and from the original equation we get $b=x^{x}$ , as desired.  
 
-",11.12.
+",11.12.,
 645,(Miscellaneous Problems),"Problem. Let $m,n$ be integers with $1\leq m<n$ . In their decimal representations, the last three digits of $1978^{m}$ are equal, respectively, to the last three digits of $1978^{n}$ . Find m and $n$ such that $m+n$ is minimal.  
 
 ( $20^{t h}$ IMO)  
@@ -1443,4 +1443,4 @@ sum of the digits, 94
 summation function, 120   
 twin primes, 25   
 Vandermonde property, 212   
-Wilson’s Theorem, 153 ",11.13.
+Wilson’s Theorem, 153 ",11.13.,

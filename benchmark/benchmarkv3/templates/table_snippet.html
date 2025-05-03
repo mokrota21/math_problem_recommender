@@ -1,0 +1,16 @@
+<table>
+    <tr>
+        <th>Select</th>
+        {% for col in df.columns %}
+            <th>{{ col }}</th>
+        {% endfor %}
+    </tr>
+    {% for i, row in df.iterrows() %}
+    <tr>
+        <td><input type="radio" name="{{ label }}" value="{{ row['id'] }}" data-label="{{ label }}"></td>
+        {% for col in df.columns %}
+            <td>{{ row[col] }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
