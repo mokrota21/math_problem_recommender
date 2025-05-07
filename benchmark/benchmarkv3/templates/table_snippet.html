@@ -1,16 +1,60 @@
-<table>
-    <tr>
-        <th>Select</th>
-        {% for col in df.columns %}
-            <th>{{ col }}</th>
+{% if df is defined and label is defined %}
+<!-- Sample mode: table with radio buttons -->
+<div id="sample-section-{{ label }}" class="sample-section">
+    <table class="data-table">
+        <tr>
+            <th>Select</th>
+            {% for col in df.columns %}
+                <th>{{ col }}</th>
+            {% endfor %}
+        </tr>
+        {% for i, row in df.iterrows() %}
+        <tr>
+            <td>
+                <input type="radio" name="{{ label }}" value="{{ row['id'] }}" data-label="{{ label }}">
+            </td>
+            {% for col in df.columns %}
+                <td>
+                    {% if col == 'Problem&Solution' %}
+                        <span class="problem-solution-cell" data-label="{{ label }}">{{ row[col] }}</span>
+                    {% else %}
+                        {{ row[col] }}
+                    {% endif %}
+                </td>
+            {% endfor %}
+        </tr>
         {% endfor %}
-    </tr>
-    {% for i, row in df.iterrows() %}
-    <tr>
-        <td><input type="radio" name="{{ label }}" value="{{ row['id'] }}" data-label="{{ label }}"></td>
-        {% for col in df.columns %}
-            <td>{{ row[col] }}</td>
-        {% endfor %}
-    </tr>
-    {% endfor %}
-</table>
+    </table>
+</div>
+
+<!-- New row mode: form with textboxes -->
+<div id="new-section-{{ label }}" class="new-section" style="display:none;">
+    <table class="data-table">
+        <tr>
+            {% for col in df.columns %}
+                <th>{{ col }}</th>
+            {% endfor %}
+        </tr>
+        <tr>
+            {% for col in df.columns %}
+                <td>
+                    <input type="text" name="new_{{ label }}_{{ col }}" value="">
+                </td>
+            {% endfor %}
+        </tr>
+    </table>
+</div>
+
+<script>
+function toggleSectionMode(label) {
+    const selectElement = document.querySelector(`select[name="section_choice_${label}"]`);
+    const isNewMode = selectElement.value === 'new';
+    
+    // Toggle visibility of sample/new sections
+    document.getElementById(`sample-section-${label}`).style.display = isNewMode ? 'none' : '';
+    document.getElementById(`new-section-${label}`).style.display = isNewMode ? '' : 'none';
+}
+</script>
+{% else %}
+<div class="error">Error: Missing required variables (df or label)</div>
+{% endif %}

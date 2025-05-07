@@ -1,2 +1,2 @@
-Anchor,Golden,Silver,Wrong
-431,439,475,592
+Anchor,Golden,Silver,Wrong,Query,query
+431,439,475,592,,Find problems that use divisibility to limit number of options.

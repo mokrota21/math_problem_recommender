@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+{% block title %}Query Result{% endblock %}
+{% block body %}
+<h2>Query for Anchor: {{ anchor }}</h2>
+<div>
+    <strong>Query:</strong>
+    <p>{{ query }}</p>
+</div>
+<a href="{{ url_for('index') }}">Back to Subtopics</a>
+{% endblock %}

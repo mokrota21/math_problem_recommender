@@ -56,6 +56,28 @@ document.querySelectorAll('form').forEach(function(form) {
     });
 });
 
+// Copy Problem&Solution for a given label
+function copyProblemSolution(label) {
+    // Find all Problem&Solution cells for the section
+    var cells = document.querySelectorAll('.problem-solution-cell[data-label="' + label + '"]');
+    var text = Array.from(cells).map(cell => cell.textContent.trim()).join('\n\n');
+    if (text) {
+        navigator.clipboard.writeText(text).then(function() {
+            // Visual feedback: change button text briefly
+            var btn = document.querySelector('.copy-btn[onclick*="' + label + '"]');
+            if (btn) {
+                var orig = btn.innerHTML;
+                btn.innerHTML = '✅ Copied!';
+                setTimeout(function() { btn.innerHTML = orig; }, 1200);
+            } else {
+                alert('Copied!');
+            }
+        });
+    } else {
+        alert('No Problem&Solution content found to copy.');
+    }
+}
+
 // Drag-to-scroll for .table-responsive
 function enableDragScroll() {
     document.querySelectorAll('.table-responsive').forEach(function(el) {

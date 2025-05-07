@@ -5,19 +5,42 @@
 <form method="post" action="{{ url_for('submit_labels') }}">
     <div class="accordion" id="labelAccordion">
         {% for label, df in tables.items() %}
-            <div style="display: flex; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 10px;">
                 <button type="button" class="accordion-button" onclick="showAccordion('{{ label }}')" id="btn-{{ label }}">{{ label }} Samples</button>
                 <button type="button" onclick="resampleTableDirect('{{ label }}')" class="reload-btn">&#x21bb; Reload</button>
+                <button type="button" onclick="copyProblemSolution('{{ label }}')" class="copy-btn">📋 Copy Problem&amp;Solution</button>
+                <div>
+                    <select name="section_choice_{{ label }}" onchange="toggleSectionMode('{{ label }}')">
+                        <option value="sample">Sample</option>
+                        <option value="new">Make new row</option>
+                    </select>
+                </div>
             </div>
             <div class="accordion-content" id="content-{{ label }}">
                 <div class="table-responsive" id="table-{{ label }}">
-                    {% include 'table_snippet.html' %}
+                    {% include 'table_snippet.html' with context %}
                 </div>
             </div>
         {% endfor %}
     </div>
     <input type="hidden" name="subtopic" value="{{ subtopic }}">
-    <input type="submit" value="Submit Labels">
+    <div style="margin-top: 20px;">
+        <label for="query">Query accompanying anchor:</label><br>
+        <textarea id="query" name="query" rows="3" cols="60" placeholder="Type your query here..."></textarea>
+    </div>
+    <input type="submit" value="Submit &amp; Query">
 </form>
 <a href="{{ url_for('index') }}">Back to Subtopics</a>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Initialize toggle section mode for each section when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    {% for label in tables.keys() %}
+    // Initialize section mode based on dropdown value
+    toggleSectionMode('{{ label }}');
+    {% endfor %}
+});
+</script>
 {% endblock %}
