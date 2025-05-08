@@ -866,7 +866,7 @@ $$
 
 Since $a+b$ is a divisor of $a^{2}-b^{2}$ , it follows that $a+b$ is a divisor of $a^{n}-b^{n}$ . In turn, $a+b$ divides $2a^{n}=(a^{n}+b^{n})+(a^{n}-b^{n})$ , and $2b^{n}=(a^{n}+$ $b^{n})-(a^{n}-b^{n})$ . But $a$ and $b$ are coprime numbers, and so $g c d(2a^{n},2b^{n})=2$ . Therefore $a+b$ is a divisor of 2, hence $a=b=1$ .  
 
-",1.3.4.,False,Divisibility
+",1.3.4.,True,Divisibility
 40,(Divisibility)->(The greatest common divisor and the least common multiple),"Problem. $M$ is the set of all values of the greatest common divisor $d$ of the numbers $A=2n+3m+13$ , $B=3n+5m+1$ , $C=6n+8m-1$ , where m and $n$ are positive integers. Prove that $M$ is the set of all divisors of an integer $k$ .  
 
 ","Solution. If $d$ is a common divisor of the numbers $A,B$ and $C$ , then $d$ divides $E=3A-C=m+40$ , $F=2B-C=2m+3$ and $G=2E-F=77$ . We prove that $k=77$ satisfies the conditions.  
@@ -993,7 +993,7 @@ But $a^{q}\equiv5$ (mod 8) implies that the exponent of the factor 2 in the last
 
 Remark. The estimation is optimal only for $m=2$ , $m=4$ .  
 
-",1.3.7.,False,Divisibility
+",1.3.7.,True,Divisibility
 43,(Divisibility)->(The greatest common divisor and the least common multiple),"Problem. Find all triples of positive integers $(a,b,c)$ such that $a^{3}+b^{3}+c^{3}$ is divisible by $a^{2}b$ , $b^{2}c$ , and $c^{2}a$ .  
 
 (2001 Bulgarian Mathematical Olympiad)  
@@ -1407,7 +1407,7 @@ $$
 
 a contradiction, whereas if $a\geq3$ , then $5^{l}-1\ge3{\cdot}2^{m}$ while $5^{l}+1\le2(2^{m}+s)$ , another contradiction.  
 
-",1.5.3.,False,Divisibility
+",1.5.3.,True,Divisibility
 64,(Divisibility)->(Modular arithmetics),"Problem. Find an integer $n$ with $100\leq n\leq1997$ such that $n$ divides $2^{n}+2$ .  
 
 (1997 Asian Pacific Mathematics Olympiad)  
@@ -1424,7 +1424,7 @@ Solution. Note that 2 divides $2^{\pi}+2$ for all $n$ . Also, 11 divides $2^{n}+
 
 Remark. Actually, one can prove that there are infinitely many $n$ such that $n|2^{n}+2$ . Also, any such $n$ is even since by a theorem of W. Sierpinski we cannot have $n|2^{n-1}+1$ unless $n=1$ .  
 
-",1.5.4.,False,Divisibility
+",1.5.4.,True,Divisibility
 65,(Divisibility)->(Modular arithmetics),"Problem. The number $99\ldots99\$ (with 1997 nines) is written on a blackboard. Each minute, one number written on the blackboard is factored into two factors and erased, each factor is (independently) increased or diminished by 2, and the resulting two numbers are written. Is it possible that at some point all of the numbers on the blackboard equal 9?  
 
 (1997 St. Petersburg City Mathematical Olympiad)  
@@ -1454,7 +1454,7 @@ Solution. The answer is 10010. First observe that this is indeed a solution: $10
 
 # Proposed problems  
 
-",1.5.6.,False,Divisibility
+",1.5.6.,True,Divisibility
 73,(Divisibility)->(Chinese remainder theorem),"Problem. We call a lattice point $X$ in the plane visible from the origin $O$ if the segment $\overline{{O X}}$ does not contain any other lattice points besides $O$ and $X$ . Show that for any positive integer $n$ , there exists a square of $n^{2}$ lattice points (with sides parallel to the coordinate axes) such that none of the lattice points inside the square is visible from the origin.  
 
 (2002 Taiwanese Mathematical Olympiad)  
@@ -1903,7 +1903,7 @@ Solution. From the inequality $2(a^{2}+b^{2})\geq(a+b)^{2}$ we get $2n^{3}\geq n
 
 Solution. Let $n-50=a^{2}$ and $n+50=b^{2}$ . Then $b^{2}-a^{2}=100$ , so $(b-a)(b+a)=2^{2}\cdot5^{2}$ . Because $b-a$ and $b+a$ are distinct and of the same parity, the only possibility is $b-a=2$ and $b+a=50$ , yielding $b=26$ and $a=24$ . Hence there is only one $n$ with this property, namely $n=626$ .  
 
-",2.1.2.,False,Powers of Integers
+",2.1.2.,True,Powers of Integers
 101,(Powers of Integers)->(Perfect squares),"Problem. Let $n\geq3$ be a positive integer. Show that it is possible to eliminate at most two numbers among the elements of the set $\{1,2,\ldots,n\}$ such that the sum of remaining numbers is a perfect square.  
 
 (2003 Romanian Mathematical Olympiad)  
@@ -2779,7 +2779,7 @@ a) $x\in(-\infty,-1)$ . Then $\lfloor x\rfloor\leq-2$ and $x\lfloor x\rfloor>2$ 
 
 Consequently, $x\in\{-1\}\cup[1,2)$ .  
 
-",3.1.2.,False,Floor Function and Fractional Part
+",3.1.2.,True,Floor Function and Fractional Part
 146,(Floor Function and Fractional Part)->(General problems),"Problem. Prove that for any integer $n$ one can find integers $a$ and b such that  
 
 $$
@@ -2988,7 +2988,7 @@ $$
 
 Thus, for each value of $q$ , there is exactly one value of $p$ (and one value of $a$ ) satisfying the equation. Since $q$ can equal any of thirty values, there are exactly 30 solutions, as claimed.  
 
-",3.1.7.,False,Floor Function and Fractional Part
+",3.1.7.,True,Floor Function and Fractional Part
 151,(Floor Function and Fractional Part)->(General problems),"Problem. Let $\lambda$ be the positive root of the equation $t^{2}-1998t-1=$ 0. Define the sequence $x_{0},x_{1},\dotsc$ . by setting  
 
 $$
@@ -3126,7 +3126,7 @@ for all real $x$ . Hence $f$ is periodic with period $1/n$ . Thus it suffices to
 
 # Proposed problems  
 
-",3.1.9.,False,Floor Function and Fractional Part
+",3.1.9.,True,Floor Function and Fractional Part
 160,(Floor Function and Fractional Part)->(Floor function and integer points),"Problem. Express $\sum_{k=1}^{n}\lfloor{\sqrt{k}}\rfloor$ in terms of $n$ and $a=\lfloor{\sqrt{n}}\rfloor$ .  
 
 (1997 Korean Mathematical Olympiad)  
@@ -3220,7 +3220,7 @@ $$
 
 # Proposed problems  
 
-",3.2.2.,False,Floor Function and Fractional Part
+",3.2.2.,True,Floor Function and Fractional Part
 165,(Floor Function and Fractional Part)->(An useful result),"Problem. Let $p$ and $q$ be two relatively prime integers. The following identity holds:  
 
 $$
@@ -4059,7 +4059,7 @@ Remark. With a little bit more work, we can even erase the condition $n\leq2p$ .
 
 Solution. Let $s_{1}~=~a_{1}$ , $s_{2}=a_{1}+a_{2},...$ , $s_{n}=a_{1}+a_{2}+\cdot\cdot\cdot+a_{n}$ . If at least one of the integers $s_{1},s_{2},\ldots,s_{n}$ is divisible by $n$ , then we are done. If not, there are $n-1$ possible remainders when $s_{1},s_{2},\ldots,s_{n}$ are divided by $n$ . It follows that $s_{i}\equiv s_{j}$ (mod $n$ ) for some $i$ and $j$ , $i<j$ . Then $s_{j}-s_{i}=a_{i+1}+\cdot\cdot\cdot+a_{j}$ is a multiple of $n$ (see also Example 1) above).  
 
-",5.1.4.,False,Basic Principles in Number Theory
+",5.1.4.,True,Basic Principles in Number Theory
 195,(Basic Principles in Number Theory)->(Two simple principles)->(Pigeonhole principle),"Problem. In a $10\times10$ table are written natural numbers not exceeding 10. Any two numbers that appear in adjacent or diagonally adjacent spaces of the table are relatively prime. Prove that some number appears in the table at least 17 times.  
 
 (2001 St. Petersburg City Mathematical Olympiad)  
@@ -4089,7 +4089,7 @@ Solution. We examine subsets of exactly two numbers. Clearly, if two distinct su
 
 # Proposed problems  
 
-",5.1.6.,False,Basic Principles in Number Theory
+",5.1.6.,True,Basic Principles in Number Theory
 202,(Basic Principles in Number Theory)->(Mathematical induction),"Problem. Prove that, for any integer $n\geq2$ , there exist positive integers $a_{1},a_{2},\ldots,a_{n}$ such that $a_{j}-a_{i}$ divides $a_{i}+a_{j}$ for $1\leq i<j\leq n$ .  
 
 ","Solution. We will prove the statement by induction on the number of terms $n$ . For $n=2$ , we can choose $a_{1}=1$ and $a_{2}=2$ .  
@@ -4970,7 +4970,7 @@ which exceeds $n$ for large, contradiction.
 
 # Proposed problems  
 
-",6.2.4.,False,Arithmetic Functions
+",6.2.4.,True,Arithmetic Functions
 232,(Arithmetic Functions)->(Sum of divisors),"Problem. For any $n\geq2$ ,  
 
 $$
@@ -5048,7 +5048,7 @@ $$
 \sigma(n)=\sum_{k\mid n}k\geq1+n+{\frac{n}{d}}\geq n+{\sqrt{n}}+1.
 $$  
 
-",6.3.2.,False,Arithmetic Functions
+",6.3.2.,True,Arithmetic Functions
 234,(Arithmetic Functions)->(Sum of divisors),"Problem. For any $n\geq7$ ,  
 
 $$
@@ -7995,7 +7995,7 @@ $$
 
 Note that from $a_{0}=1$ , $a_{1}=3$ , and $a_{n+1}=4a_{n}-a_{n-1}$ it follows by strong induction that $a_{n}$ is a positive integer for all $n$ .  
 
-",9.3.9.,False,Some special problems in number theory
+",9.3.9.,True,Some special problems in number theory
 374,(Some special problems in number theory)->(Sequences of integers)->(Problems involving linear recursive relations),"Problem. Consider the sequence $\{a_{n}\}$ such that $a_{0}=4$ , $a_{1}=22$ ： and $a_{n}-6a_{n-1}+a_{n-2}=0 $ for $n\geq2$ . Prove that there exist sequences $\{x_{n}\}$ and $\left\{y_{n}\right\}$ of positive integers such that  
 
 $$
@@ -9514,7 +9514,7 @@ $$
 
 and so we must have $d_{8}\geq35$ , contrary to assumption.  
 
-",1.2.10.,False,Divisibility
+",1.2.10.,True,Divisibility
 441,(Divisibility)->(Prime numbers),"Problem. Prove that there are infinitely many positive integers a such that the sequence $(z_{n})_{n\geq1}$ , $z_{n}=n^{4}+a$ , does not contain any prime number.  
 
 ( $11^{t h}$ IMO)  
@@ -9979,7 +9979,7 @@ $$
 
 To make this easier, let us define $f(a,b)$ to be greatest power of $b$ dividing $a$ . (Note $g(50!,b)>g(5!,b)$ for all $b<50$ .) Therefore, for each prime $p$ , we have either $f(x,p)=f(5!,p)$ and $f(y,p)=f(50!,p)$ or $f(y,p)=f(5!,p)$ and $f(x,p)=f(50!,p)$ . Since we have 15 primes, this gives $2^{15}$ pairs, and clearly $x\neq y$ in any such pair (since the gcd and lcm are different), so there are $2^{14}$ pairs with $x\leq y$ .  
 
-",1.3.12.,False,Divisibility
+",1.3.12.,True,Divisibility
 452,(Divisibility)->(The greatest common divisor and the least common multiple),"Problem. Several positive integers are written on a blackboard. One can erase any two distinct integers and write their greatest common divisor and least common multiple instead. Prove that eventually the numbers will stop changing.  
 
 (1996 St. Petersburg City Mathematical Olympiad)  
@@ -10529,7 +10529,7 @@ $$
 
 Now, since $P(x)$ is a polynomial with integer coefficients, the congruence $x\equiv x_{j}$ (mod $p_{j}^{k_{j}}$ ) implies $P(x)\equiv P(x_{j})$ (mod $p_{j}^{k_{j}}$ ) for each index $j=$ 1, 2, . . . , m. By the definition of pjk , the number P (xj) is never divisible by $p_{j}^{k_{j}}$ , $j=1,2,\dots,m$ . Thus, for the solution $x$ given by the Chinese Remainder Theorem, $P(x)$ is not divisible by any of the powers $p_{j}^{k_{j}}$ . And because each $a_{i}$ is divisible by some $p_{j}^{k_{j}}$ kj , $j=1,2,\dots,m$ , it follows that no $a_{i}$ divides $P(x)$ either, a contradiction.  
 
-",1.6.3.,False,Divisibility
+",1.6.3.,True,Divisibility
 468,(Divisibility)->(Chinese remainder theorem),"Problem. For any positive integer set $\{a_{1},a_{2},\ldots,a_{n}\}$ there exists a positive integer b such that the set $\{b a_{1},b a_{2},\ldots,b a_{n}\}$ consists of perfect powers.  
 
 ","Solution. There is a finite number of primes $p_{1},p_{2},\ldots,p_{k}$ that participate in the prime factorization of $a_{1},a_{2},\ldots,a_{n}$ . Let  
@@ -10604,7 +10604,7 @@ Prove that for every positive integer n there exists a set of $n$ positive integ
 Indeed, let $\{x_{1},x_{2},\ldots,x_{m}\}$ be a finite set of positive integers and $S_{1},S_{2},\ldots,S_{r}$ the element sums of its nonempty subsets $\mathit{\Pi}^{'}r\ =\ 2^{m}-1$ ). Choose a $b$ so that $b S_{1},b S_{2},\ldots,b S_{r}$ are all perfect powers. Then the set $\{b x_{1},b x_{2},\dots,b x_{m}\}$ yields the desired example.  
 
 2) Another consequence is the following: There are arithmetic progressions of arbitrary finite length consisting only of powers. Yet, no such infinite progression exists.  
-",1.6.4.,False,Divisibility
+",1.6.4.,True,Divisibility
 469,(Divisibility)->(Numerical systems),"Problem. The natural number A has the following property: the sum of the integers from $\mathit{1}$ to $A$ , inclusive, has decimal expansion equal to that of A followed by three digits. Find $A$ .  
 
 (1999 Russian Mathematical Olympiad)  
@@ -12953,7 +12953,7 @@ $$
 
 Therefore $5^{1981}=\mathcal{M}100,000+5^{5}=\mathcal{M}100,000+3125$ , so 03125 are the last 5 digits of the number $5^{1981}$ .  
 
-",4.1.5.,False,Digits of Numbers
+",4.1.5.,True,Digits of Numbers
 518,(Digits of Numbers)->(The last digits of a number),"Problem. Consider all pairs $(a,b)$ of natural numbers such that the product $a^{a}b^{b}$ , written in base $\mathit{10}$ , ends with exactly 98 zeroes. Find the pair $(a,b)$ for which the product ab is smallest.  
 
 (1998 Austrian-Polish Mathematics Competition)  
@@ -14073,7 +14073,7 @@ p^{n-3}={\frac{p^{n}}{p^{3}}}={\frac{x^{3}}{p^{3}}}+{\frac{y^{3}}{p^{3}}}=\left(
 $$  
 
 and this contradicts the minimality of $n$ (see the remark after FMID Variant 1).  
-",5.3.2.,False,Basic Principles in Number Theory
+",5.3.2.,True,Basic Principles in Number Theory
 538,(Basic Principles in Number Theory)->(Inclusion-exclusion),"Problem. The numbers from 1 to 1000000 can be colored black or white. A permissible move consists of selecting a number from 1 to 1000000 and changing the color of that number and each number not relatively prime to it. Initially all of the numbers are black. Is it possible to make a sequence of moves after which all of the numbers are colored white?  
 
 (1999 Russian Mathematical Olympiad)  
@@ -14396,7 +14396,7 @@ $$
 
 Thus, the product of the proper divisors of $n$ is equal to $2^{2001}\cdot5^{2001}$ 76·2001 · 1110·2001 · 1312·2001, an integer ending in exactly 2001 zeroes.  
 
-",6.2.5.,False,Arithmetic Functions
+",6.2.5.,True,Arithmetic Functions
 543,(Arithmetic Functions)->(Number of divisors),"Problem. Prove that the number of divisors of the form $4k+1$ of each positive integer is not less than the number of its divisors of the form $4k+3$ .  
 
 ","Solution. To solve the problem, consider the function  
@@ -17430,7 +17430,7 @@ $$
 $$  
 
 We must have $2^{b-1}>2a_{1}^{b}\Rightarrow a_{1}=1$ . Then these equations give $c_{1}=1$ and $b=3$ . Therefore the only solution is $(x,y,z)=(1,2,1)$ .  
-",8.3.22.,False,Diophantine Equations
+",8.3.22.,True,Diophantine Equations
 599,(Some special problems in number theory)->(Quadratic residues. Legendre’s symbol),"Problem. Let $f,g:Z^{+}\to Z^{+}$ functions with the properties: i) $g$ is surjective; ii) $2f^{2}(n)=n^{2}+g^{2}(n)$ for all positive integers $n$ . If, moreover, $|f(n)-n|\leq2004{\sqrt{n}}$ for all $n$ , prove that $f$ has infinitely many fixed points.  
 
 (2005 Moldavian IMO Team Selection Test)  
@@ -18434,7 +18434,7 @@ $$
 so $p=2$ . For $k=3$ , this gives the solution $b=7$ , $c=4$ , and because $\frac{3\cdot7+4}{2}$ is not an integer, there are no solutions for $k>3$ .  
 
 Remark. The reader may try to prove the following more general statement: Let $f~\in~\mathbb{Z}[X_{1},\ldots,X_{k}]$ be a polynomial and $F(n)\ =$ $f(n,2^{n},3^{n},\ldots,(k-1)^{n})$ , $n\geq1$ . If $\operatorname*{lim}_{n\to\infty}F(n)=\infty$ , then the set of primes dividing terms of sequence $(F(n))_{n\geq1}$ is infinite.  
-",9.3.14.,False,Some special problems in number theory
+",9.3.14.,True,Some special problems in number theory
 615,(Some special problems in number theory)->(Sequences of integers)->(Nonstandard sequences of integers),"Problem. Let $\left\{a_{n}\right\}$ be a sequence of integers such that for $n\geq1$  
 
 $$

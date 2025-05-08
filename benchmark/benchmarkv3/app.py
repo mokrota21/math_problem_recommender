@@ -10,7 +10,7 @@ app = Flask(__name__,
     static_folder=os.path.join(BASE_DIR, 'static')
 )
 app.secret_key = 'math_problem_recommender_secret_key'  # Required for flash messages
-tool = LabelingTool()
+tool = LabelingTool(n=2)
 
 @app.route('/')
 def index():

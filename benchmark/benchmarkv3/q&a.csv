@@ -1,2 +1,8 @@
 Anchor,Golden,Silver,Wrong,Query,query
 431,439,475,592,,Find problems that use divisibility to limit number of options.
+468,467,63,614,,Find problems that explicitly use idea of all modulo remaineders being available
+194,196,537,100,,Find problems that explore pigeonhole principle
+66,64,451,145,,Find problems that involve calculating answer using residues modulo different numbers
+150,152,161,517,,Find problems where we have to solve floor function equation by extracting integer part
+42,39,440,598,,Find problems that practice divisibility together with gcd.
+228,542,233,373,,Find calculative problems where we need to use number of divisors.
