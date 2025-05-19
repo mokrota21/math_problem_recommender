@@ -4,10 +4,38 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 from scipy.stats import rankdata
 
-def chunk(tokens, max_length=512, stride=100):
-    chunks = [tokens[i:i+max_length] for i in range(0, tokens.shape[0], max_length - stride)]
+from transformers import AutoTokenizer, AutoModelForSequenceClassification
+import torch
+from scipy.stats import rankdata
+import numpy as np
 
-def compute_similarity(model_name, anchor, texts):
+def compute_similarity_nli_query_focused(model_name, query, anchor, texts):
+    tokenizer = AutoTokenizer.from_pretrained(model_name)
+    model = AutoModelForSequenceClassification.from_pretrained(model_name)
+    model.eval()
+
+    # Build the "hypothesis" from the query + anchor (this is the thing we want the other texts to entail)
+    hypothesis = f"{query}. {anchor}"
+
+    # Each premise is one of the texts
+    pairs = [(text, hypothesis) for text in texts]
+
+    # Tokenize the premise-hypothesis pairs
+    inputs = tokenizer([p for p, h in pairs], [h for p, h in pairs],
+                       return_tensors="pt", truncation=True, padding=True)
+
+    with torch.no_grad():
+        logits = model(**inputs).logits  # Shape: [batch_size, 3] for [entailment, neutral, contradiction]
+
+    # Convert logits to probabilities
+    probs = torch.softmax(logits, dim=1)
+
+    # Use entailment score (index 2 for BART, but check below)
+    entailment_score = probs[:, model.config.label2id["entailment"]]  # Using correct label index
+
+    return entailment_score.numpy()
+
+def compute_similarity_chunking_cls(model_name, anchor, texts):
     # Load the tokenizer and model from Hugging Face
     tokenizer = AutoTokenizer.from_pretrained(model_name)
     model = AutoModel.from_pretrained(model_name)
@@ -51,23 +79,23 @@ def compute_similarity(model_name, anchor, texts):
 
     return similarities.flatten()
 
-def rank(model, anchor, texts):
-    sim_scores = compute_similarity(model, anchor, texts)
+def rank(kwargs, compute_similarity: callable):
+    sim_scores = compute_similarity(**kwargs)
     ranks = rankdata(-sim_scores, method='ordinal')  
 
     return ranks
 
 # # Example usage
-model_name = "bert-base-uncased"
-anchor_text = "This is the anchor sentence."
-texts = [
-    "This is the first text.",
-    "I am.",
-    "A completely different text."
-]
+# model_name = "bert-base-uncased"
+# anchor_text = "This is the anchor sentence."
+# texts = [
+#     "This is the first text.",
+#     "I am.",
+#     "A completely different text."
+# ]
 
-similarities = compute_similarity(model_name, anchor_text, texts)
-print(similarities)
+# similarities = compute_similarity_chunking(model_name, anchor_text, texts)
+# print(similarities)
 
-ranks = rank(model_name, anchor_text, texts)
-print(ranks)
+# ranks = rank(model_name, anchor_text, texts)
+# print(ranks)
