@@ -74,9 +74,6 @@ class BERTCLSMeanPooler(BERTPooler):
         return torch.stack(mean_cls_per_text, dim=0)
 
 class SimScorer(ABC):
-    def __init__(self, emb_summarizer: EmbSummarizer = BERTCLSMeanPooler):
-        self.emb_summarizer = emb_summarizer
-    
     def preprocess(self, texts: list):
         return texts
     
@@ -89,15 +86,13 @@ class SimScorer(ABC):
         pass
 
 class CosineSimScorer(SimScorer):
-    def calc_sim(self, batch1, batch2):
-        emb_cls1 = self.emb_summarizer.summarize(batch1).cpu()
-        emb_cls2 = self.emb_summarizer.summarize(batch2).cpu()
+    def calc_sim(self, emb1, emb2):
         cos_sim = CosineSimilarity()
-        similarity = cos_sim(emb_cls1, emb_cls2)
+        similarity = cos_sim(emb1, emb2)
         return similarity
     
-    def rank(self, anchor, texts: list):
-        sim_scores = self.calc_sim([anchor] * len(texts), texts)
+    def rank(self, anchor_emb: torch.Tensor, texts_emb: torch.Tensor):
+        sim_scores = self.calc_sim(anchor_emb.repeat(texts_emb.shape[0], 1), texts_emb)
         ranks = torch.argsort(-sim_scores, dim=0)
         return ranks
     

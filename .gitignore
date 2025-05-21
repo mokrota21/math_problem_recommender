@@ -5,3 +5,4 @@
 /utils/__pycache__
 benchmark/neo4j/password.txt
 testing/benchmark_v3/gemini_api_key.txt
+*.pkl
