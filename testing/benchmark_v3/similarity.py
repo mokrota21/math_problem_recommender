@@ -73,6 +73,56 @@ class BERTCLSMeanPooler(BERTPooler):
         
         return torch.stack(mean_cls_per_text, dim=0)
 
+class STransformerPooler(EmbSummarizer):
+    def __init__(self, model, tokenizer, **kwargs):
+        self.model = model.to(device)
+        self.tokenizer = tokenizer
+        req_kwargs = {
+            "max_length": 512,
+            "stride": 10
+        }
+        self.tokenizer_args = {**req_kwargs, **kwargs}
+
+    def embed(self, inputs):
+        input_batch = {k: v.detach().clone().to(device) for k, v in inputs.items() if k in ['input_ids', 'attention_mask', 'token_type_ids']}
+        with torch.no_grad():
+            emb = self.model(**input_batch)
+        return emb
+
+    def tokenize(self, texts: list):
+        if isinstance(texts, str):
+            texts = [texts]
+        inputs = self.tokenizer(texts, return_tensors='pt', truncation=True, return_overflowing_tokens=True, padding=True, **self.tokenizer_args)
+        if "overflow_to_sample_mapping" not in inputs:
+            inputs['overflow_to_sample_mapping'] = [0]
+        return inputs
+
+class STransformerMeanPooler(BERTCLSMeanPooler):
+    """
+    Adaptation for sentence-transformers
+    """
+    def summarize(self, texts: list):
+        inputs = self.tokenize(texts)
+        emb = self.embed(inputs)
+        emb_cls = emb.last_hidden_state[:, 0]
+        mapping = inputs['overflow_to_sample_mapping']
+        mean_cls_per_text = []
+        current_cls = []
+        current_id = mapping[0].item()
+        for i in range(mapping.shape[0]):
+            idx = mapping[i].item()
+            if idx != current_id:
+                mean_cls = torch.stack(current_cls, dim=0).mean(dim=0)
+                mean_cls_per_text.append(mean_cls)
+                current_cls = []
+                current_id = idx
+            current_cls.append(emb_cls[i])
+        if current_cls:
+            mean_cls = torch.stack(current_cls, dim=0).mean(dim=0)
+            mean_cls_per_text.append(mean_cls)
+        
+        return torch.stack(mean_cls_per_text, dim=0)
+
 class SimScorer(ABC):
     def preprocess(self, texts: list):
         return texts
