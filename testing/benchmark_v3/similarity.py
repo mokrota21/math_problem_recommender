@@ -143,6 +143,7 @@ class CosineSimScorer(SimScorer):
     
     def rank(self, anchor_emb: torch.Tensor, texts_emb: torch.Tensor):
         sim_scores = self.calc_sim(anchor_emb.repeat(texts_emb.shape[0], 1), texts_emb)
+        # WRONG: ranks = torch.argsort(-sim_scores, dim=0)
         ranks = torch.argsort(torch.argsort(-sim_scores, dim=0), dim=0)
         return ranks
     
