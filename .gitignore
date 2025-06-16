@@ -8,3 +8,4 @@ testing/benchmark_v3/gemini_api_key.txt
 *.pkl
 /testing/benchmark_v3/models
 testing/benchmark_v3/model_weights.pt
+/testing/benchmark_v1/models
